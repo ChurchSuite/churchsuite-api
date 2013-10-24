@@ -83,15 +83,15 @@ This will return one of the following HTTP codes:
 
 ## Create a new contact
 
-* `POST /v1/addressbook/contact` will create a new contact in the Address Book. On success, it will return a 201 response
+* `POST /v1/addressbook/contact` will create a new contact in the Address Book
 
 ```json
 {
-  "id":"136",
-  "name":"Surname, Test",
-  "first_name":"Test",
+  "id":"138",
+  "name":"Bloggs, Joe",
+  "first_name":"Joe",
   "middle_name":null,
-  "last_name":"Surname",
+  "last_name":"Bloggs",
   "formal_name":null,
   "maiden_name":null,
   "sex":"m",
@@ -101,11 +101,11 @@ This will return one of the following HTTP codes:
   "address3":null,
   "city":null,
   "county":null,
-  "postcode":"NG5 2EP",
+  "postcode":"NG1 1AB",
   "country":"GB",
   "telephone":null,
   "mobile":null,
-  "email":"test@test.com",
+  "email":"joe@bloggs.com",
   "job":null,
   "employer":null
 }
@@ -122,25 +122,25 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "id":"136",
-  "name":"Courtney, Alison",
-  "first_name":"Alison",
+  "id":"138",
+  "name":"Bloggs, Jane",
+  "first_name":"Jane",
   "middle_name":null,
-  "last_name":"Courtney",
+  "last_name":"Bloggs",
   "formal_name":null,
   "maiden_name":null,
-  "sex":"m",
+  "sex":"f",
   "date_of_birth":null,
   "address":null,
   "address2":null,
   "address3":null,
   "city":null,
   "county":null,
-  "postcode":"NG5 2EP",
+  "postcode":"NG1 1AB",
   "country":"GB",
   "telephone":null,
   "mobile":null,
-  "email":"test@test.com",
+  "email":"jane.bloggs@gmail.com",
   "job":null,
   "employer":null
 }
@@ -163,4 +163,4 @@ This will return one of the following HTTP codes:
 This will return one of the following HTTP codes:
 
 * `200` contact deleted
-* `404` contact specified to update does not exist
+* `404` contact specified to delete does not exist
