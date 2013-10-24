@@ -33,5 +33,6 @@ Whilst a child would appear at the endpoint:
 The following modules currently have documented API Endpoints, this documentation is considered a work in progress:
 
 * [Address Book](https://github.com/ChurchApp/churchapp-api/blob/master/modules/addressbook.md)
+* [Administrator](https://github.com/ChurchApp/churchapp-api/blob/master/modules/administrator.md)
 * [Calendar](https://github.com/ChurchApp/churchapp-api/blob/master/modules/calendar.md)
 * [Small Groups](https://github.com/ChurchApp/churchapp-api/blob/master/modules/smallgroups.md)
