@@ -4,9 +4,10 @@
 
 The ChurchApp API requires users to use a valid API key in order to interact with the data stored in their ChurchApp account. Currently API Keys must be requested via support (support@churchapp.co.uk).
 
-To access the API each request must be accompanied by a `X-Account` header, a `X-Application` header and a `X-Auth` header. For example:
+To access the API each request must be accompanied by a `X-Account` header, a `X-Application` header and a `X-Auth` header. Additionally, the Content-Type header must be set to `application/json`. For example:
 
 ````
+  Content-Type: application/json
   X-Account: demo
   X-Application: Example
   X-Auth: 1234567890abc
