@@ -55,28 +55,32 @@ The Address Book module is concered with the management of contacts within Churc
   "id":"1",
   "name":"Ward, Philip",
   "first_name":"Philip",
-  "middle_name":null,
+  "middle_name":"",
   "last_name":"Ward",
   "formal_name":null,
-  "maiden_name":null,
+  "maiden_name":"",
   "sex":"m",
   "date_of_birth":"1981-12-26",
   "address":"19 Albert Drive",
   "address2":"Cotgrave",
   "address3":null,
-  "city":null,
-  "county":null,
+  "city":"",
+  "county":"",
   "postcode":"NG3 5GE",
-  "country":null,
-  "telephone":"01479029358",
-  "mobile":"07223446512",
+  "country":"",
+  "telephone":"01479 029 358",
+  "mobile":"07223 446 512",
   "email":"philip.ward@yahoo.com",
   "job":"Primary Teacher",
-  "employer":null,
+  "employer":"",
   "tags":[
     {
       "id":null,
-      "name":"Members"
+      "name":"Setup Team"
+    },
+    {
+      "id":null,
+      "name":"Worship Band"
     }
   ]
 }
@@ -88,13 +92,38 @@ This will return one of the following HTTP codes:
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` contact does not exist
 
+## Get a contact's tags
+
+* `GET /v1/addressbook/contact/1/tags` will return data for a specific contact
+
+```json
+{
+  "tags":[
+    {
+      "id":null,
+      "name":"Setup Team"
+    },
+    {
+      "id":null,
+      "name":"Worship Band"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` contact tags returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` contact does not exist
+
 ## Create a new contact
 
 * `POST /v1/addressbook/contact` will create a new contact in the Address Book
 
 ```json
 {
-  "id":"146",
+  "id":"155",
   "name":"Bloggs, Joe",
   "first_name":"Joe",
   "middle_name":null,
@@ -129,7 +158,7 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "id":"146",
+  "id":"155",
   "name":"Bloggs, Jane",
   "first_name":"Jane",
   "middle_name":null,
@@ -194,7 +223,7 @@ This will return one of the following HTTP codes:
     {
       "id":null,
       "name":"Members",
-      "no_contacts":"69"
+      "no_contacts":"4"
     },
     {
       "id":null,
@@ -214,7 +243,7 @@ This will return one of the following HTTP codes:
     {
       "id":null,
       "name":"Setup Team",
-      "no_contacts":"7"
+      "no_contacts":"8"
     },
     {
       "id":null,
@@ -234,7 +263,7 @@ This will return one of the following HTTP codes:
     {
       "id":null,
       "name":"Worship Band",
-      "no_contacts":"11"
+      "no_contacts":"12"
     }
   ]
 }
@@ -244,15 +273,34 @@ This will return one of the following HTTP codes:
 ## Get a tag
 
 * `GET /v1/addressbook/tag/Wine+Evening` will return data for a specific tag
-* `GET /v1/addressbook/tag/Wine+Evening?contacts=true` will return data for a specific tag, including the details for contacts tagged with the specified tag
 
 Tag names *must be urlencoded*, particularly if they include a space character in them. Failure to correctly encode the tag name could result in a 404 response being returned rather than a 200.
 
 ```json
 {
   "id":null,
-  "name":"Wine Evening",
-  "no_contacts":"2",
+  "name":"Members",
+  "no_contacts":"4"
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` tag data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` tag does not exist
+
+## Get a tag's contacts
+
+* `GET /v1/addressbook/tag/Members/contacts` will return the contacts for the "Members" tag
+
+```json
+{
+  "pagination":{
+    "no_results":4,
+    "page":1,
+    "per_page":4
+  },
   "contacts":[
     {
       "id":"112",
@@ -278,26 +326,72 @@ Tag names *must be urlencoded*, particularly if they include a space character i
       "employer":""
     },
     {
-      "id":"111",
-      "name":"Baxter, Rachael",
-      "first_name":"Rachael",
-      "middle_name":"Susan",
-      "last_name":"Baxter",
+      "id":"94",
+      "name":"Bradley, Emma",
+      "first_name":"Emma",
+      "middle_name":"",
+      "last_name":"Bradley",
       "formal_name":null,
-      "maiden_name":"Smith-Wilson",
+      "maiden_name":"",
       "sex":"f",
-      "date_of_birth":"1944-06-21",
-      "address":"71 Lamont Road",
-      "address2":"Thorpe",
+      "date_of_birth":"1973-05-15",
+      "address":"74 Calendon Lane",
+      "address2":"Arnold",
       "address3":null,
       "city":"",
       "county":"",
-      "postcode":"NG9 2FE",
+      "postcode":"NG5 2EF",
       "country":"",
-      "telephone":"0161 730 2326",
-      "mobile":"07587 801 882",
-      "email":"rachael.baker@gmail.com",
-      "job":"Carer",
+      "telephone":"01662 021 460",
+      "mobile":"07336 197 473",
+      "email":"emma.bradley@facebook.com",
+      "job":"Teaching Assistant",
+      "employer":""
+    },
+    {
+      "id":"34",
+      "name":"Bradley, Julie",
+      "first_name":"Julie",
+      "middle_name":"",
+      "last_name":"Bradley",
+      "formal_name":null,
+      "maiden_name":"",
+      "sex":"f",
+      "date_of_birth":"1955-11-18",
+      "address":"62 Downs Court",
+      "address2":"Gedling",
+      "address3":null,
+      "city":"",
+      "county":"",
+      "postcode":"NG9 3LP",
+      "country":"",
+      "telephone":"01010 544 224",
+      "mobile":"07307 699 576",
+      "email":"julie.bradley@gmail.com",
+      "job":"Support Worker",
+      "employer":""
+    },
+    {
+      "id":"104",
+      "name":"Bradley, Samuel",
+      "first_name":"Samuel",
+      "middle_name":"",
+      "last_name":"Bradley",
+      "formal_name":null,
+      "maiden_name":"",
+      "sex":"m",
+      "date_of_birth":"1958-06-19",
+      "address":"40 Clarence Way",
+      "address2":"Stapleford",
+      "address3":null,
+      "city":"",
+      "county":"",
+      "postcode":"NG7 2PX",
+      "country":"",
+      "telephone":"01464 816 866",
+      "mobile":"07258 594 857",
+      "email":"samuel.bradley@facebook.com",
+      "job":"Graphic Designer",
       "employer":""
     }
   ]
@@ -306,6 +400,6 @@ Tag names *must be urlencoded*, particularly if they include a space character i
 
 This will return one of the following HTTP codes:
 
-* `200` tag data returned
+* `200` tag contacts returned
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` tag does not exist
