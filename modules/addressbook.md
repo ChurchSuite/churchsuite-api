@@ -27,12 +27,12 @@ The Address Book module is concered with the management of contacts within Churc
       "maiden_name":"",
       "sex":"m",
       "date_of_birth":"1982-08-03",
-      "address":"1 Wellington Street",
+      "address":"125 Derby Road",
       "address2":"",
       "address3":null,
-      "city":"London",
+      "city":"Nottingham",
       "county":"",
-      "postcode":"SW1A 0AA",
+      "postcode":"NG9 3LP",
       "country":"",
       "telephone":"0115 824 2300",
       "mobile":"07707 777 777",
@@ -48,6 +48,7 @@ The Address Book module is concered with the management of contacts within Churc
 ## Get a contact
 
 * `GET /v1/addressbook/contact/1` will return data for a specific contact
+* `GET /v1/addressbook/contact/1?tags=true` will return data for a specific contact, including any tags for the contact
 
 ```json
 {
@@ -71,7 +72,13 @@ The Address Book module is concered with the management of contacts within Churc
   "mobile":"07223446512",
   "email":"philip.ward@yahoo.com",
   "job":"Primary Teacher",
-  "employer":null
+  "employer":null,
+  "tags":[
+    {
+      "id":null,
+      "name":"Members"
+    }
+  ]
 }
 ```
 
@@ -87,7 +94,7 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "id":"138",
+  "id":"146",
   "name":"Bloggs, Joe",
   "first_name":"Joe",
   "middle_name":null,
@@ -122,7 +129,7 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "id":"138",
+  "id":"146",
   "name":"Bloggs, Jane",
   "first_name":"Jane",
   "middle_name":null,
@@ -164,3 +171,141 @@ This will return one of the following HTTP codes:
 
 * `200` contact deleted
 * `404` contact specified to delete does not exist
+
+
+
+## List tags
+
+* `GET /v1/addressbook/tags will return tags ordered alphabetically
+
+```json
+{
+  "pagination":{
+    "no_results":10,
+    "page":1,
+    "per_page":10
+  },
+  "tags":[
+    {
+      "id":null,
+      "name":"Leader",
+      "no_contacts":"15"
+    },
+    {
+      "id":null,
+      "name":"Members",
+      "no_contacts":"69"
+    },
+    {
+      "id":null,
+      "name":"North City Campus",
+      "no_contacts":"5"
+    },
+    {
+      "id":null,
+      "name":"Potential Leaders",
+      "no_contacts":"8"
+    },
+    {
+      "id":null,
+      "name":"Prayer Team",
+      "no_contacts":"11"
+    },
+    {
+      "id":null,
+      "name":"Setup Team",
+      "no_contacts":"7"
+    },
+    {
+      "id":null,
+      "name":"South City Campus",
+      "no_contacts":"29"
+    },
+    {
+      "id":null,
+      "name":"Staff",
+      "no_contacts":"1"
+    },
+    {
+      "id":null,
+      "name":"Wine Evening",
+      "no_contacts":"2"
+    },
+    {
+      "id":null,
+      "name":"Worship Band",
+      "no_contacts":"11"
+    }
+  ]
+}
+```
+
+
+## Get a tag
+
+* `GET /v1/addressbook/tag/Wine+Evening` will return data for a specific tag
+* `GET /v1/addressbook/tag/Wine+Evening?contacts=true` will return data for a specific tag, including the details for contacts tagged with the specified tag
+
+Tag names *must be urlencoded*, particularly if they include a space character in them. Failure to correctly encode the tag name could result in a 404 response being returned rather than a 200.
+
+```json
+{
+  "id":null,
+  "name":"Wine Evening",
+  "no_contacts":"2",
+  "contacts":[
+    {
+      "id":"112",
+      "name":"Baker, George",
+      "first_name":"George",
+      "middle_name":"Harris",
+      "last_name":"Baker",
+      "formal_name":null,
+      "maiden_name":"",
+      "sex":"m",
+      "date_of_birth":"1945-08-13",
+      "address":"71 Lamont Road",
+      "address2":"Thorpe",
+      "address3":null,
+      "city":"",
+      "county":"",
+      "postcode":"NG9 2FE",
+      "country":"",
+      "telephone":"0161 730 2326",
+      "mobile":"07824 842 761",
+      "email":"george@thebakers.com",
+      "job":"Physician",
+      "employer":""
+    },
+    {
+      "id":"111",
+      "name":"Baxter, Rachael",
+      "first_name":"Rachael",
+      "middle_name":"Susan",
+      "last_name":"Baxter",
+      "formal_name":null,
+      "maiden_name":"Smith-Wilson",
+      "sex":"f",
+      "date_of_birth":"1944-06-21",
+      "address":"71 Lamont Road",
+      "address2":"Thorpe",
+      "address3":null,
+      "city":"",
+      "county":"",
+      "postcode":"NG9 2FE",
+      "country":"",
+      "telephone":"0161 730 2326",
+      "mobile":"07587 801 882",
+      "email":"rachael.baker@gmail.com",
+      "job":"Carer",
+      "employer":""
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` tag data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` tag does not exist
