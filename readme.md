@@ -2,9 +2,9 @@
 
 ## Authentication
 
-The ChurchApp API requires users to use a valid API key in order to interact with the data stored in their ChurchApp account. Currently API Keys must be requested via support (support@churchapp.co.uk).
+The ChurchApp API requires users to use a valid API key in order to interact with the data stored in their ChurchApp account. Currently API Keys must be requested via support (support@churchapp.co.uk), we also provide an [OAuth endpoint](https://github.com/ChurchApp/churchapp-api/blob/master/oauth.md) for using the API as a specific Contact with limited access.
 
-To access the API each request must be accompanied by a `X-Account` header, a `X-Application` header and a `X-Auth` header. Additionally, the Content-Type header must be set to `application/json`. For example:
+To access the API each request must be accompanied by a `X-Account` header, a `X-Application` header and a `X-Auth` header, as of Dec 2013 requests missing any of these will not succeed. Additionally, the Content-Type header must be set to `application/json`. For example:
 
 ````
   Content-Type: application/json
@@ -13,20 +13,26 @@ To access the API each request must be accompanied by a `X-Account` header, a `X
   X-Auth: 1234567890abc
 ````
 
-The ChurchApp API is available at `https://api.churchapp.co.uk/v1` and should always be accessed via SSL. Failure to supply the required headers will result in a 403 error.
+The ChurchApp API is available at `https://api.churchapp.co.uk/v1` and should always be accessed via SSL.
+
+#### Headers: 
+
+* `X-Account` refers to the subdomain of your ChurchApp Account (*demo*.churchapp.co.uk)
+* `X-Application` is an identifier used to describe your application, e.g., yourchurch-website
+* `X-Auth` is an API Key, obtained either via OAUth or from Support.
 
 ## API Structure
 
 The API is structured in the same way as the main ChurchApp Application, with each model belonging to it's own module. For example a contact might be at the endpoint:
 
 ````
-  http://api.churchapp.co.uk/v1/addressbook/contact/1
+  https://api.churchapp.co.uk/v1/addressbook/contact/1
 ````
 
 Whilst a child would appear at the endpoint:
 
 ````
-  http://api.churchapp.co.uk/v1/children/child/1
+  https://api.churchapp.co.uk/v1/children/child/1
 ````
 
 ## Documentation
