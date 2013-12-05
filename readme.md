@@ -19,7 +19,7 @@ The ChurchApp API is available at `https://api.churchapp.co.uk/v1` and should al
 
 * `X-Account` refers to the subdomain of your ChurchApp Account (*demo*.churchapp.co.uk)
 * `X-Application` is an identifier used to describe your application, e.g., yourchurch-website
-* `X-Auth` is an API Key, obtained either via OAUth or from Support.
+* `X-Auth` is an API Key, obtained either via OAuth or from Support.
 
 ## API Structure
 
