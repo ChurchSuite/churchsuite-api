@@ -10,12 +10,12 @@ The My section of the API allows data to be queried for a given contact after th
 
 ```json
 {
-  "id":"7",
+  "id":"127",
   "name":"Courtney, Gavin",
   "first_name":"Gavin",
   "middle_name":"",
   "last_name":"Courtney",
-  "formal_name":"",
+  "formal_name":null,
   "maiden_name":"",
   "sex":"m",
   "date_of_birth":"1982-08-03",
@@ -30,14 +30,14 @@ The My section of the API allows data to be queried for a given contact after th
   "mobile":"07707 777 777",
   "email":"support@churchapp.co.uk",
   "job":"Managing Director",
-  "employer":"ChurchApp",
+  "employer":"diffuse Media Ltd",
   "images":{
-    "original_16":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/7_20_16.jpg",
-    "original_100":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/7_20_100.jpg",
-    "original_500":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/7_20_500.jpg",
-    "square_16":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/7_20_16.jpg",
-    "square_100":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/7_20_100.jpg",
-    "square_500":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/7_20_500.jpg"
+    "original_16":"https:\/\/demo.churchapp.co.uk",
+    "original_100":"https:\/\/demo.churchapp.co.uk",
+    "original_500":"https:\/\/demo.churchapp.co.uk",
+    "square_16":"https:\/\/demo.churchapp.co.uk",
+    "square_100":"https:\/\/demo.churchapp.co.uk",
+    "square_500":"https:\/\/demo.churchapp.co.uk"
   }
 }
 ```
@@ -58,53 +58,27 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":2,
+    "no_results":1,
     "page":1,
     "per_page":50
   },
   "contacts":[
     {
-      "id":"139",
-      "name":"Address, Return",
-      "first_name":"Return",
-      "middle_name":null,
-      "last_name":"Address",
-      "formal_name":null,
-      "maiden_name":null,
-      "sex":"m",
-      "date_of_birth":null,
-      "address":"",
-      "address2":"",
-      "address3":"",
-      "city":"",
-      "county":"",
-      "postcode":"",
-      "country":"",
-      "telephone":"",
-      "mobile":"",
-      "email":"",
-      "job":"",
-      "employer":null,
-      "images":[
-        
-      ]
-    },
-    {
-      "id":"7",
+      "id":"127",
       "name":"Courtney, Gavin",
       "first_name":"Gavin",
       "middle_name":"",
       "last_name":"Courtney",
-      "formal_name":"",
+      "formal_name":null,
       "maiden_name":"",
       "sex":"m",
       "date_of_birth":"1982-08-03",
-      "address":"",
+      "address":"125 Derby Road",
       "address2":"",
-      "address3":"",
-      "city":"",
+      "address3":null,
+      "city":"Nottingham",
       "county":"",
-      "postcode":"",
+      "postcode":"NG9 3LP",
       "country":"",
       "telephone":"0115 824 2300",
       "mobile":"07707 777 777",
@@ -112,12 +86,12 @@ This will return one of the following HTTP codes:
       "job":"Managing Director",
       "employer":null,
       "images":{
-        "original_16":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/7_20_16.jpg",
-        "original_100":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/7_20_100.jpg",
-        "original_500":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/7_20_500.jpg",
-        "square_16":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/7_20_16.jpg",
-        "square_100":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/7_20_100.jpg",
-        "square_500":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/7_20_500.jpg"
+        "original_16":"https:\/\/demo.churchapp.co.uk",
+        "original_100":"https:\/\/demo.churchapp.co.uk",
+        "original_500":"https:\/\/demo.churchapp.co.uk",
+        "square_16":"https:\/\/demo.churchapp.co.uk",
+        "square_100":"https:\/\/demo.churchapp.co.uk",
+        "square_500":"https:\/\/demo.churchapp.co.uk"
       }
     }
   ]
@@ -134,11 +108,11 @@ This will return one of the following HTTP codes:
 
 ## Get contact's ChurchApp Public URL
 
-* `GET /v1/my/churchapp_url will return a temporary URL that will log the user directly into ChurchApp Public
+* `GET /v1/my/churchapp_url` will return a temporary URL that will log the user directly into ChurchApp Public
 
 ```json
 {
-  "url":"https:\/\/demo.churchapp.co.uk\/public\/passthrough\/nR5I1F2qBr1woBdKXucOM+vniUHtWJ1PFobvOVGetjLqNtnKR3iUq5g+1HZR8bTp"
+  "url":"https:\/\/demo.churchapp.co.uk\/public\/passthrough\/nR5I1F2qBr1woBdKXucOMy+ETt1aTKp+dm2flXdn0HqcRqzJRGTa8kQ+yvsB8JBA"
 }
 ```
 
