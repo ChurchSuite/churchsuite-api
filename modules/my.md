@@ -112,7 +112,7 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "url":"https:\/\/demo.churchapp.co.uk\/public\/passthrough\/nR5I1F2qBr1woBdKXucOMy+ETt1aTKp+dm2flXdn0HqcRqzJRGTa8kQ+yvsB8JBA"
+  "url":"https:\/\/demo.churchapp.co.uk\/public\/passthrough\/nR5I1F2qBr1woBdKXucOM0+hFGJ33MaZB+DiTJCrU\/qcRqzJRGTa8kQ+yvsB8JBA"
 }
 ```
 
@@ -121,3 +121,66 @@ This URL will change each time a contact logs in through an OAuth exchange and w
 This will return one of the following HTTP codes:
 
 * `200` ChurchApp URL returned
+
+
+
+## Get a contact's children
+
+* `GET /v1/my/children` will return the details of any children linked to the current contact
+
+```json
+{
+  "children":[
+    {
+      "id":"33",
+      "name":"Baker, Oscar",
+      "first_name":"Oscar",
+      "last_name":"Baker",
+      "mobile":null,
+      "sex":"m",
+      "email":null,
+      "telephone":""
+    },
+    {
+      "id":"10",
+      "name":"Clark, Helen",
+      "first_name":"Helen",
+      "last_name":"Clark",
+      "mobile":null,
+      "sex":"f",
+      "email":null,
+      "telephone":""
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` children data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+
+
+
+## Get a child's details
+
+* `GET /v1/my/child/1` will return the details of any children linked to the current contact
+
+```json
+{
+  "id":"10",
+  "name":"Clark, Helen",
+  "first_name":"Helen",
+  "last_name":"Clark",
+  "mobile":"",
+  "sex":"f",
+  "email":"",
+  "telephone":"0115 824 2300"
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` child data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` child not found
