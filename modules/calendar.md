@@ -38,9 +38,11 @@ The Calendar module manages all events, HR and event sign up within ChurchApp. T
       "signup_options":{
         "notification":"0",
         "embed":{
+          "visible":"1",
           "enabled":"0"
         },
         "public":{
+          "visible":"1",
           "enabled":"0"
         },
         "sms":{
@@ -72,9 +74,11 @@ The Calendar module manages all events, HR and event sign up within ChurchApp. T
       "signup_options":{
         "notification":"0",
         "embed":{
+          "visible":"1",
           "enabled":"0"
         },
         "public":{
+          "visible":"1",
           "enabled":"0"
         },
         "sms":{
@@ -103,9 +107,11 @@ The Calendar module manages all events, HR and event sign up within ChurchApp. T
       "signup_options":{
         "notification":"0",
         "embed":{
+          "visible":"1",
           "enabled":"0"
         },
         "public":{
+          "visible":"1",
           "enabled":"0"
         },
         "sms":{
@@ -134,9 +140,11 @@ The Calendar module manages all events, HR and event sign up within ChurchApp. T
       "signup_options":{
         "notification":"0",
         "embed":{
+          "visible":"1",
           "enabled":"0"
         },
         "public":{
+          "visible":"1",
           "enabled":"0"
         },
         "sms":{
@@ -178,9 +186,11 @@ The Calendar module manages all events, HR and event sign up within ChurchApp. T
   "signup_options":{
     "notification":"0",
     "embed":{
+      "visible":"1",
       "enabled":"0"
     },
     "public":{
+      "visible":"1",
       "enabled":"0"
     },
     "sms":{
