@@ -23,16 +23,10 @@ The ChurchApp API is available at `https://api.churchapp.co.uk/v1` and should al
 
 ## API Structure
 
-The API is structured in the same way as the main ChurchApp Application, with each model belonging to it's own module. For example a contact might be at the endpoint:
+The API is structured in the same way as the main ChurchApp Application, with each model belonging to it's own module. For example a contact would be at the endpoint:
 
 ````
   https://api.churchapp.co.uk/v1/addressbook/contact/1
-````
-
-Whilst a child would appear at the endpoint:
-
-````
-  https://api.churchapp.co.uk/v1/children/child/1
 ````
 
 ## Documentation
