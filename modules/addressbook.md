@@ -7,7 +7,9 @@ The Address Book module is concered with the management of contacts within Churc
 ## List/search contacts
 
 * `GET /v1/addressbook/contacts` will return contacts ordered alphabetically
-* `GET /v1/calendar/contacts?q=gavin` will return contacts whose Name, Address, Job, Email, Telephone or Mobile contains "gavin"
+* `GET /v1/addressbook/contacts?q=gavin` will return contacts whose Name, Address, Job, Email, Telephone or Mobile contains &quot;gavin&quot;
+* `GET /v1/addressbook/contacts?page=2 will return the second page of contacts
+* `GET /v1/addressbook/contacts?page=2&per_page=5 will return the second page of contacts, with each page limited to 5 results
 
 ```json
 {
