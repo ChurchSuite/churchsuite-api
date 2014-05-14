@@ -27,6 +27,7 @@ The API is structured in the same way as the main ChurchApp Application, with ea
 
 ````
   https://api.churchapp.co.uk/v1/addressbook/contact/1
+  https://api.churchapp.co.uk/v1/children/child/1
 ````
 
 ## Documentation
