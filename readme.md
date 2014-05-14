@@ -37,5 +37,6 @@ The following modules currently have documented API Endpoints, this documentatio
 * [Address Book](https://github.com/ChurchApp/churchapp-api/blob/master/modules/addressbook.md)
 * [Administrator](https://github.com/ChurchApp/churchapp-api/blob/master/modules/administrator.md)
 * [Calendar](https://github.com/ChurchApp/churchapp-api/blob/master/modules/calendar.md)
+* [Children](https://github.com/ChurchApp/churchapp-api/blob/master/modules/children.md)
 * [Small Groups](https://github.com/ChurchApp/churchapp-api/blob/master/modules/smallgroups.md)
 * [My](https://github.com/ChurchApp/churchapp-api/blob/master/modules/my.md)
