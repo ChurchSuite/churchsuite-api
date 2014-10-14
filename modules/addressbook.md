@@ -177,7 +177,7 @@ This will return one of the following HTTP codes:
 * `201` contact created
 * `400` some of the data passed through was not valid
 
-This POST method will return output in the following format:
+This `POST` method will return output in the following format:
 
 ```json
 {
@@ -247,7 +247,7 @@ This will return one of the following HTTP codes:
 * `400` some of the data passed through was not valid
 * `404` contact specified to update does not exist
 
-This PUT method will return output in the following format:
+This `PUT` method will return output in the following format:
 
 ```json
 {
