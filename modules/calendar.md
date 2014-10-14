@@ -12,60 +12,27 @@ The Calendar module manages all events, HR and event sign up within ChurchApp. T
 ```json
 {
   "pagination":{
-    "no_results":4,
+    "no_results":201,
     "page":1,
-    "per_page":50
+    "per_page":2
   },
   "events":[
     {
-      "id":"455",
-      "name":"Pre-service Prayer Meeting",
-      "datetime_start":"2013-10-07 10:00:00",
-      "datetime_end":"2013-10-07 10:30:00",
+      "id":"838",
+      "name":"Mums & Tots",
+      "datetime_start":"2014-08-08 11:00:00",
+      "datetime_end":"2014-08-08 14:00:00",
       "category":{
-        "id":"1",
-        "name":"Prayer Meetings",
-        "color":"#ab207d"
+        "id":"5",
+        "name":"Kid's Events",
+        "color":"#2020ab"
       },
-      "description":"Our pre-service prayer meetings before the Sunday AM service.",
-      "location":[
-        
-      ],
-      "images":[
-        
-      ],
-      "public_visible":"0",
-      "signup_options":{
-        "notification":"0",
-        "embed":{
-          "visible":"1",
-          "enabled":"0"
-        },
-        "public":{
-          "visible":"1",
-          "enabled":"0"
-        },
-        "sms":{
-          "enabled":"0"
-        }
-      }
-    },
-    {
-      "id":"262",
-      "name":"Sunday AM Service",
-      "datetime_start":"2013-10-07 10:30:00",
-      "datetime_end":"2013-10-07 12:00:00",
-      "category":{
-        "id":"2",
-        "name":"Sunday Services",
-        "color":"#7d20ab"
-      },
-      "description":"Our weekly AM service. It is always exciting when the whole family gets together on a Sunday morning to explore, meet and connect with God. We always start out with refreshments and a coffee, which sets the tone for our gathering - warm, welcoming and friendly. If you're considering coming for the first time - do come along, we love having visitors and will do our best to make you feel welcome!",
+      "description":"Mothers and Toddlers group that meets in the school hall each week. Come and join us for a morning of fun for your toddler and an opportunity to chat to other Mums (Dads are of course welcome too!)\r\n\r\nFor more information, please contact Fiona Brown.",
       "location":{
-        "address":"NG8 3RG",
-        "name":"Life Centre",
-        "latitude":"52.9627660678353",
-        "longitude":"-1.19917827183772"
+        "address":"NG7 2GU",
+        "name":"School Hall",
+        "latitude":"52.9479124853566",
+        "longitude":"-1.1828878863056"
       },
       "images":[
         
@@ -83,20 +50,24 @@ The Calendar module manages all events, HR and event sign up within ChurchApp. T
         },
         "sms":{
           "enabled":"0"
+        },
+        "tickets":{
+          "enabled":"",
+          "url":"https:\/\/demo.churchapp.co.uk\/events\/nro8mvlt"
         }
       }
     },
     {
-      "id":"1108",
-      "name":"Sunday School",
-      "datetime_start":"2013-10-07 10:00:00",
-      "datetime_end":"2013-10-07 11:00:00",
+      "id":"655",
+      "name":"Worship Team Practice",
+      "datetime_start":"2014-08-08 19:00:00",
+      "datetime_end":"2014-08-08 21:00:00",
       "category":{
-        "id":"5",
-        "name":"Kid's Events",
-        "color":"#2020ab"
+        "id":"4",
+        "name":"Worship Team Events",
+        "color":"#20ab7d"
       },
-      "description":"Our weekly Sunday School for children aged 11 and under.",
+      "description":"Weekly worship team practice in the main venue.",
       "location":[
         
       ],
@@ -107,48 +78,19 @@ The Calendar module manages all events, HR and event sign up within ChurchApp. T
       "signup_options":{
         "notification":"0",
         "embed":{
-          "visible":"1",
+          "visible":"0",
           "enabled":"0"
         },
         "public":{
-          "visible":"1",
+          "visible":"0",
           "enabled":"0"
         },
         "sms":{
           "enabled":"0"
-        }
-      }
-    },
-    {
-      "id":"1422",
-      "name":"Staff Team Meeting",
-      "datetime_start":"2013-10-08 10:00:00",
-      "datetime_end":"2013-10-08 11:30:00",
-      "category":{
-        "id":"3",
-        "name":"Misc Events",
-        "color":"#207dab"
-      },
-      "description":"Weekly all-staff meeting.",
-      "location":[
-        
-      ],
-      "images":[
-        
-      ],
-      "public_visible":"0",
-      "signup_options":{
-        "notification":"0",
-        "embed":{
-          "visible":"1",
-          "enabled":"0"
         },
-        "public":{
-          "visible":"1",
-          "enabled":"0"
-        },
-        "sms":{
-          "enabled":"0"
+        "tickets":{
+          "enabled":"",
+          "url":"https:\/\/demo.churchapp.co.uk\/events\/hvmdux8k"
         }
       }
     }
@@ -195,6 +137,10 @@ The Calendar module manages all events, HR and event sign up within ChurchApp. T
     },
     "sms":{
       "enabled":"0"
+    },
+    "tickets":{
+      "enabled":"1",
+      "url":"https:\/\/demo.churchapp.co.uk\/events\/wdczidyt"
     }
   }
 }
@@ -206,6 +152,39 @@ This will return one of the following HTTP codes:
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` event does not exist
 
+## Get event tickets
+
+* `GET /v1/calendar/event/:id/tickets` will return the data regarding tickets available for this event
+
+```json
+{
+  "event_id":"3110",
+  "tickets":[
+    {
+      "id":"2",
+      "name":"Adult entry",
+      "description":"Includes canap\u00e9s, cocktails and comedy.",
+      "datetime_start":null,
+      "datetime_end":null,
+      "price":"5.00",
+      "currency":{
+        "code":"GBP",
+        "symbol":"\u00a3"
+      },
+      "quantity":null,
+      "no_sold":"1",
+      "active":"1",
+      "order":"0"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` ticket data returned
+* `404` event does not exist
+
 ## Get event signups
 
 * `GET /v1/calendar/event/:id/signups` will return the data regarding people who have signed up for the event
@@ -215,46 +194,35 @@ This will return one of the following HTTP codes:
   "event_id":"3110",
   "signups":[
     {
-      "id":"36",
-      "person":{
-        "type":"contact",
-        "id":"94",
-        "first_name":"Emma",
-        "last_name":"Bradley",
-        "mobile":"07336 197 473",
-        "email":"thebradleys@gmail.com"
-      },
-      "notes":"Ref: cg8e5Qak\r\n=====\r\nDietary requirements: Vegetarian\r\n-----\r\nHeard about Alpha: From a friend",
-      "method":"API",
-      "ctime":"2013-10-28 13:00:58"
-    },
-    {
-      "id":"28",
-      "person":{
-        "type":"contact",
-        "id":"112",
-        "first_name":"George",
-        "last_name":"Baker",
-        "mobile":"07824 842 761",
-        "email":"george@thebakers.com"
-      },
-      "notes":"",
-      "method":"API",
-      "ctime":"2013-10-28 12:40:27"
-    },
-    {
-      "id":"37",
+      "id":"49",
       "person":{
         "type":"guest",
         "id":null,
-        "first_name":"Alison",
-        "last_name":"Philips",
-        "mobile":"07970 123 456",
-        "email":"alison.philips@gmail.com"
+        "first_name":"Gavin",
+        "last_name":"Courtney",
+        "mobile":"",
+        "email":"gavin.courtney@gmail.com",
+        "notes":"",
+        "ticket":{
+          "id":"2",
+          "name":"Adult entry",
+          "description":null,
+          "datetime_start":null,
+          "datetime_end":null,
+          "price":"5.00",
+          "currency":{
+            "code":"GBP",
+            "symbol":"\u00a3"
+          },
+          "quantity":null,
+          "no_sold":null,
+          "active":null,
+          "order":null
+        }
       },
-      "notes":"Ref: Rgk8D3No\n=====\nDietary requirements: Vegetarian\n-----\nHeard about event: Saw billboard in town",
+      "notes":"",
       "method":"API",
-      "ctime":"2013-10-28 14:42:07"
+      "ctime":"2014-02-05 16:55:52"
     }
   ]
 }
@@ -267,25 +235,18 @@ This will return one of the following HTTP codes:
 
 ## Add one or more signups to an event
 
-* `POST /v1/calendar/event/:id/signups will create a new contact in the Address Book
+* `POST /v1/calendar/event/:id/signups` will create a new contact in the Address Book
 
 ```json
 {
-  "event_id":"3110",
+  "action":"add",
   "signups":[
     {
-      "id":"41",
-      "person":{
-        "type":"guest",
-        "id":null,
-        "first_name":"Mark",
-        "last_name":"Davies",
-        "mobile":null,
-        "email":"mark.davies@gmail.com"
-      },
-      "notes":"Ref: CDRqHHX6\n=====\nDietary requirements: Vegetarian\n-----\nHeard about event: From a friend",
-      "method":"API",
-      "ctime":"2013-10-28 14:43:01"
+      "first_name":"Mark",
+      "last_name":"Davies",
+      "mobile":"",
+      "email":"mark.davies@gmail.com",
+      "notes":"Ref: gfmiGblh\n=====\nDietary requirements: Vegetarian\n-----\nHeard about event: From a friend"
     }
   ]
 }
@@ -295,6 +256,75 @@ This will return one of the following HTTP codes:
 
 * `201` signup(s) created
 * `400` some of the data passed through was not valid
+
+This `POST` method will return output in the following format:
+
+```json
+{
+  "event_id":"3110",
+  "signups":[
+    {
+      "id":"356",
+      "person":{
+        "type":"guest",
+        "id":null,
+        "first_name":"Mark",
+        "last_name":"Davies",
+        "mobile":"",
+        "email":"mark.davies@gmail.com",
+        "notes":"Ref: gfmiGblh\n=====\nDietary requirements: Vegetarian\n-----\nHeard about event: From a friend",
+        "ticket":false
+      },
+      "notes":"Ref: gfmiGblh\n=====\nDietary requirements: Vegetarian\n-----\nHeard about event: From a friend",
+      "method":"API",
+      "ctime":"2014-10-14 15:52:08"
+    }
+  ]
+}
+```
+
+## Update event signup
+
+* `PUT /v1/calendar/event/:id/signup/:id` will update the specified signup for the event
+
+```json
+{
+  "signups":[
+    {
+      "first_name":"Marcus",
+      "last_name":"Davies",
+      "email":"marcus.davies@gmail.com"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` signup updated
+* `400` some of the data passed through was not valid
+* `404` signup is not linked to the specified event - check error message for details
+
+This `PUT` method will return output in the following format:
+
+```json
+{
+  "id":"356",
+  "person":{
+    "type":"guest",
+    "id":null,
+    "first_name":"Marcus",
+    "last_name":"Davies",
+    "mobile":null,
+    "email":"marcus.davies@gmail.com",
+    "notes":"",
+    "ticket":false
+  },
+  "notes":"",
+  "method":"API",
+  "ctime":"2014-10-14 15:52:08"
+}
+```
 
 ## Delete event signup
 
