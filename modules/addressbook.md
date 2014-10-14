@@ -2,12 +2,12 @@
 
 [Home](https://github.com/ChurchApp/churchapp-api)
 
-The Address Book module is concered with the management of contacts within ChurchApp, the following endpoints are available:
+The Address Book module is concerned with the management of contacts within ChurchApp, the following endpoints are available:
 
 ## List/search contacts
 
 * `GET /v1/addressbook/contacts` will return contacts ordered alphabetically
-* `GET /v1/addressbook/contacts?q=gavin` will return contacts whose Name, Address, Job, Email, Telephone or Mobile contains &quot;gavin&quot;
+* `GET /v1/addressbook/contacts?q=gavin` will return contacts whose Name, Address, Job, Email, Telephone or Mobile contains "gavin"
 * `GET /v1/addressbook/contacts?page=2` will return the second page of contacts
 * `GET /v1/addressbook/contacts?page=2&per_page=5` will return the second page of contacts, with each page limited to 5 results
 
@@ -16,7 +16,7 @@ The Address Book module is concered with the management of contacts within Churc
   "pagination":{
     "no_results":1,
     "page":1,
-    "per_page":50
+    "per_page":2
   },
   "contacts":[
     {
@@ -25,30 +25,42 @@ The Address Book module is concered with the management of contacts within Churc
       "first_name":"Gavin",
       "middle_name":"",
       "last_name":"Courtney",
-      "formal_name":null,
+      "formal_name":"",
       "maiden_name":"",
       "sex":"m",
       "date_of_birth":"1982-08-03",
-      "address":"125 Derby Road",
+      "marital":"married",
+      "spouse_id":null,
+      "spouse_name":" ",
+      "address":"26 Smith Street",
       "address2":"",
-      "address3":null,
-      "city":"Nottingham",
+      "address3":"",
+      "city":"Eastgate",
       "county":"",
-      "postcode":"NG9 3LP",
+      "postcode":"NG5 2EF",
       "country":"",
       "telephone":"0115 824 2300",
       "mobile":"07707 777 777",
       "email":"support@churchapp.co.uk",
       "job":"Managing Director",
-      "employer":null,
-      "images":{
-        "original_16":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/112_4_16.jpg",
-        "original_100":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/112_4_100.jpg",
-        "original_500":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/112_4_500.jpg",
-        "square_16":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/112_4_16.jpg",
-        "square_100":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/112_4_100.jpg",
-        "square_500":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/112_4_500.jpg"
-      }
+      "employer":"ChurchApp Ltd",
+      "public_options":{
+        "access":true,
+        "visible":{
+          "enabled":true,
+          "address":true,
+          "email":true,
+          "mobile":true,
+          "telephone":true
+        }
+      },
+      "custom_fields":{
+        "custom1":"@churchapp_",
+        "custom2":"churchapp.co.uk"
+      },
+      "images":[
+        
+      ]
     }
   ]
 }
@@ -62,47 +74,50 @@ The Address Book module is concered with the management of contacts within Churc
 
 ```json
 {
-  "id":"112",
-  "name":"Baker, George",
-  "first_name":"George",
-  "middle_name":"Harris",
-  "last_name":"Baker",
-  "formal_name":null,
+  "id":"1",
+  "name":"Ward, Philip",
+  "first_name":"Philip",
+  "middle_name":"",
+  "last_name":"Ward",
+  "formal_name":"",
   "maiden_name":"",
   "sex":"m",
-  "date_of_birth":"1945-08-13",
-  "address":"71 Lamont Road",
-  "address2":"Thorpe",
+  "date_of_birth":"1981-12-26",
+  "marital":"single",
+  "spouse_id":null,
+  "address":"194 Albert Drive",
+  "address2":"Cotgrave",
   "address3":null,
   "city":"",
   "county":"",
-  "postcode":"NG9 2FE",
+  "postcode":"NG3 5GE",
   "country":"",
-  "telephone":"0161 730 2326",
-  "mobile":"07824 842 761",
-  "email":"george@thebakers.com",
-  "job":"Physician",
+  "telephone":"01479 029 358",
+  "mobile":"07223 446 512",
+  "email":"",
+  "job":"Primary Teacher",
   "employer":"",
-  "images":{
-    "original_16":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/112_4_16.jpg",
-    "original_100":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/112_4_100.jpg",
-    "original_500":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/112_4_500.jpg",
-    "square_16":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/112_4_16.jpg",
-    "square_100":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/112_4_100.jpg",
-    "square_500":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/112_4_500.jpg"
+  "public_options":{
+    "access":true,
+    "visible":{
+      "enabled":true,
+      "address":true,
+      "email":true,
+      "mobile":true,
+      "telephone":true
+    }
   },
+  "custom_fields":{
+    "custom1":"",
+    "custom2":""
+  },
+  "images":[
+    
+  ],
   "tags":[
     {
       "id":null,
-      "name":"Leader"
-    },
-    {
-      "id":null,
       "name":"Members"
-    },
-    {
-      "id":null,
-      "name":"Wine Evening"
     }
   ]
 }
@@ -141,7 +156,32 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "id":"138",
+  "first_name":"Joe",
+  "last_name":"Bloggs",
+  "email":"joe@bloggs.com",
+  "postcode":"NG1 1AB",
+  "country":"GB",
+  "sex":"m",
+  "marital":"married",
+  "dates":[
+    {
+      "name":"Married",
+      "date":"14-10-2014"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `201` contact created
+* `400` some of the data passed through was not valid
+
+This POST method will return output in the following format:
+
+```json
+{
+  "id":"174",
   "name":"Bloggs, Joe",
   "first_name":"Joe",
   "middle_name":null,
@@ -150,6 +190,9 @@ This will return one of the following HTTP codes:
   "maiden_name":null,
   "sex":"m",
   "date_of_birth":null,
+  "marital":"married",
+  "spouse_id":null,
+  "spouse_name":" ",
   "address":null,
   "address2":null,
   "address3":null,
@@ -162,16 +205,25 @@ This will return one of the following HTTP codes:
   "email":"joe@bloggs.com",
   "job":null,
   "employer":null,
+  "public_options":{
+    "access":true,
+    "visible":{
+      "enabled":true,
+      "address":false,
+      "email":false,
+      "mobile":false,
+      "telephone":false
+    }
+  },
+  "custom_fields":{
+    "custom1":null,
+    "custom2":null
+  },
   "images":[
     
   ]
 }
 ```
-
-This will return one of the following HTTP codes:
-
-* `201` contact created
-* `400` some of the data passed through was not valid
 
 ## Update an existing contact's details
 
@@ -179,7 +231,27 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "id":"138",
+  "first_name":"Jane",
+  "last_name":"Bloggs",
+  "email":"jane.bloggs@gmail.com",
+  "sex":"f",
+  "custom_fields":{
+    "custom1":"@janebloggs"
+  }
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` contact updated
+* `400` some of the data passed through was not valid
+* `404` contact specified to update does not exist
+
+This PUT method will return output in the following format:
+
+```json
+{
+  "id":"174",
   "name":"Bloggs, Jane",
   "first_name":"Jane",
   "middle_name":null,
@@ -188,6 +260,9 @@ This will return one of the following HTTP codes:
   "maiden_name":null,
   "sex":"f",
   "date_of_birth":null,
+  "marital":"married",
+  "spouse_id":null,
+  "spouse_name":" ",
   "address":null,
   "address2":null,
   "address3":null,
@@ -200,17 +275,26 @@ This will return one of the following HTTP codes:
   "email":"jane.bloggs@gmail.com",
   "job":null,
   "employer":null,
+  "public_options":{
+    "access":true,
+    "visible":{
+      "enabled":true,
+      "address":false,
+      "email":false,
+      "mobile":false,
+      "telephone":false
+    }
+  },
+  "custom_fields":{
+    "custom1":"@janebloggs",
+    "custom2":null
+  },
   "images":[
     
   ]
 }
 ```
 
-This will return one of the following HTTP codes:
-
-* `200` contact updated
-* `400` some of the data passed through was not valid
-* `404` contact specified to update does not exist
 
 ## Delete a contact
 
@@ -229,7 +313,7 @@ This will return one of the following HTTP codes:
 
 ## List tags
 
-* `GET /v1/addressbook/tags will return tags ordered alphabetically
+* `GET /v1/addressbook/tags` will return tags ordered alphabetically
 
 ```json
 {
