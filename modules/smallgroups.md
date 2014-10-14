@@ -236,7 +236,7 @@ You can also give the action `replace_all` to overwrite the group's member lists
 }
 ```
 
-This will return output in the following format:
+This `POST` method will return output in the following format:
 
 ```json
 {
