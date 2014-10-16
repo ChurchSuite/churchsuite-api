@@ -24,7 +24,6 @@ $ch = curl_init($url);
 
 $curlopts = array();
 $curlopts[CURLOPT_RETURNTRANSFER] = true;
-$curlopts[CURLOPT_SSLVERSION] = 3;
 $curlopts[CURLOPT_HTTPHEADER] = $api_headers;
 curl_setopt_array($ch, $curlopts);
 
