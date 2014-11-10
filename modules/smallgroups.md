@@ -218,6 +218,7 @@ This will return one of the following HTTP codes:
 
 * `201` members added/replaced
 * `400` some of the data passed through was not valid
+* `409` one of the members you tried to add to the group is already a group member
 
 You can also give the action `replace_all` to overwrite the group's member lists.
 
