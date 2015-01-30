@@ -10,6 +10,7 @@ The Address Book module is concerned with the management of contacts within Chur
 * `GET /v1/addressbook/contacts?q=gavin` will return contacts whose Name, Address, Job, Email, Telephone or Mobile contains "gavin"
 * `GET /v1/addressbook/contacts?page=2` will return the second page of contacts
 * `GET /v1/addressbook/contacts?page=2&per_page=5` will return the second page of contacts, with each page limited to 5 results
+* `GET /v1/addressbook/contacts?public_visible=0` will return contacts, even if their public_options have visibility set to disabled.
 
 ```json
 {
