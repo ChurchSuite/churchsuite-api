@@ -73,7 +73,7 @@ The Address Book module is concerned with the management of contacts within Chur
 
 * `GET /v1/addressbook/contact/1` will return data for a specific contact
 * `GET /v1/addressbook/contact/1?tags=true` will return data for a specific contact, including any tags for the contact
-* `GET /v1/addressbook/contact/1?dates=true` will return data for a specific contact, including any key dates for the contact
+* `GET /v1/addressbook/contact/1?keydates=true` will return data for a specific contact, including any key dates for the contact
 
 ```json
 {
@@ -127,7 +127,7 @@ The Address Book module is concerned with the management of contacts within Chur
       "type":"fixed"
     }
   ],
-  "dates":[
+  "keydates":[
     {
       "name":"Baptism",
       "date":"2002-05-07"
@@ -169,7 +169,7 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "dates":[
+  "keydates":[
     {
       "name":"Baptism",
       "date":"2002-05-07"
@@ -582,7 +582,7 @@ This will return one of the following HTTP codes:
     "page":1,
     "per_page":10
   },
-  "dates":[
+  "keydates":[
     {
       "name":"Baptism",
       "no_contacts":"18"
@@ -703,7 +703,7 @@ This will return one of the following HTTP codes:
       "images":[
         
       ],
-      "dates":[
+      "keydates":[
         {
           "name":"Dedicated",
           "date":"2014-04-06"
