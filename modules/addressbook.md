@@ -439,7 +439,7 @@ This will return one of the following HTTP codes:
 
 * `GET /v1/addressbook/tag/1` will return data for a specific tag with the ID of 1
 * `GET /v1/addressbook/tag/Church+Administrator` will return data for a specific tag
-* `GET /v1/addressbook/tag/Church+Administrator?contacts=true` will return data for a specific tag
+* `GET /v1/addressbook/tag/Church+Administrator?contacts=true` will return data for a specific tag, including all contacts with the tag
 
 Tag names *must be urlencoded*, particularly if they include a space character in them. Failure to correctly encode the tag name could result in a 404 response being returned rather than a 200.
 
