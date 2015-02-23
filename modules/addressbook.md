@@ -73,20 +73,23 @@ The Address Book module is concerned with the management of contacts within Chur
 
 * `GET /v1/addressbook/contact/1` will return data for a specific contact
 * `GET /v1/addressbook/contact/1?tags=true` will return data for a specific contact, including any tags for the contact
+* `GET /v1/addressbook/contact/1?dates=true` will return data for a specific contact, including any key dates for the contact
 
 ```json
 {
   "id":"1",
-  "name":"Ward, Philip",
   "first_name":"Philip",
-  "middle_name":"",
   "last_name":"Ward",
+  "site_id":"1",
+  "name":"Ward, Philip",
+  "middle_name":"",
   "formal_name":"",
   "maiden_name":"",
   "sex":"m",
   "date_of_birth":"1981-12-26",
   "marital":"single",
   "spouse_id":null,
+  "spouse_name":" ",
   "address":"194 Albert Drive",
   "address2":"Cotgrave",
   "address3":null,
@@ -118,8 +121,16 @@ The Address Book module is concerned with the management of contacts within Chur
   ],
   "tags":[
     {
-      "id":null,
-      "name":"Members"
+      "id":"7",
+      "name":"Members",
+      "meta":null,
+      "type":"fixed"
+    }
+  ],
+  "dates":[
+    {
+      "name":"Baptism",
+      "date":"2002-05-07"
     }
   ]
 }
@@ -149,6 +160,27 @@ This will return one of the following HTTP codes:
 This will return one of the following HTTP codes:
 
 * `200` contact tags returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` contact does not exist
+
+## Get a contact's key dates
+
+* `GET /v1/addressbook/contact/1/dates` will return data for a specific contact
+
+```json
+{
+  "dates":[
+    {
+      "name":"Baptism",
+      "date":"2002-05-07"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` contact dates returned
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` contact does not exist
 
@@ -313,6 +345,7 @@ This will return one of the following HTTP codes:
 
 
 
+
 ## List tags
 
 * `GET /v1/addressbook/tags` will return tags ordered alphabetically
@@ -326,70 +359,96 @@ This will return one of the following HTTP codes:
   },
   "tags":[
     {
-      "id":null,
-      "name":"Leader",
-      "no_contacts":"15"
-    },
-    {
-      "id":null,
-      "name":"Members",
-      "no_contacts":"69"
-    },
-    {
-      "id":null,
-      "name":"North City Campus",
-      "no_contacts":"5"
-    },
-    {
-      "id":null,
-      "name":"Potential Leaders",
-      "no_contacts":"8"
-    },
-    {
-      "id":null,
-      "name":"Prayer Team",
-      "no_contacts":"11"
-    },
-    {
-      "id":null,
-      "name":"Setup Team",
-      "no_contacts":"7"
-    },
-    {
-      "id":null,
-      "name":"South City Campus",
-      "no_contacts":"29"
-    },
-    {
-      "id":null,
-      "name":"Staff",
+      "tag_id":"20",
+      "name":"Back to work",
+      "meta":null,
+      "type":"fixed",
       "no_contacts":"1"
     },
     {
-      "id":null,
-      "name":"Wine Evening",
+      "tag_id":"1",
+      "name":"Church Administrator",
+      "meta":null,
+      "type":"fixed",
       "no_contacts":"2"
     },
     {
-      "id":null,
-      "name":"Worship Band",
+      "tag_id":"2",
+      "name":"Church Mailing List",
+      "meta":null,
+      "type":"fixed",
+      "no_contacts":"14"
+    },
+    {
+      "tag_id":"38",
+      "name":"Coffee Rota",
+      "meta":"{\"match_conditions\":\"any\",\"conditions\":[{\"module\":\"rotas\",\"option\":\"In ministry\",\"value_select\":\"9\",\"value_range_min\":\"\",\"value_range_max\":\"\"}]}",
+      "type":"smart",
+      "no_contacts":null
+    },
+    {
+      "tag_id":"3",
+      "name":"Friday men's prayer",
+      "meta":null,
+      "type":"fixed",
       "no_contacts":"11"
+    },
+    {
+      "tag_id":"4",
+      "name":"Game Night",
+      "meta":null,
+      "type":"fixed",
+      "no_contacts":"6"
+    },
+    {
+      "tag_id":"5",
+      "name":"Gateway Leader",
+      "meta":null,
+      "type":"fixed",
+      "no_contacts":"2"
+    },
+    {
+      "tag_id":"6",
+      "name":"Leader",
+      "meta":"",
+      "type":"fixed",
+      "no_contacts":"14"
+    },
+    {
+      "tag_id":"35",
+      "name":"MailChimp",
+      "meta":"",
+      "type":"fixed",
+      "no_contacts":"27"
+    },
+    {
+      "tag_id":"7",
+      "name":"Members",
+      "meta":null,
+      "type":"fixed",
+      "no_contacts":"58"
     }
   ]
 }
 ```
 
 
+
+
 ## Get a tag
 
-* `GET /v1/addressbook/tag/Wine+Evening` will return data for a specific tag
+* `GET /v1/addressbook/tag/1` will return data for a specific tag with the ID of 1
+* `GET /v1/addressbook/tag/Church+Administrator` will return data for a specific tag
+* `GET /v1/addressbook/tag/Church+Administrator?contacts=true` will return data for a specific tag
 
 Tag names *must be urlencoded*, particularly if they include a space character in them. Failure to correctly encode the tag name could result in a 404 response being returned rather than a 200.
 
 ```json
 {
-  "id":null,
-  "name":"Wine Evening",
+  "tag_id":"1",
+  "name":"Church Administrator",
+  "meta":null,
+  "type":"fixed",
   "no_contacts":"2"
 }
 ```
@@ -402,7 +461,8 @@ This will return one of the following HTTP codes:
 
 ## Get a tag's contacts
 
-* `GET /v1/addressbook/tag/Members/contacts` will return the contacts for the "Members" tag
+* `GET /v1/addressbook/tag/1/contacts` will return the contacts for the tag with the ID of 1
+* `GET /v1/addressbook/tag/Church+Administrator/contacts` will return the contacts for the "Church Administrator" tag
 
 ```json
 {
@@ -413,66 +473,92 @@ This will return one of the following HTTP codes:
   },
   "contacts":[
     {
-      "id":"112",
-      "name":"Baker, George",
-      "first_name":"George",
-      "middle_name":"Harris",
-      "last_name":"Baker",
-      "formal_name":null,
+      "id":"141",
+      "first_name":"Gemma",
+      "last_name":"Alexander",
+      "site_id":"1",
+      "name":"Alexander, Gemma",
+      "middle_name":"",
+      "formal_name":"",
       "maiden_name":"",
-      "sex":"m",
-      "date_of_birth":"1945-08-13",
-      "address":"71 Lamont Road",
-      "address2":"Thorpe",
+      "sex":"f",
+      "date_of_birth":"1982-05-05",
+      "marital":"married",
+      "spouse_id":"147",
+      "spouse_name":"Jim Moriarty",
+      "address":"28 Cavendish Grove",
+      "address2":"Sherwood",
       "address3":null,
-      "city":"",
-      "county":"",
-      "postcode":"NG9 2FE",
-      "country":"",
-      "telephone":"0161 730 2326",
-      "mobile":"07824 842 761",
-      "email":"george@thebakers.com",
-      "job":"Physician",
+      "city":"Nottingham",
+      "county":"Nottinghamshire",
+      "postcode":"NG23 8TC",
+      "country":"United Kingdom",
+      "telephone":"0115 786 4001",
+      "mobile":"07775 354 829",
+      "email":"gemma.alexander@gmail.com",
+      "job":"Administrative Officer",
       "employer":"",
-      "images":{
-        "original_16":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/112_4_16.jpg",
-        "original_100":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/112_4_100.jpg",
-        "original_500":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/112_4_500.jpg",
-        "square_16":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/112_4_16.jpg",
-        "square_100":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/112_4_100.jpg",
-        "square_500":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/112_4_500.jpg"
-      }
+      "public_options":{
+        "access":true,
+        "visible":{
+          "enabled":true,
+          "address":true,
+          "email":true,
+          "mobile":false,
+          "telephone":false
+        }
+      },
+      "custom_fields":{
+        "custom1":"",
+        "custom2":""
+      },
+      "images":[
+        
+      ]
     },
     {
-      "id":"111",
-      "name":"Baxter, Rachael",
-      "first_name":"Rachael",
-      "middle_name":"Susan",
-      "last_name":"Baxter",
-      "formal_name":null,
-      "maiden_name":"Smith-Wilson",
-      "sex":"f",
-      "date_of_birth":"1944-06-21",
-      "address":"71 Lamont Road",
-      "address2":"Thorpe",
+      "id":"152",
+      "first_name":"David",
+      "last_name":"Crook",
+      "site_id":"1",
+      "name":"Crook, David",
+      "middle_name":"",
+      "formal_name":"",
+      "maiden_name":"",
+      "sex":"m",
+      "date_of_birth":"1951-09-24",
+      "marital":"married",
+      "spouse_id":"153",
+      "spouse_name":"Angela Crook",
+      "address":"10 Norcott Close",
+      "address2":"",
       "address3":null,
-      "city":"",
+      "city":"Dunstable",
       "county":"",
-      "postcode":"NG9 2FE",
+      "postcode":"LU5 4AH",
       "country":"",
-      "telephone":"0161 730 2326",
-      "mobile":"07587 801 882",
-      "email":"rachael.baker@gmail.com",
-      "job":"Carer",
-      "employer":"",
-      "images":{
-        "original_16":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/111_5_16.jpg",
-        "original_100":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/111_5_100.jpg",
-        "original_500":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/rw\/111_5_500.jpg",
-        "square_16":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/111_5_16.jpg",
-        "square_100":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/111_5_100.jpg",
-        "square_500":"https:\/\/demo.churchapp.co.uk\/files\/addressbook\/contacts\/sf\/111_5_500.jpg"
-      }
+      "telephone":"01582 600 710",
+      "mobile":"07837 409 238",
+      "email":"david@christchurchdunstable.org.uk",
+      "job":"Church Administrator",
+      "employer":"Christ Church Dunstable",
+      "public_options":{
+        "access":true,
+        "visible":{
+          "enabled":true,
+          "address":true,
+          "email":true,
+          "mobile":true,
+          "telephone":true
+        }
+      },
+      "custom_fields":{
+        "custom1":"",
+        "custom2":""
+      },
+      "images":[
+        
+      ]
     }
   ]
 }
@@ -483,3 +569,155 @@ This will return one of the following HTTP codes:
 * `200` tag contacts returned
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` tag does not exist
+
+
+## List key dates
+
+* `GET /v1/addressbook/keydates` will return key dates ordered alphabetically
+
+```json
+{
+  "pagination":{
+    "no_results":10,
+    "page":1,
+    "per_page":10
+  },
+  "dates":[
+    {
+      "name":"Baptism",
+      "no_contacts":"18"
+    },
+    {
+      "name":"Conversion",
+      "no_contacts":"1"
+    },
+    {
+      "name":"Dedicated",
+      "no_contacts":"1"
+    },
+    {
+      "name":"First Visit",
+      "no_contacts":"19"
+    },
+    {
+      "name":"Got baptised",
+      "no_contacts":"1"
+    },
+    {
+      "name":"Left church",
+      "no_contacts":"1"
+    },
+    {
+      "name":"Married",
+      "no_contacts":"15"
+    },
+    {
+      "name":"Member",
+      "no_contacts":"2"
+    },
+    {
+      "name":"Newcomers' Meal",
+      "no_contacts":"6"
+    },
+    {
+      "name":"Wedding",
+      "no_contacts":"8"
+    }
+  ]
+}
+```
+
+
+## Get a key date
+
+* `GET /v1/addressbook/keydate/Dedicated` will return data for a specific key date
+* `GET /v1/addressbook/keydate/Dedicated?contacts=true` will return data for a specific key date, including all contacts with the key date
+
+Key date names *must be urlencoded*, particularly if they include a space character in them. Failure to correctly encode the key date name could result in a 404 response being returned rather than a 200.
+
+```json
+{
+  "name":"Dedicated",
+  "no_contacts":"1"
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` key date data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` key date does not exist
+
+## Get a key date's contacts
+
+* `GET /v1/addressbook/keydate/Dedicated/contacts` will return the contacts for the "Dedicated" key date
+
+```json
+{
+  "pagination":{
+    "no_results":1,
+    "page":1,
+    "per_page":1
+  },
+  "contacts":[
+    {
+      "id":"142",
+      "first_name":"Oscar",
+      "last_name":"Baker Clarke",
+      "site_id":"1",
+      "name":"Baker Clarke, Oscar",
+      "middle_name":"",
+      "formal_name":"",
+      "maiden_name":"",
+      "sex":"m",
+      "date_of_birth":"1994-06-15",
+      "marital":"single",
+      "spouse_id":null,
+      "spouse_name":" ",
+      "address":"25 Smith Street",
+      "address2":"",
+      "address3":"",
+      "city":"Eastgate",
+      "county":"",
+      "postcode":"NG5 2EF",
+      "country":"",
+      "telephone":"",
+      "mobile":"07590 321 628",
+      "email":"oscar.baker@gmail.com",
+      "job":"",
+      "employer":"",
+      "public_options":{
+        "access":true,
+        "visible":{
+          "enabled":true,
+          "address":true,
+          "email":true,
+          "mobile":true,
+          "telephone":true
+        }
+      },
+      "custom_fields":{
+        "custom1":"oscarbaker151",
+        "custom2":""
+      },
+      "images":[
+        
+      ],
+      "dates":[
+        {
+          "name":"Dedicated",
+          "date":"2014-04-06"
+        }
+      ]
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` key date contacts returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` key date does not exist
+
+
