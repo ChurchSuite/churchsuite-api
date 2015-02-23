@@ -82,17 +82,26 @@ The Children module manages all children and youth within ChurchApp. The followi
 ```
 
 
+
 ## Get a child
 
 * `GET /v1/children/child/1` will return data for a specific child
+* `GET /v1/children/child/1?tags=true` will return data for a specific child, including any tags for the child
+* `GET /v1/children/child/1?dates=true` will return data for a specific child, including any key dates for the child
 
 ```json
 {
   "id":"1",
-  "contact_id":"2",
   "name":"Wright, Micah",
   "first_name":"Micah",
   "last_name":"Wright",
+  "medical_short":"",
+  "images":[
+    
+  ],
+  "contact_id":"2",
+  "middle_name":null,
+  "formal_name":null,
   "sex":"m",
   "date_of_birth":"2007-05-28",
   "mobile":false,
@@ -108,12 +117,28 @@ The Children module manages all children and youth within ChurchApp. The followi
     "external":"0"
   },
   "school":"Southam St James Primary School",
-  "medical":null,
-  "medical_short":null,
-  "special_needs":null,
+  "medical":"",
+  "special_needs":"",
   "doctor_details":"Netherfield Medical Centre, 2a Forester Street, Netherfield, Nottingham, NG42NJ",
-  "images":[
-    
+  "tags":[
+    {
+      "id":"29",
+      "name":"Photo Permission",
+      "meta":null,
+      "type":"fixed"
+    },
+    {
+      "id":"32",
+      "name":"Video Permission",
+      "meta":null,
+      "type":"fixed"
+    }
+  ],
+  "dates":[
+    {
+      "name":"Confirmation",
+      "date":"2015-02-22"
+    }
   ]
 }
 ```
@@ -121,6 +146,56 @@ The Children module manages all children and youth within ChurchApp. The followi
 This will return one of the following HTTP codes:
 
 * `200` child data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` child does not exist
+
+## Get a child's tags
+
+* `GET /v1/children/child/1/tags` will return data for a specific child
+
+```json
+{
+  "tags":[
+    {
+      "id":"29",
+      "name":"Photo Permission",
+      "meta":null,
+      "type":"fixed"
+    },
+    {
+      "id":"32",
+      "name":"Video Permission",
+      "meta":null,
+      "type":"fixed"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` child tags returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` child does not exist
+
+## Get a child's key dates
+
+* `GET /v1/children/child/1/dates` will return data for a specific child
+
+```json
+{
+  "dates":[
+    {
+      "name":"Confirmation",
+      "date":"2015-02-22"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` child dates returned
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` child does not exist
 
@@ -568,3 +643,471 @@ This will return one of the following HTTP codes:
 * `200` group children data returned
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` group does not exist
+
+
+## List tags
+
+* `GET /v1/children/tags` will return tags ordered alphabetically
+
+```json
+{
+  "pagination":{
+    "no_results":14,
+    "page":1,
+    "per_page":14
+  },
+  "tags":[
+    {
+      "tag_id":"23",
+      "name":"Beach Trip",
+      "meta":null,
+      "type":"fixed",
+      "no_children":"10"
+    },
+    {
+      "tag_id":"24",
+      "name":"Christmas Show 2010",
+      "meta":null,
+      "type":"fixed",
+      "no_children":"10"
+    },
+    {
+      "tag_id":"39",
+      "name":"Coffee Rota",
+      "meta":"{\"match_conditions\":\"any\",\"conditions\":[{\"module\":\"rotas\",\"option\":\"In ministry\",\"value_select\":\"9\",\"value_range_min\":\"\",\"value_range_max\":\"\"}]}",
+      "type":"smart",
+      "no_children":null
+    },
+    {
+      "tag_id":"25",
+      "name":"Dance Team",
+      "meta":null,
+      "type":"fixed",
+      "no_children":"6"
+    },
+    {
+      "tag_id":"26",
+      "name":"Easter Program '12",
+      "meta":null,
+      "type":"fixed",
+      "no_children":"20"
+    },
+    {
+      "tag_id":"37",
+      "name":"Happy",
+      "meta":null,
+      "type":"fixed",
+      "no_children":"1"
+    },
+    {
+      "tag_id":"27",
+      "name":"Kids Film 2013",
+      "meta":null,
+      "type":"fixed",
+      "no_children":"5"
+    },
+    {
+      "tag_id":"28",
+      "name":"Members",
+      "meta":null,
+      "type":"fixed",
+      "no_children":"1"
+    },
+    {
+      "tag_id":"29",
+      "name":"Photo Permission",
+      "meta":null,
+      "type":"fixed",
+      "no_children":"51"
+    },
+    {
+      "tag_id":"30",
+      "name":"Summer Camp 2012",
+      "meta":null,
+      "type":"fixed",
+      "no_children":"9"
+    }
+  ]
+}
+```
+
+
+## Get a tag
+
+* `GET /v1/children/tag/1` will return data for a specific tag with the ID of 1
+* `GET /v1/children/tag/Dance+Team` will return data for a specific tag
+* `GET /v1/children/tag/Dance+Team?children=true` will return data for a specific tag
+
+Tag names *must be urlencoded*, particularly if they include a space character in them. Failure to correctly encode the tag name could result in a 404 response being returned rather than a 200.
+
+```json
+{
+  "tag_id":"25",
+  "name":"Dance Team",
+  "meta":null,
+  "type":"fixed",
+  "no_children":"6"
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` tag data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` tag does not exist
+
+## Get a tag's children
+
+* `GET /v1/children/tag/1/children` will return the children for the tag with the ID of 1
+* `GET /v1/children/tag/Dance+Team/children` will return the children for the "Dance Team" tag
+
+```json
+{
+  "pagination":{
+    "no_results":6,
+    "page":1,
+    "per_page":6
+  },
+  "children":[
+    {
+      "id":"38",
+      "name":"Carter, Naomi",
+      "first_name":"Naomi",
+      "last_name":"Carter",
+      "medical_short":"",
+      "images":[
+        
+      ],
+      "contact_id":null,
+      "middle_name":null,
+      "formal_name":null,
+      "sex":"f",
+      "date_of_birth":"2005-06-20",
+      "mobile":false,
+      "email":"",
+      "telephone":"01000 083 559",
+      "location":{
+        "address":"",
+        "latitude":null,
+        "longitude":null
+      },
+      "consent":{
+        "internal":"0",
+        "external":"1"
+      },
+      "school":"Canon Maggs Junior School",
+      "medical":"",
+      "special_needs":"",
+      "doctor_details":"The Linden Medical Group, Stapleford Care Centre, Church Street, Stapleford, Nottingham, NG98DA"
+    },
+    {
+      "id":"32",
+      "name":"Cox, Jackie",
+      "first_name":"Jackie",
+      "last_name":"Cox",
+      "medical_short":"",
+      "images":[
+        
+      ],
+      "contact_id":"99",
+      "middle_name":null,
+      "formal_name":null,
+      "sex":"f",
+      "date_of_birth":"2000-10-24",
+      "mobile":false,
+      "email":"",
+      "telephone":"01584 395 699",
+      "location":{
+        "address":"63 Dale Avenue, Sherwood, NG9 6AL",
+        "latitude":null,
+        "longitude":null
+      },
+      "consent":{
+        "internal":"0",
+        "external":"0"
+      },
+      "school":"Bilton Junior School",
+      "medical":"Gluten free",
+      "special_needs":"",
+      "doctor_details":"Chilwell Meadows Surgery, Ransom Road, Chilwell, Nottingham, NG96DX"
+    },
+    {
+      "id":"22",
+      "name":"Day, Julie",
+      "first_name":"Julie",
+      "last_name":"Day",
+      "medical_short":null,
+      "images":[
+        
+      ],
+      "contact_id":"69",
+      "middle_name":null,
+      "formal_name":null,
+      "sex":"f",
+      "date_of_birth":"1995-11-11",
+      "mobile":"07841 478 483",
+      "email":"julie.day@sky.com",
+      "telephone":"01692 170 889",
+      "location":{
+        "address":"4 Dovecote Court, Beeston, NG8 1NJ",
+        "latitude":null,
+        "longitude":null
+      },
+      "consent":{
+        "internal":"0",
+        "external":"0"
+      },
+      "school":"Cubbington Primary School",
+      "medical":"",
+      "special_needs":"",
+      "doctor_details":"St John Street, Mansfield, Nottinghamshire, NG181RH"
+    },
+    {
+      "id":"5",
+      "name":"Day, Ruth",
+      "first_name":"Ruth",
+      "last_name":"Day",
+      "medical_short":null,
+      "images":[
+        
+      ],
+      "contact_id":"12",
+      "middle_name":null,
+      "formal_name":null,
+      "sex":"f",
+      "date_of_birth":"1994-11-02",
+      "mobile":"07197 867 555",
+      "email":"ruth.day@facebook.com",
+      "telephone":"01098 599 657",
+      "location":{
+        "address":"2 Violet Close, Gedling, NG10 3DX",
+        "latitude":null,
+        "longitude":null
+      },
+      "consent":{
+        "internal":"0",
+        "external":"0"
+      },
+      "school":"Shottery Primary School",
+      "medical":null,
+      "special_needs":null,
+      "doctor_details":"Belvoir Health Group, Health Centre, Candleby Lane, Cotgrave, NG123JG"
+    },
+    {
+      "id":"18",
+      "name":"Day, Ruth",
+      "first_name":"Ruth",
+      "last_name":"Day",
+      "medical_short":"",
+      "images":[
+        
+      ],
+      "contact_id":"51",
+      "middle_name":null,
+      "formal_name":null,
+      "sex":"f",
+      "date_of_birth":"2002-08-21",
+      "mobile":false,
+      "email":"",
+      "telephone":"01909 353 098",
+      "location":{
+        "address":"23 Saxon Crescent, Gedling, NG1 4FW",
+        "latitude":null,
+        "longitude":null
+      },
+      "consent":{
+        "internal":"0",
+        "external":"0"
+      },
+      "school":"Harris School and Sports College",
+      "medical":"",
+      "special_needs":"",
+      "doctor_details":"The Surgery, 112 Watnall Road, Hucknall, Nottingham, NG157JP"
+    },
+    {
+      "id":"19",
+      "name":"Gretton, Tracey",
+      "first_name":"Tracey",
+      "last_name":"Gretton",
+      "medical_short":"",
+      "images":[
+        
+      ],
+      "contact_id":"58",
+      "middle_name":null,
+      "formal_name":null,
+      "sex":"f",
+      "date_of_birth":"2000-09-27",
+      "mobile":false,
+      "email":"",
+      "telephone":"01998 793 321",
+      "location":{
+        "address":"74 Conway Street, The Meadows, NG5 8JS",
+        "latitude":null,
+        "longitude":null
+      },
+      "consent":{
+        "internal":"0",
+        "external":"0"
+      },
+      "school":"Foleshill Primary School",
+      "medical":"",
+      "special_needs":"",
+      "doctor_details":"St John Street, Mansfield, Nottinghamshire, NG181RH"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` tag children returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` tag does not exist
+
+
+## List key dates
+
+* `GET /v1/children/keydates` will return key dates ordered alphabetically
+
+```json
+{
+  "pagination":{
+    "no_results":3,
+    "page":1,
+    "per_page":3
+  },
+  "dates":[
+    {
+      "name":"Confirmation",
+      "no_children":"2"
+    },
+    {
+      "name":"Dedicated",
+      "no_children":"1"
+    },
+    {
+      "name":"First kids groups attendance",
+      "no_children":"0"
+    }
+  ]
+}
+```
+
+
+## Get a key date
+
+* `GET /v1/children/keydate/Confirmation` will return data for a specific key date
+* `GET /v1/children/keydate/Confirmation?children=true` will return data for a specific key date, including all children with the key date
+
+Key date names *must be urlencoded*, particularly if they include a space character in them. Failure to correctly encode the key date name could result in a 404 response being returned rather than a 200.
+
+```json
+{
+  "name":"Confirmation",
+  "no_children":"2"
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` key date data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` key date does not exist
+
+## Get a key date's children
+
+* `GET /v1/children/keydate/Confirmation/children` will return the children for the "Confirmation" key date
+
+```json
+{
+  "pagination":{
+    "no_results":2,
+    "page":1,
+    "per_page":2
+  },
+  "children":[
+    {
+      "id":"59",
+      "name":"Baker, Amelia",
+      "first_name":"Amelia",
+      "last_name":"Baker",
+      "medical_short":"",
+      "images":[
+        
+      ],
+      "contact_id":"112",
+      "middle_name":null,
+      "formal_name":null,
+      "sex":"f",
+      "date_of_birth":"2003-08-07",
+      "mobile":"0886 775 2234",
+      "email":"",
+      "telephone":"0115 123 4567",
+      "location":{
+        "address":"44 Pruder Street, Thorpe, Nottingham, Nottinghamshire, NG9 2FE, United Kingdom",
+        "latitude":null,
+        "longitude":null
+      },
+      "consent":{
+        "internal":"0",
+        "external":"0"
+      },
+      "school":"Camberwick Green Secondary School",
+      "medical":"",
+      "special_needs":"",
+      "doctor_details":"",
+      "dates":[
+        {
+          "name":"Confirmation",
+          "date":"2014-09-18"
+        }
+      ]
+    },
+    {
+      "id":"1",
+      "name":"Wright, Micah",
+      "first_name":"Micah",
+      "last_name":"Wright",
+      "medical_short":"",
+      "images":[
+        
+      ],
+      "contact_id":"2",
+      "middle_name":null,
+      "formal_name":null,
+      "sex":"m",
+      "date_of_birth":"2007-05-28",
+      "mobile":false,
+      "email":"",
+      "telephone":"01062 438 661",
+      "location":{
+        "address":"24 Frederick Crescent, Wollaton, NG5 3DW",
+        "latitude":null,
+        "longitude":null
+      },
+      "consent":{
+        "internal":"0",
+        "external":"0"
+      },
+      "school":"Southam St James Primary School",
+      "medical":"",
+      "special_needs":"",
+      "doctor_details":"Netherfield Medical Centre, 2a Forester Street, Netherfield, Nottingham, NG42NJ",
+      "dates":[
+        {
+          "name":"Confirmation",
+          "date":"2015-02-22"
+        }
+      ]
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` key date children returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` key date does not exist
+
