@@ -165,7 +165,7 @@ This will return one of the following HTTP codes:
 
 ## Get a contact's key dates
 
-* `GET /v1/addressbook/contact/1/dates` will return data for a specific contact
+* `GET /v1/addressbook/contact/1/keydates` will return data for a specific contact
 
 ```json
 {
@@ -180,7 +180,7 @@ This will return one of the following HTTP codes:
 
 This will return one of the following HTTP codes:
 
-* `200` contact dates returned
+* `200` contact key dates returned
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` contact does not exist
 
