@@ -4,9 +4,14 @@
 
 The Small Groups module is concerned with the management of groups of contacts, along with their attendance, and support the following endpoints:
 
+
 ## List/search groups
 
 * `GET /v1/smallgroups/groups`  will return all groups
+* `GET /v1/smallgroups/groups?embed_visible=true`  will return all groups visible to Embed.
+* `GET /v1/smallgroups/groups?public_visible=true`  will return all groups visible to My ChurchApp.
+* `GET /v1/smallgroups/groups?tags=true`  will return all groups, including tags associated to each group.
+* `GET /v1/smallgroups/groups?view=active`  will return all groups in a view. The view parameter accepts the following values; archived, active, future. Not using this parameter will return groups from any view.
 
 ```json
 {
@@ -34,7 +39,13 @@ The Small Groups module is concerned with the management of groups of contacts, 
       "embed_visible":"1",
       "signup_date_start":"2014-09-01",
       "signup_date_end":"2014-12-31",
-      "signup_capacity":"25"
+      "signup_capacity":"25",
+      "tags":[
+        {
+          "tag_id":"1",
+          "name":"Beeston groups"
+        }
+      ]
     },
     {
       "id":"6",
@@ -59,16 +70,55 @@ The Small Groups module is concerned with the management of groups of contacts, 
       "embed_visible":"0",
       "signup_date_start":null,
       "signup_date_end":null,
-      "signup_capacity":null
+      "signup_capacity":null,
+      "tags":[
+        {
+          "tag_id":"1",
+          "name":"Beeston groups"
+        }
+      ]
     }
   ]
 }
 ```
 
+## List group to tag relationships
+
+* `GET /v1/smallgroups/groups_to_tags` will return a list of all smallgroup ids and the tag ids associated to each smallgroup
+
+```json
+{
+  "2":[
+    "1"
+  ],
+  "6":[
+    "1"
+  ],
+  "1":[
+    "2"
+  ],
+  "7":[
+    "2"
+  ],
+  "8":[
+    "2"
+  ],
+  "5":[
+    "4"
+  ],
+  "4":[
+    "5"
+  ],
+  "3":[
+    "6"
+  ]
+}
+```
 
 ## Get a group
 
 * `GET /v1/smallgroups/group/1` will return data for a specific group
+* `GET /v1/smallgroups/group/1?tags=true` will return data for a specific group, including any tags for the group
 
 ```json
 {
@@ -87,12 +137,21 @@ The Small Groups module is concerned with the management of groups of contacts, 
   "images":[
     
   ],
-  "no_members":null,
+  "no_members":13,
   "public_visible":"1",
-  "embed_visible":"1",
   "signup_date_start":null,
   "signup_date_end":null,
-  "signup_capacity":null
+  "signup_capacity":null,
+  "custom_fields":{
+    "custom1":null
+  },
+  "embed_visible":"1",
+  "tags":[
+    {
+      "tag_id":"2",
+      "name":"West Bridgford groups"
+    }
+  ]
 }
 ```
 
@@ -392,3 +451,143 @@ This `POST` method will return output in the following format:
   "status_code":201
 }
 ```
+
+## List tags
+
+* `GET /v1/smallgroups/tags` will return tags ordered alphabetically
+
+```json
+{
+  "pagination":{
+    "no_results":5,
+    "page":1,
+    "per_page":5
+  },
+  "tags":[
+    {
+      "tag_id":"1",
+      "name":"Beeston groups",
+      "no_groups":"1"
+    },
+    {
+      "tag_id":"4",
+      "name":"Carlton groups",
+      "no_groups":"1"
+    },
+    {
+      "tag_id":"5",
+      "name":"Gamston groups",
+      "no_groups":"1"
+    },
+    {
+      "tag_id":"6",
+      "name":"Meadows groups",
+      "no_groups":"1"
+    },
+    {
+      "tag_id":"2",
+      "name":"West Bridgford groups",
+      "no_groups":"1"
+    }
+  ]
+}
+```
+
+## Get a tag
+
+* `GET /v1/smallgroups/tag/1` will return data for a specific tag with the ID of 1
+* `GET /v1/smallgroups/tag/1?groups=true` will return data for a specific tag, including all groups with the tag
+
+```json
+{
+  "tag_id":"1",
+  "name":"Beeston groups",
+  "no_groups":"1",
+  "groups":[
+    {
+      "id":"6",
+      "reference":"5",
+      "name":"Beeston 2",
+      "date_start":"2013-03-07",
+      "date_end":null,
+      "frequency":"weekly",
+      "day":"4",
+      "time":"19:45",
+      "location":{
+        "address":"NG9 2GU",
+        "latitude":null,
+        "longitude":null
+      },
+      "description":"We're a group of passionate followers of Jesus trying to do life together and be family. We meet weekly on Wednesdays - we'd love for you to join us!",
+      "images":[
+        
+      ],
+      "no_members":22,
+      "public_visible":"1",
+      "signup_date_start":"2014-12-01",
+      "signup_date_end":"2019-12-21",
+      "signup_capacity":"60",
+      "custom_fields":{
+        "custom1":""
+      },
+      "embed_visible":"0"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` tag data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` tag does not exist
+
+## Get a tag's groups
+
+* `GET /v1/smallgroups/tag/1/groups` will return the groups for the tag with the ID of 1
+
+```json
+{
+  "pagination":{
+    "no_results":1,
+    "page":1,
+    "per_page":1
+  },
+  "groups":[
+    {
+      "id":"6",
+      "reference":"5",
+      "name":"Beeston 2",
+      "date_start":"2013-03-07",
+      "date_end":null,
+      "frequency":"weekly",
+      "day":"4",
+      "time":"19:45",
+      "location":{
+        "address":"NG9 2GU",
+        "latitude":null,
+        "longitude":null
+      },
+      "description":"We're a group of passionate followers of Jesus trying to do life together and be family. We meet weekly on Wednesdays - we'd love for you to join us!",
+      "images":[
+        
+      ],
+      "no_members":22,
+      "public_visible":"1",
+      "signup_date_start":"2014-12-01",
+      "signup_date_end":"2019-12-21",
+      "signup_capacity":"60",
+      "custom_fields":{
+        "custom1":""
+      },
+      "embed_visible":"0"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` tag groups returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` tag does not exist
