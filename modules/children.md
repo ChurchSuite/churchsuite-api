@@ -87,7 +87,7 @@ The Children module manages all children and youth within ChurchApp. The followi
 
 * `GET /v1/children/child/1` will return data for a specific child
 * `GET /v1/children/child/1?tags=true` will return data for a specific child, including any tags for the child
-* `GET /v1/children/child/1?dates=true` will return data for a specific child, including any key dates for the child
+* `GET /v1/children/child/1?keydates=true` will return data for a specific child, including any key dates for the child
 
 ```json
 {
@@ -134,7 +134,7 @@ The Children module manages all children and youth within ChurchApp. The followi
       "type":"fixed"
     }
   ],
-  "dates":[
+  "keydates":[
     {
       "name":"Confirmation",
       "date":"2015-02-22"
@@ -184,7 +184,7 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "dates":[
+  "keydates":[
     {
       "name":"Confirmation",
       "date":"2015-02-22"
@@ -977,7 +977,7 @@ This will return one of the following HTTP codes:
     "page":1,
     "per_page":3
   },
-  "dates":[
+  "keydates":[
     {
       "name":"Confirmation",
       "no_children":"2"
@@ -1057,7 +1057,7 @@ This will return one of the following HTTP codes:
       "medical":"",
       "special_needs":"",
       "doctor_details":"",
-      "dates":[
+      "keydates":[
         {
           "name":"Confirmation",
           "date":"2014-09-18"
@@ -1094,7 +1094,7 @@ This will return one of the following HTTP codes:
       "medical":"",
       "special_needs":"",
       "doctor_details":"Netherfield Medical Centre, 2a Forester Street, Netherfield, Nottingham, NG42NJ",
-      "dates":[
+      "keydates":[
         {
           "name":"Confirmation",
           "date":"2015-02-22"
