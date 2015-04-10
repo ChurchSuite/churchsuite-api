@@ -5,6 +5,7 @@
 The Small Groups module is concerned with the management of groups of contacts, along with their attendance, and support the following endpoints:
 
 
+
 ## List/search groups
 
 * `GET /v1/smallgroups/groups`  will return all groups
@@ -12,18 +13,25 @@ The Small Groups module is concerned with the management of groups of contacts, 
 * `GET /v1/smallgroups/groups?public_visible=true`  will return all groups visible to My ChurchApp.
 * `GET /v1/smallgroups/groups?tags=true`  will return all groups, including tags associated to each group.
 * `GET /v1/smallgroups/groups?view=active`  will return all groups in a view. The view parameter accepts the following values; archived, active, future. Not using this parameter will return groups from any view.
+* `GET /v1/smallgroups/groups?page=2` will return the second page of groups
+* `GET /v1/smallgroups/groups?page=2&per_page=5` will return the second page of groups, with each page limited to 5 results
 
 ```json
 {
+  "pagination":{
+    "no_results":8,
+    "page":1,
+    "per_page":2
+  },
   "groups":[
     {
       "id":"2",
       "reference":"2",
       "name":"Beeston",
       "date_start":"2009-05-20",
-      "date_end":null,
+      "date_end":"2015-12-31",
       "frequency":"weekly",
-      "day":"3",
+      "day":"1",
       "time":"20:00",
       "location":{
         "address":"NG9 1PA",
@@ -34,12 +42,15 @@ The Small Groups module is concerned with the management of groups of contacts, 
       "images":[
         
       ],
-      "no_members":"19",
+      "no_members":17,
       "public_visible":"1",
-      "embed_visible":"1",
       "signup_date_start":"2014-09-01",
-      "signup_date_end":"2014-12-31",
+      "signup_date_end":"2015-09-30",
       "signup_capacity":"25",
+      "custom_fields":{
+        "custom1":"All ages"
+      },
+      "embed_visible":"1",
       "tags":[
         {
           "tag_id":"1",
@@ -61,16 +72,19 @@ The Small Groups module is concerned with the management of groups of contacts, 
         "latitude":"52.9319152832031",
         "longitude":"-1.2050369977951"
       },
-      "description":"",
+      "description":"We're a group of passionate followers of Jesus trying to do life together and be family. We meet weekly on Wednesdays - we'd love for you to join us!",
       "images":[
         
       ],
-      "no_members":"2",
-      "public_visible":"0",
+      "no_members":21,
+      "public_visible":"1",
+      "signup_date_start":"2014-12-01",
+      "signup_date_end":"2019-12-21",
+      "signup_capacity":"60",
+      "custom_fields":{
+        "custom1":""
+      },
       "embed_visible":"0",
-      "signup_date_start":null,
-      "signup_date_end":null,
-      "signup_capacity":null,
       "tags":[
         {
           "tag_id":"1",
