@@ -36,13 +36,13 @@ class Helper_Curl {
 	private static function exec($ch) {
 		$response = curl_exec($ch);
 		$error = curl_errno($ch);
-	    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-	    return array(
-	    	'error' => $error,
-	    	'http_code' => $http_code,
-	    	'response' => $response,
-	    );
+		return array(
+			'error' => $error,
+			'http_code' => $http_code,
+			'response' => $response,
+		);
 	}
 
 	/**
