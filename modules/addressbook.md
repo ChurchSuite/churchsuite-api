@@ -262,7 +262,7 @@ This `POST` method will return output in the following format:
 
 ## Update an existing contact's details
 
-* `PUT /v1/addressbook/contact/1` will update the details of an existing contact in the database
+* `PUT /v1/addressbook/contact/1` will update the details of an existing contact in the database. If you include tags in this request please note that whatever you pass through will replace any tags already listed against the contact.
 
 ```json
 {
@@ -272,7 +272,15 @@ This `POST` method will return output in the following format:
   "sex":"f",
   "custom_fields":{
     "custom1":"@janebloggs"
-  }
+  },
+  "tags":[
+    {
+      "name":"Newcomers"
+    },
+    {
+      "name":"Not in a group"
+    }
+  ]
 }
 ```
 
@@ -286,11 +294,13 @@ This `PUT` method will return output in the following format:
 
 ```json
 {
-  "id":"174",
-  "name":"Bloggs, Jane",
+  "id":"373",
   "first_name":"Jane",
-  "middle_name":null,
   "last_name":"Bloggs",
+  "site_id":"1",
+  "title":"",
+  "name":"Bloggs, Jane",
+  "middle_name":null,
   "formal_name":null,
   "maiden_name":null,
   "sex":"f",
@@ -307,16 +317,18 @@ This `PUT` method will return output in the following format:
   "country":"GB",
   "telephone":null,
   "mobile":null,
+  "work_telephone":null,
   "email":"jane.bloggs@gmail.com",
   "job":null,
   "employer":null,
   "public_options":{
+    "invited":false,
     "access":true,
     "visible":{
       "enabled":true,
       "address":false,
-      "email":false,
-      "mobile":false,
+      "email":true,
+      "mobile":true,
       "telephone":false
     }
   },
@@ -326,7 +338,10 @@ This `PUT` method will return output in the following format:
   },
   "images":[
     
-  ]
+  ],
+  "has_email_opt_out":false,
+  "has_sms_opt_out":false,
+  "type_id":"contact_373"
 }
 ```
 
