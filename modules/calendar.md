@@ -238,7 +238,7 @@ This will return one of the following HTTP codes:
 
 ## Add one or more signups to an event
 
-* `POST /v1/calendar/event/:id/signups` will create a new contact in the Address Book
+* `POST /v1/calendar/event/:id/signups` will create a new signup for the event
 
 ```json
 {
