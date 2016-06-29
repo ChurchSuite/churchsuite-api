@@ -2,7 +2,7 @@
 
 ## Authentication
 
-The ChurchApp API requires users to use a valid API key in order to interact with the data stored in their ChurchApp account. Currently API Keys must be requested via support (support@churchapp.co.uk), we also provide an [OAuth endpoint](https://github.com/ChurchApp/churchapp-api/blob/master/oauth.md) for using the API as a specific Contact with limited access.
+The ChurchApp API requires users to use a valid API key in order to interact with the data stored in their ChurchApp account. Currently API Keys must be requested via support (support@churchapp.co.uk), we also provide an [OAuth endpoint](https://github.com/ChurchApp/churchapp-api/blob/master/oauth.md) for using the API as a specific Contact with limited access. However use of the embed endpoints is not restricted.
 
 To access the API each request must be accompanied by a `X-Account` header, a `X-Application` header and a `X-Auth` header, as of Dec 2013 requests missing any of these will not succeed. Additionally, the Content-Type header must be set to `application/json`. For example:
 
@@ -40,3 +40,4 @@ The following modules currently have documented API Endpoints, this documentatio
 * [Children](https://github.com/ChurchApp/churchapp-api/blob/master/modules/children.md)
 * [Small Groups](https://github.com/ChurchApp/churchapp-api/blob/master/modules/smallgroups.md)
 * [My](https://github.com/ChurchApp/churchapp-api/blob/master/modules/my.md)
+* [Embed](https://github.com/ChurchApp/churchapp-api/blob/master/modules/embed.md)
