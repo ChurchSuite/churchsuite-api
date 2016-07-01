@@ -10,7 +10,7 @@ Our Embed URL's allow you to place ready-made widgets into your website without 
 
 The following URL parameters are accepted:
 
-* `date=01-12-2017` The start date for the calendar in the format `d-m-Y`. If not given or empty today's date will be used.
+* `date=2017-12-01` The start date for the calendar in the format `Y-m-d`. If not given or empty today's date will be used.
 * `category=1,2,3` A list of Category IDs to filter the calendar by. If not given or empty no category filtering will be done.
 * `show_categories=(0|1)` Enable/disable the category filter dropdown. Default: `disabled`.
 * `site=1` The Site ID to filter the events by. If not given or 0 then no site filtering will be done.
@@ -45,7 +45,7 @@ Sometimes you may wish to change some of the styling so that it fits better with
 The following URL parameters are accepted:
 
 * `callback` If you are requesting the JSON feed from JS you will need to specify the callback function's name in order to get around the cross-domain restrictions on browsers. You do not need to provide this if you request the JSON from the server-side (i.e. in a PHP script). This is empty by default.
-* `date=01-12-2017` The start date for the calendar in the format `d-m-Y`. If not given or empty today's date will be used.
+* `date=2017-12-01` The start date for the calendar in the format `Y-m-d`. If not given or empty today's date will be used.
 * `featured=(0|1)` If enabled only return featured events. Default: `disabled`.
 * `site=1` The Site ID to filter the events by. If not given or 0 then no site filtering will be done.
 
@@ -200,7 +200,7 @@ The following URL parameters are accepted:
       "square_500":"https:\/\/demo.churchapp.co.uk\/files\/smallgroups\/groups\/sf\/2_500.jpg",
       "square_1000":"https:\/\/demo.churchapp.co.uk\/files\/smallgroups\/groups\/sf\/2_1000.jpg"
     },
-    "no_members":17,
+    "no_members":15,
     "public_visible":"1",
     "embed_signup":"1",
     "signup_enabled":"1",
