@@ -270,6 +270,8 @@ This `POST` method will return output in the following format:
   "last_name":"Bloggs",
   "email":"jane.bloggs@gmail.com",
   "sex":"f",
+  "email_opt_out":false,
+  "sms_opt_out":true,
   "custom_fields":{
     "custom1":"@janebloggs"
   },
@@ -294,9 +296,10 @@ This `PUT` method will return output in the following format:
 
 ```json
 {
-  "id":"373",
+  "id":"562",
   "first_name":"Jane",
   "last_name":"Bloggs",
+  "type_id":"contact_562",
   "site_id":"1",
   "title":"",
   "name":"Bloggs, Jane",
@@ -323,25 +326,23 @@ This `PUT` method will return output in the following format:
   "employer":null,
   "public_options":{
     "invited":false,
-    "access":true,
+    "access":false,
     "visible":{
-      "enabled":true,
-      "address":false,
-      "email":true,
-      "mobile":true,
-      "telephone":false
+      "enabled":false
     }
   },
   "custom_fields":{
     "custom1":"@janebloggs",
-    "custom2":null
+    "custom3":null,
+    "custom4":null,
+    "custom5":null,
+    "custom6":null
   },
   "images":[
     
   ],
   "has_email_opt_out":false,
-  "has_sms_opt_out":false,
-  "type_id":"contact_373"
+  "has_sms_opt_out":true
 }
 ```
 
