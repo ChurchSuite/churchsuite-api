@@ -15,7 +15,7 @@ Requests to the OAuth Server require a Client Application be created, in order t
 
 The OAuth endpoint for ChurchApp is found at `youraccount.churchapp.co.uk/oauth` and adheres to the OAuth2 Specification.
 
-The authorisation endpoint is: `/oauth/authorization`
+The authorisation endpoint is: `/oauth/authorize`
 
 The token endpoint is: `/oauth/token`
 
