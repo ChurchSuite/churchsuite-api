@@ -45,7 +45,8 @@ Sometimes you may wish to change some of the styling so that it fits better with
 The following URL parameters are accepted:
 
 * `callback` If you are requesting the JSON feed from JS you will need to specify the callback function's name in order to get around the cross-domain restrictions on browsers. You do not need to provide this if you request the JSON from the server-side (i.e. in a PHP script). This is empty by default.
-* `date=2017-12-01` The start date for the calendar in the format `Y-m-d`. If not given or empty today's date will be used.
+* `date_start=2017-12-01` The start date for the calendar in the format `Y-m-d`. If not given or empty today's date will be used.
+* `date_end=2017-01-15` The end date for the calendar in the format `Y-m-d`. If not given or empty the last day of the week for the date_start's month will be used.
 * `featured=(0|1)` If enabled only return featured events. Default: `disabled`.
 * `site=1` The Site ID to filter the events by. If not given or 0 then no site filtering will be done.
 
