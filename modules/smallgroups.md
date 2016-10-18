@@ -47,6 +47,10 @@ The Small Groups module is concerned with the management of groups of contacts, 
       "signup_date_start":"2014-09-01",
       "signup_date_end":"2015-09-30",
       "signup_capacity":"25",
+      "cluster":{
+        "id":"6",
+        "name":"Greater Nottingham"
+      },
       "custom_fields":{
         "custom1":"All ages"
       },
@@ -81,6 +85,10 @@ The Small Groups module is concerned with the management of groups of contacts, 
       "signup_date_start":"2014-12-01",
       "signup_date_end":"2019-12-21",
       "signup_capacity":"60",
+      "cluster":{
+        "id":"6",
+        "name":"Greater Nottingham"
+      },
       "custom_fields":{
         "custom1":""
       },
@@ -156,6 +164,10 @@ The Small Groups module is concerned with the management of groups of contacts, 
   "signup_date_start":null,
   "signup_date_end":null,
   "signup_capacity":null,
+  "cluster":{
+    "id":"6",
+    "name":"Nottingham East"
+  },
   "custom_fields":{
     "custom1":null
   },
@@ -541,6 +553,10 @@ This `POST` method will return output in the following format:
       "signup_date_start":"2014-12-01",
       "signup_date_end":"2019-12-21",
       "signup_capacity":"60",
+      "cluster":{
+        "id":"6",
+        "name":"Greater Nottingham"
+      },
       "custom_fields":{
         "custom1":""
       },
@@ -591,6 +607,10 @@ This will return one of the following HTTP codes:
       "signup_date_start":"2014-12-01",
       "signup_date_end":"2019-12-21",
       "signup_capacity":"60",
+      "cluster":{
+        "id":"6",
+        "name":"Greater Nottingham"
+      },
       "custom_fields":{
         "custom1":""
       },
