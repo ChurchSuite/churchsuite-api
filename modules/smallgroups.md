@@ -31,7 +31,12 @@ The Small Groups module is concerned with the management of groups of contacts, 
       "date_start":"2009-05-20",
       "date_end":"2015-12-31",
       "frequency":"weekly",
-      "day":"1",
+      "day":"1",      
+      "site":{
+        "id":"1",
+        "name":"Main site",
+        "color":"red"
+      },
       "time":"20:00",
       "location":{
         "address":"NG9 1PA",
@@ -70,6 +75,11 @@ The Small Groups module is concerned with the management of groups of contacts, 
       "date_end":null,
       "frequency":"weekly",
       "day":"4",
+      "site":{
+        "id":"1",
+        "name":"Main site",
+        "color":"red"
+      },
       "time":"19:45",
       "location":{
         "address":"NG9 2GU",
@@ -151,6 +161,11 @@ The Small Groups module is concerned with the management of groups of contacts, 
   "date_end":"2011-09-26",
   "frequency":"weekly",
   "day":"3",
+  "site":{
+    "id":"1",
+    "name":"Main site",
+    "color":"red"
+  },
   "time":"19:45",
   "location":[
     
@@ -538,6 +553,11 @@ This `POST` method will return output in the following format:
       "date_end":null,
       "frequency":"weekly",
       "day":"4",
+      "site":{
+        "id":"1",
+        "name":"Main site",
+        "color":"red"
+      },
       "time":"19:45",
       "location":{
         "address":"NG9 2GU",
@@ -592,6 +612,11 @@ This will return one of the following HTTP codes:
       "date_end":null,
       "frequency":"weekly",
       "day":"4",
+      "site":{
+        "id":"1",
+        "name":"Main site",
+        "color":"red"
+      },
       "time":"19:45",
       "location":{
         "address":"NG9 2GU",
