@@ -202,10 +202,10 @@ This will return one of the following HTTP codes:
       "person":{
         "type":"guest",
         "id":null,
-        "first_name":"Gavin",
-        "last_name":"Courtney",
+        "first_name":"Mark",
+        "last_name":"Davies",
         "mobile":"",
-        "email":"gavin.courtney@gmail.com",
+        "email":"mark.davies@gmail.com",
         "notes":"",
         "ticket":{
           "id":"2",
@@ -224,7 +224,6 @@ This will return one of the following HTTP codes:
           "order":null
         }
       },
-      "notes":"",
       "method":"API",
       "ctime":"2014-02-05 16:55:52"
     }
@@ -250,7 +249,10 @@ This will return one of the following HTTP codes:
       "last_name":"Davies",
       "mobile":"",
       "email":"mark.davies@gmail.com",
-      "notes":"Ref: gfmiGblh\n=====\nDietary requirements: Vegetarian\n-----\nHeard about event: From a friend"
+      "notes":"Ref: 87d1sZ2U\n=====\nDietary requirements: Vegetarian\n-----\nHeard about event: From a friend",
+      "ticket":{
+        "id":1,
+      }
     }
   ]
 }
@@ -265,23 +267,41 @@ This `POST` method will return output in the following format:
 
 ```json
 {
-  "event_id":"3110",
+  "event_id":"2",
   "signups":[
     {
-      "id":"356",
+      "id":"59",
+      "identifier":"OX8VPUim",
       "person":{
         "type":"guest",
         "id":null,
         "first_name":"Mark",
         "last_name":"Davies",
+        "sex":null,
         "mobile":"",
         "email":"mark.davies@gmail.com",
-        "notes":"Ref: gfmiGblh\n=====\nDietary requirements: Vegetarian\n-----\nHeard about event: From a friend",
-        "ticket":false
+        "notes":"Ref: 87d1sZ2U ===== Dietary requirements: Vegetarian ----- Heard about event: From a friend",
+        "ticket":{
+          "id":"1",
+          "name":"Early Bird",
+          "description":null,
+          "paid":"0.00",
+          "paid_status":"unpaid",
+          "price":"5.00",
+          "currency":{
+            "code":"GBP",
+            "country":"GB",
+            "symbol":"\u00a3"
+          },
+          "quantity":null,
+          "no_sold":null,
+          "active":null,
+          "hidden":null,
+          "order":null
+        }
       },
-      "notes":"Ref: gfmiGblh\n=====\nDietary requirements: Vegetarian\n-----\nHeard about event: From a friend",
       "method":"API",
-      "ctime":"2014-10-14 15:52:08"
+      "ctime":"2016-11-08 13:02:57"
     }
   ]
 }
