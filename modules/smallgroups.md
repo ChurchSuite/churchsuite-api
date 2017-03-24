@@ -12,7 +12,7 @@ The Small Groups module is concerned with the management of groups of contacts, 
 * `GET /v1/smallgroups/groups?embed_visible=true`  will return all groups visible to Embed, without pagination.
 * `GET /v1/smallgroups/groups?public_visible=true`  will return all groups visible to My ChurchApp.
 * `GET /v1/smallgroups/groups?tags=true`  will return all groups, including tags associated to each group.
-* `GET /v1/smallgroups/groups?view=active`  will return all groups in a view. The view parameter accepts the following values; archived, active, future. Not using this parameter will return groups from any view.
+* `GET /v1/smallgroups/groups?view=active`  will return all groups in a view. The view parameter accepts the following values; archived, active, active_future, future. Not using this parameter will return groups from the active view.
 * `GET /v1/smallgroups/groups?page=2` will return the second page of groups
 * `GET /v1/smallgroups/groups?page=2&per_page=5` will return the second page of groups, with each page limited to 5 results
 
