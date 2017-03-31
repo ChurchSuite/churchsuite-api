@@ -362,3 +362,54 @@ This will return one of the following HTTP codes:
 
 * `200` signup deleted
 * `404` signup is not linked to the specified event - check error message for details
+
+## List categories
+
+* `GET /v1/calendar/categories` will return categories ordered alphabetically
+
+```json
+{
+  "pagination":{
+    "no_results":6,
+    "page":1,
+    "per_page":6
+  },
+  "categories":[
+    {
+      "id":"17",
+      "name":"Church Meetings",
+      "description":"Weekly church meetings, includes Sunday and mid-week events such as prayer meeting, etc.",
+      "colour":"#fa5252",
+      "public_visible":"1"
+    },
+    {
+      "id":"22",
+      "name":"Discipleship Events",
+      "description":"",
+      "colour":"#40c057",
+      "public_visible":"0"
+    },
+    {
+      "id":"5",
+      "name":"Kid's Events",
+      "description":"Events run by our children's team.",
+      "colour":"#4c6ef5",
+      "public_visible":"0"
+    },
+    {
+      "id":"4",
+      "name":"Worship Events",
+      "description":"Events related to the Your Church worship team.",
+      "colour":"#15aabf",
+      "public_visible":"0"
+    },
+    {
+      "id":"6",
+      "name":"Youth Events",
+      "description":"Youth Events in the life of Your Church.",
+      "colour":"#fab005",
+      "public_visible":"0"
+    }
+  ]
+}
+```
