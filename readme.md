@@ -30,7 +30,13 @@ The API is structured in the same way as the main ChurchApp Application, with ea
   https://api.churchapp.co.uk/v1/children/child/1
 ````
 
-## Documentation
+## Patterns
+
+Data returned by our API follows a number of consistent design patterns. The following are designed to give you an understanding of the current design patterns:
+
+* [Images](https://github.com/ChurchApp/churchapp-api/blob/master/patterns/images.md)
+
+## Modules
 
 The following modules currently have documented API Endpoints, this documentation is considered a work in progress:
 
