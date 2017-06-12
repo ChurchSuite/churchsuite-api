@@ -1,7 +1,7 @@
 <?php
 
 /*
- * A set of helper functions to make using Curl faster and simpler within ChurchApp.
+ * A set of helper functions to make using Curl faster and simpler within ChurchSuite.
  */
 class Helper_Curl {
 
