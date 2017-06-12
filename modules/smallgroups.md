@@ -1,6 +1,6 @@
 # Small Groups
 
-[Home](https://github.com/ChurchApp/churchapp-api)
+[Home](https://github.com/ChurchSuite/churchsuite-api)
 
 The Small Groups module is concerned with the management of groups of contacts, along with their attendance, and support the following endpoints:
 
@@ -10,7 +10,7 @@ The Small Groups module is concerned with the management of groups of contacts, 
 
 * `GET /v1/smallgroups/groups`  will return all groups
 * `GET /v1/smallgroups/groups?embed_visible=true`  will return all groups visible to Embed, without pagination.
-* `GET /v1/smallgroups/groups?public_visible=true`  will return all groups visible to My ChurchApp.
+* `GET /v1/smallgroups/groups?public_visible=true`  will return all groups visible to My ChurchSuite.
 * `GET /v1/smallgroups/groups?tags=true`  will return all groups, including tags associated to each group.
 * `GET /v1/smallgroups/groups?view=active`  will return all groups in a view. The view parameter accepts the following values; archived, active, active_future, future. Not using this parameter will return groups from the active view.
 * `GET /v1/smallgroups/groups?page=2` will return the second page of groups
@@ -227,7 +227,7 @@ This will return one of the following HTTP codes:
         "country":null,
         "telephone":"0115 824 2300",
         "mobile":"07707 777 777",
-        "email":"support@churchapp.co.uk",
+        "email":"support@churchsuite.com",
         "public_options":{
           "access":false,
           "visible":{
@@ -359,7 +359,7 @@ This `POST` method will return output in the following format:
           "country":null,
           "telephone":"0115 824 2300",
           "mobile":"07707 777 777",
-          "email":"support@churchapp.co.uk",
+          "email":"support@churchsuite.com",
           "public_options":{
             "access":false,
             "visible":{
