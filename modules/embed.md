@@ -1,12 +1,12 @@
 # Embed
 
-[Home](https://github.com/ChurchApp/churchapp-api)
+[Home](https://github.com/ChurchSuite/churchsuite-api)
 
 Our Embed URL's allow you to place ready-made widgets into your website without the need to develop an integration with our API. Alongside this we have also made the JSON-equivalent feeds available so that you can use the data however you'd like. You do not need API access to use these features.
 
 ## Calendar
 
-`https://{your_account_id}.churchapp.co.uk/embed/calendar`
+`https://{your_account_id}.churchsuite.com/embed/calendar`
 
 The following URL parameters are accepted:
 
@@ -22,7 +22,7 @@ Sometimes you may wish to change some of the styling so that it fits better with
 
 ## Calendar Featured events list
 
-`https://{your_account_id}.churchapp.co.uk/embed/calendar/featured`
+`https://{your_account_id}.churchsuite.com/embed/calendar/featured`
 
 The following URL parameters are accepted:
 
@@ -40,7 +40,7 @@ Sometimes you may wish to change some of the styling so that it fits better with
 
 ## Calendar JSON feed
 
-`https://{your_account_id}.churchapp.co.uk/embed/calendar/json`
+`https://{your_account_id}.churchsuite.com/embed/calendar/json`
 
 The following URL parameters are accepted:
 
@@ -66,15 +66,7 @@ The following URL parameters are accepted:
     "public_visible":"1",
     "description":"",
     "images":{
-      "mtime":1461753213,
-      "original_16":"https:\/\/demo.churchapp.co.uk\/files\/calendar\/events\/rw\/s2671_16.jpg",
-      "original_100":"https:\/\/demo.churchapp.co.uk\/files\/calendar\/events\/rw\/s2671_100.jpg",
-      "original_500":"https:\/\/demo.churchapp.co.uk\/files\/calendar\/events\/rw\/s2671_500.jpg",
-      "original_1000":"https:\/\/demo.churchapp.co.uk\/files\/calendar\/events\/rw\/s2671_1000.jpg",
-      "square_16":"https:\/\/demo.churchapp.co.uk\/files\/calendar\/events\/sf\/s2671_16.jpg",
-      "square_100":"https:\/\/demo.churchapp.co.uk\/files\/calendar\/events\/sf\/s2671_100.jpg",
-      "square_500":"https:\/\/demo.churchapp.co.uk\/files\/calendar\/events\/sf\/s2671_500.jpg",
-      "square_1000":"https:\/\/demo.churchapp.co.uk\/files\/calendar\/events\/sf\/s2671_1000.jpg"
+    
     },
     "location":{
       "address":"NG7 1GX",
@@ -102,7 +94,7 @@ The following URL parameters are accepted:
       },
       "tickets":{
         "enabled":"0",
-        "url":"https:\/\/demo.churchapp.co.uk\/events\/pibs3mla"
+        "url":"https:\/\/demo.churchsuite.com\/events\/pibs3mla"
       }
     },
     "site":{
@@ -117,7 +109,7 @@ The following URL parameters are accepted:
 
 ## Small Groups List
 
-`https://{your_account_id}.churchapp.co.uk/embed/smallgroups/list`
+`https://{your_account_id}.churchsuite.com/embed/smallgroups/list`
 
 The following URL parameters are accepted:
 
@@ -138,7 +130,7 @@ Sometimes you may wish to change some of the styling so that it fits better with
 
 ## Small Groups Map
 
-`https://{your_account_id}.churchapp.co.uk/embed/smallgroups/map`
+`https://{your_account_id}.churchsuite.com/embed/smallgroups/map`
 
 The following URL parameters are accepted:
 
@@ -162,7 +154,7 @@ Sometimes you may wish to change some of the styling so that it fits better with
 
 ## Small Groups JSON feed
 
-`https://{your_account_id}.churchapp.co.uk/embed/smallgroups/json`
+`https://{your_account_id}.churchsuite.com/embed/smallgroups/json`
 
 The following URL parameters are accepted:
 
@@ -190,16 +182,7 @@ The following URL parameters are accepted:
     },
     "description":"We're a group of passionate followers of Jesus trying to do life together and be family. We meet weekly on Wednesdays - we'd love for you to join us!",
     "images":{
-      "mtime":1461753551,
-      "original":"\/files\/smallgroups\/groups\/_originals\/2.jpg",
-      "original_16":"https:\/\/demo.churchapp.co.uk\/files\/smallgroups\/groups\/rw\/2_16.jpg",
-      "original_100":"https:\/\/demo.churchapp.co.uk\/files\/smallgroups\/groups\/rw\/2_100.jpg",
-      "original_500":"https:\/\/demo.churchapp.co.uk\/files\/smallgroups\/groups\/rw\/2_500.jpg",
-      "original_1000":"https:\/\/demo.churchapp.co.uk\/files\/smallgroups\/groups\/rw\/2_1000.jpg",
-      "square_16":"https:\/\/demo.churchapp.co.uk\/files\/smallgroups\/groups\/sf\/2_16.jpg",
-      "square_100":"https:\/\/demo.churchapp.co.uk\/files\/smallgroups\/groups\/sf\/2_100.jpg",
-      "square_500":"https:\/\/demo.churchapp.co.uk\/files\/smallgroups\/groups\/sf\/2_500.jpg",
-      "square_1000":"https:\/\/demo.churchapp.co.uk\/files\/smallgroups\/groups\/sf\/2_1000.jpg"
+    
     },
     "no_members":15,
     "public_visible":"1",
@@ -227,7 +210,7 @@ The following URL parameters are accepted:
 
 ## Address Book form
 
-`https://{your_account_id}.churchapp.co.uk/embed/addressbook/form`
+`https://{your_account_id}.churchsuite.com/embed/addressbook/form`
 
 The following URL parameters are accepted:
 
