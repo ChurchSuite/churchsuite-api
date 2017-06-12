@@ -13,7 +13,7 @@ To access the API each request must be accompanied by a `X-Account` header, a `X
   X-Auth: 1234567890abc
 ````
 
-The ChurchSuite API is available at `https://api.churchapp.co.uk/v1` and should always be accessed via SSL.
+The ChurchSuite API is available at `https://api.churchsuite.co.uk/v1` and should always be accessed via SSL.
 
 #### Headers: 
 
@@ -26,8 +26,8 @@ The ChurchSuite API is available at `https://api.churchapp.co.uk/v1` and should 
 The API is structured in the same way as the main ChurchSuite Application, with each model belonging to it's own module. For example a contact would be at the endpoint:
 
 ````
-  https://api.churchapp.co.uk/v1/addressbook/contact/1
-  https://api.churchapp.co.uk/v1/children/child/1
+  https://api.churchsuite.co.uk/v1/addressbook/contact/1
+  https://api.churchsuite.co.uk/v1/children/child/1
 ````
 
 ## Patterns
