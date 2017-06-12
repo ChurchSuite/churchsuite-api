@@ -1,6 +1,6 @@
 # Calendar
 
-[Home](https://github.com/ChurchApp/churchapp-api)
+[Home](https://github.com/ChurchSuite/churchsuite-api)
 
 The Calendar module manages all events, HR and event sign up within ChurchSuite. The following endpoints are available:
 
