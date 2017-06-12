@@ -1,6 +1,6 @@
 # Administrator
 
-[Home](https://github.com/ChurchApp/churchapp-api)
+[Home](https://github.com/ChurchSuite/churchsuite-api)
 
 The Administrator module is concerned with global account settings, such as module options and the account profile information.
 
