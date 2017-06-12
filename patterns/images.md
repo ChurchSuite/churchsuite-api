@@ -13,30 +13,34 @@ A number of our API endpoints provide a means of accessing the images related to
   ...
   
   "images":{
-    "thumb":{
-      "px":128,
-      "square":true,
-      "mtime":1491208583,
-      "url":"https:\/\/cdn.churchapp.org\/demo\/smallgroups\/groups\/1_ZqHg09Wp_thumb.jpg"
-    },
-    "sm":{
-      "px":256,
-      "square":false,
-      "mtime":1491208583,
-      "url":"https:\/\/cdn.churchapp.org\/demo\/smallgroups\/groups\/1_ZqHg09Wp_sm.jpg"
-    },
-    "md":{
-      "px":512,
-      "square":false,
-      "mtime":1491208583,
-      "url":"https:\/\/cdn.churchapp.org\/demo\/smallgroups\/groups\/1_ZqHg09Wp_md.jpg"
-    },
-    "lg":{
-      "px":1024,
-      "square":false,
-      "mtime":1491208583,
-      "url":"https:\/\/cdn.churchapp.org\/demo\/smallgroups\/groups\/1_ZqHg09Wp_lg.jpg"
-    },
+      "thumb":{
+        "px":128,
+        "square":true,
+        "transparent":false,
+        "mtime":1497255946,
+        "url":"https:\/\/d2a59nxql6nsk9.cloudfront.net\/demo\/smallgroups\/groups\/1_wtmeeecO_thumb.jpg"
+      },
+      "sm":{
+        "px":256,
+        "square":false,
+        "transparent":false,
+        "mtime":1497255946,
+        "url":"https:\/\/d2a59nxql6nsk9.cloudfront.net\/demo\/smallgroups\/groups\/1_wtmeeecO_sm.jpg"
+      },
+      "md":{
+        "px":512,
+        "square":false,
+        "transparent":false,
+        "mtime":1497255946,
+        "url":"https:\/\/d2a59nxql6nsk9.cloudfront.net\/demo\/smallgroups\/groups\/1_wtmeeecO_md.jpg"
+      },
+      "lg":{
+        "px":1024,
+        "square":false,
+        "transparent":false,
+        "mtime":1497255946,
+        "url":"https:\/\/d2a59nxql6nsk9.cloudfront.net\/demo\/smallgroups\/groups\/1_wtmeeecO_lg.jpg"
+      },
   },
   
   ...
@@ -63,12 +67,12 @@ For backwards compatibility, we also provide the following properties against th
   ...
   
   "images":{
-    "original_16":"https:\/\/cdn.churchapp.org\/demo\/smallgroups\/groups\/1_ZqHg09Wp_thumb.jpg",
-    "original_100":"https:\/\/cdn.churchapp.org\/demo\/smallgroups\/groups\/1_ZqHg09Wp_sm.jpg",
-    "original_500":"https:\/\/cdn.churchapp.org\/demo\/smallgroups\/groups\/1_ZqHg09Wp_md.jpg",
-    "original_1000":"https:\/\/cdn.churchapp.org\/demo\/smallgroups\/groups\/1_ZqHg09Wp_lg.jpg",
-    "square_16":"https:\/\/cdn.churchapp.org\/demo\/smallgroups\/groups\/1_ZqHg09Wp_thumb.jpg",
-    "square_100":"https:\/\/cdn.churchapp.org\/demo\/smallgroups\/groups\/1_ZqHg09Wp_thumb.jpg"
+    "original_16":"https:\/\/d2a59nxql6nsk9.cloudfront.net\/demo\/smallgroups\/groups\/1_wtmeeecO_thumb.jpg",
+    "original_100":"https:\/\/d2a59nxql6nsk9.cloudfront.net\/demo\/smallgroups\/groups\/1_wtmeeecO_sm.jpg",
+    "original_500":"https:\/\/d2a59nxql6nsk9.cloudfront.net\/demo\/smallgroups\/groups\/1_wtmeeecO_md.jpg",
+    "original_1000":"https:\/\/d2a59nxql6nsk9.cloudfront.net\/demo\/smallgroups\/groups\/1_wtmeeecO_lg.jpg",
+    "square_16":"https:\/\/d2a59nxql6nsk9.cloudfront.net\/demo\/smallgroups\/groups\/1_wtmeeecO_thumb.jpg",
+    "square_100":"https:\/\/d2a59nxql6nsk9.cloudfront.net\/demo\/smallgroups\/groups\/1_wtmeeecO_thumb.jpg"
   },
   
   ...
