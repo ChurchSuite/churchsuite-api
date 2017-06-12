@@ -1,6 +1,6 @@
 # Address Book
 
-[Home](https://github.com/ChurchApp/churchapp-api)
+[Home](https://github.com/ChurchSuite/churchsuite-api)
 
 The Address Book module is concerned with the management of contacts within ChurchSuite, the following endpoints are available:
 
