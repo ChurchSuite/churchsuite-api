@@ -2,7 +2,7 @@
 
 [Home](https://github.com/ChurchApp/churchapp-api)
 
-The Address Book module is concerned with the management of contacts within ChurchApp, the following endpoints are available:
+The Address Book module is concerned with the management of contacts within ChurchSuite, the following endpoints are available:
 
 ## List/search contacts
 
@@ -44,7 +44,7 @@ The Address Book module is concerned with the management of contacts within Chur
       "country":"",
       "telephone":"0115 824 2300",
       "mobile":"07707 777 777",
-      "email":"support@churchapp.co.uk",
+      "email":"support@churchsuite.com",
       "job":"Managing Director",
       "employer":"ChurchApp Ltd",
       "public_options":{
@@ -58,8 +58,8 @@ The Address Book module is concerned with the management of contacts within Chur
         }
       },
       "custom_fields":{
-        "custom1":"@churchapp_",
-        "custom2":"churchapp.co.uk"
+        "custom1":"@churchsuite",
+        "custom2":"churchsuite.com"
       },
       "images":[
         
