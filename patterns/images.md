@@ -1,5 +1,7 @@
 # Images over the ChurchSuite API
 
+[Home](https://github.com/ChurchSuite/churchsuite-api)
+
 A number of our API endpoints provide a means of accessing the images related to a resource, e.g. contact, child or small group images. A sample response when requesting the JSON response for a small group may contain the following:
 
 ```json
