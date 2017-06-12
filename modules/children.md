@@ -1,8 +1,8 @@
 # Children
 
-[Home](https://github.com/ChurchApp/churchapp-api)
+[Home](https://github.com/ChurchSuite/churchsuite-api)
 
-The Children module manages all children and youth within ChurchApp. The following endpoints are available:
+The Children module manages all children and youth within ChurchSuite. The following endpoints are available:
 
 ## List/search children
 
