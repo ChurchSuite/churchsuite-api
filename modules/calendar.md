@@ -2,7 +2,7 @@
 
 [Home](https://github.com/ChurchApp/churchapp-api)
 
-The Calendar module manages all events, HR and event sign up within ChurchApp. The following endpoints are available:
+The Calendar module manages all events, HR and event sign up within ChurchSuite. The following endpoints are available:
 
 ## List/search events
 
@@ -56,7 +56,7 @@ The Calendar module manages all events, HR and event sign up within ChurchApp. T
         },
         "tickets":{
           "enabled":"",
-          "url":"https:\/\/demo.churchapp.co.uk\/events\/nro8mvlt"
+          "url":"https:\/\/demo.churchsuite.co.uk\/events\/nro8mvlt"
         }
       }
     },
@@ -94,7 +94,7 @@ The Calendar module manages all events, HR and event sign up within ChurchApp. T
         },
         "tickets":{
           "enabled":"",
-          "url":"https:\/\/demo.churchapp.co.uk\/events\/hvmdux8k"
+          "url":"https:\/\/demo.churchsuite.co.uk\/events\/hvmdux8k"
         }
       }
     }
@@ -145,7 +145,7 @@ The Calendar module manages all events, HR and event sign up within ChurchApp. T
     },
     "tickets":{
       "enabled":"1",
-      "url":"https:\/\/demo.churchapp.co.uk\/events\/wdczidyt"
+      "url":"https:\/\/demo.churchsuite.co.uk\/events\/wdczidyt"
     }
   }
 }
