@@ -13,7 +13,7 @@ Requests to the OAuth Server require a Client Application be created, in order t
 
 *Should you wish to have both a development and production redirect_uri you will require two Client Applications.*
 
-The OAuth endpoint for ChurchSuite is found at `youraccount.churchsuite.com/oauth` and adheres to the OAuth2 Specification.
+The OAuth endpoint for ChurchSuite is found at `youraccount.churchsuite.co.co.uk/oauth` and adheres to the OAuth2 Specification.
 
 The authorisation endpoint is: `/oauth/authorize`
 
