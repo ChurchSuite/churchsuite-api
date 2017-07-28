@@ -136,11 +136,11 @@ The following URL parameters are accepted:
 
 * `latitude` The latitude for the Google Map to centre upon. Default: Either your account's meeting address latitude or a calculated centre point based on the location of all of the groups that are displayed.
 * `longitude` The longitude for the Google Map to centre upon. Default: Either your account's meeting address longitude or a calculated centre point based on the location of all of the groups that are displayed.
-* `zoom` The amount of zoom on the Google Map. Default: `12`.
-* `show_dow=(0|1)` Enable/disable the Days of Week filter dropdown. Default: `disabled`.
-* `show_tags=(0|1)` Enable/disable the Tags filter dropdown. Default: `disabled`.
-* `tag=1,2,3` A list of Tag IDs to filter the groups by. If not given or empty no tag filtering will be done.
+* `show_dow=(0|1)` Enable/disable the Days of Week filter dropdown. Default: `0`.
+* `show_tags=(0|1)` Enable/disable the Tags filter dropdown. Default: `0`.
 * `site=1` The Site ID to filter the groups by. If not given or 0 then no site filtering will be done.
+* `tag=1,2,3` A list of Tag IDs to filter the groups by. If not given or empty no tag filtering will be done.
+* `zoom` The amount of zoom on the Google Map. Default: `12`.
 
 Sometimes you may wish to change some of the styling so that it fits better with your website. The following URL parameters enable you to do this. You must specify them in the full hex format `#FFFFFF`.
 
@@ -159,8 +159,9 @@ Sometimes you may wish to change some of the styling so that it fits better with
 The following URL parameters are accepted:
 
 * `callback` If you are requesting the JSON feed from JS you will need to specify the callback function's name in order to get around the cross-domain restrictions on browsers. You do not need to provide this if you request the JSON from the server-side (i.e. in a PHP script). This is empty by default.
-* `tag=1,2,3` A list of Tag IDs to filter the groups by. If not given or empty no tag filtering will be done.
+* `show_tags=(0|1)` Enable/disable group tags being included in the JSON feed. Default: `0`.
 * `site=1` The Site ID to filter the groups by. If not given or 0 then no site filtering will be done.
+* `tag=1,2,3` A list of Tag IDs to filter the groups by. If not given or empty no tag filtering will be done.
 
 ```json
 [
@@ -202,7 +203,17 @@ The following URL parameters are accepted:
     ],
     "embed_signup_page_title":"Data Protection Disclaimer",
     "embed_signup_page_message":"King's Hope Church recognises the <strong>importance<\/strong> of the correct and lawful treatment of personal data. <br \/><br \/>All personal data, whether it is held on paper, on computer or other media, will be subject to the appropriate legal safeguards as specified in the Data Protection Act 1998.",
-    "embed_visible":"1"
+    "embed_visible":"1",
+    "tags":[
+      {
+         "id":"7",
+         "name":"Women"
+       },
+       {
+         "id":"8",
+         "name":"50's +"
+       }
+     ]
   }
 ]
 ```
