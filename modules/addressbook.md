@@ -198,7 +198,7 @@ This will return one of the following HTTP codes:
   "country":"GB",
   "sex":"m",
   "marital":"married",
-  "dates":[
+  "keydates":[
     {
       "name":"Married",
       "date":"14-10-2014"
