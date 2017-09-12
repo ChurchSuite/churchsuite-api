@@ -7,6 +7,7 @@ The Calendar module manages all events, HR and event sign up within ChurchSuite.
 ## List/search events
 
 * `GET /v1/calendar/events` will return future events
+* `GET /v1/calendar/events?q=Alpha` will return future events whose name contains "Alpha"
 * `GET /v1/calendar/events?date_start=2013-01-01&date_end=2013-01-31` will return events between 1st January 2013 and 31st January 2013
 * `GET /v1/calendar/events?group_by_sequence=true` will return future events but will only show the next event in each sequence for sequence events
 * `GET /v1/calendar/events?categories=1,2,5` will return events within categories 1, 2 or 5.
