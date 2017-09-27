@@ -6,7 +6,7 @@ Our Embed URL's allow you to place ready-made widgets into your website without 
 
 ## Calendar
 
-`https://{your_account_id}.churchsuite.com/embed/calendar`
+`https://{your_account_id}.churchsuite.co.uk/embed/calendar`
 
 The following URL parameters are accepted:
 
@@ -22,7 +22,7 @@ Sometimes you may wish to change some of the styling so that it fits better with
 
 ## Calendar Featured events list
 
-`https://{your_account_id}.churchsuite.com/embed/calendar/featured`
+`https://{your_account_id}.churchsuite.co.uk/embed/calendar/featured`
 
 The following URL parameters are accepted:
 
@@ -40,7 +40,7 @@ Sometimes you may wish to change some of the styling so that it fits better with
 
 ## Calendar JSON feed
 
-`https://{your_account_id}.churchsuite.com/embed/calendar/json`
+`https://{your_account_id}.churchsuite.co.uk/embed/calendar/json`
 
 The following URL parameters are accepted:
 
@@ -111,7 +111,7 @@ The following URL parameters are accepted:
 
 ## Small Groups List
 
-`https://{your_account_id}.churchsuite.com/embed/smallgroups/list`
+`https://{your_account_id}.churchsuite.co.uk/embed/smallgroups/list`
 
 The following URL parameters are accepted:
 
@@ -132,7 +132,7 @@ Sometimes you may wish to change some of the styling so that it fits better with
 
 ## Small Groups Map
 
-`https://{your_account_id}.churchsuite.com/embed/smallgroups/map`
+`https://{your_account_id}.churchsuite.co.uk/embed/smallgroups/map`
 
 The following URL parameters are accepted:
 
@@ -156,7 +156,7 @@ Sometimes you may wish to change some of the styling so that it fits better with
 
 ## Small Groups JSON feed
 
-`https://{your_account_id}.churchsuite.com/embed/smallgroups/json`
+`https://{your_account_id}.churchsuite.co.uk/embed/smallgroups/json`
 
 The following URL parameters are accepted:
 
@@ -223,7 +223,7 @@ The following URL parameters are accepted:
 
 ## Address Book form
 
-`https://{your_account_id}.churchsuite.com/embed/addressbook/form`
+`https://{your_account_id}.churchsuite.co.uk/embed/addressbook/form`
 
 The following URL parameters are accepted:
 
