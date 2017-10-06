@@ -7,12 +7,14 @@ The Address Book module is concerned with the management of contacts within Chur
 ## List/search contacts
 
 * `GET /v1/addressbook/contacts` will return contacts ordered alphabetically
-* `GET /v1/addressbook/contacts?name=gavin+courtney` will return contacts whose Name "gavin courtney"
+* `GET /v1/addressbook/contacts?name=gavin+courtney` will return contacts whose Name matches "gavin courtney"
 * `GET /v1/addressbook/contacts?q=gavin` will return contacts whose Name, Address, Job, Email, Telephone or Mobile contains "gavin"
 * `GET /v1/addressbook/contacts?page=2` will return the second page of contacts
 * `GET /v1/addressbook/contacts?page=2&per_page=5` will return the second page of contacts, with each page limited to 5 results
-* `GET /v1/addressbook/contacts?public_visible=0` will return contacts, even if their public_options have visibility set to disabled.
-* `GET /v1/addressbook/contacts?view=archived` will return archived contacts; by default only active contacts will be returned. The options for the view parameter are `view=active` or `view=archived`.
+* `GET /v1/addressbook/contacts?public_access=1` will return contacts filtered by "Allow My ChurchSuite access". Valid values are [0, 1].
+* `GET /v1/addressbook/contacts?public_invited=1` will return contacts filtered by whether they have been sent a My ChurchSuite invite or not. Valid values are [0, 1].
+* `GET /v1/addressbook/contacts?public_visible=0` will return contacts filtered by their Public Communication "Name is visible" setting. Valid values are [null, 0, 1]. By default, only contacts with `public_visible=1` will be returned.
+* `GET /v1/addressbook/contacts?view=archived` will return archived contacts; by default only active contacts will be returned. Valid values are ['active', 'archived'].
 
 ```json
 {
