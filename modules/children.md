@@ -20,20 +20,27 @@ The Children module manages all children and youth within ChurchSuite. The follo
   },
   "children":[
     {
-      "id":"67",
-      "contact_id":"141",
-      "name":"Alexander, Emma",
-      "first_name":"Emma",
+      "id":"727",
+      "name":"Alexander, Becca",
+      "first_name":"Becca",
       "last_name":"Alexander",
+      "medical_short":"",
+      "images": [
+      ],
+      "type_id":"child_727",
+      "site_id":"1",
+      "contact_id":null,
+      "middle_name":null,
+      "formal_name":null,
       "sex":"f",
-      "date_of_birth":"2014-01-08",
-      "mobile":false,
-      "email":"",
+      "date_of_birth":"2007-01-06",
+      "mobile":"09778 787 97969",
+      "email":"becca.alexander@gmail.com",
       "telephone":"0115 786 4001",
       "location":{
-        "address":"",
-        "latitude":null,
-        "longitude":null
+        "address":"73 Hyde Rise, Nottingham, NG1 1AD",
+        "latitude":"52.9570736",
+        "longitude":"-1.1527606"
       },
       "consent":{
         "internal":"0",
@@ -41,41 +48,98 @@ The Children module manages all children and youth within ChurchSuite. The follo
       },
       "school":"",
       "medical":"",
-      "medical_short":"",
       "special_needs":"",
       "doctor_details":"",
-      "images":[
-        
-      ]
+      "parent":{
+        "additional_emails":[
+          "david.alexander@yahoo.co.uk"
+        ],
+        "additional_mobiles":[
+          "07345 928 726"
+        ],
+        "primary":{
+          "contact_id":false,
+          "first_name":"Gemma",
+          "last_name":"& David Alexander",
+          "sex":"u",
+          "relationship":"Daughter",
+          "email":"gemma.alexander@gmail.com",
+          "mobile":"07775 354 829",
+          "telephone":"0115 786 4001",
+          "has_email_opt_out":false,
+          "has_sms_opt_out":false
+        }
+      },
+      "has_email_opt_out":false,
+      "has_sms_opt_out":false
     },
     {
-      "id":"59",
-      "contact_id":"112",
-      "name":"Baker, Amelia",
-      "first_name":"Amelia",
-      "last_name":"Baker",
+      "id":"765",
+      "name":"Alexander, Emma",
+      "first_name":"Emma",
+      "last_name":"Alexander",
+      "medical_short":"",
+      "images": [
+      ],
+      "type_id":"child_765",
+      "site_id":"1",
+      "contact_id":"141",
+      "middle_name":null,
+      "formal_name":null,
       "sex":"f",
-      "date_of_birth":"2003-08-07",
-      "mobile":"0886 775 2234",
-      "email":"",
-      "telephone":"",
+      "date_of_birth":"2016-05-15",
+      "mobile":false,
+      "email":"bunnyface@gmail.com",
+      "telephone":"0115 786 4002",
       "location":{
-        "address":"",
-        "latitude":null,
-        "longitude":null
+        "address":"The Orchards, New Brunswick Avenue, Sherwood, Nottingham, Nottinghamshire, NG3 7EG, United Kingdom",
+        "latitude":"52.9595798654589",
+        "longitude":"-1.10891811271479"
       },
       "consent":{
         "internal":"0",
         "external":"0"
       },
-      "school":"Camberwick Green Secondary School",
+      "school":"",
       "medical":"",
-      "medical_short":"",
       "special_needs":"",
       "doctor_details":"",
-      "images":[
-        
-      ]
+      "parent":{
+        "additional_emails":[
+          "test@test.com",
+          "test2@test.com"
+        ],
+        "additional_mobiles":[
+          "01234 578 945",
+          "09876 543 991"
+        ],
+        "primary":{
+          "contact_id":"141",
+          "first_name":"Gemma",
+          "last_name":"Alexander",
+          "sex":"f",
+          "relationship":"Daughter",
+          "email":"gemma.alexander@gmail.com",
+          "mobile":"07775 354 829",
+          "telephone":"0115 786 4002",
+          "has_email_opt_out":false,
+          "has_sms_opt_out":false
+        },
+        "secondary":{
+          "contact_id":"584",
+          "first_name":"Peter",
+          "last_name":"Alexander",
+          "sex":"u",
+          "relationship":"Daughter",
+          "email":"pete.alexander123@yahoo.com",
+          "mobile":"07973 374 632",
+          "telephone":"0115 786 4002",
+          "has_email_opt_out":false,
+          "has_sms_opt_out":true
+        }
+      },
+      "has_email_opt_out":false,
+      "has_sms_opt_out":false
     }
   ]
 }
@@ -96,9 +160,10 @@ The Children module manages all children and youth within ChurchSuite. The follo
   "first_name":"Micah",
   "last_name":"Wright",
   "medical_short":"",
-  "images":[
-    
+  "images": [
   ],
+  "type_id":"child_1",
+  "site_id":"1",
   "contact_id":"2",
   "middle_name":null,
   "formal_name":null,
@@ -109,8 +174,8 @@ The Children module manages all children and youth within ChurchSuite. The follo
   "telephone":"01062 438 661",
   "location":{
     "address":"24 Frederick Crescent, Wollaton, NG5 3DW",
-    "latitude":null,
-    "longitude":null
+    "latitude":"52.9847116296666",
+    "longitude":"-1.15280494914181"
   },
   "consent":{
     "internal":"0",
@@ -120,24 +185,52 @@ The Children module manages all children and youth within ChurchSuite. The follo
   "medical":"",
   "special_needs":"",
   "doctor_details":"Netherfield Medical Centre, 2a Forester Street, Netherfield, Nottingham, NG42NJ",
+  "parent":{
+    "additional_emails":[
+      
+    ],
+    "additional_mobiles":[
+      
+    ],
+    "primary":{
+      "contact_id":"2",
+      "first_name":"Paula",
+      "last_name":"Wright",
+      "sex":"f",
+      "relationship":"Son",
+      "email":"paula.wright@live.com",
+      "mobile":"07369 801 623",
+      "telephone":"01062 438 661",
+      "has_email_opt_out":false,
+      "has_sms_opt_out":false
+    }
+  },
+  "has_email_opt_out":false,
+  "has_sms_opt_out":false,
   "tags":[
     {
-      "id":"29",
-      "name":"Photo Permission",
-      "meta":null,
-      "type":"fixed"
+      "id":"587",
+      "name":"Has a linked parent",
+      "colour":"blue",
+      "type":"smart"
     },
     {
-      "id":"32",
-      "name":"Video Permission",
-      "meta":null,
+      "id":"246",
+      "name":"Nativity Play - Christmas 2016",
+      "colour":"blue",
       "type":"fixed"
     }
   ],
   "keydates":[
     {
-      "name":"Confirmation",
-      "date":"2015-02-22"
+      "name":"Joined ministry",
+      "date":"2016-02-05",
+      "description":"Media team"
+    },
+    {
+      "name":"Joined ministry",
+      "date":"2016-03-16",
+      "description":"Kids"
     }
   ]
 }
