@@ -292,6 +292,43 @@ This will return one of the following HTTP codes:
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` child does not exist
 
+## Get a child's groups
+
+* `GET /v1/children/child/1/groups` will return data for a specific child
+
+```json
+{
+  "groups":[
+    {
+      "id":"4",
+      "name":"Fusion",
+      "gathering_id":"1",
+      "checkin_badges_child":"0",
+      "checkin_badges_pickup":"0",
+      "checkin_badges_room":"0",
+      "checkin_capacity":"15",
+      "checkin_ratio":"0"
+    },
+    {
+      "id":"71",
+      "name":"Ignite",
+      "gathering_id":"10",
+      "checkin_badges_child":"1",
+      "checkin_badges_pickup":"1",
+      "checkin_badges_room":"0",
+      "checkin_capacity":"0",
+      "checkin_ratio":"0"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` child groups returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` child does not exist
+
 ## Create a new child
 
 * `POST /v1/children/child` will create a new child in the Address Book
