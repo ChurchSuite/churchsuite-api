@@ -126,7 +126,6 @@ The Address Book module is concerned with the management of contacts within Chur
     {
       "id":"7",
       "name":"Members",
-      "meta":null,
       "type":"fixed"
     }
   ],
@@ -380,21 +379,18 @@ This will return one of the following HTTP codes:
     {
       "tag_id":"20",
       "name":"Back to work",
-      "meta":null,
       "type":"fixed",
       "no_contacts":"1"
     },
     {
       "tag_id":"1",
       "name":"Church Administrator",
-      "meta":null,
       "type":"fixed",
       "no_contacts":"2"
     },
     {
       "tag_id":"2",
       "name":"Church Mailing List",
-      "meta":null,
       "type":"fixed",
       "no_contacts":"14"
     },
@@ -407,42 +403,36 @@ This will return one of the following HTTP codes:
     {
       "tag_id":"3",
       "name":"Friday men's prayer",
-      "meta":null,
       "type":"fixed",
       "no_contacts":"11"
     },
     {
       "tag_id":"4",
       "name":"Game Night",
-      "meta":null,
       "type":"fixed",
       "no_contacts":"6"
     },
     {
       "tag_id":"5",
       "name":"Gateway Leader",
-      "meta":null,
       "type":"fixed",
       "no_contacts":"2"
     },
     {
       "tag_id":"6",
       "name":"Leader",
-      "meta":"",
       "type":"fixed",
       "no_contacts":"14"
     },
     {
       "tag_id":"35",
       "name":"MailChimp",
-      "meta":"",
       "type":"fixed",
       "no_contacts":"27"
     },
     {
       "tag_id":"7",
       "name":"Members",
-      "meta":null,
       "type":"fixed",
       "no_contacts":"58"
     }
@@ -462,7 +452,6 @@ This will return one of the following HTTP codes:
 {
   "tag_id":"1",
   "name":"Church Administrator",
-  "meta":null,
   "type":"fixed",
   "no_contacts":"2"
 }
