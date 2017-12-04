@@ -40,8 +40,8 @@ Data returned by our API follows a number of consistent design patterns. The fol
 
 Since we are constantly improving ChurchSuite our API documentation is in flux, we therefore recommend that you watch this project if you plan on using our API. The following modules currently have documented API Endpoints:
 
+* [Account](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/account.md)
 * [Address Book](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/addressbook.md)
-* [Administrator](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/administrator.md)
 * [Calendar](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/calendar.md)
 * [Children](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/children.md)
 * [Small Groups](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/smallgroups.md)
