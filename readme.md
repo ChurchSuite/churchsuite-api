@@ -44,6 +44,6 @@ Since we are constantly improving ChurchSuite our API documentation is in flux, 
 * [Address Book](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/addressbook.md)
 * [Calendar](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/calendar.md)
 * [Children](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/children.md)
-* [Small Groups](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/smallgroups.md)
-* [My](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/my.md)
 * [Embed](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/embed.md)
+* [My](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/my.md)
+* [Small Groups](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/smallgroups.md)
