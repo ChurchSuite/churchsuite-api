@@ -6,7 +6,7 @@
 *
 *****/
 
-$url = 'https://api.churchapp.co.uk/v1/addressbook/contact/1';
+$url = 'https://api.churchsuite.co.uk/v1/addressbook/contact/1';
 
 $x_account = '';
 $x_application = '';
@@ -40,5 +40,5 @@ if (in_array($http_code, array(200, 201))) {
 } else {
 	// got an error response
 	echo '<h1>Error: '.$http_code.'</h1>';
-	echo '<p>ChurchApp reported the following error: '.$json['error']['message'].'</p>';
+	echo '<p>ChurchSuite reported the following error: '.$json['error']['message'].'</p>';
 }
