@@ -164,6 +164,7 @@ The following URL parameters are accepted:
 * `show_tags=(0|1)` Enable/disable group tags being included in the JSON feed. Default: `0`.
 * `site=1` The Site ID to filter the groups by. If not given or 0 then no site filtering will be done.
 * `tag=1,2,3` A list of Tag IDs to filter the groups by. If not given or empty no tag filtering will be done.
+* `view=(active|active_future|future)` Choose whether you want to see just active groups, future groups or a combination. Defaults to the module option set within the Embed tab in your ChurchSuite account.
 
 ```json
 [
