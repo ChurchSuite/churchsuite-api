@@ -650,3 +650,422 @@ This will return one of the following HTTP codes:
 * `200` tag groups returned
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` tag does not exist
+
+## List clusters
+
+* `GET /v1/smallgroups/clusters` will return clusters
+
+```json
+{
+  "pagination":{
+    "no_results":3,
+    "page":1,
+    "per_page":3
+  },
+  "clusters":[
+    {
+      "id":"6",
+      "name":"Greater Nottingham",
+      "no_groups":6
+    },
+    {
+      "id":"3",
+      "name":"Nottingham East",
+      "no_groups":4
+    },
+    {
+      "id":"4",
+      "name":"Nottingham South",
+      "no_groups":4
+    }
+  ]
+}
+```
+## Get a cluster
+
+* `GET /v1/smallgroups/cluster/1` will return data for a specific cluster with the ID of 1
+* `GET /v1/smallgroups/cluster/1?groups=true` will return data for a specific cluster, including all groups with the cluster
+
+```json
+{
+  "id":"6",
+  "name":"Greater Nottingham",
+  "no_groups":6,
+  "overseers":[
+    {
+      "id":"640",
+      "first_name":"Paul",
+      "last_name":"Nation",
+      "type_id":"contact_640",
+      "site_id":"1",
+      "title":"Mr",
+      "middle_name":null,
+      "formal_name":"",
+      "maiden_name":"",
+      "sex":"m",
+      "date_of_birth":"1977-06-03",
+      "marital":"married",
+      "spouse_id":"757",
+      "address":"17 High Street",
+      "address2":"Beeston",
+      "address3":"",
+      "city":"Nottingham",
+      "county":"",
+      "postcode":"NG1 1AB",
+      "country":"",
+      "latitude":null,
+      "longitude":null,
+      "telephone":"0115 824 2300",
+      "mobile":"07123 456 788",
+      "work_telephone":"",
+      "email":"paul@churchsuite.com",
+      "job":"Head of Customer Care",
+      "employer":"ChurchApp Ltd",
+      "public_options":{
+        "invited":true,
+        "access":true,
+        "visible":{
+          "enabled":true,
+          "address":false,
+          "email":true,
+          "mobile":true,
+          "telephone":false
+        }
+      },
+      "custom_fields":{
+        
+      },
+      "images":{
+        
+      },
+      "has_email_opt_out":false,
+      "has_sms_opt_out":false
+    }
+  ],
+  "groups":[
+    {
+      "id":"2",
+      "identifier":"rewzlrhk",
+      "reference":"2",
+      "name":"Beeston",
+      "date_start":"2009-05-20",
+      "date_end":"2017-12-19",
+      "custom_frequency":null,
+      "frequency":"fortnightly",
+      "day":"2",
+      "site":{
+        "id":"1",
+        "name":"Main Site",
+        "color":"blue"
+      },
+      "time":"10:45",
+      "location":{
+        "address":"NG1 1AD",
+        "address_name":"Bill & John's House",
+        "latitude":"52.9570736",
+        "longitude":"-1.1527606"
+      },
+      "description":"We're a group of passionate followers of Jesus trying to do life together and be family. We meet weekly on Wednesdays - we'd love for you to join us!\r\n\r\nFor more info visit www.kingshope.church",
+      "images":{
+        
+      },
+      "no_members":28,
+      "public_visible":"1",
+      "embed_signup":"0",
+      "signup_enabled":"1",
+      "signup_date_start":"2017-09-01",
+      "signup_date_end":"2017-11-30",
+      "signup_capacity":null,
+      "signup_confirm_email":"1",
+      "signup_confirm_email_from_name":"",
+      "signup_confirm_email_from_email":"",
+      "signup_confirm_email_subject":"Welcome to the Beeston Small Group",
+      "signup_confirm_email_body":"Dear&nbsp;::first_name::<br \/><br \/>Thanks for signing up to join the Beeston Small Group - we're looking forward to welcoming you. We'll drop you a line over the next couple of days to introduce ourselves. In the mean time, if you have any questions, do <a href=\"mailto:george.baker@gmail.com\" target=\"_blank\" rel=\"noopener\">get in touch<\/a>. Finally, we've attached a map and directions to help you find us.<br \/><a style=\"background: #F5F5F5; border: 1px solid #E5E5E5; color: #767676; display: inline-block; font-size: 90%; font-weight: bold; line-height: 16px; padding: 0px 10px 3px; text-decoration: none;\" href=\"https:\/\/www.filepicker.io\/api\/file\/hh7ixJ5WTL6RwmnBNnnT\">Beeston Group Map.png<\/a>&nbsp;<br \/><br \/>Every blessing<br \/><br \/>George &amp; Sally Baker<br \/>Beeston Group Leaders",
+      "signup_link_visible":false,
+      "signup_full":false,
+      "cluster":{
+        "id":"6",
+        "name":"Greater Nottingham",
+        "no_groups":6
+      },
+      "custom_fields":{
+       
+      },
+      "embed_signup_page_title":"",
+      "embed_signup_page_message":"",
+      "embed_visible":"0",
+      "connect_visible":"0"
+    },
+    {
+      "id":"8",
+      "identifier":"njjst8pf",
+      "reference":"6",
+      "name":"East Bridgford",
+      "date_start":"2016-02-01",
+      "date_end":null,
+      "custom_frequency":null,
+      "frequency":"weekly",
+      "day":"3",
+      "site":{
+        "id":"1",
+        "name":"Main Site",
+        "color":"blue"
+      },
+      "time":"19:45",
+      "location":{
+        "address":"NG2 5GS",
+        "address_name":"",
+        "latitude":"52.9327143896931",
+        "longitude":"-1.12400541402906"
+      },
+      "description":"As a group our focus is heavily on community and worship, as such we spend about 45 minutes at the start of the evening in community with the next 45 minutes dedicated to worship. We alternate the final half hour between praying for each other and bible teaching.",
+      "images":{
+        
+      },
+      "no_members":2,
+      "public_visible":"1",
+      "embed_signup":"1",
+      "signup_enabled":"1",
+      "signup_date_start":"2015-12-01",
+      "signup_date_end":null,
+      "signup_capacity":"18",
+      "signup_confirm_email":"0",
+      "signup_confirm_email_from_name":"",
+      "signup_confirm_email_from_email":"",
+      "signup_confirm_email_subject":"",
+      "signup_confirm_email_body":"",
+      "signup_link_visible":true,
+      "signup_full":false,
+      "cluster":{
+        "id":"6",
+        "name":"Greater Nottingham",
+        "no_groups":6
+      },
+      "custom_fields":{
+       
+      },
+      "embed_signup_page_title":"",
+      "embed_signup_page_message":"",
+      "embed_visible":"1",
+      "connect_visible":"1"
+    },
+    {
+      "id":"4",
+      "identifier":"tib8jfea",
+      "reference":"4",
+      "name":"Gamston",
+      "date_start":"2007-11-14",
+      "date_end":null,
+      "custom_frequency":null,
+      "frequency":"monthly",
+      "day":"3",
+      "site":{
+        "id":"1",
+        "name":"Main Site",
+        "color":"blue"
+      },
+      "time":"19:45",
+      "location":{
+        "address":"NG2 6PQ",
+        "address_name":"The Clark's Home",
+        "latitude":"52.9272924680396",
+        "longitude":"-1.1009679488416"
+      },
+      "description":"We are a really mixed group of people but our heart to love God is something we definitely have in common. We really enjoy spending time with each other and with God encouraging and supporting one another through the ups and downs of life.",
+      "images":{
+       
+      },
+      "no_members":17,
+      "public_visible":"1",
+      "embed_signup":"0",
+      "signup_enabled":"1",
+      "signup_date_start":"2014-09-08",
+      "signup_date_end":null,
+      "signup_capacity":"100",
+      "signup_confirm_email":"0",
+      "signup_confirm_email_from_name":"",
+      "signup_confirm_email_from_email":"",
+      "signup_confirm_email_subject":"",
+      "signup_confirm_email_body":"",
+      "signup_link_visible":true,
+      "signup_full":false,
+      "cluster":{
+        "id":"6",
+        "name":"Greater Nottingham",
+        "no_groups":6
+      },
+      "custom_fields":{
+       
+      },
+      "embed_signup_page_title":"",
+      "embed_signup_page_message":"",
+      "embed_visible":"0",
+      "connect_visible":"0"
+    },
+    {
+      "id":"29",
+      "identifier":"1okxifgt",
+      "reference":"7",
+      "name":"Gamston 2",
+      "date_start":"2016-02-01",
+      "date_end":null,
+      "custom_frequency":null,
+      "frequency":"weekly",
+      "day":"3",
+      "site":{
+        "id":"1",
+        "name":"Main Site",
+        "color":"blue"
+      },
+      "time":"19:45",
+      "location":{
+        "address":"NG2 5GS",
+        "address_name":"",
+        "latitude":"52.9327143896931",
+        "longitude":"-1.12400541402906"
+      },
+      "description":"We're excited to chase after all God has for us - we believe He has an incredible plan for each and every one of our lives, and we're determined to see that worked out! Our lifegroup is a place for everyone to feel welcome and valued.",
+      "images":{
+        
+      },
+      "no_members":12,
+      "public_visible":"1",
+      "embed_signup":"1",
+      "signup_enabled":"1",
+      "signup_date_start":"2015-01-01",
+      "signup_date_end":null,
+      "signup_capacity":"15",
+      "signup_confirm_email":"0",
+      "signup_confirm_email_from_name":"",
+      "signup_confirm_email_from_email":"",
+      "signup_confirm_email_subject":"",
+      "signup_confirm_email_body":"",
+      "signup_link_visible":true,
+      "signup_full":false,
+      "cluster":{
+        "id":"6",
+        "name":"Greater Nottingham",
+        "no_groups":6
+      },
+      "custom_fields":{
+        
+      },
+      "embed_signup_page_title":"",
+      "embed_signup_page_message":"",
+      "embed_visible":"1",
+      "connect_visible":"1"
+    },
+    {
+      "id":"56",
+      "identifier":"q7mpc1zn",
+      "reference":"",
+      "name":"John's House Group",
+      "date_start":"2017-05-31",
+      "date_end":null,
+      "custom_frequency":null,
+      "frequency":"weekly",
+      "day":"1",
+      "site":{
+        "id":"1",
+        "name":"Main Site",
+        "color":"blue"
+      },
+      "time":"21:30",
+      "location":[
+        
+      ],
+      "description":"",
+      "images":{
+       
+      },
+      "no_members":2,
+      "public_visible":"1",
+      "embed_signup":"0",
+      "signup_enabled":"0",
+      "signup_date_start":"2017-02-03",
+      "signup_date_end":"2017-05-25",
+      "signup_capacity":"20",
+      "signup_confirm_email":"0",
+      "signup_confirm_email_from_name":"",
+      "signup_confirm_email_from_email":"",
+      "signup_confirm_email_subject":"",
+      "signup_confirm_email_body":"",
+      "signup_link_visible":false,
+      "signup_full":false,
+      "cluster":{
+        "id":"6",
+        "name":"Greater Nottingham",
+        "no_groups":6
+      },
+      "custom_fields":{
+       
+      },
+      "embed_signup_page_title":"",
+      "embed_signup_page_message":"",
+      "embed_visible":"1",
+      "connect_visible":"1"
+    },
+    {
+      "id":"61",
+      "identifier":"j1aqyto7",
+      "reference":"",
+      "name":"Steve's Group",
+      "date_start":"2018-01-01",
+      "date_end":null,
+      "custom_frequency":null,
+      "frequency":"weekly",
+      "day":null,
+      "site":{
+        "id":"1",
+        "name":"Main Site",
+        "color":"blue"
+      },
+      "time":"20:00",
+      "location":{
+        "address":"NG8 7HS",
+        "address_name":"Steve's House",
+        "latitude":"52.9645261",
+        "longitude":"-1.2131487"
+      },
+      "description":"",
+      "images":[
+        
+      ],
+      "no_members":1,
+      "public_visible":"1",
+      "embed_signup":"1",
+      "signup_enabled":"1",
+      "signup_date_start":"2017-12-01",
+      "signup_date_end":"2018-01-31",
+      "signup_capacity":null,
+      "signup_confirm_email":"0",
+      "signup_confirm_email_from_name":"",
+      "signup_confirm_email_from_email":"",
+      "signup_confirm_email_subject":"",
+      "signup_confirm_email_body":"",
+      "signup_link_visible":true,
+      "signup_full":false,
+      "cluster":{
+        "id":"6",
+        "name":"Greater Nottingham",
+        "no_groups":6
+      },
+      "custom_fields":{
+        
+      },
+      "embed_signup_page_title":"",
+      "embed_signup_page_message":"",
+      "embed_visible":"1",
+      "connect_visible":"0"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` cluster data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` cluster does not exist
+
+
