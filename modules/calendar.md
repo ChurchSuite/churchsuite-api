@@ -106,7 +106,8 @@ The Calendar module manages all events, HR and event sign up within ChurchSuite.
 
 ## Get event
 
-* `GET /v1/calendar/event/:id` will return data for a specific event
+* `GET /v1/calendar/event/:id` will return data for a specific event with the given numeric ID
+* `GET /v1/calendar/event/:identifier` will return data for a specific event with the given string identifier
 
 ```json
 {
