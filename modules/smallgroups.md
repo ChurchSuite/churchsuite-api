@@ -297,7 +297,7 @@ This will return one of the following HTTP codes:
 
 ## Add or replace members associated to a group
 
-* `POST /v1/smallgroups/group/1/members` will add new members to a group
+* `POST /v1/smallgroups/group/1/members` will add new members to a group. Setting "send_confirmation" to true will send out confirmation emails to all new members.
 
 ```json
 {
@@ -311,7 +311,7 @@ This will return one of the following HTTP codes:
       2
     ]
   },
-  "send_confirmation": true, // setting this to true will send out confirmation emails to all new members
+  "send_confirmation": false,
 }
 ```
 
