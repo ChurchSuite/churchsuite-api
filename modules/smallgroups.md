@@ -310,7 +310,8 @@ This will return one of the following HTTP codes:
     "children":[
       2
     ]
-  }
+  },
+  "send_confirmation": true, // setting this to true will send out confirmation emails to all new members
 }
 ```
 
