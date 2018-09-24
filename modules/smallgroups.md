@@ -11,6 +11,8 @@ The Small Groups module is concerned with the management of groups of contacts, 
 * `GET /v1/smallgroups/groups`  will return all groups
 * `GET /v1/smallgroups/groups?embed_visible=true`  will return all groups visible to Embed, without pagination.
 * `GET /v1/smallgroups/groups?public_visible=true`  will return all groups visible to My ChurchSuite.
+* `GET /v1/smallgroups/groups?site_id=1` will return the groups in the site with ID 1
+* `GET /v1/smallgroups/groups?site_ids[]=1&site_ids[]=2` will return the groups in the sites with IDs 1 and 2
 * `GET /v1/smallgroups/groups?tags=true`  will return all groups, including tags associated to each group.
 * `GET /v1/smallgroups/groups?view=active`  will return all groups in a view. The view parameter accepts the following values; archived, active, active_future, future. Not using this parameter will return groups from the active view.
 * `GET /v1/smallgroups/groups?page=2` will return the second page of groups
