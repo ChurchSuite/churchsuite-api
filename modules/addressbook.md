@@ -276,14 +276,7 @@ This `POST` method will return output in the following format:
   "custom_fields":{
     "custom1":"@janebloggs"
   },
-  "tags":[
-    {
-      "name":"Newcomers"
-    },
-    {
-      "name":"Not in a group"
-    }
-  ]
+  "tags":["Newcomers","Not in a group"]
 }
 ```
 
