@@ -60,8 +60,7 @@ The Address Book module is concerned with the management of contacts within Chur
         }
       },
       "custom_fields":{
-        "custom1":"@churchsuite",
-        "custom2":"churchsuite.com"
+      
       },
       "images":[
         
@@ -116,8 +115,7 @@ The Address Book module is concerned with the management of contacts within Chur
     }
   },
   "custom_fields":{
-    "custom1":"",
-    "custom2":""
+  
   },
   "images":[
     
@@ -125,7 +123,9 @@ The Address Book module is concerned with the management of contacts within Chur
   "tags":[
     {
       "id":"7",
+      "tag_id":"7",
       "name":"Members",
+      "description":"",
       "type":"fixed"
     }
   ],
@@ -152,8 +152,11 @@ This will return one of the following HTTP codes:
 {
   "tags":[
     {
-      "id":null,
-      "name":"Members"
+      "id":"7",
+      "tag_id":"7",
+      "name":"Members",
+      "description":"",
+      "type":"fixed"
     }
   ]
 }
@@ -252,8 +255,7 @@ This `POST` method will return output in the following format:
     }
   },
   "custom_fields":{
-    "custom1":null,
-    "custom2":null
+  
   },
   "images":[
     
@@ -326,11 +328,7 @@ This `PUT` method will return output in the following format:
     }
   },
   "custom_fields":{
-    "custom1":"@janebloggs",
-    "custom3":null,
-    "custom4":null,
-    "custom5":null,
-    "custom6":null
+  
   },
   "images":[
     
@@ -364,71 +362,51 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":10,
+    "no_results":5,
     "page":1,
     "per_page":10
   },
   "tags":[
-    {
-      "tag_id":"20",
-      "name":"Back to work",
-      "type":"fixed",
-      "no_contacts":"1"
-    },
-    {
-      "tag_id":"1",
-      "name":"Church Administrator",
-      "type":"fixed",
-      "no_contacts":"2"
-    },
-    {
-      "tag_id":"2",
-      "name":"Church Mailing List",
-      "type":"fixed",
-      "no_contacts":"14"
-    },
-    {
-      "tag_id":"38",
-      "name":"Coffee Rota",
-      "type":"smart",
-      "no_contacts":null
-    },
-    {
-      "tag_id":"3",
-      "name":"Friday men's prayer",
-      "type":"fixed",
-      "no_contacts":"11"
-    },
-    {
-      "tag_id":"4",
-      "name":"Game Night",
-      "type":"fixed",
-      "no_contacts":"6"
-    },
-    {
-      "tag_id":"5",
-      "name":"Gateway Leader",
-      "type":"fixed",
-      "no_contacts":"2"
-    },
-    {
-      "tag_id":"6",
-      "name":"Leader",
-      "type":"fixed",
-      "no_contacts":"14"
-    },
-    {
-      "tag_id":"35",
-      "name":"MailChimp",
-      "type":"fixed",
-      "no_contacts":"27"
-    },
-    {
-      "tag_id":"7",
-      "name":"Members",
-      "type":"fixed",
-      "no_contacts":"58"
-    }
+        {
+            "id": "1",
+            "tag_id": "1",
+            "name": "Christianity Explored Potential Invitees",
+            "description": null,
+            "colour": "blue",
+            "type": "fixed"
+        },
+        {
+            "id": "2",
+            "tag_id": "2",
+            "name": "DBS In a Ministry requiring DBS Check",
+            "description": "",
+            "colour": "orange",
+            "type": "smart"
+        },
+        {
+            "id": "3",
+            "tag_id": "3",
+            "name": "e-Newsletter",
+            "description": "Address Book contacts who have consented to receiving the weekly church e-newsletter.",
+            "colour": "purple",
+            "type": "fixed"
+        },
+        {
+            "id": "4",
+            "tag_id": "4",
+            "name": "Member",
+            "description": null,
+            "colour": "blue",
+            "type": "fixed"
+        },
+        {
+            "id": "5",
+            "tag_id": "5",
+            "name": "My ChurchSuite Search for Others Opted-In",
+            "description": "",
+            "colour": "blue",
+            "type": "smart"
+        }
   ]
 }
 ```
@@ -443,9 +421,13 @@ This will return one of the following HTTP codes:
 
 ```json
 {
+  "id":"1",
   "tag_id":"1",
   "name":"Church Administrator",
+  "description": "",
+  "colour": "blue",
   "type":"fixed",
+  "tag_no_contacts":"2",
   "no_contacts":"2"
 }
 ```
@@ -505,8 +487,7 @@ This will return one of the following HTTP codes:
         }
       },
       "custom_fields":{
-        "custom1":"",
-        "custom2":""
+      
       },
       "images":[
         
@@ -549,8 +530,7 @@ This will return one of the following HTTP codes:
         }
       },
       "custom_fields":{
-        "custom1":"",
-        "custom2":""
+      
       },
       "images":[
         
@@ -693,8 +673,7 @@ This will return one of the following HTTP codes:
         }
       },
       "custom_fields":{
-        "custom1":"oscarbaker151",
-        "custom2":""
+      
       },
       "images":[
         
