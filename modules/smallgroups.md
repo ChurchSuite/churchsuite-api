@@ -59,7 +59,7 @@ The Small Groups module is concerned with the management of groups of contacts, 
         "name":"Greater Nottingham"
       },
       "custom_fields":{
-        "custom1":"All ages"
+      
       },
       "embed_visible":"1",
       "tags":[
@@ -102,7 +102,7 @@ The Small Groups module is concerned with the management of groups of contacts, 
         "name":"Greater Nottingham"
       },
       "custom_fields":{
-        "custom1":""
+      
       },
       "embed_visible":"0",
       "tags":[
@@ -186,7 +186,7 @@ The Small Groups module is concerned with the management of groups of contacts, 
     "name":"Nottingham East"
   },
   "custom_fields":{
-    "custom1":null
+  
   },
   "embed_visible":"1",
   "tags":[
@@ -246,8 +246,7 @@ This will return one of the following HTTP codes:
           "longitude":"-1.15226554048982"
         },
         "custom_fields":{
-          "custom1":null,
-          "custom2":null
+        
         },
         "images":[
           
@@ -379,8 +378,7 @@ This `POST` method will return output in the following format:
             "longitude":"-1.15226554048982"
           },
           "custom_fields":{
-            "custom1":null,
-            "custom2":null
+          
           },
           "images":[
             
@@ -581,7 +579,7 @@ This `POST` method will return output in the following format:
         "name":"Greater Nottingham"
       },
       "custom_fields":{
-        "custom1":""
+      
       },
       "embed_visible":"0"
     }
@@ -640,7 +638,7 @@ This will return one of the following HTTP codes:
         "name":"Greater Nottingham"
       },
       "custom_fields":{
-        "custom1":""
+      
       },
       "embed_visible":"0"
     }
