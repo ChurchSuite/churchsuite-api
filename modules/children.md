@@ -209,16 +209,34 @@ The Children module manages all children and youth within ChurchSuite. The follo
   "has_sms_opt_out":false,
   "tags":[
     {
-      "id":"587",
-      "name":"Has a linked parent",
-      "colour":"blue",
-      "type":"smart"
+      "id": "1",
+      "tag_id": "1",
+      "name": "No photo-video consent",
+      "description": "",
+      "colour": "blue",
+      "type": "smart",
+      "no_children": 127,
+      "tag_no_children": 127
     },
     {
-      "id":"246",
-      "name":"Nativity Play - Christmas 2016",
-      "colour":"blue",
-      "type":"fixed"
+      "id": "2",
+      "tag_id": "2",
+      "name": "Parents with emails",
+      "description": "",
+      "colour": "blue",
+      "type": "smart",
+      "no_children": 126,
+      "tag_no_children": 126
+    },
+    {
+      "id": "3",
+      "tag_id": "3",
+      "name": "Nativity Play - Christmas 2018",
+      "description": "",
+      "colour": "blue",
+      "type": "fixed",
+      "no_children": 22,
+      "tag_no_children": 22
     }
   ],
   "keydates":[
@@ -250,16 +268,34 @@ This will return one of the following HTTP codes:
 {
   "tags":[
     {
-      "id":"29",
-      "name":"Photo Permission",
-      "meta":null,
-      "type":"fixed"
+      "id": "1",
+      "tag_id": "1",
+      "name": "No photo-video consent",
+      "description": "",
+      "colour": "blue",
+      "type": "smart",
+      "no_children": 127,
+      "tag_no_children": 127
     },
     {
-      "id":"32",
-      "name":"Video Permission",
-      "meta":null,
-      "type":"fixed"
+      "id": "2",
+      "tag_id": "2",
+      "name": "Parents with emails",
+      "description": "",
+      "colour": "blue",
+      "type": "smart",
+      "no_children": 126,
+      "tag_no_children": 126
+    },
+    {
+      "id": "3",
+      "tag_id": "3",
+      "name": "Nativity Play - Christmas 2018",
+      "description": "",
+      "colour": "blue",
+      "type": "fixed",
+      "no_children": 22,
+      "tag_no_children": 22
     }
   ]
 }
@@ -787,76 +823,86 @@ This will return one of the following HTTP codes:
     "per_page":14
   },
   "tags":[
-    {
-      "tag_id":"23",
-      "name":"Beach Trip",
-      "meta":null,
-      "type":"fixed",
-      "no_children":"10"
-    },
-    {
-      "tag_id":"24",
-      "name":"Christmas Show 2010",
-      "meta":null,
-      "type":"fixed",
-      "no_children":"10"
-    },
-    {
-      "tag_id":"39",
-      "name":"Coffee Rota",
-      "meta":"{\"match_conditions\":\"any\",\"conditions\":[{\"module\":\"rotas\",\"option\":\"In ministry\",\"value_select\":\"9\",\"value_range_min\":\"\",\"value_range_max\":\"\"}]}",
-      "type":"smart",
-      "no_children":null
-    },
-    {
-      "tag_id":"25",
-      "name":"Dance Team",
-      "meta":null,
-      "type":"fixed",
-      "no_children":"6"
-    },
-    {
-      "tag_id":"26",
-      "name":"Easter Program '12",
-      "meta":null,
-      "type":"fixed",
-      "no_children":"20"
-    },
-    {
-      "tag_id":"37",
-      "name":"Happy",
-      "meta":null,
-      "type":"fixed",
-      "no_children":"1"
-    },
-    {
-      "tag_id":"27",
-      "name":"Kids Film 2013",
-      "meta":null,
-      "type":"fixed",
-      "no_children":"5"
-    },
-    {
-      "tag_id":"28",
-      "name":"Members",
-      "meta":null,
-      "type":"fixed",
-      "no_children":"1"
-    },
-    {
-      "tag_id":"29",
-      "name":"Photo Permission",
-      "meta":null,
-      "type":"fixed",
-      "no_children":"51"
-    },
-    {
-      "tag_id":"30",
-      "name":"Summer Camp 2012",
-      "meta":null,
-      "type":"fixed",
-      "no_children":"9"
-    }
+  {
+      "id": "1439",
+      "tag_id": "1439",
+      "name": "Age Under 1",
+      "description": "",
+      "colour": "blue",
+      "type": "smart",
+      "no_children": 2,
+      "tag_no_children": 2
+  },
+  {
+      "id": "1438",
+      "tag_id": "1438",
+      "name": "All Children",
+      "description": "",
+      "colour": "blue",
+      "type": "smart",
+      "no_children": 161,
+      "tag_no_children": 161
+  },
+  {
+      "id": "1442",
+      "tag_id": "1442",
+      "name": "Children 11-18",
+      "description": "",
+      "colour": "blue",
+      "type": "smart",
+      "no_children": 59,
+      "tag_no_children": 59
+  },
+  {
+      "id": "1417",
+      "tag_id": "1417",
+      "name": "Consent Outstanding",
+      "description": null,
+      "colour": "blue",
+      "type": "fixed",
+      "no_children": 1,
+      "tag_no_children": 1
+  },
+  {
+      "id": "896",
+      "tag_id": "896",
+      "name": "Consent: Granted",
+      "description": "",
+      "colour": "green",
+      "type": "smart",
+      "no_children": 11,
+      "tag_no_children": 11
+  },
+  {
+      "id": "897",
+      "tag_id": "897",
+      "name": "Consent: Outstanding",
+      "description": "",
+      "colour": "red",
+      "type": "smart",
+      "no_children": 150,
+      "tag_no_children": 150
+  },
+  {
+      "id": "26",
+      "tag_id": "26",
+      "name": "Easter Holiday Club 2019",
+      "description": "",
+      "colour": "grey",
+      "type": "fixed",
+      "no_children": 12,
+      "tag_no_children": 12
+  },
+  {
+      "id": "1283",
+      "tag_id": "1283",
+      "name": "Family Fun Day Invites",
+      "description": "",
+      "colour": "blue",
+      "type": "fixed",
+      "no_children": 14,
+      "tag_no_children": 14
+  }
   ]
 }
 ```
@@ -872,11 +918,14 @@ Tag names *must be urlencoded*, particularly if they include a space character i
 
 ```json
 {
-  "tag_id":"25",
-  "name":"Dance Team",
-  "meta":null,
-  "type":"fixed",
-  "no_children":"6"
+  "id": "1283",
+  "tag_id": "1283",
+  "name": "Family Fun Day Invites",
+  "description": "",
+  "colour": "blue",
+  "type": "fixed",
+  "no_children": 14,
+  "tag_no_children": 14
 }
 ```
 
