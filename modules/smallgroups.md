@@ -64,8 +64,10 @@ The Small Groups module is concerned with the management of groups of contacts, 
       "embed_visible":"1",
       "tags":[
         {
-          "tag_id":"1",
-          "name":"Beeston groups"
+          "id": "1",
+          "tag_id": "1",
+          "name": "Beeston Groups",
+          "colour": "blue"
         }
       ]
     },
@@ -107,8 +109,10 @@ The Small Groups module is concerned with the management of groups of contacts, 
       "embed_visible":"0",
       "tags":[
         {
-          "tag_id":"1",
-          "name":"Beeston groups"
+          "id": "1",
+          "tag_id": "1",
+          "name": "Beeston Groups",
+          "colour": "blue"
         }
       ]
     }
@@ -191,8 +195,10 @@ The Small Groups module is concerned with the management of groups of contacts, 
   "embed_visible":"1",
   "tags":[
     {
-      "tag_id":"2",
-      "name":"West Bridgford groups"
+      "id": "2",
+      "tag_id": "2",
+      "name": "West Bridgford Groups",
+      "colour": "blue"
     }
   ]
 }
@@ -507,29 +513,39 @@ This `POST` method will return output in the following format:
   },
   "tags":[
     {
-      "tag_id":"1",
-      "name":"Beeston groups",
-      "no_groups":"1"
+        "id": "1",
+        "tag_id": "1",
+        "name": "Beeston Groups",
+        "colour": "blue",
+        "num_groups": "1"
     },
     {
-      "tag_id":"4",
-      "name":"Carlton groups",
-      "no_groups":"1"
+        "id": "4",
+        "tag_id": "4",
+        "name": "Carlton groups",
+        "colour": "blue",
+        "num_groups": "1"
     },
     {
-      "tag_id":"5",
-      "name":"Gamston groups",
-      "no_groups":"1"
+        "id": "5",
+        "tag_id": "5",
+        "name": "Gamston groups",
+        "colour": "blue",
+        "num_groups": "1"
     },
     {
-      "tag_id":"6",
-      "name":"Meadows groups",
-      "no_groups":"1"
+        "id": "3",
+        "tag_id": "3",
+        "name": "Meadows groups",
+        "colour": "blue",
+        "num_groups": "0"
     },
     {
-      "tag_id":"2",
-      "name":"West Bridgford groups",
-      "no_groups":"1"
+        "id": "2",
+        "tag_id": "2",
+        "name": "West Bridgford groups",
+        "colour": "blue",
+        "num_groups": "2"
     }
   ]
 }
