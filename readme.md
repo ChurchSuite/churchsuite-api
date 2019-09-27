@@ -34,6 +34,7 @@ The API is structured in the same way as the main ChurchSuite Application, with 
 
 Data returned by our API follows a number of consistent design patterns. The following are designed to give you an understanding of the current design patterns:
 
+* [Custom Fields](https://github.com/ChurchSuite/churchsuite-api/blob/master/patterns/custom_fields.md)
 * [Images](https://github.com/ChurchSuite/churchsuite-api/blob/master/patterns/images.md)
 
 ## Modules
