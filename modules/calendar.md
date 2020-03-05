@@ -262,10 +262,13 @@ This will return one of the following HTTP codes:
 }
 ```
 
-Question Reponses can be added to the above by adding a question id => response JSON object
+Question Reponses can be added to the above by adding a {question_id => response} JSON object
 ```json
 "question_responses": {
-  "130": "Question response"
+  "130": "Text/Paragraph Response", // Text/Paragraph questions take a string response
+  "131": "Select/Radios Response", // Select/Radio questions take a string response
+  "132": ["Checkboxes", "Array", "Of", "Data"], // Checkboxes question takes an array of string values
+  "133": "2020-01-01" // Date question takes a string value
 }
 ```
 
