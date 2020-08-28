@@ -254,9 +254,7 @@ This will return one of the following HTTP codes:
       "mobile":"",
       "email":"mark.davies@gmail.com",
       "notes":"Ref: 87d1sZ2U\n=====\nDietary requirements: Vegetarian\n-----\nHeard about event: From a friend",
-      "ticket":{
-        "id":1,
-      }
+      "ticket_id": 1
     }
   ]
 }
