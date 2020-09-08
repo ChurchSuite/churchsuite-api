@@ -122,6 +122,9 @@ The Calendar module manages all events, HR and event sign up within ChurchSuite.
     "color":"#207dab"
   },
   "description":"Bring your friends to this entertaining night which acts as a taster for the Alpha course. There will be inspiring faith stories mixed in with an evening of canap\u00e9s, cocktails and comedy. Tickets \u00a35 on sale at Sunday services, or you can reserve tickets on the church website. Starts at 8pm. For more information contact John Bodily.",
+	"status": "confirmed",
+	"mtime": "2014-06-02 11:20:43",
+	"ctime": "2014-05-28 14:52:13",
   "location":{
     "address":"NG7 2PX",
     "name":"The Warehouse",
