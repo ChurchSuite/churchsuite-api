@@ -173,7 +173,7 @@ This will return one of the following HTTP codes:
 
 ## Get a contact's key dates
 
-* `GET /v1/addressbook/contact/1/keydates` will return data for a specific contact, where "resource_keydate_id" is the contact_id in this context
+* `GET /v1/addressbook/contact/1/keydates` will return data for a specific contact, where "resource_keydate_id" is a unique link id linking the key date and contact
 
 ```json
 {
@@ -183,14 +183,14 @@ This will return one of the following HTTP codes:
       "name":"Attended First Aid Training",
       "date":"2020-08-16",
       "description":"Focus on first aid for children",
-      "resource_keydate_id":"1"
+      "resource_keydate_id":"12"
     },
     {
       "id":"2",
       "name":"Baptism",
       "date":"2002-05-07",
       "description":"",
-      "resource_keydate_id":"1"
+      "resource_keydate_id":"7"
     }
   ]
 }
@@ -698,7 +698,7 @@ This will return one of the following HTTP codes:
           "name":"Dedicated",
           "date":"2014-04-06",
           "description":"",
-          "resource_keydate_id":"142"
+          "resource_keydate_id":"172"
         }
       ]
     }
