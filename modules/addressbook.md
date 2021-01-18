@@ -131,8 +131,11 @@ The Address Book module is concerned with the management of contacts within Chur
   ],
   "keydates":[
     {
+      "id":"2",
       "name":"Baptism",
-      "date":"2002-05-07"
+      "date":"2002-05-07",
+      "description":"",
+      "resource_keydate_id":"1"
     }
   ]
 }
@@ -170,14 +173,24 @@ This will return one of the following HTTP codes:
 
 ## Get a contact's key dates
 
-* `GET /v1/addressbook/contact/1/keydates` will return data for a specific contact
+* `GET /v1/addressbook/contact/1/keydates` will return data for a specific contact, where "resource_keydate_id" is the contact_id in this context
 
 ```json
 {
   "keydates":[
     {
+      "id":"1",
+      "name":"Attended First Aid Training",
+      "date":"2020-08-16",
+      "description":"Focus on first aid for children",
+      "resource_keydate_id":"1"
+    },
+    {
+      "id":"2",
       "name":"Baptism",
-      "date":"2002-05-07"
+      "date":"2002-05-07",
+      "description":"",
+      "resource_keydate_id":"1"
     }
   ]
 }
@@ -205,7 +218,8 @@ This will return one of the following HTTP codes:
   "keydates":[
     {
       "name":"Married",
-      "date":"14-10-2014"
+      "date":"14-10-2014",
+      "description":"To Rachel (Smith) Bloggs"
     }
   ]
 }
@@ -680,8 +694,11 @@ This will return one of the following HTTP codes:
       ],
       "keydates":[
         {
+          "id":"23",
           "name":"Dedicated",
-          "date":"2014-04-06"
+          "date":"2014-04-06",
+          "description":"",
+          "resource_keydate_id":"142"
         }
       ]
     }
