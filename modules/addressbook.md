@@ -218,7 +218,7 @@ This will return one of the following HTTP codes:
   "keydates":[
     {
       "name":"Married",
-      "date":"14-10-2014",
+      "date":"2014-10-14",
       "description":"To Rachel (Smith) Bloggs"
     }
   ]
