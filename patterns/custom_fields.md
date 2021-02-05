@@ -609,7 +609,7 @@ You can send this data in a similar same way as for `radio` and `select`.
 In order to add/edit a model with custom field data you can include it in the body of your request in the following ways:
 
 Example 1, the now deprecated format:
-`
+```
     'first_name': 'Dorothy',
     ...
     'custom_fields': {
@@ -618,10 +618,10 @@ Example 1, the now deprecated format:
         'custom3': ['Apple', 'Lemon'],
     },
     ...
-`
+```
 
 Example 2, the new format:
-`
+```
     'first_name': 'Dorothy',
     ...
     'custom_fields': {
@@ -630,4 +630,4 @@ Example 2, the new format:
         'field_3': [{'id': '5714a7c3-be40-42a5-8ed2-0d5a100df220'}, {'id': '5b0c22d9-1f8a-469f-a6a9-264e7b553403'}],
     },
     ...
-`
+```
