@@ -532,38 +532,38 @@ We return settings for each field, broken down into the systems; My, Embed and C
 #### Address Book
 
   * My ChurchSuite (`my`)
-    ** `view` - field is visible in "Search for Others"
-    ** `edit` - field is editable in "My Details" and "My Consent"
-    ** `required` - field is required in "My Details" and "My Consent"
+    * `view` - field is visible in "Search for Others"
+    * `edit` - field is editable in "My Details" and "My Consent"
+    * `required` - field is required in "My Details" and "My Consent"
   * Connect (`connect`)
-    ** `edit` - field is editable in Connect - My Details
-    ** `required` - field is required in Connect - My Details
+    * `edit` - field is editable in Connect - My Details
+    * `required` - field is required in Connect - My Details
   * Embed (`embed`)
-    ** `edit` - field is editable in the embeddable My Details form
-    ** `required` - field is required in the embeddable My Details form
+    * `edit` - field is editable in the embeddable My Details form
+    * `required` - field is required in the embeddable My Details form
     
 #### Children
 
   * My ChurchSuite (`my`)
-    ** `edit` - field is editable by parents in "My Children"
-    ** `required` - field is required in "My Children"
+    * `edit` - field is editable by parents in "My Children"
+    * `required` - field is required in "My Children"
   * Connect (`connect`)
-    ** `view` - field is visible in the admin section of child check-in
-    ** `edit` - field is editable in Connect - My Details
-    ** `required` - field is required in Connect - My Details
+    * `view` - field is visible in the admin section of child check-in
+    * `edit` - field is editable in Connect - My Details
+    * `required` - field is required in Connect - My Details
   * Embed (`embed`)
-    ** `edit` - field is editable in the embeddable My Details form
-    ** `required` - field is required in the embeddable My Details form
+    * `edit` - field is editable in the embeddable My Details form
+    * `required` - field is required in the embeddable My Details form
     
 #### Small groups
 
   * My ChurchSuite (`my`)
-    ** `view` - field is visible in "My Groups"
-    ** `edit` - field is editable by group admins in "My Groups"
-    ** `required` - field is required in "My Groups"
+    * `view` - field is visible in "My Groups"
+    * `edit` - field is editable by group admins in "My Groups"
+    * `required` - field is required in "My Groups"
   * Connect (`connect`)
-    ** `view` - field is visible in the groups map/list
+    * `view` - field is visible in the groups map/list
   * Embed (`embed`)
-    ** `view` - field is visible in the groups map/list
+    * `view` - field is visible in the groups map/list
     
 
