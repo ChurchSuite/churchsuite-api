@@ -2,7 +2,7 @@
 
 [Home](https://github.com/ChurchSuite/churchsuite-api)
 
-The My section of the API allows data to be queried for a given contact after they have passed through the OAuth process. Any data passed back obeys the public visibility settings that can be set on a contact-by-contact basis. The following endpoints are available:
+The My section of the API allows data to be queried for a given contact after they have passed through the OAuth process using the returned OAuth token as the X-Auth header. Any data passed back obeys the public visibility settings that can be set on a contact-by-contact basis. The following endpoints are available:
 
 ## Get a contact's details
 
