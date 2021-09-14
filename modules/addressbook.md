@@ -74,8 +74,6 @@ The Address Book module is concerned with the management of contacts within Chur
 ## Get a contact
 
 * `GET /v1/addressbook/contact/1` will return data for a specific contact
-* `GET /v1/addressbook/contact/1?tags=true` will return data for a specific contact, including any tags for the contact
-* `GET /v1/addressbook/contact/1?keydates=true` will return data for a specific contact, including any key dates for the contact
 
 ```json
 {
@@ -120,24 +118,6 @@ The Address Book module is concerned with the management of contacts within Chur
   "images":[
     
   ],
-  "tags":[
-    {
-      "id":"7",
-      "tag_id":"7",
-      "name":"Members",
-      "description":"",
-      "type":"fixed"
-    }
-  ],
-  "keydates":[
-    {
-      "id":"2",
-      "name":"Baptism",
-      "date":"2002-05-07",
-      "description":"",
-      "resource_keydate_id":"1"
-    }
-  ]
 }
 ```
 
