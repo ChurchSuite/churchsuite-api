@@ -627,6 +627,15 @@ This will return one of the following HTTP codes:
   ],
 }
 ```
+This will return one of the following HTTP codes:
 
 * `200` key date resources returned
 * `400` some of the data passed through was not valid, e.g. invalid URL
+
+# Delete a key date resource
+
+* `DELETE /v1/addressbook/keydate_resource/1` will delete the specified keydate resource
+
+This will return one of the following HTTP codes:
+
+* `204` key date resources deleted
