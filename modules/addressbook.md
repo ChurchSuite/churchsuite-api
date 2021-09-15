@@ -159,18 +159,18 @@ This will return one of the following HTTP codes:
 {
   "keydates":[
     {
-      "id":"1",
+      "id":1,
       "name":"Attended First Aid Training",
       "date":"2020-08-16",
       "description":"Focus on first aid for children",
-      "resource_keydate_id":"12"
+      "resource_keydate_id":12
     },
     {
-      "id":"2",
+      "id":2,
       "name":"Baptism",
       "date":"2002-05-07",
       "description":"",
-      "resource_keydate_id":"7"
+      "resource_keydate_id":7
     }
   ]
 }
@@ -490,9 +490,8 @@ This will return one of the following HTTP codes:
     {
       "id":"152",
       "first_name":"David",
-      "last_name":"Crook",
+      "last_name":"Crank",
       "site_id":"1",
-      "name":"Crook, David",
       "middle_name":"",
       "formal_name":"",
       "maiden_name":"",
@@ -500,8 +499,7 @@ This will return one of the following HTTP codes:
       "date_of_birth":"1951-09-24",
       "marital":"married",
       "spouse_id":"153",
-      "spouse_name":"Angela Crook",
-      "address":"10 Norcott Close",
+      "address":"10 Northcott Way",
       "address2":"",
       "address3":null,
       "city":"Dunstable",
@@ -509,10 +507,10 @@ This will return one of the following HTTP codes:
       "postcode":"LU5 4AH",
       "country":"",
       "telephone":"01582 600 710",
-      "mobile":"07837 409 238",
-      "email":"david@christchurchdunstable.org.uk",
+      "mobile":"07832 409 238",
+      "email":"administrator@christchurch.org.uk",
       "job":"Church Administrator",
-      "employer":"Christ Church Dunstable",
+      "employer":"Christ Church",
       "public_options":{
         "access":true,
         "visible":{
@@ -554,61 +552,40 @@ This will return one of the following HTTP codes:
   },
   "keydates":[
     {
-      "name":"Baptism",
-      "no_contacts":"18"
+        "id": 12,
+        "name": "Attended Alpha Course",
+        "color": "purple",
+        "mtime": "2018-03-30 21:21:59",
+        "muser": "lindsey",
+        "ctime": "2017-10-23 10:01:37",
+        "cuser": "luke"
     },
     {
-      "name":"Conversion",
-      "no_contacts":"1"
+        "id": 31,
+        "name": "Attended First Aid Training",
+        "color": "purple",
+        "mtime": "2021-01-10 22:18:35",
+        "muser": "churchsuite",
+        "ctime": "2019-09-06 13:52:00",
+        "cuser": "paul"
     },
-    {
-      "name":"Dedicated",
-      "no_contacts":"1"
-    },
-    {
-      "name":"First Visit",
-      "no_contacts":"19"
-    },
-    {
-      "name":"Got baptised",
-      "no_contacts":"1"
-    },
-    {
-      "name":"Left church",
-      "no_contacts":"1"
-    },
-    {
-      "name":"Married",
-      "no_contacts":"15"
-    },
-    {
-      "name":"Member",
-      "no_contacts":"2"
-    },
-    {
-      "name":"Newcomers' Meal",
-      "no_contacts":"6"
-    },
-    {
-      "name":"Wedding",
-      "no_contacts":"8"
-    }
   ]
 }
 ```
 
-
 ## Get a key date
 
-* `GET /v1/addressbook/keydate/Dedicated` will return data for a specific key date
-* `GET /v1/addressbook/keydate/Dedicated?contacts=true` will return data for a specific key date, including all contacts with the key date
-
-Key date names *must be urlencoded*, particularly if they include a space character in them. Failure to correctly encode the key date name could result in a 404 response being returned rather than a 200.
+* `GET /v1/addressbook/keydate/12` will return data for a specific key date
 
 ```json
 {
-  "name":"Dedicated",
-  "no_contacts":"1"
+  "id": 12,
+  "name": "Attended Alpha Course",
+  "color": "purple",
+  "mtime": "2018-03-30 21:21:59",
+  "muser": "lindsey",
+  "ctime": "2017-10-23 10:01:37",
+  "cuser": "luke"
 }
 ```
 
@@ -618,78 +595,38 @@ This will return one of the following HTTP codes:
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` key date does not exist
 
-## Get a key date's contacts
+## Get a key date's resources
 
-* `GET /v1/addressbook/keydate/Dedicated/contacts` will return the contacts for the "Dedicated" key date
-
-```json
-{
-  "pagination":{
-    "no_results":1,
-    "page":1,
-    "per_page":1
-  },
-  "contacts":[
-    {
-      "id":"142",
-      "first_name":"Oscar",
-      "last_name":"Baker Clarke",
-      "site_id":"1",
-      "name":"Baker Clarke, Oscar",
-      "middle_name":"",
-      "formal_name":"",
-      "maiden_name":"",
-      "sex":"m",
-      "date_of_birth":"1994-06-15",
-      "marital":"single",
-      "spouse_id":null,
-      "spouse_name":" ",
-      "address":"25 Smith Street",
-      "address2":"",
-      "address3":"",
-      "city":"Eastgate",
-      "county":"",
-      "postcode":"NG5 2EF",
-      "country":"",
-      "telephone":"",
-      "mobile":"07590 321 628",
-      "email":"oscar.baker@gmail.com",
-      "job":"",
-      "employer":"",
-      "public_options":{
-        "access":true,
-        "visible":{
-          "enabled":true,
-          "address":true,
-          "email":true,
-          "mobile":true,
-          "telephone":true
-        }
-      },
-      "custom_fields":{
-      
-      },
-      "images":[
-        
-      ],
-      "keydates":[
-        {
-          "id":"23",
-          "name":"Dedicated",
-          "date":"2014-04-06",
-          "description":"",
-          "resource_keydate_id":"172"
-        }
-      ]
-    }
-  ]
-}
-```
+* `GET /v1/addressbook/keydate_resources?keydate_id=12` will return the resources for the specified key date
+* `GET /v1/addressbook/keydate_resources?contact_id=127` will return the resources for the specified contact_id
 
 This will return one of the following HTTP codes:
 
-* `200` key date contacts returned
+```json
+{
+  "pagination": {
+    "no_results": 21,
+    "page": 1,
+    "per_page": 50
+  },
+  "keydates": [
+    {
+      "id": 3891,
+      "keydate_id": 12,
+      "resource_type": "addressbook_contact",
+      "resource_id": 127,
+      "date": "2018-02-27",
+      "description": "",
+      "linked_resource_type": null,
+      "linked_resource_id": null,
+      "mtime": "2018-02-27 17:07:06",
+      "muser": "paul",
+      "ctime": "2018-02-27 17:07:06",
+      "cuser": "paul"
+    },
+  ],
+}
+```
+
+* `200` key date resources returned
 * `400` some of the data passed through was not valid, e.g. invalid URL
-* `404` key date does not exist
-
-
