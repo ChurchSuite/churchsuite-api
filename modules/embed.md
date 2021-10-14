@@ -4,6 +4,8 @@
 
 Our Embed URL's allow you to place ready-made widgets into your website without the need to develop an integration with our API. Alongside this we have also made the JSON-equivalent feeds available so that you can use the data however you'd like. You do not need API access to use these features.
 
+For those wishing to build something with bespoke styling, you'll likely find our [JSON feed examples](https://kingshope.church/events#jsonfeeds) helpful, showing you how you can bring your own styling to work with our simple Javascript plugin.
+
 ## Calendar
 
 `https://{your_account_id}.churchsuite.co.uk/embed/calendar`
