@@ -40,6 +40,56 @@ Sometimes you may wish to change some of the styling so that it fits better with
 * `icon_color` The colour of icons in the event meta-data. Default: `#BBBBBB`.
 * `text_color` The colour of text in an event. Default: `#666666`.
 
+## Calendar events list
+
+`https://{your_account_url}.churchsuite.co.uk/embed/calendar/events`
+
+Results default to the following unless defined otherwise:
+
+Unless defined otherwise, the returned events are filtered by default as follows (more info on these params can be found further along in this section):
+
+* `layout=grid-2019`
+* `merge=signup_to_sequence`
+* `num_results=-1` This shows all events by default.
+* `date_start=(*today's date)`
+* `date_start=(*today's date + 3 months)`
+
+The following URL parameters are accepted:
+
+* `layout=(grid|grid-2019|list)` The layout used to render the events feed.
+* `merge=sequence` Show all single events and the first upcoming event in a sequence.
+* `merge=sequence_name` Show all single events and uniquely named sequence events. Where a sequenced event has the same name as another event in that sequence only the first upcoming event will be shown.
+* `merge=signup_to_sequence` "Sign up to sequence" events will show where they are the next upcoming event matching the sequence AND name combination. Sequence events that do not have "Sign up to sequence" enabled will be displayed where they are the next upcoming event in the sequence OR have sign-up enabled.
+* `merge=show_all` Do filter events using a merge strategy.
+* `date_start=(yyyy-mm-dd)` Show events starting on or after a specific date.
+* `date_end=(yyyy-mm-dd)` Show events ending on or before a specific date.
+* `num_results=4` The number of events to show. If not given or 0 then all events are shown.
+* `featured_signup=(1|on|true|yes|0|off|false|no)` Filter events based on whether or not it is featured.
+* `featured_signup=(NULL)` Show both featured and non-featured events.
+* `(category|category_id)=31` Show events in a specific category id.
+* `(categories|category_ids)=(12|12,13,14)` Show events in specific category ids.
+* `(categories[]|category_ids[])=(12)` Show events in specific category ids.
+* `(site|site_id)=31` Show events in a specific site id.
+* `(sites|site_ids)=(12|12,13,14)` Show events in specific site ids.
+* `(sites[]|site_ids[])=(12)` Show events in specific site ids.
+* `(event|event_id)=31` Show a specific event id.
+* `(events|event_ids)=(12|12,13,14)` Show events in specific category ids.
+* `(events[]|event_ids[])=(12)` Show specific event ids.
+* `q=alpha` Show events which contain a string within its name.
+* `embed_signup=(1|on|true|yes|0|off|false|no)` Filter events based on embed signup.
+* `public_signup=(1|on|true|yes|0|off|false|no)` Filter events based on public signup.
+* `sequence=9` Show only events in the event sequence id 9.
+* `num_results=4&page=1` Pagination example. Show the first page of 4 results.
+
+Sometimes you may wish to change some of the styling so that it fits better with your website. The following URL parameters enable you to do this. You must specify them in the full hex format `#FFFFFF`.
+
+* `body_bgcolor` The main background. Default: `#F5F6F7`.
+* `event_bgcolor` The background of the events. Default: `#FFFFFF`.
+* `event_border_color` The colour of the event borders. Default: `#CCCCCC`.
+* `heading_color` The colour of event headings. Default: `#444444`.
+* `icon_color` The colour of icons in the event meta-data. Default: `#BBBBBB`.
+* `text_color` The colour of text in an event. Default: `#666666`.
+
 ## Calendar JSON feed
 
 `https://{your_account_id}.churchsuite.co.uk/embed/calendar/json`
