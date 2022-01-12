@@ -97,12 +97,29 @@ Sometimes you may wish to change some of the styling so that it fits better with
 The following URL parameters are accepted:
 
 * `callback` If you are requesting the JSON feed from JS you will need to specify the callback function's name in order to get around the cross-domain restrictions on browsers. You do not need to provide this if you request the JSON from the server-side (i.e. in a PHP script). This is empty by default.
-* `category=1` The category ID to filter the events by.
-* `categories=1,2,3` A comma separated list of category IDs to filter the events by
-* `date_start=2017-12-01` The start date for the calendar in the format `Y-m-d`. If not given or empty today's date will be used.
-* `date_end=2017-01-15` The end date for the calendar in the format `Y-m-d`. If not given or empty the last day of the week for the date_start's month will be used.
-* `featured=(0|1)` If enabled only return featured events. Default: `disabled`.
-* `site=1` The site ID to filter the events by.
+* `merge=sequence` Show all single events and the first upcoming event in a sequence.
+* `merge=sequence_name` Show all single events and uniquely named sequence events. Where a sequenced event has the same name as another event in that sequence only the first upcoming event will be shown.
+* `merge=signup_to_sequence` "Sign up to sequence" events will show where they are the next upcoming event matching the sequence AND name combination. Sequence events that do not have "Sign up to sequence" enabled will be displayed where they are the next upcoming event in the sequence OR have sign-up enabled.
+* `merge=show_all` Do filter events using a merge strategy.
+* `date_start=(yyyy-mm-dd)` Show events starting on or after a specific date.
+* `date_end=(yyyy-mm-dd)` Show events ending on or before a specific date.
+* `num_results=4` The number of events to show. If not given or 0 then all events are shown.
+* `featured_signup=(1|on|true|yes|0|off|false|no)` Filter events based on whether or not it is featured.
+* `featured_signup=(NULL)` Show both featured and non-featured events.
+* `(category|category_id)=31` Show events in a specific category id.
+* `(categories|category_ids)=(12|12,13,14)` Show events in specific category ids.
+* `(categories[]|category_ids[])=(12)` Show events in specific category ids.
+* `(site|site_id)=31` Show events in a specific site id.
+* `(sites|site_ids)=(12|12,13,14)` Show events in specific site ids.
+* `(sites[]|site_ids[])=(12)` Show events in specific site ids.
+* `(event|event_id)=31` Show a specific event id.
+* `(events|event_ids)=(12|12,13,14)` Show events in specific category ids.
+* `(events[]|event_ids[])=(12)` Show specific event ids.
+* `q=alpha` Show events which contain a string within its name.
+* `embed_signup=(1|on|true|yes|0|off|false|no)` Filter events based on embed signup.
+* `public_signup=(1|on|true|yes|0|off|false|no)` Filter events based on public signup.
+* `sequence=9` Show only events in the event sequence id 9.
+* `num_results=4&page=1` Pagination example. Show the first page of 4 results.
 
 ```json
 [
