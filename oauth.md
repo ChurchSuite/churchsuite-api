@@ -9,7 +9,7 @@ Requests to the OAuth Server require a Client Application be created, in order t
 * The account for which you would like access (if applicable)
 * The redirect_uri you wish to use (we generally do not allow Client Applications to have undefined redirect_uris)
 * The name of your Application
-* A breif description of your application and what it will do
+* A brief description of your application and what it will do
 
 *Should you wish to have both a development and production redirect_uri you will require two Client Applications.*
 
