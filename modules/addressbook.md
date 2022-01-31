@@ -19,37 +19,43 @@ The Address Book module is concerned with the management of contacts within Chur
 ```json
 {
   "pagination":{
-    "no_results":1,
+    "no_results":3,
     "page":1,
-    "per_page":2
+    "per_page":1
   },
   "contacts":[
     {
-      "id":"127",
-      "name":"Courtney, Gavin",
-      "first_name":"Gavin",
+      "id":112,
+      "person_uuid":"cb246f98-65ef-4cd5-825f-1db639a37490",
+      "type_id":"contact_112",
+      "first_name":"George",
+      "last_name":"Baker",
+      "title":"Mr",
       "middle_name":"",
-      "last_name":"Courtney",
-      "formal_name":"",
+      "formal_name":"Formal",
+      "former_name":"",
       "maiden_name":"",
       "sex":"m",
-      "date_of_birth":"1982-08-03",
+      "date_of_birth":"1969-03-30",
       "marital":"married",
-      "spouse_id":null,
-      "spouse_name":" ",
-      "address":"26 Smith Street",
+      "spouse_id":1042,
+      "address":"44 Pruder Lane",
       "address2":"",
       "address3":"",
-      "city":"Eastgate",
+      "city":"Nottingham",
       "county":"",
-      "postcode":"NG5 2EF",
+      "postcode":"NG9 2FE",
       "country":"",
-      "telephone":"0115 824 2300",
-      "mobile":"07707 777 777",
-      "email":"support@churchsuite.com",
-      "job":"Managing Director",
-      "employer":"ChurchApp Ltd",
+      "latitude":52.926458,
+      "longitude":-1.204129,
+      "telephone":"0161 730 2326",
+      "mobile":"07987 654 123",
+      "work_telephone":"",
+      "email":"george.baker1@gmail.com",
+      "job":"Web Developer",
+      "employer":"National Health Service",
       "public_options":{
+        "invited":true,
         "access":true,
         "visible":{
           "enabled":true,
@@ -59,12 +65,40 @@ The Address Book module is concerned with the management of contacts within Chur
           "telephone":true
         }
       },
-      "custom_fields":{
-      
+      "communication":{
+        "general_email":1,
+        "general_sms":1,
+        "phone":1,
+        "post":1,
+        "rota_email":1,
+        "rota_sms":1
       },
+      "location":{
+        "address":"44 Pruder Lane, Nottingham, NG9 2FE",
+        "latitude":"52.926458",
+        "longitude":"-1.204129"
+      },
+      "custom_fields":[
+        
+      ],
       "images":[
         
-      ]
+      ],
+      "ongoing_consent":{
+        "required":1,
+        "request_ctime":"2022-01-19 16:15:05",
+        "granted_ctime":null,
+        "granted_name":null
+      },
+      "status":"active",
+      "site_id":1,
+      "site_ids":[
+        "1"
+      ],
+      "mtime":"2021-05-25 16:14:16",
+      "muser":"richard",
+      "ctime":"2011-07-18 22:20:12",
+      "cuser":"import"
     }
   ]
 }
@@ -77,47 +111,78 @@ The Address Book module is concerned with the management of contacts within Chur
 
 ```json
 {
-  "id":"1",
+  "id":1,
+  "person_uuid":"557bed1b-18a3-422e-ad43-d95f6a5633b3",
+  "type_id":"contact_1",
   "first_name":"Philip",
   "last_name":"Ward",
-  "site_id":"1",
-  "name":"Ward, Philip",
+  "title":"",
   "middle_name":"",
   "formal_name":"",
-  "maiden_name":"",
+  "former_name":null,
+  "maiden_name":null,
   "sex":"m",
   "date_of_birth":"1981-12-26",
   "marital":"single",
   "spouse_id":null,
-  "spouse_name":" ",
   "address":"194 Albert Drive",
   "address2":"Cotgrave",
-  "address3":null,
-  "city":"",
+  "address3":"",
+  "city":"Nottingham",
   "county":"",
   "postcode":"NG3 5GE",
   "country":"",
+  "latitude":52.980603,
+  "longitude":-1.135087,
   "telephone":"01479 029 358",
   "mobile":"07223 446 512",
-  "email":"",
+  "work_telephone":"",
+  "email":"Wardy.phil@mail.com",
   "job":"Primary Teacher",
   "employer":"",
   "public_options":{
+    "invited":true,
     "access":true,
     "visible":{
       "enabled":true,
-      "address":true,
+      "address":false,
       "email":true,
       "mobile":true,
-      "telephone":true
+      "telephone":false
     }
   },
-  "custom_fields":{
-  
+  "communication":{
+    "general_email":1,
+    "general_sms":1,
+    "phone":1,
+    "post":1,
+    "rota_email":1,
+    "rota_sms":1
   },
+  "location":[
+    
+  ],
+  "custom_fields":[
+    
+  ],
   "images":[
     
   ],
+  "ongoing_consent":{
+    "required":1,
+    "request_ctime":"2021-04-01 14:03:23",
+    "granted_ctime":null,
+    "granted_name":null
+  },
+  "status":"active",
+  "site_id":1,
+  "site_ids":[
+    "1"
+  ],
+  "mtime":"2021-04-30 12:14:43",
+  "muser":"Paul",
+  "ctime":"2011-07-18 22:20:12",
+  "cuser":"import"
 }
 ```
 
@@ -135,10 +200,19 @@ This will return one of the following HTTP codes:
 {
   "tags":[
     {
-      "id":"7",
-      "tag_id":"7",
-      "name":"Members",
+      "id":"1985",
+      "tag_id":"1985",
+      "name":"5Cs Committed",
       "description":"",
+      "colour":"blue",
+      "type":"smart"
+    },
+    {
+      "id":"579",
+      "tag_id":"579",
+      "name":"DBS in progress",
+      "description":"",
+      "colour":"orange",
       "type":"fixed"
     }
   ]
@@ -153,24 +227,17 @@ This will return one of the following HTTP codes:
 
 ## Get a contact's key dates
 
-* `GET /v1/addressbook/contact/1/keydates` will return data for a specific contact, where "resource_keydate_id" is a unique link id linking the key date and contact
+* `GET /v1/addressbook/contact/1/keydates` will return data for a specific contact
 
 ```json
 {
   "keydates":[
     {
-      "id":1,
-      "name":"Attended First Aid Training",
-      "date":"2020-08-16",
-      "description":"Focus on first aid for children",
-      "resource_keydate_id":12
-    },
-    {
-      "id":2,
-      "name":"Baptism",
-      "date":"2002-05-07",
-      "description":"",
-      "resource_keydate_id":7
+      "id":66,
+      "name":"Unsubscribe phone calls",
+      "date":"2021-11-23",
+      "description":"Unsubscribed on 23-Nov-2021 3:18pm via",
+      "resource_keydate_id":9955
     }
   ]
 }
@@ -195,12 +262,14 @@ This will return one of the following HTTP codes:
   "country":"GB",
   "sex":"m",
   "marital":"married",
-  "keydates":[
+  "dates":[
     {
       "name":"Married",
-      "date":"2014-10-14",
-      "description":"To Rachel (Smith) Bloggs"
+      "date":"2022-01-31"
     }
+  ],
+  "site_ids":[
+    1
   ]
 }
 ```
@@ -214,46 +283,74 @@ This `POST` method will return output in the following format:
 
 ```json
 {
-  "id":"174",
-  "name":"Bloggs, Joe",
+  "id":1822,
+  "person_uuid":"0ce3f344-f2fa-4376-b7a0-c5d4ef47bb4e",
+  "type_id":"contact_1822",
   "first_name":"Joe",
-  "middle_name":null,
   "last_name":"Bloggs",
+  "title":"",
+  "middle_name":null,
   "formal_name":null,
+  "former_name":null,
   "maiden_name":null,
   "sex":"m",
-  "date_of_birth":null,
+  "date_of_birth":"",
   "marital":"married",
   "spouse_id":null,
-  "spouse_name":" ",
-  "address":null,
-  "address2":null,
-  "address3":null,
-  "city":null,
-  "county":null,
+  "address":"",
+  "address2":"",
+  "address3":"",
+  "city":"",
+  "county":"",
   "postcode":"NG1 1AB",
   "country":"GB",
-  "telephone":null,
-  "mobile":null,
+  "latitude":52.955053,
+  "longitude":-1.14103,
+  "telephone":"",
+  "mobile":"",
+  "work_telephone":"",
   "email":"joe@bloggs.com",
   "job":null,
   "employer":null,
   "public_options":{
-    "access":true,
+    "invited":false,
+    "access":false,
     "visible":{
-      "enabled":true,
-      "address":false,
-      "email":false,
-      "mobile":false,
-      "telephone":false
+      "enabled":false
     }
   },
-  "custom_fields":{
-  
+  "communication":{
+    "general_email":0,
+    "general_sms":0,
+    "phone":0,
+    "post":0,
+    "rota_email":0,
+    "rota_sms":0
   },
+  "location":[
+    
+  ],
+  "custom_fields":[
+    
+  ],
   "images":[
     
-  ]
+  ],
+  "ongoing_consent":{
+    "required":1,
+    "request_ctime":null,
+    "granted_ctime":null,
+    "granted_name":null
+  },
+  "status":"active",
+  "site_id":1,
+  "site_ids":[
+    "1"
+  ],
+  "mtime":"2022-01-31 09:41:52",
+  "muser":"churchsuite",
+  "ctime":"2022-01-31 09:41:52",
+  "cuser":"churchsuite"
 }
 ```
 
@@ -267,12 +364,18 @@ This `POST` method will return output in the following format:
   "last_name":"Bloggs",
   "email":"jane.bloggs@gmail.com",
   "sex":"f",
-  "email_opt_out":false,
-  "sms_opt_out":true,
-  "custom_fields":{
-    "custom1":"@janebloggs"
+  "communication":{
+    "general_email":false,
+    "general_sms":true
   },
-  "tags":["Newcomers","Not in a group"]
+  "tags":[
+    {
+      "name":"Newcomers"
+    },
+    {
+      "name":"Not in a group"
+    }
+  ]
 }
 ```
 
@@ -286,31 +389,32 @@ This `PUT` method will return output in the following format:
 
 ```json
 {
-  "id":"562",
+  "id":1822,
+  "person_uuid":"0ce3f344-f2fa-4376-b7a0-c5d4ef47bb4e",
+  "type_id":"contact_1822",
   "first_name":"Jane",
   "last_name":"Bloggs",
-  "type_id":"contact_562",
-  "site_id":"1",
   "title":"",
-  "name":"Bloggs, Jane",
   "middle_name":null,
   "formal_name":null,
+  "former_name":null,
   "maiden_name":null,
   "sex":"f",
-  "date_of_birth":null,
+  "date_of_birth":"",
   "marital":"married",
   "spouse_id":null,
-  "spouse_name":" ",
-  "address":null,
-  "address2":null,
-  "address3":null,
-  "city":null,
-  "county":null,
+  "address":"",
+  "address2":"",
+  "address3":"",
+  "city":"",
+  "county":"",
   "postcode":"NG1 1AB",
   "country":"GB",
-  "telephone":null,
-  "mobile":null,
-  "work_telephone":null,
+  "latitude":52.955053,
+  "longitude":-1.14103,
+  "telephone":"",
+  "mobile":"",
+  "work_telephone":"",
   "email":"jane.bloggs@gmail.com",
   "job":null,
   "employer":null,
@@ -321,17 +425,40 @@ This `PUT` method will return output in the following format:
       "enabled":false
     }
   },
-  "custom_fields":{
-  
+  "communication":{
+    "general_email":0,
+    "general_sms":1,
+    "phone":0,
+    "post":0,
+    "rota_email":0,
+    "rota_sms":0
   },
+  "location":[
+    
+  ],
+  "custom_fields":[
+    
+  ],
   "images":[
     
   ],
-  "has_email_opt_out":false,
-  "has_sms_opt_out":true
+  "ongoing_consent":{
+    "required":1,
+    "request_ctime":null,
+    "granted_ctime":null,
+    "granted_name":null
+  },
+  "status":"active",
+  "site_id":1,
+  "site_ids":[
+    "1"
+  ],
+  "mtime":"2022-01-31 09:41:53",
+  "muser":"churchsuite",
+  "ctime":"2022-01-31 09:41:52",
+  "cuser":"churchsuite"
 }
 ```
-
 
 ## Delete a contact
 
@@ -343,9 +470,8 @@ This `PUT` method will return output in the following format:
 
 This will return one of the following HTTP codes:
 
-* `200` contact deleted
+* `204` contact deleted
 * `404` contact specified to delete does not exist
-
 
 
 
@@ -356,56 +482,34 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":5,
+    "no_results":58,
     "page":1,
-    "per_page":10
+    "per_page":2
   },
   "tags":[
-        {
-            "id": "1",
-            "tag_id": "1",
-            "name": "Christianity Explored Potential Invitees",
-            "description": null,
-            "colour": "blue",
-            "type": "fixed"
-        },
-        {
-            "id": "2",
-            "tag_id": "2",
-            "name": "DBS In a Ministry requiring DBS Check",
-            "description": "",
-            "colour": "orange",
-            "type": "smart"
-        },
-        {
-            "id": "3",
-            "tag_id": "3",
-            "name": "e-Newsletter",
-            "description": "Address Book contacts who have consented to receiving the weekly church e-newsletter.",
-            "colour": "purple",
-            "type": "fixed"
-        },
-        {
-            "id": "4",
-            "tag_id": "4",
-            "name": "Member",
-            "description": null,
-            "colour": "blue",
-            "type": "fixed"
-        },
-        {
-            "id": "5",
-            "tag_id": "5",
-            "name": "My ChurchSuite Search for Others Opted-In",
-            "description": "",
-            "colour": "blue",
-            "type": "smart"
-        }
+    {
+      "id":"1981",
+      "tag_id":"1981",
+      "name":"Alpha & Christianity Explored Invitees",
+      "description":"",
+      "colour":"blue",
+      "type":"fixed",
+      "no_contacts":15,
+      "tag_no_contacts":15
+    },
+    {
+      "id":"1953",
+      "tag_id":"1953",
+      "name":"Alpha Course Invitees",
+      "description":"Potential invitees to the next Alpha Course",
+      "colour":"blue",
+      "type":"fixed",
+      "no_contacts":13,
+      "tag_no_contacts":13
+    }
   ]
 }
 ```
-
-
 
 
 ## Get a tag
@@ -415,14 +519,14 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "id":"1",
-  "tag_id":"1",
-  "name":"Church Administrator",
-  "description": "",
-  "colour": "blue",
+  "id":"1981",
+  "tag_id":"1981",
+  "name":"Alpha & Christianity Explored Invitees",
+  "description":"",
+  "colour":"blue",
   "type":"fixed",
-  "tag_no_contacts":"2",
-  "no_contacts":"2"
+  "no_contacts":15,
+  "tag_no_contacts":15
 }
 ```
 
@@ -439,79 +543,43 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":2,
+    "no_results":15,
     "page":1,
-    "per_page":2
+    "per_page":null
   },
   "contacts":[
     {
-      "id":"141",
+      "id":141,
+      "person_uuid":"8ce26b46-82dd-45a3-82e6-4eb05f45f007",
+      "type_id":"contact_141",
       "first_name":"Gemma",
       "last_name":"Alexander",
-      "site_id":"1",
-      "name":"Alexander, Gemma",
+      "title":"Rev",
       "middle_name":"",
       "formal_name":"",
-      "maiden_name":"",
+      "former_name":"Thomas",
+      "maiden_name":"Thomas",
       "sex":"f",
-      "date_of_birth":"1982-05-05",
+      "date_of_birth":"1981-02-10",
       "marital":"married",
-      "spouse_id":"147",
-      "spouse_name":"Jim Moriarty",
-      "address":"28 Cavendish Grove",
+      "spouse_id":584,
+      "address":"70 Montgomery Place",
       "address2":"Sherwood",
-      "address3":null,
+      "address3":"",
       "city":"Nottingham",
-      "county":"Nottinghamshire",
-      "postcode":"NG23 8TC",
-      "country":"United Kingdom",
-      "telephone":"0115 786 4001",
+      "county":"",
+      "postcode":"NG2 7TF",
+      "country":"",
+      "latitude":52.910247,
+      "longitude":-1.150793,
+      "telephone":"0115 786 4002",
       "mobile":"07775 354 829",
+      "work_telephone":"",
       "email":"gemma.alexander@gmail.com",
       "job":"Administrative Officer",
-      "employer":"",
+      "employer":"Kings Hope Church",
       "public_options":{
-        "access":true,
-        "visible":{
-          "enabled":true,
-          "address":true,
-          "email":true,
-          "mobile":false,
-          "telephone":false
-        }
-      },
-      "custom_fields":{
-      
-      },
-      "images":[
-        
-      ]
-    },
-    {
-      "id":"152",
-      "first_name":"David",
-      "last_name":"Crank",
-      "site_id":"1",
-      "middle_name":"",
-      "formal_name":"",
-      "maiden_name":"",
-      "sex":"m",
-      "date_of_birth":"1951-09-24",
-      "marital":"married",
-      "spouse_id":"153",
-      "address":"10 Northcott Way",
-      "address2":"",
-      "address3":null,
-      "city":"Dunstable",
-      "county":"",
-      "postcode":"LU5 4AH",
-      "country":"",
-      "telephone":"01582 600 710",
-      "mobile":"07832 409 238",
-      "email":"administrator@christchurch.org.uk",
-      "job":"Church Administrator",
-      "employer":"Christ Church",
-      "public_options":{
+        "invited":true,
         "access":true,
         "visible":{
           "enabled":true,
@@ -521,12 +589,40 @@ This will return one of the following HTTP codes:
           "telephone":true
         }
       },
-      "custom_fields":{
-      
+      "communication":{
+        "general_email":1,
+        "general_sms":1,
+        "phone":1,
+        "post":1,
+        "rota_email":1,
+        "rota_sms":1
       },
+      "location":{
+        "address":"70 Montgomery Place, Sherwood, Nottingham, NG2 7TF",
+        "latitude":"52.910247",
+        "longitude":"-1.150793"
+      },
+      "custom_fields":[
+        
+      ],
       "images":[
         
-      ]
+      ],
+      "ongoing_consent":{
+        "required":1,
+        "request_ctime":"2022-01-19 16:15:05",
+        "granted_ctime":null,
+        "granted_name":null
+      },
+      "status":"active",
+      "site_id":1,
+      "site_ids":[
+        "1"
+      ],
+      "mtime":"2022-01-20 10:02:23",
+      "muser":"richard",
+      "ctime":"2014-07-07 16:30:45",
+      "cuser":"richard"
     }
   ]
 }
@@ -539,6 +635,208 @@ This will return one of the following HTTP codes:
 * `404` tag does not exist
 
 
+
+## List flows
+
+* `GET /v1/addressbook/flows` will return flows ordered alphabetically
+
+```json
+{
+  "pagination":{
+    "no_results":22,
+    "page":1,
+    "per_page":1
+  },
+  "flows":[
+    {
+      "id":94,
+      "name":"#DemoDataGenerated custom field flow",
+      "notification_days":"[\"2\",\"5\",\"6\"]",
+      "status":"active",
+      "stages":[
+        {
+          "flow_id":94,
+          "id":271,
+          "name":"#DemoDataGenerated flow stage 1",
+          "instructions":"",
+          "due_interval":7,
+          "due_period":"day",
+          "due_from":"previous",
+          "assigned_user":"",
+          "order":1,
+          "num_people":0,
+          "mtime":"2022-01-31 08:57:10",
+          "muser":null,
+          "ctime":null,
+          "cuser":null
+        },
+        {
+          "flow_id":94,
+          "id":272,
+          "name":"#DemoDataGenerated flow stage 2",
+          "instructions":"",
+          "due_interval":7,
+          "due_period":"day",
+          "due_from":"previous",
+          "assigned_user":"",
+          "order":2,
+          "num_people":0,
+          "mtime":"2022-01-31 08:57:10",
+          "muser":null,
+          "ctime":null,
+          "cuser":null
+        }
+      ],
+      "mtime":"2022-01-31 08:57:10",
+      "muser":"import",
+      "ctime":"2022-01-31 08:57:10",
+      "cuser":"import"
+    }
+  ]
+}
+```
+
+
+## Get a flow
+
+* `GET /v1/addressbook/flow/1` will return data for a specific flow
+
+```json
+{
+  "id":94,
+  "name":"#DemoDataGenerated custom field flow",
+  "notification_days":"[\"2\",\"5\",\"6\"]",
+  "status":"active",
+  "stages":[
+    {
+      "flow_id":94,
+      "id":271,
+      "name":"#DemoDataGenerated flow stage 1",
+      "instructions":"",
+      "due_interval":7,
+      "due_period":"day",
+      "due_from":"previous",
+      "assigned_user":"",
+      "order":1,
+      "num_people":0,
+      "mtime":"2022-01-31 08:57:10",
+      "muser":null,
+      "ctime":null,
+      "cuser":null
+    },
+    {
+      "flow_id":94,
+      "id":272,
+      "name":"#DemoDataGenerated flow stage 2",
+      "instructions":"",
+      "due_interval":7,
+      "due_period":"day",
+      "due_from":"previous",
+      "assigned_user":"",
+      "order":2,
+      "num_people":0,
+      "mtime":"2022-01-31 08:57:10",
+      "muser":null,
+      "ctime":null,
+      "cuser":null
+    }
+  ],
+  "mtime":"2022-01-31 08:57:10",
+  "muser":"import",
+  "ctime":"2022-01-31 08:57:10",
+  "cuser":"import"
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` flow data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` flow does not exist
+
+## Get a flow's tracking data
+
+* `GET /v1/addressbook/flow/1/tracking` will return data about the contacts who are at each stage of the flow
+
+```json
+{
+  "pagination":{
+    "no_results":2,
+    "page":1,
+    "per_page":null
+  },
+  "tracking":[
+    {
+      "id":1739,
+      "resource_id":127,
+      "resource_type":"addressbook_contact",
+      "stage_id":271,
+      "due_date":"2022-02-07",
+      "due_user":"",
+      "mtime":"2022-01-31 09:42:00",
+      "muser":"churchsuite",
+      "ctime":"2022-01-31 09:42:00",
+      "cuser":"churchsuite"
+    },
+    {
+      "id":1740,
+      "resource_id":1,
+      "resource_type":"addressbook_contact",
+      "stage_id":271,
+      "due_date":"2022-02-07",
+      "due_user":"",
+      "mtime":"2022-01-31 09:42:00",
+      "muser":"churchsuite",
+      "ctime":"2022-01-31 09:42:00",
+      "cuser":"churchsuite"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` stage/contact data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` flow does not exist
+
+## Add contacts to be tracked through a flow
+
+* `POST /v1/addressbook/flow/1/tracking` will attempt to add new contacts to the flow's tracking
+
+```json
+{
+  "tracking":[
+    {
+      "id":1741,
+      "due_date":"2022-02-07",
+      "due_user":"",
+      "resource_id":122,
+      "resource_type":"addressbook_contact",
+      "stage_id":"271",
+      "status":"pending"
+    },
+    {
+      "id":1742,
+      "due_date":"2022-02-07",
+      "due_user":"",
+      "resource_id":881,
+      "resource_type":"addressbook_contact",
+      "stage_id":"271",
+      "status":"pending"
+    }
+  ]
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `201` stage/contact data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` flow does not exist or specified contact does not exist
+
+
+
 ## List key dates
 
 * `GET /v1/addressbook/keydates` will return key dates ordered alphabetically
@@ -546,46 +844,47 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":10,
+    "no_results":36,
     "page":1,
-    "per_page":10
+    "per_page":2
   },
   "keydates":[
     {
-        "id": 12,
-        "name": "Attended Alpha Course",
-        "color": "purple",
-        "mtime": "2018-03-30 21:21:59",
-        "muser": "lindsey",
-        "ctime": "2017-10-23 10:01:37",
-        "cuser": "luke"
+      "id":12,
+      "name":"Attended Alpha Course",
+      "color":"purple",
+      "mtime":"2018-03-30 21:21:59",
+      "muser":"lindsey",
+      "ctime":"2017-10-23 10:01:37",
+      "cuser":"luke"
     },
     {
-        "id": 31,
-        "name": "Attended First Aid Training",
-        "color": "purple",
-        "mtime": "2021-01-10 22:18:35",
-        "muser": "churchsuite",
-        "ctime": "2019-09-06 13:52:00",
-        "cuser": "paul"
-    },
+      "id":188,
+      "name":"Attended APCM",
+      "color":"blue",
+      "mtime":"2022-01-13 15:57:12",
+      "muser":"Sue",
+      "ctime":"2022-01-13 15:57:12",
+      "cuser":"Sue"
+    }
   ]
 }
 ```
 
+
 ## Get a key date
 
-* `GET /v1/addressbook/keydate/12` will return data for a specific key date
+* `GET /v1/addressbook/keydate/1` will return data for a specific key date
 
 ```json
 {
-  "id": 12,
-  "name": "Attended Alpha Course",
-  "color": "purple",
-  "mtime": "2018-03-30 21:21:59",
-  "muser": "lindsey",
-  "ctime": "2017-10-23 10:01:37",
-  "cuser": "luke"
+  "id":12,
+  "name":"Attended Alpha Course",
+  "color":"purple",
+  "mtime":"2018-03-30 21:21:59",
+  "muser":"lindsey",
+  "ctime":"2017-10-23 10:01:37",
+  "cuser":"luke"
 }
 ```
 
@@ -595,47 +894,38 @@ This will return one of the following HTTP codes:
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` key date does not exist
 
-## Get a key date's resources
+## Get a key date's contacts
 
-* `GET /v1/addressbook/keydate_resources?keydate_id=12` will return the resources for the specified key date
-* `GET /v1/addressbook/keydate_resources?contact_id=127` will return the resources for the specified contact_id
-
-This will return one of the following HTTP codes:
+* `GET /v1/addressbook/keydate/1/contacts` will return the contacts for the "Attended Alpha Course" key date
 
 ```json
 {
-  "pagination": {
-    "no_results": 21,
-    "page": 1,
-    "per_page": 50
+  "pagination":{
+    "no_results":84,
+    "page":1,
+    "per_page":null
   },
-  "keydates": [
+  "keydates":[
     {
-      "id": 3891,
-      "keydate_id": 12,
-      "resource_type": "addressbook_contact",
-      "resource_id": 127,
-      "date": "2018-02-27",
-      "description": "",
-      "linked_resource_type": null,
-      "linked_resource_id": null,
-      "mtime": "2018-02-27 17:07:06",
-      "muser": "paul",
-      "ctime": "2018-02-27 17:07:06",
-      "cuser": "paul"
-    },
-  ],
+      "id":9731,
+      "keydate_id":12,
+      "resource_type":"addressbook_contact",
+      "resource_id":44,
+      "date":"2021-11-24",
+      "description":"",
+      "linked_resource_type":null,
+      "linked_resource_id":null,
+      "mtime":"2021-09-28 11:00:16",
+      "muser":"Paul",
+      "ctime":"2021-09-28 11:00:16",
+      "cuser":"Paul"
+    }
+  ]
 }
 ```
+
 This will return one of the following HTTP codes:
 
-* `200` key date resources returned
+* `200` key date contacts returned
 * `400` some of the data passed through was not valid, e.g. invalid URL
-
-# Delete a key date resource
-
-* `DELETE /v1/addressbook/keydate_resource/1` will delete the specified keydate resource
-
-This will return one of the following HTTP codes:
-
-* `204` key date resources deleted
+* `404` key date does not exist
