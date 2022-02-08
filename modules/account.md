@@ -18,23 +18,29 @@ The following core endpoints are available for retrieving data for the API user:
 {
   "id":"rotas",
   "name":"Rotas",
-  "order":"6",
+  "order":6,
   "options":{
-    "connect":"[]",
-    "embed":"[]",
+    "connect":[
+      
+    ],
+    "embed":[
+      
+    ],
     "module":{
       "unavailability_enabled":1,
-      "person_search":"all-sites"
+      "serving_requests_enabled":1
     },
     "public":{
-      "my_menu_rotas":"",
-      "enable_all_rotas_view":1,
       "public_access":1,
-      "public_rota_swap":0,
+      "access_type":"anyone",
+      "enable_all_rotas_view":1,
+      "person_search":"group_site",
       "public_disable_swap":0,
       "public_rota_email_recipients":"rota"
     }
-  }
+  },
+  "mtime":"2022-02-07 10:09:35",
+  "muser":"install"
 }
 ```
 
@@ -46,10 +52,11 @@ The following core endpoints are available for retrieving data for the API user:
 ```json
 {
   "id":"demo",
+  "give2_keyword":"KINGSHOPE",
   "name":"Kings Hope Church",
   "billing":{
-    "first_name":"ChurchSuite",
-    "last_name":"Support",
+    "first_name":"Nathaniel",
+    "last_name":"Alsop",
     "telephone":"0115 824 2300",
     "email":"support@churchsuite.com",
     "address":"Easter Park",
@@ -59,8 +66,8 @@ The following core endpoints are available for retrieving data for the API user:
     "postcode":"NG7 2PX",
     "region":"ENG",
     "country":"GB",
-    "latitude":"52.9421262260486",
-    "longitude":"-1.17162785403717"
+    "latitude":"52.942637",
+    "longitude":"-1.171216"
   },
   "meeting":{
     "address":"Easter Park",
@@ -69,9 +76,13 @@ The following core endpoints are available for retrieving data for the API user:
     "county":"Notts",
     "postcode":"NG7 2PX",
     "country":null,
-    "latitude":"52.9421262260486",
-    "longitude":"-1.17162785403717"
-  }
+    "latitude":"52.942637",
+    "longitude":"-1.171216"
+  },
+  "ctime":"2011-07-07 00:00:00",
+  "cuser":"gavin",
+  "mtime":"2022-02-03 12:29:18",
+  "muser":"churchsuite-nathaniel"
 }
 ```
 
@@ -149,20 +160,20 @@ The following core endpoints are available for retrieving data for the API user:
     
   ],
   "sites":{
-    "10":{
-      "id":"10",
+    10:{
+      "id":10,
       "name":"East Site"
     },
-    "1":{
-      "id":"1",
+    1:{
+      "id":1,
       "name":"Main Site"
     },
-    "7":{
-      "id":"7",
+    7:{
+      "id":7,
       "name":"South Site"
     },
-    "9":{
-      "id":"9",
+    9:{
+      "id":9,
       "name":"West Site"
     }
   }
