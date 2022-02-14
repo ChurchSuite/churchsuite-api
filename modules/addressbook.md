@@ -198,22 +198,235 @@ This will return one of the following HTTP codes:
 
 ```json
 {
+  "pagination":{
+    "no_results":16,
+    "page":1,
+    "per_page":null
+  },
   "tags":[
     {
-      "id":"1985",
-      "tag_id":"1985",
-      "name":"5Cs Committed",
-      "description":"",
-      "colour":"blue",
-      "type":"smart"
+      "id":2024,
+      "tag_id":2024,
+      "name":"#DemoDataGenerated custom field smart tag",
+      "description":"An example custom field tag to demonstrate referencing smart tags from other modules",
+      "colour":"purple",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":null,
+      "cuser":null,
+      "mtime":"2022-02-07 10:09:36",
+      "muser":null
     },
     {
-      "id":"579",
-      "tag_id":"579",
+      "id":1204,
+      "tag_id":1204,
+      "name":"Active group members",
+      "description":"",
+      "colour":"blue",
+      "type":"smart",
+      "tag_no_contacts":115,
+      "no_contacts":115,
+      "ctime":"2019-02-05 11:52:40",
+      "cuser":"gavin",
+      "mtime":"2019-02-05 15:44:45",
+      "muser":"gavin"
+    },
+    {
+      "id":1367,
+      "tag_id":1367,
+      "name":"Consent Outstanding",
+      "description":"",
+      "colour":"red",
+      "type":"smart",
+      "tag_no_contacts":217,
+      "no_contacts":217,
+      "ctime":"2019-07-01 11:46:27",
+      "cuser":"paul",
+      "mtime":"2021-04-26 20:47:52",
+      "muser":"Paul"
+    },
+    {
+      "id":1924,
+      "tag_id":1924,
+      "name":"Contact Search Permitted",
+      "description":"",
+      "colour":"blue",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":"2021-08-12 15:05:28",
+      "cuser":"Paul",
+      "mtime":"2021-08-12 15:05:28",
+      "muser":"Paul"
+    },
+    {
+      "id":579,
+      "tag_id":579,
       "name":"DBS in progress",
       "description":"",
       "colour":"orange",
-      "type":"fixed"
+      "type":"fixed",
+      "tag_no_contacts":113,
+      "no_contacts":113,
+      "ctime":"2017-03-24 16:05:23",
+      "cuser":"richard",
+      "mtime":"2022-01-13 15:23:23",
+      "muser":"Sue"
+    },
+    {
+      "id":1458,
+      "tag_id":1458,
+      "name":"Electoral roll",
+      "description":"",
+      "colour":"orange",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":"2019-09-30 14:04:30",
+      "cuser":"paul",
+      "mtime":"2021-06-14 11:45:15",
+      "muser":"Paul"
+    },
+    {
+      "id":1672,
+      "tag_id":1672,
+      "name":"Mailing List - Building Project ??",
+      "description":"",
+      "colour":"grey",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":"2020-06-10 17:56:02",
+      "cuser":"Paul",
+      "mtime":"2021-03-15 17:43:33",
+      "muser":"Paul"
+    },
+    {
+      "id":1670,
+      "tag_id":1670,
+      "name":"Mailing List - Children & Youth Events",
+      "description":"",
+      "colour":"grey",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":"2020-06-10 17:55:35",
+      "cuser":"Paul",
+      "mtime":"2021-04-17 22:10:22",
+      "muser":"Paul"
+    },
+    {
+      "id":1663,
+      "tag_id":1663,
+      "name":"Mailing List - Foodbank",
+      "description":"",
+      "colour":"grey",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":"2020-06-10 17:54:10",
+      "cuser":"Paul",
+      "mtime":"2020-06-10 20:08:39",
+      "muser":"Paul"
+    },
+    {
+      "id":1662,
+      "tag_id":1662,
+      "name":"Mailing List - Mission",
+      "description":"",
+      "colour":"grey",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":"2020-06-10 17:53:59",
+      "cuser":"Paul",
+      "mtime":"2020-06-10 20:08:50",
+      "muser":"Paul"
+    },
+    {
+      "id":1666,
+      "tag_id":1666,
+      "name":"Mailing List - Serving Opportunities",
+      "description":"",
+      "colour":"grey",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":"2020-06-10 17:54:50",
+      "cuser":"Paul",
+      "mtime":"2020-06-10 20:09:25",
+      "muser":"Paul"
+    },
+    {
+      "id":1665,
+      "tag_id":1665,
+      "name":"Mailing List - Small Groups",
+      "description":"",
+      "colour":"grey",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":"2020-06-10 17:54:38",
+      "cuser":"Paul",
+      "mtime":"2020-06-10 20:09:34",
+      "muser":"Paul"
+    },
+    {
+      "id":1669,
+      "tag_id":1669,
+      "name":"Mailing List - Student Events",
+      "description":"",
+      "colour":"grey",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":"2020-06-10 17:55:26",
+      "cuser":"Paul",
+      "mtime":"2020-06-10 20:09:50",
+      "muser":"Paul"
+    },
+    {
+      "id":1664,
+      "tag_id":1664,
+      "name":"Mailing List - Vision and Values",
+      "description":"",
+      "colour":"grey",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":"2020-06-10 17:54:26",
+      "cuser":"Paul",
+      "mtime":"2020-06-10 20:09:59",
+      "muser":"Paul"
+    },
+    {
+      "id":1661,
+      "tag_id":1661,
+      "name":"Mailing List - Weekly church news",
+      "description":"",
+      "colour":"grey",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":"2020-06-10 17:53:40",
+      "cuser":"Paul",
+      "mtime":"2021-04-26 20:47:00",
+      "muser":"Paul"
+    },
+    {
+      "id":1882,
+      "tag_id":1882,
+      "name":"Member",
+      "description":"",
+      "colour":"orange",
+      "type":"smart",
+      "tag_no_contacts":475,
+      "no_contacts":475,
+      "ctime":"2021-04-15 12:40:43",
+      "cuser":"churchsuite",
+      "mtime":"2021-04-15 12:40:43",
+      "muser":"churchsuite"
     }
   ]
 }
@@ -265,7 +478,7 @@ This will return one of the following HTTP codes:
   "dates":[
     {
       "name":"Married",
-      "date":"2022-01-31"
+      "date":"2022-02-14"
     }
   ],
   "site_ids":[
@@ -283,9 +496,9 @@ This `POST` method will return output in the following format:
 
 ```json
 {
-  "id":1822,
-  "person_uuid":"0ce3f344-f2fa-4376-b7a0-c5d4ef47bb4e",
-  "type_id":"contact_1822",
+  "id":1795,
+  "person_uuid":"74786666-abac-4529-a47e-beacc7707466",
+  "type_id":"contact_1795",
   "first_name":"Joe",
   "last_name":"Bloggs",
   "title":"",
@@ -314,9 +527,13 @@ This `POST` method will return output in the following format:
   "employer":null,
   "public_options":{
     "invited":false,
-    "access":false,
+    "access":true,
     "visible":{
-      "enabled":false
+      "enabled":true,
+      "address":false,
+      "email":false,
+      "mobile":false,
+      "telephone":false
     }
   },
   "communication":{
@@ -347,9 +564,9 @@ This `POST` method will return output in the following format:
   "site_ids":[
     "1"
   ],
-  "mtime":"2022-01-31 09:41:52",
+  "mtime":"2022-02-14 08:15:28",
   "muser":"churchsuite",
-  "ctime":"2022-01-31 09:41:52",
+  "ctime":"2022-02-14 08:15:28",
   "cuser":"churchsuite"
 }
 ```
@@ -389,9 +606,9 @@ This `PUT` method will return output in the following format:
 
 ```json
 {
-  "id":1822,
-  "person_uuid":"0ce3f344-f2fa-4376-b7a0-c5d4ef47bb4e",
-  "type_id":"contact_1822",
+  "id":1795,
+  "person_uuid":"74786666-abac-4529-a47e-beacc7707466",
+  "type_id":"contact_1795",
   "first_name":"Jane",
   "last_name":"Bloggs",
   "title":"",
@@ -420,9 +637,13 @@ This `PUT` method will return output in the following format:
   "employer":null,
   "public_options":{
     "invited":false,
-    "access":false,
+    "access":true,
     "visible":{
-      "enabled":false
+      "enabled":true,
+      "address":false,
+      "email":false,
+      "mobile":false,
+      "telephone":false
     }
   },
   "communication":{
@@ -453,9 +674,9 @@ This `PUT` method will return output in the following format:
   "site_ids":[
     "1"
   ],
-  "mtime":"2022-01-31 09:41:53",
+  "mtime":"2022-02-14 08:15:29",
   "muser":"churchsuite",
-  "ctime":"2022-01-31 09:41:52",
+  "ctime":"2022-02-14 08:15:28",
   "cuser":"churchsuite"
 }
 ```
@@ -482,30 +703,38 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":58,
+    "no_results":42,
     "page":1,
     "per_page":2
   },
   "tags":[
     {
-      "id":"1981",
-      "tag_id":"1981",
-      "name":"Alpha & Christianity Explored Invitees",
-      "description":"",
-      "colour":"blue",
-      "type":"fixed",
-      "no_contacts":15,
-      "tag_no_contacts":15
-    },
-    {
-      "id":"1953",
-      "tag_id":"1953",
+      "id":1953,
+      "tag_id":1953,
       "name":"Alpha Course Invitees",
       "description":"Potential invitees to the next Alpha Course",
       "colour":"blue",
       "type":"fixed",
-      "no_contacts":13,
-      "tag_no_contacts":13
+      "tag_no_contacts":15,
+      "no_contacts":15,
+      "ctime":"2021-10-04 22:42:35",
+      "cuser":"churchsuite",
+      "mtime":"2022-02-08 18:30:53",
+      "muser":"churchsuite"
+    },
+    {
+      "id":2028,
+      "tag_id":2028,
+      "name":"Array",
+      "description":null,
+      "colour":"blue",
+      "type":"fixed",
+      "tag_no_contacts":0,
+      "no_contacts":0,
+      "ctime":"2022-02-14 08:13:38",
+      "cuser":"churchsuite",
+      "mtime":"2022-02-14 08:15:31",
+      "muser":"churchsuite"
     }
   ]
 }
@@ -519,14 +748,18 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "id":"1981",
-  "tag_id":"1981",
-  "name":"Alpha & Christianity Explored Invitees",
-  "description":"",
+  "id":1953,
+  "tag_id":1953,
+  "name":"Alpha Course Invitees",
+  "description":"Potential invitees to the next Alpha Course",
   "colour":"blue",
   "type":"fixed",
+  "tag_no_contacts":15,
   "no_contacts":15,
-  "tag_no_contacts":15
+  "ctime":"2021-10-04 22:42:35",
+  "cuser":"churchsuite",
+  "mtime":"2022-02-08 18:30:53",
+  "muser":"churchsuite"
 }
 ```
 
@@ -545,7 +778,7 @@ This will return one of the following HTTP codes:
   "pagination":{
     "no_results":15,
     "page":1,
-    "per_page":null
+    "per_page":15
   },
   "contacts":[
     {
@@ -609,18 +842,18 @@ This will return one of the following HTTP codes:
         
       ],
       "ongoing_consent":{
-        "required":1,
+        "required":0,
         "request_ctime":"2022-01-19 16:15:05",
-        "granted_ctime":null,
-        "granted_name":null
+        "granted_ctime":"2022-02-08 21:43:35",
+        "granted_name":"frw"
       },
       "status":"active",
       "site_id":1,
       "site_ids":[
         "1"
       ],
-      "mtime":"2022-01-20 10:02:23",
-      "muser":"richard",
+      "mtime":"2022-02-08 21:43:34",
+      "muser":"myconsent",
       "ctime":"2014-07-07 16:30:45",
       "cuser":"richard"
     }
@@ -665,7 +898,7 @@ This will return one of the following HTTP codes:
           "assigned_user":"",
           "order":1,
           "num_people":0,
-          "mtime":"2022-01-31 08:57:10",
+          "mtime":"2022-02-07 10:09:36",
           "muser":null,
           "ctime":null,
           "cuser":null
@@ -681,15 +914,15 @@ This will return one of the following HTTP codes:
           "assigned_user":"",
           "order":2,
           "num_people":0,
-          "mtime":"2022-01-31 08:57:10",
+          "mtime":"2022-02-07 10:09:36",
           "muser":null,
           "ctime":null,
           "cuser":null
         }
       ],
-      "mtime":"2022-01-31 08:57:10",
+      "mtime":"2022-02-07 10:09:36",
       "muser":"import",
-      "ctime":"2022-01-31 08:57:10",
+      "ctime":"2022-02-07 10:09:36",
       "cuser":"import"
     }
   ]
@@ -719,7 +952,7 @@ This will return one of the following HTTP codes:
       "assigned_user":"",
       "order":1,
       "num_people":0,
-      "mtime":"2022-01-31 08:57:10",
+      "mtime":"2022-02-07 10:09:36",
       "muser":null,
       "ctime":null,
       "cuser":null
@@ -735,15 +968,15 @@ This will return one of the following HTTP codes:
       "assigned_user":"",
       "order":2,
       "num_people":0,
-      "mtime":"2022-01-31 08:57:10",
+      "mtime":"2022-02-07 10:09:36",
       "muser":null,
       "ctime":null,
       "cuser":null
     }
   ],
-  "mtime":"2022-01-31 08:57:10",
+  "mtime":"2022-02-07 10:09:36",
   "muser":"import",
-  "ctime":"2022-01-31 08:57:10",
+  "ctime":"2022-02-07 10:09:36",
   "cuser":"import"
 }
 ```
@@ -767,27 +1000,27 @@ This will return one of the following HTTP codes:
   },
   "tracking":[
     {
-      "id":1739,
+      "id":1738,
       "resource_id":127,
       "resource_type":"addressbook_contact",
       "stage_id":271,
-      "due_date":"2022-02-07",
+      "due_date":"2022-02-21",
       "due_user":"",
-      "mtime":"2022-01-31 09:42:00",
+      "mtime":"2022-02-14 08:15:37",
       "muser":"churchsuite",
-      "ctime":"2022-01-31 09:42:00",
+      "ctime":"2022-02-14 08:15:37",
       "cuser":"churchsuite"
     },
     {
-      "id":1740,
+      "id":1739,
       "resource_id":1,
       "resource_type":"addressbook_contact",
       "stage_id":271,
-      "due_date":"2022-02-07",
+      "due_date":"2022-02-21",
       "due_user":"",
-      "mtime":"2022-01-31 09:42:00",
+      "mtime":"2022-02-14 08:15:37",
       "muser":"churchsuite",
-      "ctime":"2022-01-31 09:42:00",
+      "ctime":"2022-02-14 08:15:37",
       "cuser":"churchsuite"
     }
   ]
@@ -808,8 +1041,8 @@ This will return one of the following HTTP codes:
 {
   "tracking":[
     {
-      "id":1741,
-      "due_date":"2022-02-07",
+      "id":1740,
+      "due_date":"2022-02-21",
       "due_user":"",
       "resource_id":122,
       "resource_type":"addressbook_contact",
@@ -817,8 +1050,8 @@ This will return one of the following HTTP codes:
       "status":"pending"
     },
     {
-      "id":1742,
-      "due_date":"2022-02-07",
+      "id":1741,
+      "due_date":"2022-02-21",
       "due_user":"",
       "resource_id":881,
       "resource_type":"addressbook_contact",
@@ -844,7 +1077,7 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":36,
+    "no_results":30,
     "page":1,
     "per_page":2
   },
@@ -901,24 +1134,24 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":84,
+    "no_results":88,
     "page":1,
     "per_page":null
   },
   "keydates":[
     {
-      "id":9731,
+      "id":10140,
       "keydate_id":12,
       "resource_type":"addressbook_contact",
-      "resource_id":44,
-      "date":"2021-11-24",
+      "resource_id":1581,
+      "date":"2022-02-04",
       "description":"",
       "linked_resource_type":null,
       "linked_resource_id":null,
-      "mtime":"2021-09-28 11:00:16",
-      "muser":"Paul",
-      "ctime":"2021-09-28 11:00:16",
-      "cuser":"Paul"
+      "mtime":"2022-02-04 15:13:46",
+      "muser":"alys",
+      "ctime":"2022-02-04 15:13:46",
+      "cuser":"alys"
     }
   ]
 }
