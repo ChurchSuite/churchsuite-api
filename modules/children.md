@@ -263,36 +263,53 @@ This will return one of the following HTTP codes:
 
 ```json
 {
+  "pagination":{
+    "no_results":3,
+    "page":1,
+    "per_page":50
+  },
   "tags":[
     {
-      "id":"2025",
-      "tag_id":"2025",
+      "id":2025,
+      "tag_id":2025,
       "name":"#DemoDataGenerated custom field smart tag",
       "description":"An example custom field tag to demonstrate referencing smart tags from other modules",
       "colour":"purple",
       "type":"smart",
+      "tag_no_children":135,
       "no_children":135,
-      "tag_no_children":135
+      "ctime":null,
+      "cuser":null,
+      "mtime":"2022-02-07 10:09:36",
+      "muser":null
     },
     {
-      "id":"897",
-      "tag_id":"897",
+      "id":897,
+      "tag_id":897,
       "name":"Consent: Outstanding",
       "description":"",
       "colour":"red",
       "type":"smart",
+      "tag_no_children":98,
       "no_children":98,
-      "tag_no_children":98
+      "ctime":"2018-03-29 16:26:18",
+      "cuser":"paul",
+      "mtime":"2018-03-29 16:26:18",
+      "muser":"paul"
     },
     {
-      "id":"246",
-      "tag_id":"246",
+      "id":246,
+      "tag_id":246,
       "name":"Nativity Play - Christmas 2020",
       "description":"",
       "colour":"blue",
       "type":"fixed",
+      "tag_no_children":22,
       "no_children":22,
-      "tag_no_children":22
+      "ctime":"2016-04-09 16:05:06",
+      "cuser":"paul",
+      "mtime":"2021-09-01 09:45:20",
+      "muser":"richard"
     }
   ]
 }
@@ -437,9 +454,9 @@ This `POST` method returns output in the following format:
 
 ```json
 {
-  "id":1085,
-  "person_uuid":"92da1e7a-c9c1-4fb8-a4dc-0aee69895905",
-  "type_id":"child_1085",
+  "id":1071,
+  "person_uuid":"2c5cbc48-e0f9-40c7-8b29-bf20938bc2a8",
+  "type_id":"child_1071",
   "first_name":"Joe",
   "middle_name":null,
   "last_name":"Bloggs",
@@ -451,7 +468,7 @@ This `POST` method returns output in the following format:
   "mobile":"",
   "email":"joe@bloggs.com",
   "address":{
-    "id":2894,
+    "id":2880,
     "line1":"",
     "line2":"",
     "line3":"",
@@ -527,9 +544,9 @@ This `POST` method returns output in the following format:
   "images":[
     
   ],
-  "mtime":"2022-02-08 15:51:58",
+  "mtime":"2022-02-14 08:10:52",
   "muser":"churchsuite",
-  "ctime":"2022-02-08 15:51:58",
+  "ctime":"2022-02-14 08:10:52",
   "cuser":"churchsuite"
 }
 ```
@@ -557,9 +574,9 @@ This `PUT` method returns output in the following format:
 
 ```json
 {
-  "id":1085,
-  "person_uuid":"92da1e7a-c9c1-4fb8-a4dc-0aee69895905",
-  "type_id":"child_1085",
+  "id":1071,
+  "person_uuid":"2c5cbc48-e0f9-40c7-8b29-bf20938bc2a8",
+  "type_id":"child_1071",
   "first_name":"Jane",
   "middle_name":null,
   "last_name":"Bloggs",
@@ -571,7 +588,7 @@ This `PUT` method returns output in the following format:
   "mobile":"",
   "email":"jane.bloggs@gmail.com",
   "address":{
-    "id":2894,
+    "id":2880,
     "line1":"",
     "line2":"",
     "line3":"",
@@ -647,9 +664,9 @@ This `PUT` method returns output in the following format:
   "images":[
     
   ],
-  "mtime":"2022-02-08 15:51:59",
+  "mtime":"2022-02-14 08:10:54",
   "muser":"churchsuite",
-  "ctime":"2022-02-08 15:51:58",
+  "ctime":"2022-02-14 08:10:52",
   "cuser":"churchsuite"
 }
 ```
@@ -1275,24 +1292,32 @@ This will return one of the following HTTP codes:
   },
   "tags":[
     {
-      "id":"1957",
-      "tag_id":"1957",
+      "id":1957,
+      "tag_id":1957,
       "name":"Contact Search Permitted",
       "description":null,
       "colour":"blue",
       "type":"fixed",
+      "tag_no_children":2,
       "no_children":2,
-      "tag_no_children":2
+      "ctime":"2021-10-18 12:19:24",
+      "cuser":"richard",
+      "mtime":"2021-12-16 14:38:04",
+      "muser":"Sue"
     },
     {
-      "id":"26",
-      "tag_id":"26",
+      "id":26,
+      "tag_id":26,
       "name":"Easter Holiday Club 2021",
       "description":"",
       "colour":"grey",
       "type":"fixed",
-      "no_children":15,
-      "tag_no_children":15
+      "tag_no_children":14,
+      "no_children":14,
+      "ctime":"2015-01-30 09:29:34",
+      "cuser":"churchsuite",
+      "mtime":"2022-02-08 18:31:26",
+      "muser":"churchsuite"
     }
   ]
 }
@@ -1306,14 +1331,18 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "id":"1957",
-  "tag_id":"1957",
+  "id":1957,
+  "tag_id":1957,
   "name":"Contact Search Permitted",
   "description":null,
   "colour":"blue",
   "type":"fixed",
+  "tag_no_children":2,
   "no_children":2,
-  "tag_no_children":2
+  "ctime":"2021-10-18 12:19:24",
+  "cuser":"richard",
+  "mtime":"2021-12-16 14:38:04",
+  "muser":"Sue"
 }
 ```
 
@@ -1332,7 +1361,7 @@ This will return one of the following HTTP codes:
   "pagination":{
     "no_results":2,
     "page":1,
-    "per_page":null
+    "per_page":2
   },
   "children":[
     {
