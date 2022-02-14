@@ -8,7 +8,7 @@ Contacts, children and small groups all have custom fields and our API endpoints
 
 ```json
 {
-  "id":"1",
+  "id":1,
   "first_name": "Gemma",
   "last_name": "Alexander",
 
@@ -16,10 +16,10 @@ Contacts, children and small groups all have custom fields and our API endpoints
 
   "custom_fields":{
         "field_1": {
-            "id": "1",
+            "id": 1,
             "resource_type": "churchsuite_module",
-            "resource_id": "1",
-            "order": "1",
+            "resource_id": 1,
+            "order": 1,
             "type": "select",
             "name": "Member status",
             "help": null,
@@ -40,7 +40,7 @@ Contacts, children and small groups all have custom fields and our API endpoints
                 "id": "ffbfc9fd-4579-4370-9783-2e4390cd0e30"
             },
             "formatted_value": "Non-member",
-            "required": "1",
+            "required": true,
             "settings": {
                 "my": {
                     "edit": true,
@@ -59,8 +59,8 @@ Contacts, children and small groups all have custom fields and our API endpoints
         },
         "custom1": "Non-member",
         "field1": {
-            "id": "1",
-            "order": "1",
+            "id": 1,
+            "order": 1,
             "type": "select",
             "name": "Member status",
             "value": "Non-member",
@@ -70,10 +70,10 @@ Contacts, children and small groups all have custom fields and our API endpoints
             ]
         },
         "field_2": {
-            "id": "2",
+            "id": 2,
             "resource_type": "churchsuite_module",
-            "resource_id": "1",
-            "order": "2",
+            "resource_id": 1,
+            "order": 2,
             "type": "text",
             "name": "Twitter",
             "help": null,
@@ -81,7 +81,7 @@ Contacts, children and small groups all have custom fields and our API endpoints
             "formatted_options": "",
             "value": null,
             "formatted_value": "",
-            "required": "0",
+            "required": false,
             "settings": {
                 "my": {
                     "edit": true,
@@ -100,17 +100,17 @@ Contacts, children and small groups all have custom fields and our API endpoints
         },
         "custom2": "",
         "field2": {
-            "id": "2",
-            "order": "2",
+            "id": 2,
+            "order": 2,
             "type": "text",
             "name": "Twitter",
             "value": ""
         },
         "field_3": {
-            "id": "3",
+            "id": 3,
             "resource_type": "churchsuite_module",
-            "resource_id": "1",
-            "order": "3",
+            "resource_id": 1,
+            "order": 3,
             "type": "checkbox",
             "name": "Communication - Areas of interest",
             "help": null,
@@ -194,7 +194,7 @@ Contacts, children and small groups all have custom fields and our API endpoints
                 }
             ],
             "formatted_value": "Weekly church news, Mission news, Foodbank",
-            "required": "0",
+            "required": false,
             "settings": {
                 "my": {
                     "edit": true,
@@ -213,8 +213,8 @@ Contacts, children and small groups all have custom fields and our API endpoints
         },
         "custom3": "Weekly church news, Mission news, Foodbank",
         "field3": {
-            "id": "3",
-            "order": "3",
+            "id": 3,
+            "order": 3,
             "type": "checkboxes",
             "name": "Communication - Areas of interest",
             "value": "Weekly church news, Mission news, Foodbank",
@@ -235,10 +235,10 @@ Contacts, children and small groups all have custom fields and our API endpoints
             ]
         },
         "field_4": {
-            "id": "4",
+            "id": 4,
             "resource_type": "churchsuite_module",
-            "resource_id": "1",
-            "order": "4",
+            "resource_id": 1,
+            "order": 4,
             "type": "radio",
             "name": "Electoral Roll",
             "help": null,
@@ -257,7 +257,7 @@ Contacts, children and small groups all have custom fields and our API endpoints
             "formatted_options": "Not on electoral roll, On electoral roll",
             "value": null,
             "formatted_value": "",
-            "required": "0",
+            "required": false,
             "settings": {
                 "my": {
                     "edit": true,
@@ -276,8 +276,8 @@ Contacts, children and small groups all have custom fields and our API endpoints
         },
         "custom4": "",
         "field4": {
-            "id": "4",
-            "order": "4",
+            "id": 4,
+            "order": 4,
             "type": "radios",
             "name": "Electoral Roll",
             "value": "",
@@ -287,10 +287,10 @@ Contacts, children and small groups all have custom fields and our API endpoints
             ]
         },
         "field_5": {
-            "id": "5",
+            "id": 5,
             "resource_type": "churchsuite_module",
-            "resource_id": "1",
-            "order": "5",
+            "resource_id": 1,
+            "order": 5,
             "type": "text",
             "name": "Mentor",
             "help": null,
@@ -298,7 +298,7 @@ Contacts, children and small groups all have custom fields and our API endpoints
             "formatted_options": "",
             "value": null,
             "formatted_value": "",
-            "required": "0",
+            "required": false,
             "settings": {
                 "my": {
                     "edit": true,
@@ -317,17 +317,17 @@ Contacts, children and small groups all have custom fields and our API endpoints
         },
         "custom5": "",
         "field5": {
-            "id": "5",
-            "order": "5",
+            "id": 5,
+            "order": 5,
             "type": "text",
             "name": "Mentor",
             "value": ""
         },
         "field_6": {
-            "id": "6",
+            "id": 6,
             "resource_type": "churchsuite_module",
-            "resource_id": "1",
-            "order": "6",
+            "resource_id": 1,
+            "order": 6,
             "type": "date",
             "name": "DBS Due",
             "help": null,
@@ -335,7 +335,7 @@ Contacts, children and small groups all have custom fields and our API endpoints
             "formatted_options": "",
             "value": "2021-02-13",
             "formatted_value": "13-02-2021",
-            "required": "0",
+            "required": false,
             "settings": {
                 "my": {
                     "edit": true,
@@ -354,17 +354,17 @@ Contacts, children and small groups all have custom fields and our API endpoints
         },
         "custom6": "13-02-2021",
         "field6": {
-            "id": "6",
-            "order": "6",
+            "id": 6,
+            "order": 6,
             "type": "date",
             "name": "DBS Due",
             "value": "13-02-2021"
         },
         "field_7": {
-            "id": "7",
+            "id": 7,
             "resource_type": "churchsuite_module",
-            "resource_id": "1",
-            "order": "7",
+            "resource_id": 1,
+            "order": 7,
             "type": "textarea",
             "name": "Ministry skills",
             "help": null,
@@ -372,7 +372,7 @@ Contacts, children and small groups all have custom fields and our API endpoints
             "formatted_options": "",
             "value": null,
             "formatted_value": "",
-            "required": "0",
+            "required": false,
             "settings": {
                 "my": {
                     "edit": true,
@@ -391,17 +391,17 @@ Contacts, children and small groups all have custom fields and our API endpoints
         },
         "custom7": "",
         "field7": {
-            "id": "7",
-            "order": "7",
+            "id": 7,
+            "order": 7,
             "type": "paragraph",
             "name": "Ministry skills",
             "value": ""
         },
         "field_8": {
-            "id": "8",
+            "id": 8,
             "resource_type": "churchsuite_module",
-            "resource_id": "1",
-            "order": "8",
+            "resource_id": 1,
+            "order": 8,
             "type": "email",
             "name": "Next of Kin - Email Address",
             "help": null,
@@ -409,7 +409,7 @@ Contacts, children and small groups all have custom fields and our API endpoints
             "formatted_options": "",
             "value": null,
             "formatted_value": "",
-            "required": "0",
+            "required": false,
             "settings": {
                 "my": {
                     "edit": true,
@@ -428,17 +428,17 @@ Contacts, children and small groups all have custom fields and our API endpoints
         },
         "custom8": "",
         "field8": {
-            "id": "8",
-            "order": "8",
+            "id": 8,
+            "order": 8,
             "type": "email",
             "name": "Next of Kin - Email Address",
             "value": ""
         },
         "field_9": {
-            "id": "9",
+            "id": 9,
             "resource_type": "churchsuite_module",
-            "resource_id": "1",
-            "order": "9",
+            "resource_id": 1,
+            "order": 9,
             "type": "phone",
             "name": "Next of Kin - Phone Number",
             "help": null,
@@ -446,7 +446,7 @@ Contacts, children and small groups all have custom fields and our API endpoints
             "formatted_options": "",
             "value": null,
             "formatted_value": "",
-            "required": "0",
+            "required": false,
             "settings": {
                 "my": {
                     "edit": true,
@@ -465,8 +465,8 @@ Contacts, children and small groups all have custom fields and our API endpoints
         },
         "custom9": "",
         "field9": {
-            "id": "9",
-            "order": "9",
+            "id": 9,
+            "order": 9,
             "type": "phone",
             "name": "Next of Kin - Phone Number",
             "value": ""
