@@ -6,8 +6,8 @@ A number of our API endpoints provide a means of accessing the images related to
 
 ```json
 {
-  "id":"1",
-  "reference":"1",
+  "id":1,
+  "reference":"",
   "name":"West Bridgford",
   
   ...
@@ -60,8 +60,8 @@ For backwards compatibility, we also provide the following properties against th
 
 ```json
 {
-  "id":"1",
-  "reference":"1",
+  "id":1,
+  "reference":"",
   "name":"West Bridgford",
   
   ...
