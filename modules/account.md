@@ -96,7 +96,7 @@ The following core endpoints are available for retrieving data for the API user:
   "username":"churchsuite",
   "contact_id":null,
   "name":"ChurchSuite Support",
-  "email":"support@churchsuite.co.uk",
+  "email":"support@churchsuite.com",
   "type":"admin",
   "modules":{
     "addressbook":{
