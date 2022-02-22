@@ -6,7 +6,7 @@
 *
 *****/
 
-$url = 'https://api.churchsuite.co.uk/v1/addressbook/contact/1';
+$url = 'https://api.churchsuite.com/v1/addressbook/contact/1';
 
 $x_account = '';
 $x_application = '';
