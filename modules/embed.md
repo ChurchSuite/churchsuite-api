@@ -39,8 +39,8 @@ Unless defined otherwise, the returned events are filtered by default as follows
 * `layout=grid-2019`
 * `merge=signup_to_sequence`
 * `num_results=-1` This shows all events by default.
-* `date_start=(*today's date)`
-* `date_start=(*today's date + 3 months)`
+* `datetime_start=(*The current datetime)`
+* `datetime_end=(*today's date + 3 months)`
 
 The following URL parameters are accepted:
 
@@ -51,6 +51,8 @@ The following URL parameters are accepted:
 * `merge=show_all` Do filter events using a merge strategy.
 * `date_start=(yyyy-mm-dd)` Show events starting on or after a specific date.
 * `date_end=(yyyy-mm-dd)` Show events ending on or before a specific date.
+* `datetime_start=(yyyy-mm-dd h:i:s)` Show events starting on or after a specific datetime.
+* `datetime_end=(yyyy-mm-dd h:i:s)` Show events ending on or after a specific datetime.
 * `num_results=4` The number of events to show. If not given or 0 then all events are shown.
 * `featured=(1|on|true|yes|0|off|false|no)` Filter events based on whether or not it is featured.
 * `(category|category_id)=31` Show events in a specific category id.
@@ -93,6 +95,8 @@ The following URL parameters are accepted:
 * `merge=show_all` Do filter events using a merge strategy.
 * `date_start=(yyyy-mm-dd)` Show events starting on or after a specific date.
 * `date_end=(yyyy-mm-dd)` Show events ending on or before a specific date.
+* `datetime_start=(yyyy-mm-dd h:i:s)` Show events starting on or after a specific datetime.
+* `datetime_end=(yyyy-mm-dd h:i:s)` Show events ending on or after a specific datetime.
 * `num_results=4` The number of events to show. If not given or 0 then all events are shown.
 * `featured=(1|on|true|yes|0|off|false|no)` Filter events based on whether or not it is featured.
 * `(category|category_id)=31` Show events in a specific category id.
