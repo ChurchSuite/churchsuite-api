@@ -1039,24 +1039,14 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "tracking":[
+  "action":"add",
+  "contacts":[
     {
-      "id":1740,
-      "due_date":"2022-02-21",
-      "due_user":"",
-      "resource_id":122,
-      "resource_type":"addressbook_contact",
-      "stage_id":"271",
-      "status":"pending"
+      "contact_id":122,
+      "stage_id":null
     },
     {
-      "id":1741,
-      "due_date":"2022-02-21",
-      "due_user":"",
-      "resource_id":881,
-      "resource_type":"addressbook_contact",
-      "stage_id":"271",
-      "status":"pending"
+      "contact_id":881
     }
   ]
 }
@@ -1068,6 +1058,32 @@ This will return one of the following HTTP codes:
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` flow does not exist or specified contact does not exist
 
+This `POST` method will return output in the following format:
+
+```json
+{
+  "tracking":[
+    {
+      "id":1785,
+      "due_date":"2022-05-03",
+      "due_user":"",
+      "resource_id":122,
+      "resource_type":"addressbook_contact",
+      "stage_id":"271",
+      "status":"pending"
+    },
+    {
+      "id":1786,
+      "due_date":"2022-05-03",
+      "due_user":"",
+      "resource_id":881,
+      "resource_type":"addressbook_contact",
+      "stage_id":"271",
+      "status":"pending"
+    }
+  ]
+}
+```
 
 
 ## List key dates
