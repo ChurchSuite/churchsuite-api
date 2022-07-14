@@ -49,8 +49,8 @@ The following URL parameters are accepted:
 * `merge=sequence_name` Show all single events and uniquely named sequence events. Where a sequenced event has the same name as another event in that sequence only the first upcoming event will be shown.
 * `merge=signup_to_sequence` "Sign up to sequence" events will show where they are the next upcoming event matching the sequence AND name combination. Sequence events that do not have "Sign up to sequence" enabled will be displayed where they are the next upcoming event in the sequence OR have sign-up enabled.
 * `merge=show_all` Do filter events using a merge strategy.
-* `date_start=(yyyy-mm-dd)` Show events starting on or after a specific date.
-* `date_end=(yyyy-mm-dd)` Show events ending on or before a specific date.
+* `date_start=yyyy-mm-dd` Show events starting on or after a specific date.
+* `date_end=yyyy-mm-dd` Show events ending on or before a specific date.
 * `num_results=4` The number of events to show. If not given or 0 then all events are shown.
 * `featured=(1|on|true|yes|0|off|false|no)` Filter events based on whether or not it is featured.
 * `(category|category_id)=31` Show events in a specific category id.
