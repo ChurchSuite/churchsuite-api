@@ -51,38 +51,54 @@ The following core endpoints are available for retrieving data for the API user:
 
 ```json
 {
-  "id":"demo",
-  "give2_keyword":"KINGSHOPE",
-  "name":"Kings Hope Church",
-  "billing":{
+  "name":"ChurchSuite Developers",
+  "timezone":"Europe\/London",
+  "currency":"GBP",
+  "language":"en-gb",
+  "give2_keyword":"KHC",
+  "first_day_of_week":"1",
+  "data_protection_title":"Privacy Notice",
+  "data_protection_body":"",
+  "data_protection_help":"",
+  "email_font":"Open Sans",
+  "email_footer":"Kings Hope Church",
+  "email_template":"plain",
+  "email_open_tracking":true,
+  "billing_address":{
+    "id":null,
+    "line1":"1 Broadway",
+    "line2":"Lace Market",
+    "line3":null,
+    "city":"Nottingham",
+    "county":"Nottinghamshire",
+    "postcode":"NG1 1PR",
+    "country":"GB",
+    "latitude":52.9421262260486,
+    "longitude":-1.17162785403717
+  },
+  "billing_region":"ENG",
+  "billing_contact":{
     "first_name":"Nathaniel",
     "last_name":"Alsop",
     "telephone":"0115 824 2300",
-    "email":"support@churchsuite.com",
-    "address":"Easter Park",
-    "address2":"Lenton Lane",
-    "city":"Nottingham",
-    "county":"Notts",
-    "postcode":"NG7 2PX",
-    "region":"ENG",
-    "country":"GB",
-    "latitude":"52.942637",
-    "longitude":"-1.171216"
+    "email":"support@churchsuite.com"
   },
-  "meeting":{
-    "address":"Easter Park",
-    "address2":"Lenton Lane",
-    "city":"Nottingham",
-    "county":"Notts",
-    "postcode":"NG7 2PX",
-    "country":null,
-    "latitude":"52.942637",
-    "longitude":"-1.171216"
+  "account_contact":{
+    "first_name":"Nathaniel",
+    "last_name":"Alsop",
+    "telephone":"0115 824 2300",
+    "email":"nathaniel@churchsuite.com"
   },
-  "ctime":"2011-07-07 00:00:00",
-  "cuser":"gavin",
-  "mtime":"2022-02-03 12:29:18",
-  "muser":"churchsuite-nathaniel"
+  "data_protection_contact":{
+    "first_name":"Data",
+    "last_name":"Protection",
+    "telephone":"0115 824 2300",
+    "email":"datacontroller@kingshope.church"
+  },
+  "ctime":"2022-04-08 10:58:42",
+  "cuser":"churchsuite",
+  "mtime":"2022-09-13 10:14:50",
+  "muser":"Ant"
 }
 ```
 
