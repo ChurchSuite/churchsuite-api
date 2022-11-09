@@ -496,7 +496,7 @@ This will return one of the following HTTP codes:
 
 ## Get event signups
 
-* `GET /v1/calendar/event/:id/signups` will return the data regarding people who have signed up for the event
+* `GET /v1/calendar/signups?event_id=:id` will return the data regarding people who have signed up for the event
 
 ```json
 {
