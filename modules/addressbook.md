@@ -971,7 +971,7 @@ This will return one of the following HTTP codes:
 
 This will return one of the following HTTP codes:
 
-* `200` stage data returned
+* `200` stages data returned
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` flow does not exist
 
