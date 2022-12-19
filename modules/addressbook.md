@@ -888,40 +888,6 @@ This will return one of the following HTTP codes:
       "name":"#DemoDataGenerated custom field flow",
       "notification_days":"[\"2\",\"5\",\"6\"]",
       "status":"active",
-      "stages":[
-        {
-          "flow_id":94,
-          "id":271,
-          "name":"#DemoDataGenerated flow stage 1",
-          "instructions":"",
-          "due_interval":7,
-          "due_period":"day",
-          "due_from":"previous",
-          "assigned_user":"",
-          "order":1,
-          "num_people":0,
-          "mtime":"2022-02-07 10:09:36",
-          "muser":null,
-          "ctime":null,
-          "cuser":null
-        },
-        {
-          "flow_id":94,
-          "id":272,
-          "name":"#DemoDataGenerated flow stage 2",
-          "instructions":"",
-          "due_interval":7,
-          "due_period":"day",
-          "due_from":"previous",
-          "assigned_user":"",
-          "order":2,
-          "num_people":0,
-          "mtime":"2022-02-07 10:09:36",
-          "muser":null,
-          "ctime":null,
-          "cuser":null
-        }
-      ],
       "mtime":"2022-02-07 10:09:36",
       "muser":"import",
       "ctime":"2022-02-07 10:09:36",
@@ -942,6 +908,30 @@ This will return one of the following HTTP codes:
   "name":"#DemoDataGenerated custom field flow",
   "notification_days":"[\"2\",\"5\",\"6\"]",
   "status":"active",
+  "mtime":"2022-12-19 10:15:24",
+  "muser":"import",
+  "ctime":"2022-12-19 10:15:24",
+  "cuser":"import"
+}
+```
+
+This will return one of the following HTTP codes:
+
+* `200` flow data returned
+* `400` some of the data passed through was not valid, e.g. invalid URL
+* `404` flow does not exist
+
+## Get the stages for a flow
+
+* `GET /v1/addressbook/flow_stages/{flow_id}` will return data about the stages for a flow
+
+```json
+{
+  "pagination":{
+    "no_results":2,
+    "page":1,
+    "per_page":null
+  },
   "stages":[
     {
       "flow_id":94,
@@ -975,17 +965,13 @@ This will return one of the following HTTP codes:
       "ctime":null,
       "cuser":null
     }
-  ],
-  "mtime":"2022-02-07 10:09:36",
-  "muser":"import",
-  "ctime":"2022-02-07 10:09:36",
-  "cuser":"import"
+  ]
 }
 ```
 
 This will return one of the following HTTP codes:
 
-* `200` flow data returned
+* `200` stages data returned
 * `400` some of the data passed through was not valid, e.g. invalid URL
 * `404` flow does not exist
 
