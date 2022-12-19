@@ -26,7 +26,8 @@ The Address Book module is concerned with the management of contacts within Chur
   "contacts":[
     {
       "id":112,
-      "person_uuid":"cb246f98-65ef-4cd5-825f-1db639a37490",
+      "person_id":172,
+      "uuid":"cb246f98-65ef-4cd5-825f-1db639a37490",
       "type_id":"contact_112",
       "first_name":"George",
       "last_name":"Baker",
@@ -783,7 +784,6 @@ This will return one of the following HTTP codes:
   "contacts":[
     {
       "id":141,
-      "person_uuid":"8ce26b46-82dd-45a3-82e6-4eb05f45f007",
       "type_id":"contact_141",
       "first_name":"Gemma",
       "last_name":"Alexander",
@@ -794,6 +794,8 @@ This will return one of the following HTTP codes:
       "maiden_name":"Thomas",
       "sex":"f",
       "date_of_birth":"1981-02-10",
+      "person_id":499,
+      "uuid":"d257692a-cb4b-49a7-8601-7191e91fc112",
       "marital":"married",
       "spouse_id":584,
       "address":"70 Montgomery Place",
