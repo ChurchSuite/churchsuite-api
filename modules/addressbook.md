@@ -587,12 +587,8 @@ This `POST` method will return output in the following format:
     "general_sms":true
   },
   "tags":[
-    {
-      "name":"Newcomers"
-    },
-    {
-      "name":"Not in a group"
-    }
+    "Newcomers",
+    "Not in a group"
   ]
 }
 ```
