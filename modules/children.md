@@ -14,27 +14,27 @@ The Children module manages all children and youth within ChurchSuite. The follo
 ```json
 {
   "pagination":{
-    "no_results":153,
+    "no_results":182,
     "page":1,
     "per_page":1
   },
   "children":[
     {
-      "id":1029,
-      "person_uuid":"5da14d88-af94-4813-8167-c694840793ae",
-      "type_id":"child_1029",
-      "first_name":"Taupe",
+      "id":982,
+      "person_id":654,
+      "uuid":"758acd29-a1e0-44e5-aea8-fa1769992e51",
+      "type_id":"child_982",
+      "first_name":"Joel",
       "middle_name":null,
-      "last_name":"Parsons",
-      "name":"Taupe Parsons",
+      "last_name":"Simmonds",
+      "name":"Joel Simmonds",
       "formal_name":null,
       "sex":"m",
-      "date_of_birth":"2007-08-04",
-      "telephone":"",
-      "mobile":"",
-      "email":"",
+      "date_of_birth":"2006-06-03",
+      "mobile":"07228 377 761",
+      "email":"joel.simmonds@gmail.com",
       "address":{
-        "id":2356,
+        "id":1703,
         "line1":"",
         "line2":"",
         "line3":"",
@@ -48,7 +48,7 @@ The Children module manages all children and youth within ChurchSuite. The follo
         "latitude":null,
         "longitude":null
       },
-      "contact_id":1698,
+      "contact_id":null,
       "parent":{
         "additional_emails":[
           
@@ -57,31 +57,18 @@ The Children module manages all children and youth within ChurchSuite. The follo
           
         ],
         "primary":{
-          "contact_id":1698,
-          "first_name":"Steve",
-          "last_name":"Parsons",
-          "sex":"m",
-          "relationship":"parent",
-          "email":"",
-          "mobile":"",
-          "telephone":"",
+          "person_id":0,
+          "contact_id":0,
+          "first_name":null,
+          "last_name":null,
+          "sex":null,
+          "relationship":"other",
+          "email":null,
+          "mobile":null,
+          "telephone":null,
           "communication":{
-            "general_email":1,
-            "general_sms":1
-          }
-        },
-        "secondary":{
-          "contact_id":1699,
-          "first_name":"Delia",
-          "last_name":"Parsons",
-          "sex":"f",
-          "relationship":"parent",
-          "email":"",
-          "mobile":"",
-          "telephone":"",
-          "communication":{
-            "general_email":1,
-            "general_sms":1
+            "general_email":0,
+            "general_sms":0
           }
         }
       },
@@ -90,22 +77,22 @@ The Children module manages all children and youth within ChurchSuite. The follo
       ],
       "school":null,
       "medical_short":null,
-      "medical":"",
+      "medical":null,
       "doctor_details":null,
       "special_needs":null,
       "info":null,
       "communication":{
-        "general_email":1,
-        "general_sms":1,
+        "general_email":0,
+        "general_sms":0,
         "phone":0,
-        "post":1,
-        "rota_email":1,
-        "rota_sms":1
+        "post":0,
+        "rota_email":0,
+        "rota_sms":0
       },
-      "has_email_opt_out":false,
-      "has_rota_email_opt_out":false,
-      "has_rota_sms_opt_out":false,
-      "has_sms_opt_out":false,
+      "has_email_opt_out":true,
+      "has_rota_email_opt_out":true,
+      "has_rota_sms_opt_out":true,
+      "has_sms_opt_out":true,
       "consent":{
         "internal":null,
         "external":null
@@ -116,18 +103,29 @@ The Children module manages all children and youth within ChurchSuite. The follo
         "granted_ctime":null,
         "granted_name":null
       },
-      "site_id":19,
+      "site_id":1,
       "site_ids":[
-        "19"
+        "1"
       ],
-      "status":"active",
+      "public_options":{
+        "invited":false,
+        "access":false,
+        "visible":{
+          "enabled":true,
+          "address":false,
+          "email":false,
+          "mobile":false,
+          "telephone":false
+        }
+      },
+      "status":"pending",
       "images":[
         
       ],
-      "mtime":"2021-11-26 10:28:24",
-      "muser":"Paul",
-      "ctime":"2021-01-27 16:41:01",
-      "cuser":"connect"
+      "mtime":"2020-02-24 17:45:19",
+      "muser":"embed",
+      "ctime":"2020-02-24 17:45:19",
+      "cuser":"embed"
     }
   ]
 }
@@ -141,7 +139,8 @@ The Children module manages all children and youth within ChurchSuite. The follo
 ```json
 {
   "id":1,
-  "person_uuid":"026d5e1d-1e3a-47ac-844d-92777ce0e880",
+  "person_id":539,
+  "uuid":"026d5e1d-1e3a-47ac-844d-92777ce0e880",
   "type_id":"child_1",
   "first_name":"Micah",
   "middle_name":"",
@@ -150,11 +149,10 @@ The Children module manages all children and youth within ChurchSuite. The follo
   "formal_name":"",
   "sex":"m",
   "date_of_birth":"2007-05-28",
-  "telephone":"01062 438 661",
   "mobile":"",
   "email":"",
   "address":{
-    "id":0,
+    "id":3269,
     "line1":"57 Evington Road",
     "line2":"Clarendon Park",
     "line3":"",
@@ -168,7 +166,7 @@ The Children module manages all children and youth within ChurchSuite. The follo
     "latitude":"52.626616",
     "longitude":"-1.114667"
   },
-  "contact_id":2,
+  "contact_id":null,
   "parent":{
     "additional_emails":[
       
@@ -177,27 +175,14 @@ The Children module manages all children and youth within ChurchSuite. The follo
       
     ],
     "primary":{
-      "contact_id":2,
+      "person_id":1871,
+      "contact_id":0,
       "first_name":"Paula",
-      "last_name":"Wright",
-      "sex":"f",
+      "last_name":"",
+      "sex":"u",
       "relationship":"parent",
       "email":"paula.wright@live.com",
       "mobile":"07369 801 623",
-      "telephone":"01062 438 661",
-      "communication":{
-        "general_email":1,
-        "general_sms":1
-      }
-    },
-    "secondary":{
-      "contact_id":3,
-      "first_name":"Joe",
-      "last_name":"Wright",
-      "sex":"m",
-      "relationship":"parent",
-      "email":"joe.wright@btconnect.com",
-      "mobile":"07122 783 153",
       "telephone":"01062 438 661",
       "communication":{
         "general_email":1,
@@ -240,12 +225,23 @@ The Children module manages all children and youth within ChurchSuite. The follo
   "site_ids":[
     "20"
   ],
+  "public_options":{
+    "invited":false,
+    "access":false,
+    "visible":{
+      "enabled":true,
+      "address":false,
+      "email":false,
+      "mobile":false,
+      "telephone":false
+    }
+  },
   "status":"active",
   "images":[
     
   ],
-  "mtime":"2021-11-26 10:28:24",
-  "muser":"Paul",
+  "mtime":"2022-12-05 11:39:40",
+  "muser":"testing",
   "ctime":"2013-01-15 22:21:09",
   "cuser":"chris"
 }
@@ -270,46 +266,46 @@ This will return one of the following HTTP codes:
   },
   "tags":[
     {
-      "id":2025,
-      "tag_id":2025,
-      "name":"#DemoDataGenerated custom field smart tag",
-      "description":"An example custom field tag to demonstrate referencing smart tags from other modules",
-      "colour":"purple",
-      "type":"smart",
-      "tag_no_children":135,
-      "no_children":135,
-      "ctime":null,
-      "cuser":null,
-      "mtime":"2022-02-07 10:09:36",
-      "muser":null
-    },
-    {
       "id":897,
       "tag_id":897,
       "name":"Consent: Outstanding",
       "description":"",
       "colour":"red",
       "type":"smart",
-      "tag_no_children":98,
-      "no_children":98,
+      "tag_no_children":94,
+      "no_children":94,
       "ctime":"2018-03-29 16:26:18",
       "cuser":"paul",
-      "mtime":"2018-03-29 16:26:18",
-      "muser":"paul"
+      "mtime":"2022-06-26 19:09:54",
+      "muser":"Paul"
     },
     {
       "id":246,
       "tag_id":246,
-      "name":"Nativity Play - Christmas 2020",
+      "name":"Nativity Play - Christmas 2022",
       "description":"",
       "colour":"blue",
       "type":"fixed",
-      "tag_no_children":22,
-      "no_children":22,
+      "tag_no_children":21,
+      "no_children":21,
       "ctime":"2016-04-09 16:05:06",
       "cuser":"paul",
-      "mtime":"2021-09-01 09:45:20",
-      "muser":"richard"
+      "mtime":"2023-02-20 10:36:35",
+      "muser":"Paul"
+    },
+    {
+      "id":2069,
+      "tag_id":2069,
+      "name":"Youth",
+      "description":"",
+      "colour":"blue",
+      "type":"smart",
+      "tag_no_children":77,
+      "no_children":77,
+      "ctime":"2022-04-20 12:26:36",
+      "cuser":"LukeH",
+      "mtime":"2022-04-20 12:26:36",
+      "muser":"LukeH"
     }
   ]
 }
@@ -327,6 +323,11 @@ This will return one of the following HTTP codes:
 
 ```json
 {
+  "pagination":{
+    "no_results":4,
+    "page":1,
+    "per_page":null
+  },
   "keydates":[
     {
       "id":151,
@@ -454,9 +455,10 @@ This `POST` method returns output in the following format:
 
 ```json
 {
-  "id":1071,
-  "person_uuid":"2c5cbc48-e0f9-40c7-8b29-bf20938bc2a8",
-  "type_id":"child_1071",
+  "id":1434,
+  "person_id":2206,
+  "uuid":"3e43065c-1589-459d-bdfe-7c192f19da02",
+  "type_id":"child_1434",
   "first_name":"Joe",
   "middle_name":null,
   "last_name":"Bloggs",
@@ -464,11 +466,10 @@ This `POST` method returns output in the following format:
   "formal_name":null,
   "sex":"m",
   "date_of_birth":"2010-09-21",
-  "telephone":"",
   "mobile":"",
   "email":"joe@bloggs.com",
   "address":{
-    "id":2880,
+    "id":3584,
     "line1":"",
     "line2":"",
     "line3":"",
@@ -491,14 +492,15 @@ This `POST` method returns output in the following format:
       
     ],
     "primary":{
+      "person_id":0,
       "contact_id":0,
-      "first_name":"",
-      "last_name":"",
-      "sex":"u",
-      "relationship":"parent",
-      "email":"",
-      "mobile":"",
-      "telephone":"",
+      "first_name":null,
+      "last_name":null,
+      "sex":null,
+      "relationship":"other",
+      "email":null,
+      "mobile":null,
+      "telephone":null,
       "communication":{
         "general_email":0,
         "general_sms":0
@@ -540,13 +542,24 @@ This `POST` method returns output in the following format:
   "site_ids":[
     "1"
   ],
+  "public_options":{
+    "invited":false,
+    "access":false,
+    "visible":{
+      "enabled":true,
+      "address":0,
+      "email":0,
+      "mobile":0,
+      "telephone":0
+    }
+  },
   "status":"active",
   "images":[
     
   ],
-  "mtime":"2022-02-14 08:10:52",
+  "mtime":"2023-10-13 16:56:33",
   "muser":"churchsuite",
-  "ctime":"2022-02-14 08:10:52",
+  "ctime":"2023-10-13 16:56:33",
   "cuser":"churchsuite"
 }
 ```
@@ -574,9 +587,10 @@ This `PUT` method returns output in the following format:
 
 ```json
 {
-  "id":1071,
-  "person_uuid":"2c5cbc48-e0f9-40c7-8b29-bf20938bc2a8",
-  "type_id":"child_1071",
+  "id":1434,
+  "person_id":2206,
+  "uuid":"3e43065c-1589-459d-bdfe-7c192f19da02",
+  "type_id":"child_1434",
   "first_name":"Jane",
   "middle_name":null,
   "last_name":"Bloggs",
@@ -584,11 +598,10 @@ This `PUT` method returns output in the following format:
   "formal_name":null,
   "sex":"f",
   "date_of_birth":"2010-09-21",
-  "telephone":"",
   "mobile":"",
   "email":"jane.bloggs@gmail.com",
   "address":{
-    "id":2880,
+    "id":3584,
     "line1":"",
     "line2":"",
     "line3":"",
@@ -611,14 +624,15 @@ This `PUT` method returns output in the following format:
       
     ],
     "primary":{
+      "person_id":0,
       "contact_id":0,
-      "first_name":"",
-      "last_name":"",
-      "sex":"u",
-      "relationship":"parent",
-      "email":"",
-      "mobile":"",
-      "telephone":"",
+      "first_name":null,
+      "last_name":null,
+      "sex":null,
+      "relationship":"other",
+      "email":null,
+      "mobile":null,
+      "telephone":null,
       "communication":{
         "general_email":0,
         "general_sms":0
@@ -660,13 +674,24 @@ This `PUT` method returns output in the following format:
   "site_ids":[
     "1"
   ],
+  "public_options":{
+    "invited":false,
+    "access":false,
+    "visible":{
+      "enabled":true,
+      "address":0,
+      "email":0,
+      "mobile":0,
+      "telephone":0
+    }
+  },
   "status":"active",
   "images":[
     
   ],
-  "mtime":"2022-02-14 08:10:54",
+  "mtime":"2023-10-13 16:56:36",
   "muser":"churchsuite",
-  "ctime":"2022-02-14 08:10:52",
+  "ctime":"2023-10-13 16:56:33",
   "cuser":"churchsuite"
 }
 ```
@@ -691,145 +716,85 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":7,
+    "no_results":12,
     "page":1,
     "per_page":1
   },
   "gatherings":[
     {
-      "id":29,
-      "site_id":19,
-      "name":"Kings Kids & Youth (Derby)",
-      "max_age":19,
+      "id":33,
+      "site_id":1,
+      "name":"Holiday Club",
+      "max_age":11,
       "max_age_months":0,
-      "exit_month":8,
-      "status":"active",
+      "exit_month":0,
+      "status":"archived",
+      "ctime":"2022-06-27 10:20:21",
+      "cuser":"Paul",
+      "mtime":"2022-06-27 10:59:56",
+      "muser":"Paul",
       "groups":[
         {
-          "id":209,
-          "name":"Babies",
-          "gathering_id":29,
-          "gathering_name":"Kings Kids & Youth (Derby)",
-          "checkin_badges_child":2,
-          "checkin_badges_pickup":2,
-          "checkin_badges_room":0,
-          "checkin_capacity":10,
-          "checkin_ratio":2,
-          "entry_age":0,
-          "entry_age_months":0,
-          "entry_month":null,
-          "entry_rule":"0 years",
-          "status":"active",
-          "ctime":"2021-08-12 16:02:33",
-          "cuser":"Sue",
-          "mtime":"2021-08-12 16:02:33",
-          "muser":"Sue"
-        },
-        {
-          "id":210,
-          "name":"Tots",
-          "gathering_id":29,
-          "gathering_name":"Kings Kids & Youth (Derby)",
-          "checkin_badges_child":1,
-          "checkin_badges_pickup":1,
+          "id":232,
+          "name":"Red",
+          "gathering_id":33,
+          "gathering_name":"Holiday Club",
+          "checkin_badges_child":0,
+          "checkin_badges_pickup":0,
           "checkin_badges_room":0,
           "checkin_capacity":null,
-          "checkin_ratio":3,
-          "entry_age":2,
+          "checkin_ratio":null,
+          "entry_age":3,
           "entry_age_months":0,
-          "entry_month":5,
-          "entry_rule":"2 years processed in May",
+          "entry_month":null,
+          "entry_rule":"3 years",
           "status":"active",
-          "ctime":"2021-08-12 16:03:00",
-          "cuser":"Sue",
-          "mtime":"2022-02-08 14:49:20",
-          "muser":"churchsuite"
+          "ctime":"2022-06-27 10:20:33",
+          "cuser":"Paul",
+          "mtime":"2022-06-27 10:20:33",
+          "muser":"Paul"
         },
         {
-          "id":208,
-          "name":"Impact",
-          "gathering_id":29,
-          "gathering_name":"Kings Kids & Youth (Derby)",
-          "checkin_badges_child":1,
-          "checkin_badges_pickup":1,
+          "id":233,
+          "name":"Green",
+          "gathering_id":33,
+          "gathering_name":"Holiday Club",
+          "checkin_badges_child":0,
+          "checkin_badges_pickup":0,
           "checkin_badges_room":0,
-          "checkin_capacity":30,
-          "checkin_ratio":6,
+          "checkin_capacity":null,
+          "checkin_ratio":null,
+          "entry_age":4,
+          "entry_age_months":0,
+          "entry_month":null,
+          "entry_rule":"4 years",
+          "status":"active",
+          "ctime":"2022-06-27 10:20:40",
+          "cuser":"Paul",
+          "mtime":"2022-06-27 10:20:40",
+          "muser":"Paul"
+        },
+        {
+          "id":234,
+          "name":"Orange",
+          "gathering_id":33,
+          "gathering_name":"Holiday Club",
+          "checkin_badges_child":0,
+          "checkin_badges_pickup":0,
+          "checkin_badges_room":0,
+          "checkin_capacity":null,
+          "checkin_ratio":null,
           "entry_age":5,
           "entry_age_months":0,
-          "entry_month":9,
-          "entry_rule":"5 years processed in September",
+          "entry_month":null,
+          "entry_rule":"5 years",
           "status":"active",
-          "ctime":"2021-08-12 14:18:30",
-          "cuser":"Sue",
-          "mtime":"2021-08-13 14:58:18",
-          "muser":"Sue"
-        },
-        {
-          "id":211,
-          "name":"Explorers",
-          "gathering_id":29,
-          "gathering_name":"Kings Kids & Youth (Derby)",
-          "checkin_badges_child":1,
-          "checkin_badges_pickup":1,
-          "checkin_badges_room":0,
-          "checkin_capacity":25,
-          "checkin_ratio":6,
-          "entry_age":7,
-          "entry_age_months":0,
-          "entry_month":9,
-          "entry_rule":"7 years processed in September",
-          "status":"active",
-          "ctime":"2021-08-12 16:04:10",
-          "cuser":"Sue",
-          "mtime":"2021-08-12 16:04:10",
-          "muser":"Sue"
-        },
-        {
-          "id":212,
-          "name":"Fusion",
-          "gathering_id":29,
-          "gathering_name":"Kings Kids & Youth (Derby)",
-          "checkin_badges_child":1,
-          "checkin_badges_pickup":1,
-          "checkin_badges_room":0,
-          "checkin_capacity":20,
-          "checkin_ratio":10,
-          "entry_age":9,
-          "entry_age_months":0,
-          "entry_month":9,
-          "entry_rule":"9 years processed in September",
-          "status":"active",
-          "ctime":"2021-08-12 16:04:52",
-          "cuser":"Sue",
-          "mtime":"2021-08-12 16:04:52",
-          "muser":"Sue"
-        },
-        {
-          "id":213,
-          "name":"Cohesion",
-          "gathering_id":29,
-          "gathering_name":"Kings Kids & Youth (Derby)",
-          "checkin_badges_child":1,
-          "checkin_badges_pickup":1,
-          "checkin_badges_room":0,
-          "checkin_capacity":25,
-          "checkin_ratio":10,
-          "entry_age":13,
-          "entry_age_months":0,
-          "entry_month":9,
-          "entry_rule":"13 years processed in September",
-          "status":"active",
-          "ctime":"2021-08-12 16:05:27",
-          "cuser":"Sue",
-          "mtime":"2021-08-12 16:05:27",
-          "muser":"Sue"
+          "ctime":"2022-06-27 10:20:53",
+          "cuser":"Paul",
+          "mtime":"2022-06-27 10:20:53",
+          "muser":"Paul"
         }
-      ],
-      "ctime":"2021-08-12 12:28:46",
-      "cuser":"Sue",
-      "mtime":"2021-12-07 16:47:11",
-      "muser":"jack"
+      ]
     }
   ]
 }
@@ -848,16 +813,20 @@ This will return one of the following HTTP codes:
   "max_age_months":0,
   "exit_month":9,
   "status":"active",
+  "ctime":"2019-02-11 15:30:21",
+  "cuser":"shane",
+  "mtime":"2021-08-11 16:42:01",
+  "muser":"Sue",
   "groups":[
     {
       "id":140,
       "name":"Babies",
       "gathering_id":1,
       "gathering_name":"Kings Kids & Youth (Nottingham)",
-      "checkin_badges_child":2,
+      "checkin_badges_child":1,
       "checkin_badges_pickup":2,
-      "checkin_badges_room":0,
-      "checkin_capacity":null,
+      "checkin_badges_room":1,
+      "checkin_capacity":10,
       "checkin_ratio":2,
       "entry_age":0,
       "entry_age_months":0,
@@ -866,8 +835,8 @@ This will return one of the following HTTP codes:
       "status":"active",
       "ctime":"2018-08-06 14:37:44",
       "cuser":"paul",
-      "mtime":"2021-06-30 16:38:21",
-      "muser":"gavin"
+      "mtime":"2022-03-09 10:06:17",
+      "muser":"nathaniel"
     },
     {
       "id":2,
@@ -877,7 +846,7 @@ This will return one of the following HTTP codes:
       "checkin_badges_child":1,
       "checkin_badges_pickup":1,
       "checkin_badges_room":0,
-      "checkin_capacity":null,
+      "checkin_capacity":15,
       "checkin_ratio":3,
       "entry_age":2,
       "entry_age_months":6,
@@ -886,8 +855,8 @@ This will return one of the following HTTP codes:
       "status":"active",
       "ctime":null,
       "cuser":null,
-      "mtime":"2021-04-30 12:47:20",
-      "muser":"richard"
+      "mtime":"2022-03-09 10:06:22",
+      "muser":"nathaniel"
     },
     {
       "id":3,
@@ -897,7 +866,7 @@ This will return one of the following HTTP codes:
       "checkin_badges_child":1,
       "checkin_badges_pickup":1,
       "checkin_badges_room":0,
-      "checkin_capacity":null,
+      "checkin_capacity":15,
       "checkin_ratio":4,
       "entry_age":5,
       "entry_age_months":0,
@@ -906,8 +875,8 @@ This will return one of the following HTTP codes:
       "status":"active",
       "ctime":null,
       "cuser":null,
-      "mtime":"2019-07-22 13:21:50",
-      "muser":"paul"
+      "mtime":"2022-03-09 10:06:28",
+      "muser":"nathaniel"
     },
     {
       "id":13,
@@ -917,7 +886,7 @@ This will return one of the following HTTP codes:
       "checkin_badges_child":1,
       "checkin_badges_pickup":1,
       "checkin_badges_room":0,
-      "checkin_capacity":null,
+      "checkin_capacity":15,
       "checkin_ratio":6,
       "entry_age":7,
       "entry_age_months":0,
@@ -926,8 +895,8 @@ This will return one of the following HTTP codes:
       "status":"active",
       "ctime":null,
       "cuser":null,
-      "mtime":"2020-03-12 15:44:09",
-      "muser":"richard"
+      "mtime":"2022-03-09 10:06:41",
+      "muser":"nathaniel"
     },
     {
       "id":4,
@@ -937,7 +906,7 @@ This will return one of the following HTTP codes:
       "checkin_badges_child":1,
       "checkin_badges_pickup":1,
       "checkin_badges_room":0,
-      "checkin_capacity":null,
+      "checkin_capacity":3,
       "checkin_ratio":6,
       "entry_age":9,
       "entry_age_months":0,
@@ -946,18 +915,18 @@ This will return one of the following HTTP codes:
       "status":"active",
       "ctime":null,
       "cuser":null,
-      "mtime":"2019-08-02 09:44:51",
-      "muser":"paul"
+      "mtime":"2022-07-18 12:27:51",
+      "muser":"richard"
     },
     {
       "id":5,
       "name":"Cohesion",
       "gathering_id":1,
       "gathering_name":"Kings Kids & Youth (Nottingham)",
-      "checkin_badges_child":0,
-      "checkin_badges_pickup":0,
+      "checkin_badges_child":1,
+      "checkin_badges_pickup":1,
       "checkin_badges_room":0,
-      "checkin_capacity":null,
+      "checkin_capacity":10,
       "checkin_ratio":7,
       "entry_age":13,
       "entry_age_months":0,
@@ -966,18 +935,18 @@ This will return one of the following HTTP codes:
       "status":"active",
       "ctime":null,
       "cuser":null,
-      "mtime":"2019-07-22 13:21:50",
-      "muser":"paul"
+      "mtime":"2022-03-09 10:08:28",
+      "muser":"nathaniel"
     },
     {
       "id":191,
       "name":"Youth",
       "gathering_id":1,
       "gathering_name":"Kings Kids & Youth (Nottingham)",
-      "checkin_badges_child":0,
+      "checkin_badges_child":1,
       "checkin_badges_pickup":0,
       "checkin_badges_room":0,
-      "checkin_capacity":null,
+      "checkin_capacity":40,
       "checkin_ratio":8,
       "entry_age":15,
       "entry_age_months":0,
@@ -986,14 +955,10 @@ This will return one of the following HTTP codes:
       "status":"active",
       "ctime":"2021-02-02 15:57:19",
       "cuser":"shane",
-      "mtime":"2021-12-16 11:21:15",
-      "muser":"Paul"
+      "mtime":"2022-03-09 10:08:32",
+      "muser":"nathaniel"
     }
-  ],
-  "ctime":"2019-02-11 15:30:21",
-  "cuser":"shane",
-  "mtime":"2021-08-11 16:42:01",
-  "muser":"Sue"
+  ]
 }
 ```
 
@@ -1013,10 +978,10 @@ This will return one of the following HTTP codes:
   "name":"Babies",
   "gathering_id":1,
   "gathering_name":"Kings Kids & Youth (Nottingham)",
-  "checkin_badges_child":2,
+  "checkin_badges_child":1,
   "checkin_badges_pickup":2,
-  "checkin_badges_room":0,
-  "checkin_capacity":null,
+  "checkin_badges_room":1,
+  "checkin_capacity":10,
   "checkin_ratio":2,
   "entry_age":0,
   "entry_age_months":0,
@@ -1025,8 +990,8 @@ This will return one of the following HTTP codes:
   "status":"active",
   "ctime":"2018-08-06 14:37:44",
   "cuser":"paul",
-  "mtime":"2021-06-30 16:38:21",
-  "muser":"gavin"
+  "mtime":"2022-03-09 10:06:17",
+  "muser":"nathaniel"
 }
 ```
 
@@ -1042,118 +1007,102 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "2021-10-31":{
-    "0":"718",
-    "1":"1036",
-    "2":"1037",
-    "3":"1039",
+  "2023-04-02":{
+    "0":"1039",
+    "1":"1090",
+    "2":"1110",
+    "3":"1111",
     "total":4,
     "notes":""
   },
-  "2021-11-07":{
-    "0":"718",
-    "1":"1036",
-    "2":"1039",
-    "3":"1055",
-    "4":"1056",
-    "total":5,
-    "notes":""
-  },
-  "2021-11-14":{
-    "0":"718",
-    "1":"1036",
-    "2":"1055",
-    "3":"1056",
+  "2023-04-16":{
+    "0":"1039",
+    "1":"1090",
+    "2":"1110",
+    "3":"1111",
     "total":4,
     "notes":""
   },
-  "2021-11-21":{
-    "0":"35",
-    "1":"718",
-    "2":"1039",
-    "3":"1055",
-    "4":"1056",
-    "total":7,
-    "notes":""
-  },
-  "2021-11-28":{
-    "0":"35",
-    "1":"718",
-    "2":"1036",
-    "3":"1039",
-    "4":"1055",
-    "5":"1056",
-    "total":6,
-    "notes":""
-  },
-  "2021-12-05":{
-    "0":"718",
-    "1":"1036",
-    "2":"1037",
-    "3":"1039",
-    "4":"1055",
-    "5":"1056",
-    "total":6,
-    "notes":""
-  },
-  "2021-12-12":{
+  "2023-04-23":{
     "0":"847",
-    "1":"1037",
-    "2":"1039",
-    "3":"1055",
-    "4":"1056",
+    "1":"1039",
+    "2":"1090",
+    "3":"1110",
+    "4":"1111",
     "total":5,
     "notes":""
   },
-  "2022-01-02":{
-    "0":"718",
-    "1":"1036",
-    "2":"1055",
-    "3":"1056",
+  "2023-04-30":{
+    "0":"847",
+    "1":"1090",
+    "2":"1110",
+    "3":"1111",
     "total":4,
     "notes":""
   },
-  "2022-01-09":{
-    "0":"35",
-    "1":"718",
-    "2":"847",
-    "3":"1036",
-    "4":"1055",
-    "5":"1056",
-    "total":6,
+  "2023-05-07":{
+    "0":"1039",
+    "1":"1090",
+    "2":"1110",
+    "total":4,
     "notes":""
   },
-  "2022-01-16":{
-    "0":"35",
-    "1":"718",
-    "2":"1036",
-    "3":"1037",
-    "4":"1039",
-    "5":"1055",
-    "6":"1056",
-    "total":7,
+  "2023-05-08":{
+    "0":"847",
+    "1":"1039",
+    "2":"1090",
+    "3":"1110",
+    "4":"1111",
+    "total":5,
     "notes":""
   },
-  "2022-01-23":{
-    "0":"35",
-    "1":"1036",
-    "2":"1037",
-    "3":"1039",
-    "4":"1055",
-    "5":"1056",
-    "total":6,
+  "2023-05-14":{
+    "0":"847",
+    "1":"1039",
+    "2":"1090",
+    "3":"1110",
+    "4":"1111",
+    "total":5,
     "notes":""
   },
-  "2022-01-30":{
-    "0":"35",
-    "1":"718",
-    "2":"1036",
-    "3":"1039",
-    "4":"1055",
-    "5":"1056",
-    "6":"1064",
-    "total":7,
+  "2023-05-21":{
+    "0":"847",
+    "1":"1039",
+    "2":"1090",
+    "3":"1110",
+    "4":"1111",
+    "total":5,
     "notes":""
+  },
+  "2023-05-28":{
+    "0":"847",
+    "1":"1039",
+    "2":"1090",
+    "3":"1110",
+    "4":"1111",
+    "total":5,
+    "notes":""
+  },
+  "2023-05-31":{
+    "0":"847",
+    "1":"1110",
+    "total":2,
+    "notes":null
+  },
+  "2023-06-04":{
+    "0":"1039",
+    "1":"1090",
+    "2":"1110",
+    "3":"1111",
+    "total":4,
+    "notes":""
+  },
+  "2023-10-06":{
+    "0":"1090",
+    "1":"1039",
+    "2":"1126",
+    "total":3,
+    "notes":null
   }
 }
 ```
@@ -1172,21 +1121,21 @@ This will return one of the following HTTP codes:
 {
   "children":[
     {
-      "id":1064,
-      "person_uuid":"cfbaf98a-0f28-43c2-803a-68213d002cf6",
-      "type_id":"child_1064",
-      "first_name":"Daisy",
+      "id":1110,
+      "person_id":1847,
+      "uuid":"965501e3-dcd4-4b11-8458-6ec151453144",
+      "type_id":"child_1110",
+      "first_name":"Brian",
       "middle_name":null,
-      "last_name":"Andrews",
-      "name":"Daisy Andrews",
-      "formal_name":null,
-      "sex":"f",
-      "date_of_birth":"2021-05-13",
-      "telephone":"",
+      "last_name":"Fontana",
+      "name":"Brian Fontana",
+      "formal_name":"",
+      "sex":"m",
+      "date_of_birth":"2022-02-01",
       "mobile":"",
       "email":"",
       "address":{
-        "id":2825,
+        "id":3248,
         "line1":"",
         "line2":"",
         "line3":"",
@@ -1209,12 +1158,13 @@ This will return one of the following HTTP codes:
           
         ],
         "primary":{
+          "person_id":1848,
           "contact_id":0,
-          "first_name":"Sarah",
-          "last_name":"Andrews",
+          "first_name":"Sophie",
+          "last_name":"Fontana",
           "sex":"u",
           "relationship":"parent",
-          "email":"sandrews@gmail.com",
+          "email":"",
           "mobile":"",
           "telephone":"",
           "communication":{
@@ -1237,12 +1187,12 @@ This will return one of the following HTTP codes:
         "general_sms":0,
         "phone":0,
         "post":0,
-        "rota_email":0,
-        "rota_sms":0
+        "rota_email":1,
+        "rota_sms":1
       },
       "has_email_opt_out":true,
-      "has_rota_email_opt_out":true,
-      "has_rota_sms_opt_out":true,
+      "has_rota_email_opt_out":false,
+      "has_rota_sms_opt_out":false,
       "has_sms_opt_out":true,
       "consent":{
         "internal":null,
@@ -1254,18 +1204,29 @@ This will return one of the following HTTP codes:
         "granted_ctime":null,
         "granted_name":null
       },
-      "site_id":20,
+      "site_id":1,
       "site_ids":[
-        "20"
+        "1"
       ],
+      "public_options":{
+        "invited":false,
+        "access":false,
+        "visible":{
+          "enabled":true,
+          "address":0,
+          "email":0,
+          "mobile":0,
+          "telephone":0
+        }
+      },
       "status":"active",
       "images":[
         
       ],
-      "mtime":"2022-01-27 16:17:21",
+      "mtime":"2022-11-10 10:33:11",
       "muser":"nathaniel",
-      "ctime":"2022-01-18 15:14:41",
-      "cuser":"Paul"
+      "ctime":"2022-11-10 10:32:54",
+      "cuser":"nathaniel"
     }
   ]
 }
@@ -1286,11 +1247,25 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":10,
+    "no_results":18,
     "page":1,
     "per_page":2
   },
   "tags":[
+    {
+      "id":2303,
+      "tag_id":2303,
+      "name":"Consent Given",
+      "description":"",
+      "colour":"blue",
+      "type":"fixed",
+      "tag_no_children":0,
+      "no_children":0,
+      "ctime":"2023-05-10 20:47:47",
+      "cuser":"Paul",
+      "mtime":"2023-05-26 11:06:50",
+      "muser":"luke"
+    },
     {
       "id":1957,
       "tag_id":1957,
@@ -1302,21 +1277,7 @@ This will return one of the following HTTP codes:
       "no_children":2,
       "ctime":"2021-10-18 12:19:24",
       "cuser":"richard",
-      "mtime":"2021-12-16 14:38:04",
-      "muser":"Sue"
-    },
-    {
-      "id":26,
-      "tag_id":26,
-      "name":"Easter Holiday Club 2021",
-      "description":"",
-      "colour":"grey",
-      "type":"fixed",
-      "tag_no_children":14,
-      "no_children":14,
-      "ctime":"2015-01-30 09:29:34",
-      "cuser":"churchsuite",
-      "mtime":"2022-02-08 18:31:26",
+      "mtime":"2022-11-04 16:18:11",
       "muser":"churchsuite"
     }
   ]
@@ -1331,18 +1292,18 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "id":1957,
-  "tag_id":1957,
-  "name":"Contact Search Permitted",
-  "description":null,
+  "id":2303,
+  "tag_id":2303,
+  "name":"Consent Given",
+  "description":"",
   "colour":"blue",
   "type":"fixed",
-  "tag_no_children":2,
-  "no_children":2,
-  "ctime":"2021-10-18 12:19:24",
-  "cuser":"richard",
-  "mtime":"2021-12-16 14:38:04",
-  "muser":"Sue"
+  "tag_no_children":0,
+  "no_children":0,
+  "ctime":"2023-05-10 20:47:47",
+  "cuser":"Paul",
+  "mtime":"2023-05-26 11:06:50",
+  "muser":"luke"
 }
 ```
 
@@ -1359,122 +1320,15 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":2,
+    "no_results":0,
     "page":1,
-    "per_page":2
+    "per_page":0
   },
+  "people":[
+    
+  ],
   "children":[
-    {
-      "id":1061,
-      "person_uuid":"2581960e-24b6-44e5-ab72-0835c5bd1330",
-      "type_id":"child_1061",
-      "first_name":"Becca",
-      "middle_name":null,
-      "last_name":"Adams",
-      "name":"Becca Adams",
-      "formal_name":null,
-      "sex":"f",
-      "date_of_birth":"2018-08-09",
-      "telephone":"01720 862 978",
-      "mobile":"07854 412 321",
-      "email":"john.adams@icloud.com",
-      "address":{
-        "id":2806,
-        "line1":"72 Glenfield Road",
-        "line2":"Dane Hills",
-        "line3":"",
-        "city":"Leicester",
-        "county":"",
-        "postcode":"LE3 6ED",
-        "country":""
-      },
-      "location":{
-        "address":"72 Glenfield Road, Dane Hills, Leicester, LE3 6ED",
-        "latitude":"52.637895",
-        "longitude":"-1.166287"
-      },
-      "contact_id":1581,
-      "parent":{
-        "additional_emails":[
-          
-        ],
-        "additional_mobiles":[
-          
-        ],
-        "primary":{
-          "contact_id":1581,
-          "first_name":"John",
-          "last_name":"Adams",
-          "sex":"m",
-          "relationship":"parent",
-          "email":"john.adams@icloud.com",
-          "mobile":"07987 654 321",
-          "telephone":"01720 862 978",
-          "communication":{
-            "general_email":1,
-            "general_sms":1
-          }
-        },
-        "secondary":{
-          "contact_id":28,
-          "first_name":"Laksha",
-          "last_name":"Adams",
-          "sex":"f",
-          "relationship":"parent",
-          "email":"john.adams@icloud.com",
-          "mobile":"07314 631 184",
-          "telephone":"01720 862 978",
-          "communication":{
-            "general_email":1,
-            "general_sms":1
-          }
-        }
-      },
-      "custom_fields":[
-        
-      ],
-      "school":"",
-      "medical_short":"",
-      "medical":"",
-      "doctor_details":"",
-      "special_needs":"",
-      "info":"",
-      "communication":{
-        "general_email":1,
-        "general_sms":1,
-        "phone":0,
-        "post":1,
-        "rota_email":0,
-        "rota_sms":0
-      },
-      "has_email_opt_out":false,
-      "has_rota_email_opt_out":true,
-      "has_rota_sms_opt_out":true,
-      "has_sms_opt_out":false,
-      "consent":{
-        "internal":"0",
-        "external":"0"
-      },
-      "ongoing_consent":{
-        "required":1,
-        "request_ctime":null,
-        "granted_ctime":null,
-        "granted_name":null
-      },
-      "site_id":20,
-      "site_ids":[
-        "20",
-        "19"
-      ],
-      "status":"active",
-      "images":[
-        
-      ],
-      "mtime":"2021-12-16 14:38:03",
-      "muser":"Sue",
-      "ctime":"2021-12-16 14:38:03",
-      "cuser":"Sue"
-    }
+    null
   ]
 }
 ```
@@ -1494,37 +1348,37 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":22,
+    "no_results":23,
     "page":1,
     "per_page":5
   },
   "keydates":[
     {
-      "id":167,
-      "name":"Attended Alpha Course",
-      "color":"blue",
-      "mtime":"2021-06-21 12:42:12",
+      "id":235,
+      "name":"Attended Alpha",
+      "color":"pink",
+      "mtime":"2023-02-14 13:50:13",
       "muser":"Paul",
-      "ctime":"2021-06-21 12:42:12",
+      "ctime":"2023-02-14 13:50:13",
       "cuser":"Paul"
     },
     {
-      "id":119,
-      "name":"Attended Kids Club",
+      "id":264,
+      "name":"Attended Alpha Course",
       "color":"blue",
-      "mtime":"2019-06-17 14:25:22",
-      "muser":"paul",
-      "ctime":"2019-06-17 14:25:22",
-      "cuser":"paul"
+      "mtime":"2023-05-30 11:36:23",
+      "muser":"Sue",
+      "ctime":"2023-05-30 11:36:23",
+      "cuser":"Sue"
     },
     {
-      "id":144,
-      "name":"Attended Volunteer Training",
+      "id":265,
+      "name":"Attended Church Weekend Away",
       "color":"blue",
-      "mtime":"2020-09-18 11:12:29",
-      "muser":"shane",
-      "ctime":"2020-09-18 11:12:29",
-      "cuser":"shane"
+      "mtime":"2023-05-30 15:11:49",
+      "muser":"Sue",
+      "ctime":"2023-05-30 15:11:49",
+      "cuser":"Sue"
     },
     {
       "id":113,
@@ -1538,9 +1392,9 @@ This will return one of the following HTTP codes:
     {
       "id":171,
       "name":"DBS Check Requested",
-      "color":"blue",
-      "mtime":"2021-09-08 16:14:33",
-      "muser":"richard",
+      "color":"purple",
+      "mtime":"2022-08-12 10:59:36",
+      "muser":"Sue",
       "ctime":"2021-09-08 16:14:33",
       "cuser":"richard"
     }
@@ -1556,12 +1410,12 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "id":167,
-  "name":"Attended Alpha Course",
-  "color":"blue",
-  "mtime":"2021-06-21 12:42:12",
+  "id":235,
+  "name":"Attended Alpha",
+  "color":"pink",
+  "mtime":"2023-02-14 13:50:13",
   "muser":"Paul",
-  "ctime":"2021-06-21 12:42:12",
+  "ctime":"2023-02-14 13:50:13",
   "cuser":"Paul"
 }
 ```
@@ -1585,17 +1439,17 @@ This will return one of the following HTTP codes:
   },
   "keydates":[
     {
-      "id":9546,
-      "keydate_id":167,
+      "id":11206,
+      "keydate_id":235,
       "resource_type":"children_child",
-      "resource_id":53,
-      "date":"2021-06-21",
-      "description":"Alpha Spring 2021",
+      "resource_id":46,
+      "date":"2023-02-10",
+      "description":"Spring 2023 Course",
       "linked_resource_type":null,
       "linked_resource_id":null,
-      "mtime":"2021-06-21 12:42:12",
+      "mtime":"2023-02-14 13:50:24",
       "muser":"Paul",
-      "ctime":"2021-06-21 12:42:12",
+      "ctime":"2023-02-14 13:50:24",
       "cuser":"Paul"
     }
   ]
