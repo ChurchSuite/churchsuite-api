@@ -9,7 +9,6 @@ The Small Groups module is concerned with the management of groups of contacts, 
 * `GET /v1/smallgroups/groups`  will return all groups
 * `GET /v1/smallgroups/groups?embed_visible=true`  will return all groups visible to Embed, without pagination.
 * `GET /v1/smallgroups/groups?public_visible=true`  will return all groups visible to My ChurchSuite.
-* `GET /v1/smallgroups/groups?tags=true`  will return all groups, including tags associated to each group.
 * `GET /v1/smallgroups/groups?view=active`  will return all groups in a view. The view parameter accepts the following values; archived, active, active_future, future. Not using this parameter will return groups from the active view.
 * `GET /v1/smallgroups/groups?page=2` will return the second page of groups
 * `GET /v1/smallgroups/groups?page=2&per_page=5` will return the second page of groups, with each page limited to 5 results
@@ -17,17 +16,17 @@ The Small Groups module is concerned with the management of groups of contacts, 
 ```json
 {
   "pagination":{
-    "no_results":16,
+    "no_results":11,
     "page":1,
     "per_page":1
   },
   "groups":[
     {
-      "id":67,
-      "identifier":"demycadz",
-      "reference":"AB1",
-      "name":"Arnold - North",
-      "date_start":"2021-05-17",
+      "id":112,
+      "identifier":"gisiog3m",
+      "reference":null,
+      "name":"Arnold - North (Online)",
+      "date_start":"2023-09-05",
       "date_end":"",
       "custom_frequency":"",
       "frequency":"weekly",
@@ -35,19 +34,19 @@ The Small Groups module is concerned with the management of groups of contacts, 
       "site":null,
       "time":"20:00",
       "location":{
-        "address":"NG1 2AB",
-        "latitude":"52.95481",
-        "longitude":"-1.150963",
-        "name":"Paul's House",
-        "type":"physical",
-        "url":null,
-        "address_name":"Paul's House"
+        "address":null,
+        "latitude":null,
+        "longitude":null,
+        "name":"",
+        "type":"online",
+        "url":"",
+        "address_name":""
       },
       "description":"Our desire is to know God and pursue Him. We seek to encourage one another to fulfil our destiny in Him, as we live out our lives, believing that it is how we live, how we serve and how we love that will have the greatest impact in advancing the Kingdom.\r\n\r\nFor more info visit www.kingshope.church",
       "images":[
         
       ],
-      "no_members":16,
+      "no_members":15,
       "public_visible":true,
       "public_signup":true,
       "embed_visible":true,
@@ -55,133 +54,64 @@ The Small Groups module is concerned with the management of groups of contacts, 
       "connect_visible":true,
       "connect_signup":true,
       "signup_enabled":true,
-      "signup_date_start":"2021-01-01",
+      "signup_date_start":"2023-08-28",
       "signup_date_end":"",
-      "signup_capacity":null,
+      "signup_capacity":20,
       "signup_member_status":"pending",
       "signup_confirm_email":true,
       "signup_confirm_email_from_name":"",
       "signup_confirm_email_from_email":"",
-      "signup_confirm_email_subject":null,
-      "signup_confirm_email_body":"Thanks for signing up. See you soon!Lindsey",
+      "signup_confirm_email_subject":"",
+      "signup_confirm_email_body":"",
       "signup_details_visible":"after_signup",
       "signup_link_visible":true,
       "signup_full":false,
-      "cluster_id":14,
-      "cluster":{
-        "id":14,
-        "name":"Cluster 1",
-        "mtime":"2022-01-18 14:28:48",
-        "muser":"Paul",
-        "ctime":"2022-01-18 14:28:48",
-        "cuser":"Paul"
-      },
+      "cluster_id":null,
+      "cluster":null,
       "custom_fields":[
         
       ],
-      "embed_signup_page_title":"",
-      "embed_signup_page_message":"",
-      "mtime":"2022-01-18 14:29:07",
+      "labels":[
+        {
+          "id":13,
+          "value":[
+            "26ba4865-212a-4e23-82f4-0ca643e533aa",
+            "cf6bc8ea-783d-427d-bed5-24d1057a25e3",
+            "1c8b2247-2ebf-4f5b-965b-0e9f35524434",
+            "ac556e29-317f-4378-9d24-1969d6dd74e0"
+          ]
+        },
+        {
+          "id":14,
+          "value":[
+            "cde141a8-0755-4f3a-b280-65740e1cf236",
+            "4427e3ba-ae45-441a-bc28-493620b381b4",
+            "95d535d3-7a8b-4ce2-9c4b-3bb490cf45e0"
+          ]
+        },
+        {
+          "id":15,
+          "value":[
+            "e6ffb9ed-9abd-48fc-90f8-7f76d853aaa0",
+            "3fdf6cc8-5117-4dd1-b772-3742f2ebb287"
+          ]
+        }
+      ],
+      "embed_signup_page_title":"Find a home in a small group \ud83c\udfe1",
+      "embed_signup_page_message":"We'd love everyone to find a home in a small group! If you can't find one that is near you or seems like a good fit for you, email smallgroups@kingshope.church <\/a>and we'll help you locate a small group to join.",
+      "mtime":"2023-11-20 23:15:12",
       "muser":"Paul",
-      "ctime":"2018-08-10 10:56:54",
-      "cuser":"paul"
+      "ctime":"2023-08-29 16:24:29",
+      "cuser":"Sue"
     }
   ]
 }
 ```
-## List group to tag relationships
-
-* `GET /v1/smallgroups/groups_to_tags` will return a list of all smallgroup ids and the tag ids associated to each smallgroup
-
-```json
-{
-  "95":[
-    "17"
-  ],
-  "96":[
-    "17"
-  ],
-  "2":[
-    "18",
-    "19",
-    "25"
-  ],
-  "8":[
-    "18",
-    "19",
-    "20"
-  ],
-  "12":[
-    "18"
-  ],
-  "17":[
-    "18",
-    "19"
-  ],
-  "29":[
-    "18"
-  ],
-  "34":[
-    "18",
-    "19",
-    "20"
-  ],
-  "67":[
-    "18",
-    "23",
-    "26",
-    "27"
-  ],
-  "3":[
-    "19"
-  ],
-  "56":[
-    "19",
-    "23"
-  ],
-  "65":[
-    "19"
-  ],
-  "69":[
-    "19",
-    "20",
-    "23"
-  ],
-  "71":[
-    "19",
-    "20"
-  ],
-  "73":[
-    "19"
-  ],
-  "74":[
-    "19"
-  ],
-  "80":[
-    "19"
-  ],
-  "4":[
-    "20"
-  ],
-  "66":[
-    "20"
-  ],
-  "70":[
-    "20"
-  ],
-  "5":[
-    "25",
-    "26"
-  ]
-}
-```
-
 
 
 ## Get a group
 
 * `GET /v1/smallgroups/group/1` will return data for a specific group
-* `GET /v1/smallgroups/group/1?tags=true` will return data for a specific group, including any tags for the group
 
 ```json
 {
@@ -190,7 +120,7 @@ The Small Groups module is concerned with the management of groups of contacts, 
   "reference":"",
   "name":"West Bridgford",
   "date_start":"2008-01-02",
-  "date_end":"",
+  "date_end":"2023-08-06",
   "custom_frequency":"",
   "frequency":"weekly",
   "day":"3",
@@ -209,7 +139,7 @@ The Small Groups module is concerned with the management of groups of contacts, 
   "images":[
     
   ],
-  "no_members":11,
+  "no_members":4,
   "public_visible":true,
   "public_signup":true,
   "embed_visible":true,
@@ -221,7 +151,7 @@ The Small Groups module is concerned with the management of groups of contacts, 
   "signup_date_end":"",
   "signup_capacity":null,
   "signup_member_status":"active",
-  "signup_confirm_email":"1",
+  "signup_confirm_email":true,
   "signup_confirm_email_from_name":"",
   "signup_confirm_email_from_email":"",
   "signup_confirm_email_subject":null,
@@ -229,24 +159,43 @@ The Small Groups module is concerned with the management of groups of contacts, 
   "signup_details_visible":"immediate",
   "signup_link_visible":true,
   "signup_full":false,
-  "cluster_id":3,
-  "cluster":{
-    "id":3,
-    "name":"Leicester",
-    "mtime":"2021-04-26 18:28:41",
-    "muser":"churchsuite",
-    "ctime":"2011-12-06 10:08:04",
-    "cuser":"churchsuite"
-  },
+  "cluster_id":null,
+  "cluster":null,
   "custom_fields":[
     
   ],
-  "embed_signup_page_title":"",
-  "embed_signup_page_message":"",
-  "tags":[
-    
+  "labels":[
+    {
+      "id":13,
+      "value":[
+        "d746f9c7-9db9-4d89-aafa-b8951f6fbfa2",
+        "bf195d7e-5527-431e-92d9-62a38ce3139c",
+        "26ba4865-212a-4e23-82f4-0ca643e533aa",
+        "cf6bc8ea-783d-427d-bed5-24d1057a25e3",
+        "2a9b99b0-7cad-47a5-ba5b-95977c30ad5c",
+        "4e065a57-52c4-42ed-b355-cbc596d4d8ab",
+        "1c8b2247-2ebf-4f5b-965b-0e9f35524434",
+        "ac556e29-317f-4378-9d24-1969d6dd74e0"
+      ]
+    },
+    {
+      "id":14,
+      "value":[
+        "cde141a8-0755-4f3a-b280-65740e1cf236",
+        "4427e3ba-ae45-441a-bc28-493620b381b4",
+        "95d535d3-7a8b-4ce2-9c4b-3bb490cf45e0"
+      ]
+    },
+    {
+      "id":15,
+      "value":[
+        "e6ffb9ed-9abd-48fc-90f8-7f76d853aaa0"
+      ]
+    }
   ],
-  "mtime":"2021-07-14 14:56:06",
+  "embed_signup_page_title":"Find a home in a small group \ud83c\udfe1",
+  "embed_signup_page_message":"We'd love everyone to find a home in a small group! If you can't find one that is near you or seems like a good fit for you, email smallgroups@kingshope.church <\/a>and we'll help you locate a small group to join.",
+  "mtime":"2023-11-20 23:15:04",
   "muser":"Paul",
   "ctime":"2011-07-28 15:17:44",
   "cuser":"admin"
@@ -268,208 +217,170 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":11,
+    "no_results":2,
     "page":1,
     "per_page":50
   },
   "members":[
     {
-      "id":659,
-      "person_uuid":null,
-      "type_id":"child_659",
-      "first_name":"Steven",
+      "id":41,
+      "person_id":108,
+      "uuid":null,
+      "type_id":"contact_41",
+      "first_name":"Beth",
+      "last_name":"King",
+      "title":null,
       "middle_name":null,
-      "last_name":"Hurst",
-      "name":"Steven Hurst",
       "formal_name":null,
-      "sex":"m",
-      "date_of_birth":"2008-01-24",
-      "telephone":"0115 822 1284",
-      "mobile":"",
-      "email":"",
-      "address":{
-        "id":114,
-        "line1":"42 Frederick Street",
-        "line2":"West Bridgford",
-        "line3":"",
-        "city":"Nottingham",
-        "county":"Nottinghamshire",
-        "postcode":"NG12 2DY",
-        "country":"UK"
+      "former_name":null,
+      "maiden_name":null,
+      "sex":"f",
+      "date_of_birth":"1959-05-21",
+      "marital":"married",
+      "spouse_id":null,
+      "address":"37 Rolleston Place",
+      "address2":"Chilwell",
+      "address3":"",
+      "city":"Nottingham",
+      "county":"",
+      "postcode":"NG11 6AY",
+      "country":"",
+      "latitude":52.894409,
+      "longitude":-1.159888,
+      "telephone":"01247 528 727",
+      "mobile":"07219 248 364",
+      "work_telephone":"",
+      "email":"beth.king@live.com",
+      "job":null,
+      "employer":null,
+      "public_options":{
+        "invited":false,
+        "access":false,
+        "visible":{
+          "enabled":true,
+          "address":false,
+          "email":true,
+          "mobile":true,
+          "telephone":false
+        },
+        "custom":false
       },
-      "location":{
-        "address":"42 Frederick Street, West Bridgford, Nottingham, Nottinghamshire, NG12 2DY, UK",
-        "latitude":"52.942888",
-        "longitude":"-1.046402"
-      },
-      "contact_id":null,
-      "parent":{
-        "additional_emails":[
-          
-        ],
-        "additional_mobiles":[
-          
-        ],
-        "primary":{
-          "contact_id":0,
-          "first_name":"",
-          "last_name":"",
-          "sex":"u",
-          "relationship":null,
-          "email":"",
-          "mobile":"",
-          "telephone":"0115 822 1284",
-          "communication":{
-            "general_email":0,
-            "general_sms":0
-          }
-        }
-      },
-      "custom_fields":[
-        
-      ],
-      "school":null,
-      "medical_short":null,
-      "medical":null,
-      "doctor_details":null,
-      "special_needs":null,
-      "info":null,
       "communication":{
         "general_email":1,
         "general_sms":1,
-        "phone":0,
+        "phone":1,
         "post":1,
         "rota_email":1,
         "rota_sms":1
       },
-      "has_email_opt_out":false,
-      "has_rota_email_opt_out":false,
-      "has_rota_sms_opt_out":false,
-      "has_sms_opt_out":false,
-      "consent":{
-        "internal":null,
-        "external":null
-      },
+      "location":[
+        
+      ],
+      "custom_fields":[
+        
+      ],
+      "images":[
+        
+      ],
       "ongoing_consent":{
         "required":1,
         "request_ctime":null,
         "granted_ctime":null,
         "granted_name":null
       },
+      "status":"active",
       "site_id":1,
       "site_ids":[
         "1"
-      ],
-      "status":"active",
-      "images":[
-        
       ],
       "mtime":null,
       "muser":null,
       "ctime":null,
       "cuser":null,
-      "member_id":1,
+      "member_id":8,
       "group_id":1,
       "roles":[
         
       ]
     },
     {
-      "id":2,
-      "person_uuid":null,
-      "type_id":"child_2",
-      "first_name":"Diane",
+      "id":16,
+      "person_id":85,
+      "uuid":null,
+      "type_id":"contact_16",
+      "first_name":"Ian",
+      "last_name":"Turner",
+      "title":null,
       "middle_name":null,
-      "last_name":"Simmons",
-      "name":"Diane Simmons",
       "formal_name":null,
-      "sex":"f",
-      "date_of_birth":"2006-12-19",
-      "telephone":"01525 119 241",
-      "mobile":"",
-      "email":"",
-      "address":{
-        "id":0,
-        "line1":"",
-        "line2":"",
-        "line3":"",
-        "city":"",
-        "county":"",
-        "postcode":"",
-        "country":""
+      "former_name":null,
+      "maiden_name":null,
+      "sex":"m",
+      "date_of_birth":"1989-12-03",
+      "marital":"married",
+      "spouse_id":null,
+      "address":"20 Austrey Crescent",
+      "address2":"Lenton",
+      "address3":"",
+      "city":"Nottingham",
+      "county":"",
+      "postcode":"NG7 7FB",
+      "country":"",
+      "latitude":52.979557,
+      "longitude":-1.173802,
+      "telephone":"0121 788 5049",
+      "mobile":"07839 987 566",
+      "work_telephone":"",
+      "email":"ian.turner@sky.com",
+      "job":null,
+      "employer":null,
+      "public_options":{
+        "invited":false,
+        "access":false,
+        "visible":{
+          "enabled":true,
+          "address":true,
+          "email":true,
+          "mobile":true,
+          "telephone":false
+        },
+        "custom":false
       },
-      "location":{
-        "address":"",
-        "latitude":null,
-        "longitude":null
-      },
-      "contact_id":null,
-      "parent":{
-        "additional_emails":[
-          
-        ],
-        "additional_mobiles":[
-          
-        ],
-        "primary":{
-          "contact_id":0,
-          "first_name":"",
-          "last_name":"",
-          "sex":"u",
-          "relationship":null,
-          "email":"",
-          "mobile":"",
-          "telephone":"01525 119 241",
-          "communication":{
-            "general_email":0,
-            "general_sms":0
-          }
-        }
-      },
-      "custom_fields":[
-        
-      ],
-      "school":null,
-      "medical_short":null,
-      "medical":null,
-      "doctor_details":null,
-      "special_needs":null,
-      "info":null,
       "communication":{
         "general_email":1,
         "general_sms":1,
         "phone":0,
-        "post":1,
+        "post":0,
         "rota_email":1,
         "rota_sms":1
       },
-      "has_email_opt_out":false,
-      "has_rota_email_opt_out":false,
-      "has_rota_sms_opt_out":false,
-      "has_sms_opt_out":false,
-      "consent":{
-        "internal":null,
-        "external":null
+      "location":{
+        "address":"20 Austrey Crescent, Lenton, Nottingham, NG7 7FB",
+        "latitude":"52.979557",
+        "longitude":"-1.173802"
       },
+      "custom_fields":[
+        
+      ],
+      "images":[
+        
+      ],
       "ongoing_consent":{
         "required":1,
         "request_ctime":null,
         "granted_ctime":null,
         "granted_name":null
       },
-      "site_id":20,
-      "site_ids":[
-        "20"
-      ],
       "status":"active",
-      "images":[
-        
+      "site_id":1,
+      "site_ids":[
+        "1"
       ],
-      "mtime":"2022-02-14 10:33:08",
-      "muser":"churchsuite",
-      "ctime":"2022-02-14 10:33:08",
-      "cuser":"churchsuite",
-      "member_id":839,
+      "mtime":null,
+      "muser":null,
+      "ctime":null,
+      "cuser":null,
+      "member_id":4,
       "group_id":1,
       "roles":[
         
@@ -529,7 +440,7 @@ This `POST` method will return output in the following format:
   "reference":"",
   "name":"West Bridgford",
   "date_start":"2008-01-02",
-  "date_end":"",
+  "date_end":"2023-08-06",
   "custom_frequency":"",
   "frequency":"weekly",
   "day":"3",
@@ -548,7 +459,7 @@ This `POST` method will return output in the following format:
   "images":[
     
   ],
-  "no_members":11,
+  "no_members":4,
   "public_visible":true,
   "public_signup":true,
   "embed_visible":true,
@@ -568,253 +479,48 @@ This `POST` method will return output in the following format:
   "signup_details_visible":"immediate",
   "signup_link_visible":true,
   "signup_full":false,
-  "cluster_id":3,
-  "cluster":{
-    "id":3,
-    "name":"Leicester",
-    "mtime":"2021-04-26 18:28:41",
-    "muser":"churchsuite",
-    "ctime":"2011-12-06 10:08:04",
-    "cuser":"churchsuite"
-  },
+  "cluster_id":null,
+  "cluster":null,
   "custom_fields":[
     
   ],
-  "embed_signup_page_title":"",
-  "embed_signup_page_message":"",
-  "mtime":"2021-07-14 14:56:06",
+  "labels":[
+    {
+      "id":13,
+      "value":[
+        "d746f9c7-9db9-4d89-aafa-b8951f6fbfa2",
+        "bf195d7e-5527-431e-92d9-62a38ce3139c",
+        "26ba4865-212a-4e23-82f4-0ca643e533aa",
+        "cf6bc8ea-783d-427d-bed5-24d1057a25e3",
+        "2a9b99b0-7cad-47a5-ba5b-95977c30ad5c",
+        "4e065a57-52c4-42ed-b355-cbc596d4d8ab",
+        "1c8b2247-2ebf-4f5b-965b-0e9f35524434",
+        "ac556e29-317f-4378-9d24-1969d6dd74e0"
+      ]
+    },
+    {
+      "id":14,
+      "value":[
+        "cde141a8-0755-4f3a-b280-65740e1cf236",
+        "4427e3ba-ae45-441a-bc28-493620b381b4",
+        "95d535d3-7a8b-4ce2-9c4b-3bb490cf45e0"
+      ]
+    },
+    {
+      "id":15,
+      "value":[
+        "e6ffb9ed-9abd-48fc-90f8-7f76d853aaa0"
+      ]
+    }
+  ],
+  "embed_signup_page_title":"Find a home in a small group \ud83c\udfe1",
+  "embed_signup_page_message":"We'd love everyone to find a home in a small group! If you can't find one that is near you or seems like a good fit for you, email smallgroups@kingshope.church <\/a>and we'll help you locate a small group to join.",
+  "mtime":"2023-11-20 23:15:04",
   "muser":"Paul",
   "ctime":"2011-07-28 15:17:44",
   "cuser":"admin"
 }
 ```
-
-
-
-## List tags
-
-* `GET /v1/smallgroups/tags` will return tags ordered alphabetically
-
-```json
-{
-  "pagination":{
-    "no_results":9,
-    "page":1,
-    "per_page":50
-  },
-  "tags":[
-    {
-      "id":18,
-      "tag_id":18,
-      "name":"Daytime groups",
-      "color":"orange",
-      "num_groups":7,
-      "mtime":"2022-01-31 16:15:04",
-      "muser":"shane",
-      "ctime":"2019-10-23 20:14:46",
-      "cuser":"paul"
-    },
-    {
-      "id":23,
-      "tag_id":23,
-      "name":"Prayer-focussed groups",
-      "color":"orange",
-      "num_groups":3,
-      "mtime":"2021-04-26 18:51:59",
-      "muser":"churchsuite",
-      "ctime":"2020-05-01 11:04:13",
-      "cuser":"Sue"
-    },
-    {
-      "id":20,
-      "tag_id":20,
-      "name":"Social justice groups",
-      "color":"orange",
-      "num_groups":7,
-      "mtime":"2021-10-08 14:39:46",
-      "muser":"shane",
-      "ctime":"2019-11-28 21:50:52",
-      "cuser":"paul"
-    },
-    {
-      "id":17,
-      "tag_id":17,
-      "name":"Special interest groups",
-      "color":"orange",
-      "num_groups":2,
-      "mtime":"2021-04-28 23:46:36",
-      "muser":"Paul",
-      "ctime":"2019-05-29 00:40:52",
-      "cuser":"paul"
-    },
-    {
-      "id":19,
-      "tag_id":19,
-      "name":"Study groups",
-      "color":"orange",
-      "num_groups":12,
-      "mtime":"2021-04-28 23:46:41",
-      "muser":"Paul",
-      "ctime":"2019-11-28 21:49:47",
-      "cuser":"paul"
-    },
-    {
-      "id":24,
-      "tag_id":24,
-      "name":"Test",
-      "color":"grey",
-      "num_groups":0,
-      "mtime":"2022-01-13 12:20:28",
-      "muser":"cara",
-      "ctime":"2022-01-13 12:18:52",
-      "cuser":"cara"
-    },
-    {
-      "id":26,
-      "tag_id":26,
-      "name":"UK",
-      "color":"red",
-      "num_groups":2,
-      "mtime":"2022-01-14 16:24:00",
-      "muser":"Paul",
-      "ctime":"2022-01-14 16:24:00",
-      "cuser":"Paul"
-    },
-    {
-      "id":27,
-      "tag_id":27,
-      "name":"Women's Group",
-      "color":"blue",
-      "num_groups":1,
-      "mtime":"2022-01-18 14:27:03",
-      "muser":"Paul",
-      "ctime":"2022-01-18 14:27:03",
-      "cuser":"Paul"
-    },
-    {
-      "id":25,
-      "tag_id":25,
-      "name":"Zone 1 London",
-      "color":"blue",
-      "num_groups":2,
-      "mtime":"2022-01-14 16:21:31",
-      "muser":"Paul",
-      "ctime":"2022-01-14 16:21:31",
-      "cuser":"Paul"
-    }
-  ]
-}
-```
-## Get a tag
-
-* `GET /v1/smallgroups/tag/1` will return data for a specific tag with the ID of 1
-* `GET /v1/smallgroups/tag/1?groups=true` will return data for a specific tag, including all groups with the tag
-
-```json
-{
-  "id":18,
-  "tag_id":18,
-  "name":"Daytime groups",
-  "color":"orange",
-  "num_groups":7,
-  "mtime":"2022-01-31 16:15:04",
-  "muser":"shane",
-  "ctime":"2019-10-23 20:14:46",
-  "cuser":"paul"
-}
-```
-
-This will return one of the following HTTP codes:
-
-* `200` tag data returned
-* `400` some of the data passed through was not valid, e.g. invalid URL
-* `404` tag does not exist
-
-## Get a tag's groups
-
-* `GET /v1/smallgroups/tag/1/groups` will return the groups for the tag with the ID of 1
-
-```json
-{
-  "pagination":{
-    "no_results":6,
-    "page":1,
-    "per_page":1
-  },
-  "groups":[
-    {
-      "id":67,
-      "identifier":"demycadz",
-      "reference":"AB1",
-      "name":"Arnold - North",
-      "date_start":"2021-05-17",
-      "date_end":"",
-      "custom_frequency":"",
-      "frequency":"weekly",
-      "day":"2",
-      "site":null,
-      "time":"20:00",
-      "location":{
-        "address":"NG1 2AB",
-        "latitude":"52.95481",
-        "longitude":"-1.150963",
-        "name":"Paul's House",
-        "type":"physical",
-        "url":null,
-        "address_name":"Paul's House"
-      },
-      "description":"Our desire is to know God and pursue Him. We seek to encourage one another to fulfil our destiny in Him, as we live out our lives, believing that it is how we live, how we serve and how we love that will have the greatest impact in advancing the Kingdom.\r\n\r\nFor more info visit www.kingshope.church",
-      "images":[
-        
-      ],
-      "no_members":16,
-      "public_visible":true,
-      "public_signup":true,
-      "embed_visible":true,
-      "embed_signup":true,
-      "connect_visible":true,
-      "connect_signup":true,
-      "signup_enabled":true,
-      "signup_date_start":"2021-01-01",
-      "signup_date_end":"",
-      "signup_capacity":null,
-      "signup_member_status":"pending",
-      "signup_confirm_email":true,
-      "signup_confirm_email_from_name":"",
-      "signup_confirm_email_from_email":"",
-      "signup_confirm_email_subject":null,
-      "signup_confirm_email_body":"Thanks for signing up. See you soon!Lindsey",
-      "signup_details_visible":"after_signup",
-      "signup_link_visible":true,
-      "signup_full":false,
-      "cluster_id":14,
-      "cluster":{
-        "id":14,
-        "name":"Cluster 1",
-        "mtime":"2022-01-18 14:28:48",
-        "muser":"Paul",
-        "ctime":"2022-01-18 14:28:48",
-        "cuser":"Paul"
-      },
-      "custom_fields":[
-        
-      ],
-      "embed_signup_page_title":"",
-      "embed_signup_page_message":"",
-      "mtime":"2022-01-18 14:29:07",
-      "muser":"Paul",
-      "ctime":"2018-08-10 10:56:54",
-      "cuser":"paul"
-    }
-  ]
-}
-```
-
-This will return one of the following HTTP codes:
-
-* `200` tag groups returned
-* `400` some of the data passed through was not valid, e.g. invalid URL
-* `404` tag does not exist
 
 
 
@@ -825,19 +531,11 @@ This will return one of the following HTTP codes:
 ```json
 {
   "pagination":{
-    "no_results":6,
+    "no_results":2,
     "page":1,
-    "per_page":50
+    "per_page":null
   },
   "clusters":[
-    {
-      "id":14,
-      "name":"Cluster 1",
-      "mtime":"2022-01-18 14:28:48",
-      "muser":"Paul",
-      "ctime":"2022-01-18 14:28:48",
-      "cuser":"Paul"
-    },
     {
       "id":4,
       "name":"Derby",
@@ -847,36 +545,12 @@ This will return one of the following HTTP codes:
       "cuser":"churchsuite"
     },
     {
-      "id":10,
-      "name":"Leadership",
-      "mtime":"2019-03-03 17:56:39",
-      "muser":"paul",
-      "ctime":"2019-03-03 17:56:39",
-      "cuser":"paul"
-    },
-    {
-      "id":3,
-      "name":"Leicester",
-      "mtime":"2021-04-26 18:28:41",
-      "muser":"churchsuite",
-      "ctime":"2011-12-06 10:08:04",
-      "cuser":"churchsuite"
-    },
-    {
       "id":8,
       "name":"Nottingham",
       "mtime":"2021-04-26 18:49:24",
       "muser":"churchsuite",
       "ctime":"2018-08-10 10:59:36",
       "cuser":"paul"
-    },
-    {
-      "id":12,
-      "name":"Online Gatherings",
-      "mtime":"2020-05-01 14:43:33",
-      "muser":"Sue",
-      "ctime":"2020-05-01 14:43:33",
-      "cuser":"Sue"
     }
   ]
 }
@@ -887,12 +561,12 @@ This will return one of the following HTTP codes:
 
 ```json
 {
-  "id":14,
-  "name":"Cluster 1",
-  "mtime":"2022-01-18 14:28:48",
-  "muser":"Paul",
-  "ctime":"2022-01-18 14:28:48",
-  "cuser":"Paul"
+  "id":4,
+  "name":"Derby",
+  "mtime":"2021-04-26 18:28:50",
+  "muser":"churchsuite",
+  "ctime":"2011-12-06 10:08:08",
+  "cuser":"churchsuite"
 }
 ```
 
