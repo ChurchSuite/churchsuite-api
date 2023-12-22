@@ -40,7 +40,7 @@ Unless defined otherwise, the returned events are filtered by default as follows
 * `merge=signup_to_sequence`
 * `num_results=-1` This shows all events by default.
 * `date_start=(*today's date)`
-* `date_end=(*today's date + 3 months)`
+* `date_start=(*today's date + 3 months)`
 
 The following URL parameters are accepted:
 
@@ -49,8 +49,8 @@ The following URL parameters are accepted:
 * `merge=sequence_name` Show all single events and uniquely named sequence events. Where a sequenced event has the same name as another event in that sequence only the first upcoming event will be shown.
 * `merge=signup_to_sequence` "Sign up to sequence" events will show where they are the next upcoming event matching the sequence AND name combination. Sequence events that do not have "Sign up to sequence" enabled will be displayed where they are the next upcoming event in the sequence OR have sign-up enabled.
 * `merge=show_all` Do filter events using a merge strategy.
-* `date_start=yyyy-mm-dd` Show events starting on or after a specific date.
-* `date_end=yyyy-mm-dd` Show events ending on or before a specific date.
+* `date_start=(yyyy-mm-dd)` Show events starting on or after a specific date.
+* `date_end=(yyyy-mm-dd)` Show events ending on or before a specific date.
 * `num_results=4` The number of events to show. If not given or 0 then all events are shown.
 * `featured=(1|on|true|yes|0|off|false|no)` Filter events based on whether or not it is featured.
 * `(category|category_id)=31` Show events in a specific category id.
@@ -113,21 +113,21 @@ The following URL parameters are accepted:
 ```json
 [
   {
-    "id":1127446,
-    "identifier":"dzag26hw",
+    "id":1129099,
+    "identifier":"f3jywymn",
     "sequence":null,
-    "name":"Serve the City",
-    "datetime_start":"2022-02-14 00:00:00",
-    "datetime_end":"2022-02-14 23:59:59",
-    "description":"A great mission opportunity",
+    "name":"Kings Kids Team Christmas Party",
+    "datetime_start":"2023-12-22 20:00:00",
+    "datetime_end":"2023-12-22 23:59:00",
+    "description":"",
     "category":{
-      "id":38,
-      "name":"City Outreach 620a1b75ea829",
-      "color":"#ff69b4"
+      "id":5,
+      "name":"Kids",
+      "color":"#be4bdb"
     },
     "status":"confirmed",
     "visible_to":[
-      
+      "addressbook_tag_2419"
     ],
     "brand":[
       
@@ -137,17 +137,17 @@ The following URL parameters are accepted:
       
     ],
     "location":{
-      "address":null,
-      "latitude":null,
-      "longitude":null,
-      "name":null,
+      "address":"The Shire Hall, High Pavement, Nottingham NG1 1HN",
+      "latitude":"52.950673",
+      "longitude":"-1.14424",
+      "name":"Iberico World Tapas",
       "type":"physical",
       "url":null
     },
     "signup_options":{
       "notification":"0",
       "connect":{
-        "visible":"1"
+        "visible":"0"
       },
       "embed":{
         "visible":"1",
@@ -156,17 +156,17 @@ The following URL parameters are accepted:
       "public":{
         "visible":"1",
         "enabled":"1",
-        "featured":"1"
+        "featured":"0"
       },
       "sequence_signup":"0",
       "signup_cancel":"1",
       "signup_enabled":"1",
       "tickets":{
         "enabled":"1",
-        "url":"https:\/\/demo.churchsuite.com\/events\/dzag26hw"
+        "url":"https:\/\/demo.churchsuite.com\/events\/f3jywymn"
       },
       "visible_to_tags":[
-        
+        "addressbook_tag_2419"
       ],
       "fixed_questions":{
         "name":{
@@ -195,14 +195,37 @@ The following URL parameters are accepted:
         }
       }
     },
-    "site":null,
-    "pin":625232,
+    "site":{
+      "id":1,
+      "name":"Nottingham",
+      "initials":"",
+      "color":"#e98c90",
+      "order":1,
+      "address":{
+        "id":null,
+        "line1":"Easter Park",
+        "line2":"Lenton Lane",
+        "line3":"",
+        "city":"Nottingham",
+        "county":"Notts",
+        "postcode":"NG7 2PX",
+        "country":""
+      },
+      "mtime":"2023-09-20 11:26:06",
+      "muser":"churchsuite",
+      "ctime":"2015-05-20 14:11:16",
+      "cuser":"churchsuite"
+    },
+    "site_ids":[
+      "1"
+    ],
+    "pin":533847,
     "invite_hash":null,
     "public_visible":true,
-    "mtime":"2022-02-14 09:05:58",
-    "muser":"import",
-    "ctime":"2022-02-14 09:05:58",
-    "cuser":"import",
+    "mtime":"2023-11-28 15:48:18",
+    "muser":"luke",
+    "ctime":"2023-11-07 09:56:51",
+    "cuser":"kerry",
     "merged_by_strategy":false
   }
 ]
@@ -216,14 +239,12 @@ The following URL parameters are accepted:
 The following URL parameters are accepted:
 
 * `show_dow=(0|1)` Enable/disable the Days of Week filter dropdown. Default: `disabled`.
-* `show_tags=(0|1)` Enable/disable the Tags filter dropdown. Default: `disabled`.
-* `tag=1,2,3` A list of Tag IDs to filter the groups by. If not given or empty no tag filtering will be done.
 * `site=1` The Site ID to filter the groups by. If not given or 0 then no site filtering will be done.
 
 Sometimes you may wish to change some of the styling so that it fits better with your website. The following URL parameters enable you to do this. You must specify them in the full hex format `#FFFFFF`.
 
 * `body_bgcolor` The main background. Default: `#F5F6F7`.
-* `filters_bgcolor` The background of the area where the day and tags filters sit. Default: `#FFFFFF`.
+* `filters_bgcolor` The background of the area where the day filters sit. Default: `#FFFFFF`.
 * `group_bgcolor` The background of the groups. Default: `#FFFFFF`.
 * `group_border_color` The colour of the group borders. Default: `your brand colour`.
 * `heading_color` The colour of group headings. Default: `#444444`.
@@ -240,14 +261,12 @@ The following URL parameters are accepted:
 * `longitude` The longitude for the Google Map to centre upon. Default: Either your account's meeting address longitude or a calculated centre point based on the location of all of the groups that are displayed.
 * `zoom` The amount of zoom on the Google Map. Default: `12`.
 * `show_dow=(0|1)` Enable/disable the Days of Week filter dropdown. Default: `disabled`.
-* `show_tags=(0|1)` Enable/disable the Tags filter dropdown. Default: `disabled`.
-* `tag=1,2,3` A list of Tag IDs to filter the groups by. If not given or empty no tag filtering will be done.
 * `site=1` The Site ID to filter the groups by. If not given or 0 then no site filtering will be done.
 
 Sometimes you may wish to change some of the styling so that it fits better with your website. The following URL parameters enable you to do this. You must specify them in the full hex format `#FFFFFF`.
 
 * `body_bgcolor` The main background. Default: `#F5F6F7`.
-* `filters_bgcolor` The background of the area where the day and tags filters sit. Default: `#FFFFFF`.
+* `filters_bgcolor` The background of the area where the day filters sit. Default: `#FFFFFF`.
 * `group_bgcolor` The background of the groups. Default: `#FFFFFF`.
 * `group_border_color` The colour of the group borders. Default: `your brand colour`.
 * `heading_color` The colour of group headings. Default: `#444444`.
@@ -261,17 +280,16 @@ Sometimes you may wish to change some of the styling so that it fits better with
 The following URL parameters are accepted:
 
 * `callback` If you are requesting the JSON feed from JS you will need to specify the callback function's name in order to get around the cross-domain restrictions on browsers. You do not need to provide this if you request the JSON from the server-side (i.e. in a PHP script). This is empty by default.
-* `tag=1,2,3` A list of Tag IDs to filter the groups by. If not given or empty no tag filtering will be done.
 * `site=1` The Site ID to filter the groups by. If not given or 0 then no site filtering will be done.
 
 ```json
 [
   {
-    "id":67,
-    "identifier":"demycadz",
-    "reference":"AB1",
-    "name":"Arnold - North",
-    "date_start":"2021-05-17",
+    "id":112,
+    "identifier":"gisiog3m",
+    "reference":null,
+    "name":"Arnold - North (Online)",
+    "date_start":"2023-09-05",
     "date_end":"",
     "custom_frequency":"",
     "frequency":"weekly",
@@ -279,19 +297,19 @@ The following URL parameters are accepted:
     "site":null,
     "time":"20:00",
     "location":{
-      "address":"NG1 2AB",
-      "latitude":"52.95481",
-      "longitude":"-1.150963",
-      "name":"Paul's House",
-      "type":"physical",
+      "address":null,
+      "latitude":null,
+      "longitude":null,
+      "name":"",
+      "type":"online",
       "url":null,
-      "address_name":"Paul's House"
+      "address_name":""
     },
     "description":"Our desire is to know God and pursue Him. We seek to encourage one another to fulfil our destiny in Him, as we live out our lives, believing that it is how we live, how we serve and how we love that will have the greatest impact in advancing the Kingdom.\r\n\r\nFor more info visit www.kingshope.church",
     "images":[
       
     ],
-    "no_members":16,
+    "no_members":15,
     "public_visible":true,
     "public_signup":true,
     "embed_visible":true,
@@ -299,36 +317,55 @@ The following URL parameters are accepted:
     "connect_visible":true,
     "connect_signup":true,
     "signup_enabled":true,
-    "signup_date_start":"2021-01-01",
+    "signup_date_start":"2023-08-28",
     "signup_date_end":"",
-    "signup_capacity":null,
+    "signup_capacity":20,
     "signup_member_status":"pending",
     "signup_confirm_email":true,
     "signup_confirm_email_from_name":"",
     "signup_confirm_email_from_email":"",
-    "signup_confirm_email_subject":null,
-    "signup_confirm_email_body":"Thanks for signing up. See you soon!Lindsey",
+    "signup_confirm_email_subject":"",
+    "signup_confirm_email_body":"",
     "signup_details_visible":"after_signup",
     "signup_link_visible":true,
     "signup_full":false,
-    "cluster_id":14,
-    "cluster":{
-      "id":14,
-      "name":"Cluster 1",
-      "mtime":"2022-01-18 14:28:48",
-      "muser":"Paul",
-      "ctime":"2022-01-18 14:28:48",
-      "cuser":"Paul"
-    },
+    "cluster_id":null,
+    "cluster":null,
     "custom_fields":[
       
     ],
-    "embed_signup_page_title":"",
-    "embed_signup_page_message":"",
-    "mtime":"2022-01-18 14:29:07",
+    "labels":[
+      {
+        "id":13,
+        "value":[
+          "26ba4865-212a-4e23-82f4-0ca643e533aa",
+          "cf6bc8ea-783d-427d-bed5-24d1057a25e3",
+          "1c8b2247-2ebf-4f5b-965b-0e9f35524434",
+          "ac556e29-317f-4378-9d24-1969d6dd74e0"
+        ]
+      },
+      {
+        "id":14,
+        "value":[
+          "cde141a8-0755-4f3a-b280-65740e1cf236",
+          "4427e3ba-ae45-441a-bc28-493620b381b4",
+          "95d535d3-7a8b-4ce2-9c4b-3bb490cf45e0"
+        ]
+      },
+      {
+        "id":15,
+        "value":[
+          "e6ffb9ed-9abd-48fc-90f8-7f76d853aaa0",
+          "3fdf6cc8-5117-4dd1-b772-3742f2ebb287"
+        ]
+      }
+    ],
+    "embed_signup_page_title":"Find a home in a small group \ud83c\udfe1",
+    "embed_signup_page_message":"We'd love everyone to find a home in a small group! If you can't find one that is near you or seems like a good fit for you, email smallgroups@kingshope.church <\/a>and we'll help you locate a small group to join.",
+    "mtime":"2023-11-20 23:15:12",
     "muser":"Paul",
-    "ctime":"2018-08-10 10:56:54",
-    "cuser":"paul"
+    "ctime":"2023-08-29 16:24:29",
+    "cuser":"Sue"
   }
 ]
 ```
