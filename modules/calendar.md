@@ -24,7 +24,7 @@ The Calendar module manages all events, HR and event sign up within ChurchSuite.
     {
       "id":44,
       "identifier":"ybiaty4c",
-      "sequence":"13",
+      "sequence":13,
       "name":"Early Morning Prayer",
       "datetime_start":"2014-08-07 07:30:00",
       "datetime_end":"2014-08-07 08:30:00",
@@ -147,7 +147,7 @@ The Calendar module manages all events, HR and event sign up within ChurchSuite.
     {
       "id":1204,
       "identifier":"uhagc2wy",
-      "sequence":"1173",
+      "sequence":1173,
       "name":"Wednesday Morning Kids Club",
       "datetime_start":"2014-08-07 09:00:00",
       "datetime_end":"2014-08-07 11:00:00",
