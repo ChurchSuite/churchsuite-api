@@ -1129,7 +1129,7 @@ This will return one of the following HTTP codes:
 
 ## Get a key date's contacts
 
-* `GET /v1/addressbook/keydate/1/contacts` will return the contacts for the "Attended Alpha Course" key date
+* `GET /v1/addressbook/keydate/1/contacts` will return the contacts for a specific key date
 
 ```json
 {
