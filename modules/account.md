@@ -4,47 +4,6 @@
 
 The following core endpoints are available for retrieving data for the API user:
 
-## Get module
-
-* `GET /v1/module/addressbook` will return the details regarding the Address Book module
-* `GET /v1/module/attendance` will return the details regarding the Attendance module
-* `GET /v1/module/calendar` will return the details regarding the Calendar module
-* `GET /v1/module/children` will return the details regarding the Children module
-* `GET /v1/module/giving` will return the details regarding the Giving module
-* `GET /v1/module/rotas` will return the details regarding the Rotas module
-* `GET /v1/module/smallgroups` will return the details regarding the Small Groups module
-
-```json
-{
-  "id":"rotas",
-  "name":"Rotas",
-  "order":6,
-  "options":{
-    "connect":[
-      
-    ],
-    "embed":[
-      
-    ],
-    "module":{
-      "unavailability_enabled":1,
-      "serving_requests_enabled":1
-    },
-    "public":{
-      "public_access":1,
-      "access_type":"anyone",
-      "enable_all_rotas_view":1,
-      "person_search":"group_site",
-      "public_disable_swap":0,
-      "public_rota_email_recipients":"rota"
-    }
-  },
-  "mtime":"2022-02-07 10:09:35",
-  "muser":"install"
-}
-```
-
-
 ## Get profile
 
 * `GET /v1/profile` will return the details regarding an account's global contact information
