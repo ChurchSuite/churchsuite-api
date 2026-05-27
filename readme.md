@@ -1,3 +1,7 @@
+> [!WARNING]
+> **This version of the API has been deprecated and is replaced by [API v2](https://developer.churchsuite.com/).**
+> We recommend you use the API v2, which is more extensive and offers better documentation. We anticipate the v1 API will be turned off in 2027.
+
 # ChurchSuite API V1
 
 ## Authentication
