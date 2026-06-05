@@ -1,54 +1,17 @@
 > [!WARNING]
-> **This version of the API has been deprecated and is replaced by [API v2](https://developer.churchsuite.com/).**
+> **The v1 API has been deprecated and is replaced by [API v2](https://developer.churchsuite.com/).**
 > We recommend you use the API v2, which is more extensive and offers better documentation. We anticipate the v1 API will be turned off in 2027.
 
-# ChurchSuite API V1
+# ChurchSuite API v2
 
-## Authentication
+## Introduction
 
-The ChurchSuite API requires users to use a valid API key in order to interact with the data stored in their ChurchSuite account. Currently API Keys must be requested via support (support@churchsuite.com), we also provide an [OAuth endpoint](https://github.com/ChurchSuite/churchsuite-api/blob/master/oauth.md) for using the API as a specific Contact with limited access. However use of the embed endpoints is not restricted.
+ChurchSuite offers a developer API for customers who wish to build custom applications and website integrations with their ChurchSuite modules.
 
-To access the API each request must be accompanied by a `X-Account` header, a `X-Application` header and a `X-Auth` header, as of Dec 2013 requests missing any of these will not succeed. Additionally, the Content-Type header must be set to `application/json`. For example:
+To understand how the ChurchSuite API might be able to support your ministry, check out our [Support Article](https://support.churchsuite.com/article/454-developer-api). 
 
-````
-  Content-Type: application/json
-  X-Account: demo
-  X-Application: Example
-  X-Auth: 1234567890abc
-````
+For a full explanation of how to authenticate and use the API, and what access is available, please see our [developer documentation site](https://developer.churchsuite.com).
 
-The ChurchSuite API is available at `https://api.churchsuite.com/v1` and should always be accessed via SSL.
+## OpenAPI
 
-#### Headers: 
-
-* `X-Account` refers to the subdomain of your ChurchSuite Account (*demo*.churchsuite.com)
-* `X-Application` is an identifier used to describe your application, e.g., yourchurch-website
-* `X-Auth` is an API Key, obtained either via OAuth or from Support.
-
-## API Structure
-
-The API is structured in the same way as the main ChurchSuite Application, with each model belonging to it's own module. For example a contact would be at the endpoint:
-
-````
-  https://api.churchsuite.com/v1/addressbook/contact/1
-  https://api.churchsuite.com/v1/children/child/1
-````
-
-## Patterns
-
-Data returned by our API follows a number of consistent design patterns. The following are designed to give you an understanding of the current design patterns:
-
-* [Custom Fields](https://github.com/ChurchSuite/churchsuite-api/blob/master/patterns/custom_fields.md)
-* [Images](https://github.com/ChurchSuite/churchsuite-api/blob/master/patterns/images.md)
-
-## Modules
-
-Since we are constantly improving ChurchSuite our API documentation is in flux, we therefore recommend that you watch this project if you plan on using our API. The following modules currently have documented API Endpoints:
-
-* [Account](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/account.md)
-* [Address Book](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/addressbook.md)
-* [Calendar](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/calendar.md)
-* [Children](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/children.md)
-* [Embed](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/embed.md)
-* [My](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/my.md)
-* [Small Groups](https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/smallgroups.md)
+The ChurchSuite APIs are documented using OpenAPI 3.0 specifications, which can be found in this repository.
