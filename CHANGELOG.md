@@ -5,14 +5,16 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.86.1] - 2026-06-26
+## [2.87.0] - 2026-07-02
+
+The ChurchSuite Core API specification has changed from JSON to YAML, with no functional changes to the API.
+
+## [2.86.1] - 2026-07-02
 
 ## Fixed
 
-- Documented minimum length for string properties on POST schemas.
-- Documented minimum length for string properties on PUT schemas.
-- Documented maximum length for phone number properties on POST schemas.
-- Documented maximum length for phone number properties on PUT schemas.
+- Documented minimum length for string properties on POST and PUT schemas.
+- Documented maximum length for phone number properties on POST and PUT schemas.
 - Documented maximum length for `name` property on POST `/calendar/events` and PUT `/calendar/events/{id}` schemas.
 
 ## [2.86.0] - 2026-06-25
