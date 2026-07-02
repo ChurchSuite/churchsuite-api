@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  version: 2.86.2
+  version: 2.87.0
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning

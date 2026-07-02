@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 2.86.2
+  version: 2.87.0
   title: Giving Module
   description: >-
     This module is designed to help manage the donations you receive and the
