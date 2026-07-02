@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.85.1",
+    "version": "2.86.1",
     "title": "Giving Module",
     "description": "This module is designed to help manage the donations you receive and the givers who gave them. The Giving module also includes support for claiming Gift Aid (for UK customers only) and Tax Deductible donations (North America).",
     "termsOfService": "https://churchsuite.com/terms-of-service/",
@@ -547,6 +547,394 @@
           {
             "oauth_app": [
               "giving.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      }
+    },
+    "/giving/flow_stages/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "ID of the record to retrieve.",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32",
+            "example": 45,
+            "minimum": 1
+          }
+        }
+      ],
+      "delete": {
+        "operationId": "delete_giving_flow_stage",
+        "summary": "Delete a flow stage",
+        "description": "Delete a single stage identified by ID. When a stage is deleted, all actions and flow trackings linked to the stage will be deleted.",
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "giving.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "giving.write"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "get": {
+        "operationId": "get_giving_flow_stage",
+        "summary": "Get a flow stage",
+        "description": "Retrieve a single stage identified by ID.",
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "giving.read"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "giving.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "put": {
+        "operationId": "edit_giving_flow_stage",
+        "summary": "Update a flow stage",
+        "description": "Update a single stage identified by ID.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FlowStageEdit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "giving.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "giving.write"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      }
+    },
+    "/giving/flow_stages": {
+      "get": {
+        "operationId": "list_giving_flow_stages",
+        "summary": "List flow stages",
+        "description": "Returns a list of stages.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PaginationPage"
+          },
+          {
+            "$ref": "#/components/parameters/PaginationPerPage"
+          },
+          {
+            "name": "flow_ids[]",
+            "in": "query",
+            "description": "Filter records to those matching values in the provided array. This filter uses the logical OR operator.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32",
+                "minimum": 1
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FlowStage"
+                      }
+                    },
+                    "pagination": {
+                      "$ref": "#/components/schemas/Pagination"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data",
+                    "pagination"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "giving.read"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "giving.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "post": {
+        "operationId": "create_giving_flow_stage",
+        "summary": "Create a flow stage",
+        "description": "Create a stage for a flow.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FlowStageAdd"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            },
+            "links": {
+              "EditFlowStageByID": {
+                "operationId": "edit_giving_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              },
+              "GetFlowStageByID": {
+                "operationId": "get_giving_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              },
+              "DeleteFlowStageByID": {
+                "operationId": "delete_giving_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "giving.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "giving.write"
             ]
           }
         ],
@@ -1559,6 +1947,9 @@
           "404": {
             "$ref": "#/components/responses/404"
           },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
           "429": {
             "$ref": "#/components/responses/429"
           }
@@ -1649,6 +2040,9 @@
           },
           "403": {
             "$ref": "#/components/responses/403"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1742,6 +2136,9 @@
           },
           "403": {
             "$ref": "#/components/responses/403"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -2793,6 +3190,270 @@
           "modified_by"
         ]
       },
+      "FlowStage": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The Stage's ID.",
+            "type": "integer",
+            "example": 1,
+            "minimum": 1
+          },
+          "flow_id": {
+            "description": "The Flow ID the Stage belongs to.",
+            "type": "integer",
+            "example": 1,
+            "minimum": 1
+          },
+          "name": {
+            "description": "The Stage's name.",
+            "type": "string",
+            "example": "Welcome Call",
+            "maxLength": 50,
+            "minLength": 1
+          },
+          "instructions": {
+            "description": "The instructions for the Stage.",
+            "type": "string",
+            "example": "Give them a call, see how they found the service and if they have any questions or would like to meet.",
+            "maxLength": 65535,
+            "minLength": 0
+          },
+          "due_interval": {
+            "description": "The number of days, weeks or months used for tracking a person linked to the Stage, either relative to when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "integer",
+            "example": 35,
+            "minimum": 0
+          },
+          "due_period": {
+            "description": "The due period used for tracking a person linked to the Stage, either relative to when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "string",
+            "example": "days",
+            "enum": [
+              "days",
+              "weeks",
+              "months"
+            ]
+          },
+          "due_from": {
+            "description": "The relative point used for tracking a person linked to the Stage, either when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "string",
+            "example": "first_added",
+            "enum": [
+              "first_added",
+              "previous_stage"
+            ]
+          },
+          "assigned_user_id": {
+            "description": "The ID of the user automatically assigned to people in this stage or null if no user is assigned.",
+            "type": "integer",
+            "example": 15,
+            "minimum": 1,
+            "nullable": true
+          },
+          "automate_time": {
+            "description": "The UTC time the Stage will automatically process any due or overdue people if it is automated, or null if it is not automated.",
+            "type": "string",
+            "format": "time",
+            "example": "09:30:00Z",
+            "nullable": true,
+            "pattern": "^([01]\\d|2[0-3]):(00|15|30|45):00Z$"
+          },
+          "order": {
+            "description": "The order the Stage appears.",
+            "type": "integer",
+            "example": 1,
+            "minimum": 1
+          },
+          "created_at": {
+            "description": "Date and time the Stage was created.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2014-04-25T10:10:32Z",
+            "nullable": true
+          },
+          "created_by": {
+            "description": "The user that created the Stage.",
+            "type": "string",
+            "example": "abraham",
+            "maxLength": 25,
+            "minLength": 1,
+            "nullable": true
+          },
+          "modified_at": {
+            "description": "Date and time the Stage was last modified.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-09-19T14:52:40Z",
+            "nullable": true
+          },
+          "modified_by": {
+            "description": "The user that last modified the Stage.",
+            "type": "string",
+            "example": "zoe",
+            "maxLength": 25,
+            "minLength": 1,
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "flow_id",
+          "name",
+          "instructions",
+          "due_interval",
+          "due_period",
+          "due_from",
+          "assigned_user_id",
+          "automate_time",
+          "order",
+          "created_at",
+          "created_by",
+          "modified_at",
+          "modified_by"
+        ]
+      },
+      "FlowStageAdd": {
+        "type": "object",
+        "properties": {
+          "flow_id": {
+            "description": "The Flow ID the Stage belongs to.",
+            "type": "integer",
+            "example": 1,
+            "minimum": 1
+          },
+          "name": {
+            "description": "The Stage's name.",
+            "type": "string",
+            "example": "Welcome Call",
+            "maxLength": 50,
+            "minLength": 1
+          },
+          "instructions": {
+            "description": "The instructions for the Stage.",
+            "type": "string",
+            "example": "Give them a call, see how they found the service and if they have any questions or would like to meet.",
+            "maxLength": 65535,
+            "minLength": 0
+          },
+          "due_interval": {
+            "description": "The number of days, weeks or months used for tracking a person linked to the Stage, either relative to when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "integer",
+            "example": 35,
+            "minimum": 0
+          },
+          "due_period": {
+            "description": "The due period used for tracking a person linked to the Stage, either relative to when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "string",
+            "example": "days",
+            "enum": [
+              "days",
+              "weeks",
+              "months"
+            ]
+          },
+          "due_from": {
+            "description": "The relative point used for tracking a person linked to the Stage, either when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "string",
+            "example": "previous_stage",
+            "enum": [
+              "first_added",
+              "previous_stage"
+            ]
+          },
+          "assigned_user_id": {
+            "description": "The ID of the user automatically assigned to people in this stage, or null if no user is assigned.",
+            "type": "integer",
+            "example": 3,
+            "minimum": 1
+          },
+          "automate_time": {
+            "description": "The UTC time the Stage will automatically process any due or overdue people if it is automated, or null if it is not automated.",
+            "type": "string",
+            "format": "time",
+            "example": "09:30:00Z",
+            "pattern": "^([01]\\d|2[0-3]):(00|15|30|45):00Z$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "flow_id",
+          "name",
+          "due_interval",
+          "due_period",
+          "due_from"
+        ]
+      },
+      "FlowStageEdit": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The Stage's name.",
+            "type": "string",
+            "example": "Welcome Call",
+            "maxLength": 50,
+            "minLength": 1
+          },
+          "instructions": {
+            "description": "The instructions for the Stage.",
+            "type": "string",
+            "example": "Give them a call, see how they found the service and if they have any questions or would like to meet.",
+            "maxLength": 65535,
+            "minLength": 0
+          },
+          "due_interval": {
+            "description": "The number of days, weeks or months used for tracking a person linked to the Stage, either relative to when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "integer",
+            "example": 35,
+            "minimum": 0
+          },
+          "due_period": {
+            "description": "The due period used for tracking a person linked to the Stage, either relative to when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "string",
+            "example": "days",
+            "enum": [
+              "days",
+              "weeks",
+              "months"
+            ]
+          },
+          "due_from": {
+            "description": "The relative point used for tracking a person linked to the Stage, either when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "string",
+            "example": "first_added",
+            "enum": [
+              "first_added",
+              "previous_stage"
+            ]
+          },
+          "assigned_user_id": {
+            "description": "The ID of the user automatically assigned to people in this stage, or null if no user is assigned.",
+            "type": "integer",
+            "example": 33,
+            "minimum": 1,
+            "nullable": true
+          },
+          "automate_time": {
+            "description": "The UTC time the Stage will automatically process any due or overdue people if it is automated, or null if it is not automated.",
+            "type": "string",
+            "format": "time",
+            "example": "09:30:00Z",
+            "nullable": true,
+            "pattern": "^([01]\\d|2[0-3]):(00|15|30|45):00Z$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "instructions",
+          "due_interval",
+          "due_period",
+          "due_from",
+          "assigned_user_id",
+          "automate_time"
+        ]
+      },
       "Fund": {
         "type": "object",
         "properties": {
@@ -3837,7 +4498,8 @@
             "description": "The description of the Tag.",
             "type": "string",
             "example": "The Kings Hope staff team (paid and unpaid).",
-            "maxLength": 65535
+            "maxLength": 65535,
+            "minLength": 0
           },
           "colour": {
             "description": "The name of the colour of the Tag. If not specified, the Category colour will be used where applicable, falling back to 'blue'.",
@@ -3997,7 +4659,8 @@
             "description": "The description of the Tag.",
             "type": "string",
             "example": "The Kings Hope staff team (paid and unpaid).",
-            "maxLength": 65535
+            "maxLength": 65535,
+            "minLength": 0
           },
           "colour": {
             "description": "The name of the colour of the Tag.",
@@ -4377,7 +5040,7 @@
         }
       },
       "409": {
-        "description": "Conflict - a conflict exists that prevents your request from being completed.",
+        "description": "Conflict.",
         "content": {
           "application/json": {
             "schema": {
@@ -4393,9 +5056,18 @@
                         409
                       ]
                     },
+                    "errors": {
+                      "type": "object",
+                      "example": {
+                        "name": "A category with this name already exists. Please choose a different name."
+                      },
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
                     "message": {
                       "type": "string",
-                      "example": "Your event cannot be deleted. A sign-up paid through Stripe and cannot be deleted."
+                      "example": "A conflict exists that prevents your request from being completed."
                     }
                   },
                   "required": [

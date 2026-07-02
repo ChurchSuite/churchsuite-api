@@ -5,6 +5,50 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.86.1] - 2026-06-26
+
+## Fixed
+
+- Documented minimum length for string properties on POST schemas.
+- Documented minimum length for string properties on PUT schemas.
+- Documented maximum length for phone number properties on POST schemas.
+- Documented maximum length for phone number properties on PUT schemas.
+- Documented maximum length for `name` property on POST `/calendar/events` and PUT `/calendar/events/{id}` schemas.
+
+## [2.86.0] - 2026-06-25
+
+### Added
+
+- Added a new GET `addressbook/flow_stages` endpoint to list Flow Stages in the Address Book module
+- Added a new POST `addressbook/flow_stages` endpoint to create a single Flow Stage in the Address Book module
+- Added a new PUT `addressbook/flow_stages/{id}` endpoint to update a single Flow Stage in the Address Book module
+- Added a new DELETE `addressbook/flow_stages/{id}` endpoint to delete a single Flow Stage in the Address Book module
+- Added a new GET `bookings/flow_stages` endpoint to list Flow Stages in the Bookings module
+- Added a new POST `bookings/flow_stages` endpoint to create a single Flow Stage in the Bookings module
+- Added a new PUT `bookings/flow_stages/{id}` endpoint to update a single Flow Stage in the Bookings module
+- Added a new DELETE `bookings/flow_stages/{id}` endpoint to delete a single Flow Stage in the Bookings module
+- Added a new GET `children/flow_stages` endpoint to list Flow Stages in the Children module
+- Added a new POST `children/flow_stages` endpoint to create a single Flow Stage in the Children module
+- Added a new PUT `children/flow_stages/{id}` endpoint to update a single Flow Stage in the Children module
+- Added a new DELETE `children/flow_stages/{id}` endpoint to delete a single Flow Stage in the Children module
+- Added a new GET `giving/flow_stages` endpoint to list Flow Stages in the Giving module
+- Added a new POST `giving/flow_stages` endpoint to create a single Flow Stage in the Giving module
+- Added a new PUT `giving/flow_stages/{id}` endpoint to update a single Flow Stage in the Giving module
+- Added a new DELETE `giving/flow_stages/{id}` endpoint to delete a single Flow Stage in the Giving module
+
+## [2.85.3] - 2026-06-22
+
+## Added
+
+- Added an `errors` object to the 409 error response.
+
+## [2.85.2] - 2026-06-19
+
+## Added
+
+- Added 409 as a possible response to the following POST endpoints `calendar\categories`, `smallgroups\clusters`, `smallgroups\roles`, `addressbook\tags`, `bookings\tags`, `children\tags` and `giving\tags`.
+- Added 409 as a possible response to the following PUT endpoints `calendar\categories\{id}`, `smallgroups\clusters\{id}`, `smallgroups\roles\{id}`, `addressbook\tags\{id}`, `bookings\tags\{id}`, `children\tags\{id}` and `giving\tags\{id}`.
+
 ## [2.85.1] - 2026-06-05
 
 ## Added

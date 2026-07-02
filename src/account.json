@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.85.1",
+    "version": "2.86.1",
     "title": "Account Data",
     "description": "Access account-level configuration data about account. The data available here will typically spread across multiple modules.",
     "termsOfService": "https://churchsuite.com/terms-of-service/",

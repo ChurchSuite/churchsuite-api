@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "version": "2.85.1",
+    "version": "2.86.1",
     "title": "ChurchSuite API - v2",
     "description": "Access data from your ChurchSuite account over RESTful endpoints, returning JSON responses.",
     "termsOfService": "https://churchsuite.com/terms-of-service/",
@@ -1786,6 +1786,394 @@
         ]
       }
     },
+    "/addressbook/flow_stages/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "ID of the record to retrieve.",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32",
+            "example": 45,
+            "minimum": 1
+          }
+        }
+      ],
+      "delete": {
+        "operationId": "delete_addressbook_flow_stage",
+        "summary": "Delete a flow stage",
+        "description": "Delete a single stage identified by ID. When a stage is deleted, all actions and flow trackings linked to the stage will be deleted.",
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "addressbook.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "addressbook.write"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "get": {
+        "operationId": "get_addressbook_flow_stage",
+        "summary": "Get a flow stage",
+        "description": "Retrieve a single stage identified by ID.",
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "addressbook.read"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "addressbook.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "put": {
+        "operationId": "edit_addressbook_flow_stage",
+        "summary": "Update a flow stage",
+        "description": "Update a single stage identified by ID.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FlowStageEdit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "addressbook.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "addressbook.write"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      }
+    },
+    "/addressbook/flow_stages": {
+      "get": {
+        "operationId": "list_addressbook_flow_stages",
+        "summary": "List flow stages",
+        "description": "Returns a list of stages.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PaginationPage"
+          },
+          {
+            "$ref": "#/components/parameters/PaginationPerPage"
+          },
+          {
+            "name": "flow_ids[]",
+            "in": "query",
+            "description": "Filter records to those matching values in the provided array. This filter uses the logical OR operator.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32",
+                "minimum": 1
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FlowStage"
+                      }
+                    },
+                    "pagination": {
+                      "$ref": "#/components/schemas/Pagination"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data",
+                    "pagination"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "addressbook.read"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "addressbook.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "post": {
+        "operationId": "create_addressbook_flow_stage",
+        "summary": "Create a flow stage",
+        "description": "Create a stage for a flow.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FlowStageAdd"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            },
+            "links": {
+              "EditFlowStageByID": {
+                "operationId": "edit_addressbook_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              },
+              "GetFlowStageByID": {
+                "operationId": "get_addressbook_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              },
+              "DeleteFlowStageByID": {
+                "operationId": "delete_addressbook_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "addressbook.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "addressbook.write"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      }
+    },
     "/addressbook/form_fields/{id}": {
       "parameters": [
         {
@@ -3076,6 +3464,9 @@
           "404": {
             "$ref": "#/components/responses/404"
           },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
           "429": {
             "$ref": "#/components/responses/429"
           }
@@ -3259,6 +3650,9 @@
           },
           "403": {
             "$ref": "#/components/responses/403"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -5875,6 +6269,394 @@
         ]
       }
     },
+    "/bookings/flow_stages/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "ID of the record to retrieve.",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32",
+            "example": 45,
+            "minimum": 1
+          }
+        }
+      ],
+      "delete": {
+        "operationId": "delete_bookings_flow_stage",
+        "summary": "Delete a flow stage",
+        "description": "Delete a single stage identified by ID. When a stage is deleted, all actions and flow trackings linked to the stage will be deleted.",
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "bookings.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "bookings.write"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "get": {
+        "operationId": "get_bookings_flow_stage",
+        "summary": "Get a flow stage",
+        "description": "Retrieve a single stage identified by ID.",
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "bookings.read"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "bookings.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "put": {
+        "operationId": "edit_bookings_flow_stage",
+        "summary": "Update a flow stage",
+        "description": "Update a single stage identified by ID.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FlowStageEdit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "bookings.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "bookings.write"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      }
+    },
+    "/bookings/flow_stages": {
+      "get": {
+        "operationId": "list_bookings_flow_stages",
+        "summary": "List flow stages",
+        "description": "Returns a list of stages.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PaginationPage"
+          },
+          {
+            "$ref": "#/components/parameters/PaginationPerPage"
+          },
+          {
+            "name": "flow_ids[]",
+            "in": "query",
+            "description": "Filter records to those matching values in the provided array. This filter uses the logical OR operator.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32",
+                "minimum": 1
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FlowStage"
+                      }
+                    },
+                    "pagination": {
+                      "$ref": "#/components/schemas/Pagination"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data",
+                    "pagination"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "bookings.read"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "bookings.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "post": {
+        "operationId": "create_bookings_flow_stage",
+        "summary": "Create a flow stage",
+        "description": "Create a stage for a flow.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FlowStageAdd"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            },
+            "links": {
+              "EditFlowStageByID": {
+                "operationId": "edit_bookings_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              },
+              "GetFlowStageByID": {
+                "operationId": "get_bookings_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              },
+              "DeleteFlowStageByID": {
+                "operationId": "delete_bookings_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "bookings.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "bookings.write"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      }
+    },
     "/bookings/prices": {
       "get": {
         "operationId": "list_prices",
@@ -6366,6 +7148,9 @@
           "404": {
             "$ref": "#/components/responses/404"
           },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
           "429": {
             "$ref": "#/components/responses/429"
           }
@@ -6549,6 +7334,9 @@
           },
           "403": {
             "$ref": "#/components/responses/403"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -7365,6 +8153,9 @@
           "404": {
             "$ref": "#/components/responses/404"
           },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
           "429": {
             "$ref": "#/components/responses/429"
           }
@@ -7563,6 +8354,9 @@
           "403": {
             "$ref": "#/components/responses/403"
           },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
           "429": {
             "$ref": "#/components/responses/429"
           }
@@ -7749,7 +8543,9 @@
                       "name": {
                         "description": "The Event's name.",
                         "type": "string",
-                        "example": "Gibson's Wedding"
+                        "example": "Gibson's Wedding",
+                        "maxLength": 50,
+                        "minLength": 1
                       },
                       "starts_at": {
                         "description": "Date and time the Event starts.",
@@ -7776,7 +8572,8 @@
                       "description": {
                         "description": "The description of the Event.",
                         "type": "string",
-                        "example": "The reception of John Gibson and Anita Davis."
+                        "example": "The reception of John Gibson and Anita Davis.",
+                        "minLength": 0
                       },
                       "category_id": {
                         "description": "The Event's category ID.",
@@ -8061,7 +8858,9 @@
                       "name": {
                         "description": "The Event's name.",
                         "type": "string",
-                        "example": "Gibson's Wedding"
+                        "example": "Gibson's Wedding",
+                        "maxLength": 50,
+                        "minLength": 1
                       },
                       "starts_at": {
                         "description": "Date and time the Event starts.",
@@ -8088,7 +8887,8 @@
                       "description": {
                         "description": "The description of the Event.",
                         "type": "string",
-                        "example": "The reception of John Gibson and Anita Davis."
+                        "example": "The reception of John Gibson and Anita Davis.",
+                        "minLength": 1
                       },
                       "category_id": {
                         "description": "The Event's category ID.",
@@ -9766,6 +10566,394 @@
           {
             "oauth_app": [
               "children.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      }
+    },
+    "/children/flow_stages/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "ID of the record to retrieve.",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32",
+            "example": 45,
+            "minimum": 1
+          }
+        }
+      ],
+      "delete": {
+        "operationId": "delete_children_flow_stage",
+        "summary": "Delete a flow stage",
+        "description": "Delete a single stage identified by ID. When a stage is deleted, all actions and flow trackings linked to the stage will be deleted.",
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "children.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "children.write"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "get": {
+        "operationId": "get_children_flow_stage",
+        "summary": "Get a flow stage",
+        "description": "Retrieve a single stage identified by ID.",
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "children.read"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "children.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "put": {
+        "operationId": "edit_children_flow_stage",
+        "summary": "Update a flow stage",
+        "description": "Update a single stage identified by ID.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FlowStageEdit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "children.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "children.write"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      }
+    },
+    "/children/flow_stages": {
+      "get": {
+        "operationId": "list_children_flow_stages",
+        "summary": "List flow stages",
+        "description": "Returns a list of stages.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PaginationPage"
+          },
+          {
+            "$ref": "#/components/parameters/PaginationPerPage"
+          },
+          {
+            "name": "flow_ids[]",
+            "in": "query",
+            "description": "Filter records to those matching values in the provided array. This filter uses the logical OR operator.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32",
+                "minimum": 1
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FlowStage"
+                      }
+                    },
+                    "pagination": {
+                      "$ref": "#/components/schemas/Pagination"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data",
+                    "pagination"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "children.read"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "children.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "post": {
+        "operationId": "create_children_flow_stage",
+        "summary": "Create a flow stage",
+        "description": "Create a stage for a flow.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FlowStageAdd"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            },
+            "links": {
+              "EditFlowStageByID": {
+                "operationId": "edit_children_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              },
+              "GetFlowStageByID": {
+                "operationId": "get_children_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              },
+              "DeleteFlowStageByID": {
+                "operationId": "delete_children_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "children.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "children.write"
             ]
           }
         ],
@@ -11643,6 +12831,9 @@
           "404": {
             "$ref": "#/components/responses/404"
           },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
           "429": {
             "$ref": "#/components/responses/429"
           }
@@ -11733,6 +12924,9 @@
           },
           "403": {
             "$ref": "#/components/responses/403"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -11826,6 +13020,9 @@
           },
           "403": {
             "$ref": "#/components/responses/403"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -12797,6 +13994,394 @@
           {
             "oauth_app": [
               "giving.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      }
+    },
+    "/giving/flow_stages/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "ID of the record to retrieve.",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32",
+            "example": 45,
+            "minimum": 1
+          }
+        }
+      ],
+      "delete": {
+        "operationId": "delete_giving_flow_stage",
+        "summary": "Delete a flow stage",
+        "description": "Delete a single stage identified by ID. When a stage is deleted, all actions and flow trackings linked to the stage will be deleted.",
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "giving.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "giving.write"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "get": {
+        "operationId": "get_giving_flow_stage",
+        "summary": "Get a flow stage",
+        "description": "Retrieve a single stage identified by ID.",
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "giving.read"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "giving.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "put": {
+        "operationId": "edit_giving_flow_stage",
+        "summary": "Update a flow stage",
+        "description": "Update a single stage identified by ID.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FlowStageEdit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "giving.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "giving.write"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      }
+    },
+    "/giving/flow_stages": {
+      "get": {
+        "operationId": "list_giving_flow_stages",
+        "summary": "List flow stages",
+        "description": "Returns a list of stages.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PaginationPage"
+          },
+          {
+            "$ref": "#/components/parameters/PaginationPerPage"
+          },
+          {
+            "name": "flow_ids[]",
+            "in": "query",
+            "description": "Filter records to those matching values in the provided array. This filter uses the logical OR operator.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32",
+                "minimum": 1
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FlowStage"
+                      }
+                    },
+                    "pagination": {
+                      "$ref": "#/components/schemas/Pagination"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data",
+                    "pagination"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "giving.read"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "giving.read"
+            ]
+          }
+        ],
+        "tags": [
+          "Flows"
+        ]
+      },
+      "post": {
+        "operationId": "create_giving_flow_stage",
+        "summary": "Create a flow stage",
+        "description": "Create a stage for a flow.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FlowStageAdd"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/FlowStage"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            },
+            "links": {
+              "EditFlowStageByID": {
+                "operationId": "edit_giving_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              },
+              "GetFlowStageByID": {
+                "operationId": "get_giving_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              },
+              "DeleteFlowStageByID": {
+                "operationId": "delete_giving_flow_stage",
+                "parameters": {
+                  "id": "$response.body#/data/id"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "security": [
+          {
+            "api_enabled_user": [
+              "full_access"
+            ]
+          },
+          {
+            "api_enabled_user": [
+              "giving.write"
+            ]
+          },
+          {
+            "oauth_app": [
+              "full_access"
+            ]
+          },
+          {
+            "oauth_app": [
+              "giving.write"
             ]
           }
         ],
@@ -13809,6 +15394,9 @@
           "404": {
             "$ref": "#/components/responses/404"
           },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
           "429": {
             "$ref": "#/components/responses/429"
           }
@@ -13899,6 +15487,9 @@
           },
           "403": {
             "$ref": "#/components/responses/403"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -13992,6 +15583,9 @@
           },
           "403": {
             "$ref": "#/components/responses/403"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -18784,6 +20378,9 @@
           "404": {
             "$ref": "#/components/responses/404"
           },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
           "429": {
             "$ref": "#/components/responses/429"
           }
@@ -18950,6 +20547,9 @@
           },
           "404": {
             "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -20404,6 +22004,9 @@
           "404": {
             "$ref": "#/components/responses/404"
           },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
           "429": {
             "$ref": "#/components/responses/429"
           }
@@ -20559,6 +22162,9 @@
           },
           "404": {
             "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -22212,55 +23818,64 @@
             "description": "The first name of the Contact.",
             "type": "string",
             "example": "Beth",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "last_name": {
             "description": "The last name of the Contact.",
             "type": "string",
             "example": "Gibson",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "middle_name": {
             "description": "The middle name of the Contact.",
             "type": "string",
             "example": "Deborah",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "title": {
             "description": "The title of the Contact.",
             "type": "string",
             "example": "Miss",
-            "maxLength": 25
+            "maxLength": 25,
+            "minLength": 1
           },
           "formal_name": {
             "description": "The formal name of the Contact.",
             "type": "string",
             "example": "Bethany",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "former_name": {
             "description": "Use this if a Contact has changed their last name and you want to record their previous last name. I.e. someone's maiden name.",
             "type": "string",
             "example": "Smith",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "email": {
             "description": "The Contact's email address.",
             "type": "string",
             "format": "email",
-            "example": "beth.gibson@kingshopechurch.com"
+            "example": "beth.gibson@kingshopechurch.com",
+            "maxLength": 100
           },
           "mobile": {
             "description": "The Contact's mobile number.",
             "type": "string",
-            "format": "phone",
-            "example": "07700700153"
+            "example": "07700700153",
+            "maxLength": 20,
+            "minLength": 1
           },
           "telephone": {
             "description": "The Contact's telephone number.",
             "type": "string",
-            "format": "phone",
-            "example": "01234567890"
+            "example": "01234567890",
+            "maxLength": 20,
+            "minLength": 1
           },
           "address": {
             "description": "A street Address.",
@@ -22271,31 +23886,36 @@
                 "description": "The first line of the Address",
                 "type": "string",
                 "example": "Floor 2",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 1
               },
               "line_2": {
                 "description": "The second line of the Address",
                 "type": "string",
                 "example": "1 Broadway",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 1
               },
               "line_3": {
                 "description": "The third line of the Address",
                 "type": "string",
                 "example": "Lace Market",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 1
               },
               "city": {
                 "description": "The city of the Address",
                 "type": "string",
                 "example": "Nottingham",
-                "maxLength": 50
+                "maxLength": 50,
+                "minLength": 1
               },
               "county": {
                 "description": "The county of the Address",
                 "type": "string",
                 "example": "Nottinghamshire",
-                "maxLength": 50
+                "maxLength": 50,
+                "minLength": 1
               },
               "country": {
                 "description": "The country of the Address, in ISO3166 alpha 2 format",
@@ -22308,7 +23928,6 @@
                 "description": "The postcode of the Address",
                 "type": "string",
                 "example": "NG1 1PR",
-                "maxLength": 10,
                 "pattern": "^([a-zA-Z0-9\\-\\s]{3,10})?$"
               }
             }
@@ -22352,19 +23971,22 @@
             "description": "The job of the Contact.",
             "type": "string",
             "example": "Plumber",
-            "maxLength": 100
+            "maxLength": 100,
+            "minLength": 1
           },
           "employer": {
             "description": "The employer of the Contact.",
             "type": "string",
             "example": "Spring Plumbing",
-            "maxLength": 100
+            "maxLength": 100,
+            "minLength": 1
           },
           "work_telephone": {
             "description": "The Contact's work telephone number.",
             "type": "string",
-            "format": "phone",
-            "example": "01234567890"
+            "example": "01234567890",
+            "maxLength": 20,
+            "minLength": 1
           },
           "custom_fields": {
             "description": "Custom Field responses for this resource",
@@ -22396,7 +24018,8 @@
                     "value": {
                       "description": "The raw value of a text, textarea, phone or date.",
                       "type": "string",
-                      "example": "I like the songs."
+                      "example": "I like the songs.",
+                      "minLength": 0
                     }
                   },
                   "required": [
@@ -22665,55 +24288,64 @@
             "description": "The first name of the Contact.",
             "type": "string",
             "example": "Beth",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "last_name": {
             "description": "The last name of the Contact.",
             "type": "string",
             "example": "Gibson",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "middle_name": {
             "description": "The middle name of the Contact.",
             "type": "string",
             "example": "Deborah",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 0
           },
           "title": {
             "description": "The title of the Contact.",
             "type": "string",
             "example": "Miss",
-            "maxLength": 25
+            "maxLength": 25,
+            "minLength": 0
           },
           "formal_name": {
             "description": "The formal name of the Contact.",
             "type": "string",
             "example": "Bethany",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 0
           },
           "former_name": {
             "description": "Use this if a Contact has changed their last name and you want to record their previous last name. I.e. someone's maiden name.",
             "type": "string",
             "example": "Smith",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 0
           },
           "email": {
             "description": "The Contact's email address.",
             "type": "string",
             "format": "email",
-            "example": "beth.gibson@kingshopechurch.com"
+            "example": "beth.gibson@kingshopechurch.com",
+            "maxLength": 100
           },
           "mobile": {
             "description": "The Contact's mobile number.",
             "type": "string",
-            "format": "phone",
-            "example": "07700700153"
+            "example": "07700700153",
+            "maxLength": 20,
+            "minLength": 0
           },
           "telephone": {
             "description": "The Contact's telephone number.",
             "type": "string",
-            "format": "phone",
-            "example": "01234567890"
+            "example": "01234567890",
+            "maxLength": 20,
+            "minLength": 0
           },
           "address": {
             "description": "Edit a street Address.",
@@ -22725,31 +24357,36 @@
                 "description": "The first line of the Address",
                 "type": "string",
                 "example": "Floor 2",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 0
               },
               "line_2": {
                 "description": "The second line of the Address",
                 "type": "string",
                 "example": "1 Broadway",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 0
               },
               "line_3": {
                 "description": "The third line of the Address",
                 "type": "string",
                 "example": "Lace Market",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 0
               },
               "city": {
                 "description": "The city of the Address",
                 "type": "string",
                 "example": "Nottingham",
-                "maxLength": 50
+                "maxLength": 50,
+                "minLength": 0
               },
               "county": {
                 "description": "The county of the Address",
                 "type": "string",
                 "example": "Nottinghamshire",
-                "maxLength": 50
+                "maxLength": 50,
+                "minLength": 0
               },
               "country": {
                 "description": "The country of the Address, in ISO3166 alpha 2 format",
@@ -22763,7 +24400,6 @@
                 "description": "The postcode of the Address",
                 "type": "string",
                 "example": "NG1 1PR",
-                "maxLength": 10,
                 "pattern": "^([a-zA-Z0-9\\-\\s]{3,10})?$"
               }
             },
@@ -22820,19 +24456,22 @@
             "description": "The job of the Contact.",
             "type": "string",
             "example": "Plumber",
-            "maxLength": 100
+            "maxLength": 100,
+            "minLength": 0
           },
           "employer": {
             "description": "The employer of the Contact.",
             "type": "string",
             "example": "Spring Plumbing",
-            "maxLength": 100
+            "maxLength": 100,
+            "minLength": 0
           },
           "work_telephone": {
             "description": "The Contact's work telephone number.",
             "type": "string",
-            "format": "phone",
-            "example": "01234567890"
+            "example": "01234567890",
+            "maxLength": 20,
+            "minLength": 0
           },
           "custom_fields": {
             "$ref": "#/components/schemas/ContactAdd/properties/custom_fields"
@@ -23291,6 +24930,270 @@
           "created_by",
           "modified_at",
           "modified_by"
+        ]
+      },
+      "FlowStage": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The Stage's ID.",
+            "type": "integer",
+            "example": 1,
+            "minimum": 1
+          },
+          "flow_id": {
+            "description": "The Flow ID the Stage belongs to.",
+            "type": "integer",
+            "example": 1,
+            "minimum": 1
+          },
+          "name": {
+            "description": "The Stage's name.",
+            "type": "string",
+            "example": "Welcome Call",
+            "maxLength": 50,
+            "minLength": 1
+          },
+          "instructions": {
+            "description": "The instructions for the Stage.",
+            "type": "string",
+            "example": "Give them a call, see how they found the service and if they have any questions or would like to meet.",
+            "maxLength": 65535,
+            "minLength": 0
+          },
+          "due_interval": {
+            "description": "The number of days, weeks or months used for tracking a person linked to the Stage, either relative to when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "integer",
+            "example": 35,
+            "minimum": 0
+          },
+          "due_period": {
+            "description": "The due period used for tracking a person linked to the Stage, either relative to when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "string",
+            "example": "days",
+            "enum": [
+              "days",
+              "weeks",
+              "months"
+            ]
+          },
+          "due_from": {
+            "description": "The relative point used for tracking a person linked to the Stage, either when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "string",
+            "example": "first_added",
+            "enum": [
+              "first_added",
+              "previous_stage"
+            ]
+          },
+          "assigned_user_id": {
+            "description": "The ID of the user automatically assigned to people in this stage or null if no user is assigned.",
+            "type": "integer",
+            "example": 15,
+            "minimum": 1,
+            "nullable": true
+          },
+          "automate_time": {
+            "description": "The UTC time the Stage will automatically process any due or overdue people if it is automated, or null if it is not automated.",
+            "type": "string",
+            "format": "time",
+            "example": "09:30:00Z",
+            "nullable": true,
+            "pattern": "^([01]\\d|2[0-3]):(00|15|30|45):00Z$"
+          },
+          "order": {
+            "description": "The order the Stage appears.",
+            "type": "integer",
+            "example": 1,
+            "minimum": 1
+          },
+          "created_at": {
+            "description": "Date and time the Stage was created.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2014-04-25T10:10:32Z",
+            "nullable": true
+          },
+          "created_by": {
+            "description": "The user that created the Stage.",
+            "type": "string",
+            "example": "abraham",
+            "maxLength": 25,
+            "minLength": 1,
+            "nullable": true
+          },
+          "modified_at": {
+            "description": "Date and time the Stage was last modified.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-09-19T14:52:40Z",
+            "nullable": true
+          },
+          "modified_by": {
+            "description": "The user that last modified the Stage.",
+            "type": "string",
+            "example": "zoe",
+            "maxLength": 25,
+            "minLength": 1,
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "flow_id",
+          "name",
+          "instructions",
+          "due_interval",
+          "due_period",
+          "due_from",
+          "assigned_user_id",
+          "automate_time",
+          "order",
+          "created_at",
+          "created_by",
+          "modified_at",
+          "modified_by"
+        ]
+      },
+      "FlowStageAdd": {
+        "type": "object",
+        "properties": {
+          "flow_id": {
+            "description": "The Flow ID the Stage belongs to.",
+            "type": "integer",
+            "example": 1,
+            "minimum": 1
+          },
+          "name": {
+            "description": "The Stage's name.",
+            "type": "string",
+            "example": "Welcome Call",
+            "maxLength": 50,
+            "minLength": 1
+          },
+          "instructions": {
+            "description": "The instructions for the Stage.",
+            "type": "string",
+            "example": "Give them a call, see how they found the service and if they have any questions or would like to meet.",
+            "maxLength": 65535,
+            "minLength": 0
+          },
+          "due_interval": {
+            "description": "The number of days, weeks or months used for tracking a person linked to the Stage, either relative to when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "integer",
+            "example": 35,
+            "minimum": 0
+          },
+          "due_period": {
+            "description": "The due period used for tracking a person linked to the Stage, either relative to when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "string",
+            "example": "days",
+            "enum": [
+              "days",
+              "weeks",
+              "months"
+            ]
+          },
+          "due_from": {
+            "description": "The relative point used for tracking a person linked to the Stage, either when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "string",
+            "example": "previous_stage",
+            "enum": [
+              "first_added",
+              "previous_stage"
+            ]
+          },
+          "assigned_user_id": {
+            "description": "The ID of the user automatically assigned to people in this stage, or null if no user is assigned.",
+            "type": "integer",
+            "example": 3,
+            "minimum": 1
+          },
+          "automate_time": {
+            "description": "The UTC time the Stage will automatically process any due or overdue people if it is automated, or null if it is not automated.",
+            "type": "string",
+            "format": "time",
+            "example": "09:30:00Z",
+            "pattern": "^([01]\\d|2[0-3]):(00|15|30|45):00Z$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "flow_id",
+          "name",
+          "due_interval",
+          "due_period",
+          "due_from"
+        ]
+      },
+      "FlowStageEdit": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The Stage's name.",
+            "type": "string",
+            "example": "Welcome Call",
+            "maxLength": 50,
+            "minLength": 1
+          },
+          "instructions": {
+            "description": "The instructions for the Stage.",
+            "type": "string",
+            "example": "Give them a call, see how they found the service and if they have any questions or would like to meet.",
+            "maxLength": 65535,
+            "minLength": 0
+          },
+          "due_interval": {
+            "description": "The number of days, weeks or months used for tracking a person linked to the Stage, either relative to when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "integer",
+            "example": 35,
+            "minimum": 0
+          },
+          "due_period": {
+            "description": "The due period used for tracking a person linked to the Stage, either relative to when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "string",
+            "example": "days",
+            "enum": [
+              "days",
+              "weeks",
+              "months"
+            ]
+          },
+          "due_from": {
+            "description": "The relative point used for tracking a person linked to the Stage, either when they are first added to the flow or when they are processed from a previous stage.",
+            "type": "string",
+            "example": "first_added",
+            "enum": [
+              "first_added",
+              "previous_stage"
+            ]
+          },
+          "assigned_user_id": {
+            "description": "The ID of the user automatically assigned to people in this stage, or null if no user is assigned.",
+            "type": "integer",
+            "example": 33,
+            "minimum": 1,
+            "nullable": true
+          },
+          "automate_time": {
+            "description": "The UTC time the Stage will automatically process any due or overdue people if it is automated, or null if it is not automated.",
+            "type": "string",
+            "format": "time",
+            "example": "09:30:00Z",
+            "nullable": true,
+            "pattern": "^([01]\\d|2[0-3]):(00|15|30|45):00Z$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "instructions",
+          "due_interval",
+          "due_period",
+          "due_from",
+          "assigned_user_id",
+          "automate_time"
         ]
       },
       "FormField": {
@@ -23861,7 +25764,8 @@
             "description": "The Key Date's name.",
             "type": "string",
             "example": "Joined Kings Hope Church",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "colour": {
             "description": "The Key Date's colour.",
@@ -23896,7 +25800,8 @@
             "description": "The Key Date's name.",
             "type": "string",
             "example": "Joined Kings Hope Church",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "colour": {
             "description": "The Key Date's colour.",
@@ -24070,7 +25975,8 @@
             "description": "The description of this Key Date Resource.",
             "type": "string",
             "example": "Unsubscribed 15-Feb-2024",
-            "maxLength": 65535
+            "maxLength": 65535,
+            "minLength": 0
           }
         },
         "additionalProperties": false,
@@ -24094,7 +26000,8 @@
             "description": "The description of this Key Date Resource.",
             "type": "string",
             "example": "Unsubscribed 15-Feb-2024",
-            "maxLength": 65535
+            "maxLength": 65535,
+            "minLength": 0
           }
         },
         "additionalProperties": false,
@@ -24369,7 +26276,8 @@
             "description": "The description of the Tag.",
             "type": "string",
             "example": "The Kings Hope staff team (paid and unpaid).",
-            "maxLength": 65535
+            "maxLength": 65535,
+            "minLength": 0
           },
           "colour": {
             "description": "The name of the colour of the Tag. If not specified, the Category colour will be used where applicable, falling back to 'blue'.",
@@ -24529,7 +26437,8 @@
             "description": "The description of the Tag.",
             "type": "string",
             "example": "The Kings Hope staff team (paid and unpaid).",
-            "maxLength": 65535
+            "maxLength": 65535,
+            "minLength": 0
           },
           "colour": {
             "description": "The name of the colour of the Tag.",
@@ -28060,25 +29969,29 @@
             "description": "The first name of the Child.",
             "type": "string",
             "example": "Jess",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "middle_name": {
             "description": "The middle name of the Child.",
             "type": "string",
             "example": "Hannah",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "last_name": {
             "description": "The last name of the Child.",
             "type": "string",
             "example": "Miller",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "formal_name": {
             "description": "The formal name of the Child.",
             "type": "string",
             "example": "Lady Jessica",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "sex": {
             "description": "The sex of the Child.",
@@ -28098,13 +30011,16 @@
           "mobile": {
             "description": "The Child's mobile number.",
             "type": "string",
-            "example": "07945 867 987"
+            "example": "07945867987",
+            "maxLength": 20,
+            "minLength": 1
           },
           "email": {
             "description": "The Child's email address.",
             "type": "string",
             "format": "email",
-            "example": "bart@springfield.com"
+            "example": "bart@springfield.com",
+            "maxLength": 100
           },
           "address": {
             "description": "A street Address.",
@@ -28115,31 +30031,36 @@
                 "description": "The first line of the Address",
                 "type": "string",
                 "example": "Floor 2",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 1
               },
               "line_2": {
                 "description": "The second line of the Address",
                 "type": "string",
                 "example": "1 Broadway",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 1
               },
               "line_3": {
                 "description": "The third line of the Address",
                 "type": "string",
                 "example": "Lace Market",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 1
               },
               "city": {
                 "description": "The city of the Address",
                 "type": "string",
                 "example": "Nottingham",
-                "maxLength": 50
+                "maxLength": 50,
+                "minLength": 1
               },
               "county": {
                 "description": "The county of the Address",
                 "type": "string",
                 "example": "Nottinghamshire",
-                "maxLength": 50
+                "maxLength": 50,
+                "minLength": 1
               },
               "country": {
                 "description": "The country of the Address, in ISO3166 alpha 2 format",
@@ -28152,7 +30073,6 @@
                 "description": "The postcode of the Address",
                 "type": "string",
                 "example": "NG1 1PR",
-                "maxLength": 10,
                 "pattern": "^([a-zA-Z0-9\\-\\s]{3,10})?$"
               }
             }
@@ -28187,7 +30107,8 @@
                     "value": {
                       "description": "The raw value of a text, textarea, phone or date.",
                       "type": "string",
-                      "example": "I like the songs."
+                      "example": "I like the songs.",
+                      "minLength": 0
                     }
                   },
                   "required": [
@@ -28387,7 +30308,8 @@
             "description": "The Child's school.",
             "type": "string",
             "example": "Springfield Elementary",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "school_year_offset": {
             "description": "Adjusted school year value based on the Child's age.",
@@ -28401,31 +30323,36 @@
             "description": "Condensed medical information about the Child.",
             "type": "string",
             "example": "hayfever",
-            "maxLength": 100
+            "maxLength": 100,
+            "minLength": 1
           },
           "medical": {
             "description": "Full medical information about the Child.",
             "type": "string",
             "example": "Hayfever - takes one tablet a day",
-            "maxLength": 65535
+            "maxLength": 65535,
+            "minLength": 1
           },
           "doctor_details": {
             "description": "Child's doctors details.",
             "type": "string",
             "example": "Doctor Hibbert",
-            "maxLength": 65535
+            "maxLength": 65535,
+            "minLength": 1
           },
           "additional_needs": {
             "description": "Any additional needs declared about the Child.",
             "type": "string",
             "example": "Dyslexic",
-            "maxLength": 65535
+            "maxLength": 65535,
+            "minLength": 1
           },
           "additional_info": {
             "description": "Additional information about the Child.",
             "type": "string",
             "example": "This could be anything.",
-            "maxLength": 250
+            "maxLength": 250,
+            "minLength": 1
           },
           "login": {
             "$ref": "#/components/schemas/Child/properties/login"
@@ -28495,25 +30422,29 @@
             "description": "The first name of the Child.",
             "type": "string",
             "example": "Jess",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "middle_name": {
             "description": "The middle name of the Child.",
             "type": "string",
             "example": "Hannah",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 0
           },
           "last_name": {
             "description": "The last name of the Child.",
             "type": "string",
             "example": "Miller",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "formal_name": {
             "description": "The formal name of the Child.",
             "type": "string",
             "example": "lady Jessica",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 0
           },
           "sex": {
             "description": "The sex of the Child.",
@@ -28535,13 +30466,16 @@
           "mobile": {
             "description": "The Child's mobile number.",
             "type": "string",
-            "example": "07945 867 987"
+            "example": "07945867987",
+            "maxLength": 20,
+            "minLength": 0
           },
           "email": {
             "description": "The Child's email address.",
             "type": "string",
             "format": "email",
             "example": "bart@springfield.com",
+            "maxLength": 100,
             "nullable": true
           },
           "address": {
@@ -28554,31 +30488,36 @@
                 "description": "The first line of the Address",
                 "type": "string",
                 "example": "Floor 2",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 0
               },
               "line_2": {
                 "description": "The second line of the Address",
                 "type": "string",
                 "example": "1 Broadway",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 0
               },
               "line_3": {
                 "description": "The third line of the Address",
                 "type": "string",
                 "example": "Lace Market",
-                "maxLength": 100
+                "maxLength": 100,
+                "minLength": 0
               },
               "city": {
                 "description": "The city of the Address",
                 "type": "string",
                 "example": "Nottingham",
-                "maxLength": 50
+                "maxLength": 50,
+                "minLength": 0
               },
               "county": {
                 "description": "The county of the Address",
                 "type": "string",
                 "example": "Nottinghamshire",
-                "maxLength": 50
+                "maxLength": 50,
+                "minLength": 0
               },
               "country": {
                 "description": "The country of the Address, in ISO3166 alpha 2 format",
@@ -28592,7 +30531,6 @@
                 "description": "The postcode of the Address",
                 "type": "string",
                 "example": "NG1 1PR",
-                "maxLength": 10,
                 "pattern": "^([a-zA-Z0-9\\-\\s]{3,10})?$"
               }
             },
@@ -28658,7 +30596,8 @@
             "description": "The Child's school.",
             "type": "string",
             "example": "Springfield Elementary",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 0
           },
           "school_year_offset": {
             "description": "Adjusted school year value based on the Child's age.",
@@ -28671,31 +30610,36 @@
             "description": "Condensed medical information about the Child.",
             "type": "string",
             "example": "hayfever",
-            "maxLength": 100
+            "maxLength": 100,
+            "minLength": 0
           },
           "medical": {
             "description": "Full medical information about the Child.",
             "type": "string",
             "example": "Hayfever - takes one tablet a day",
-            "maxLength": 65535
+            "maxLength": 65535,
+            "minLength": 0
           },
           "doctor_details": {
             "description": "Child's doctors details.",
             "type": "string",
             "example": "Doctor Hibbert",
-            "maxLength": 65535
+            "maxLength": 65535,
+            "minLength": 0
           },
           "additional_needs": {
             "description": "Any additional needs declared about the Child.",
             "type": "string",
             "example": "Dyslexic",
-            "maxLength": 65535
+            "maxLength": 65535,
+            "minLength": 0
           },
           "additional_info": {
             "description": "Additional information about the Child.",
             "type": "string",
             "example": "This could be anything.",
-            "maxLength": 250
+            "maxLength": 250,
+            "minLength": 0
           },
           "login": {
             "$ref": "#/components/schemas/Child/properties/login"
@@ -30461,7 +32405,8 @@
             "description": "The Key Date's name.",
             "type": "string",
             "example": "Joined Kings Hope Church",
-            "maxLength": 50
+            "maxLength": 50,
+            "minLength": 1
           },
           "colour": {
             "description": "The Key Date's colour.",
@@ -34864,7 +36809,7 @@
         }
       },
       "409": {
-        "description": "Conflict - a conflict exists that prevents your request from being completed.",
+        "description": "Conflict.",
         "content": {
           "application/json": {
             "schema": {
@@ -34880,9 +36825,18 @@
                         409
                       ]
                     },
+                    "errors": {
+                      "type": "object",
+                      "example": {
+                        "name": "A category with this name already exists. Please choose a different name."
+                      },
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
                     "message": {
                       "type": "string",
-                      "example": "Your event cannot be deleted. A sign-up paid through Stripe and cannot be deleted."
+                      "example": "A conflict exists that prevents your request from being completed."
                     }
                   },
                   "required": [
