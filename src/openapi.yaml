@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  version: 2.87.0
+  version: 2.88.0
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -8175,6 +8175,62 @@ paths:
             - children.write
       tags:
         - Tags
+  /giving/batches:
+    get:
+      operationId: list_giving_batches
+      summary: List batches
+      description: Returns a list of batches
+      parameters:
+        - name: batch_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Batch'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                additionalProperties: false
+                required:
+                  - data
+                  - pagination
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - api_enabled_user:
+            - full_access
+        - api_enabled_user:
+            - giving.read
+        - oauth_app:
+            - full_access
+        - oauth_app:
+            - giving.read
+      tags:
+        - Donations
   /giving/custom_fields/{id}:
     parameters:
       - name: id
@@ -21311,6 +21367,52 @@ components:
       required:
         - person
         - tag_id
+    Batch:
+      type: object
+      properties:
+        id:
+          description: The Batch's ID.
+          type: integer
+          example: 12
+          minimum: 1
+        name:
+          description: The name of the Batch.
+          type: string
+          example: Special offering
+        type:
+          description: The Batch type.
+          type: string
+          example: manual
+          enum:
+            - manual
+            - import
+        created_at:
+          description: Date and time the Batch was created in ISO 8601 UTC.
+          type: string
+          format: date-time
+          example: '2014-04-25T10:10:32Z'
+        created_by:
+          description: The user who created the Batch.
+          type: string
+          example: kelly
+        modified_at:
+          description: Date and time the Batch was last modified in ISO 8601 UTC.
+          type: string
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        modified_by:
+          description: The user who last modified the Batch.
+          type: string
+          example: anthony
+      additionalProperties: false
+      required:
+        - id
+        - name
+        - type
+        - created_at
+        - created_by
+        - modified_at
+        - modified_by
     Donation:
       type: object
       properties:

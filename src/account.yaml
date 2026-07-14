@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 2.87.0
+  version: 2.88.0
   title: Account Data
   description: >-
     Access account-level configuration data about account. The data available
