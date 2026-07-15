@@ -5,7 +5,25 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.88.0] - 2026-07-08
+## [2.89.2] - 2026-07-15
+
+### Fixed
+
+- Corrected the sort order for Plan Items in the Planning module, which are ordered by ID
+
+## [2.89.1] - 2026-07-14
+
+### Changed
+
+- The`event_id` query parameter for `calendar/signups` GET and `calendar/tickets` GET are no longer required, meaning signups and tickets for multiple events can now be returned. The two endpoints are now ordered by ID.
+
+## [2.89.0] - 2026-07-14
+
+### Added
+
+- Added a new GET `giving/declarations` endpoint to list Declarations in the Giving module.
+
+## [2.88.0] - 2026-07-13
 
 ### Added
 

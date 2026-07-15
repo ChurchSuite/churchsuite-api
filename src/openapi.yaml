@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  version: 2.88.0
+  version: 2.89.2
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -5741,12 +5741,11 @@ paths:
     get:
       operationId: list_signups
       summary: List sign-ups
-      description: Returns a list of sign-ups, sorted by starts_at.
+      description: Returns a list of sign-ups, sorted by ID.
       parameters:
         - name: event_id
           in: query
           description: Filter records by the provided ID.
-          required: true
           schema:
             type: integer
             format: int32
@@ -5806,12 +5805,11 @@ paths:
     get:
       operationId: list_tickets
       summary: List tickets
-      description: Returns a list of tickets, sorted by their order property.
+      description: Returns a list of tickets, sorted by ID.
       parameters:
         - name: event_id
           in: query
           description: Filter records by the provided ID.
-          required: true
           schema:
             type: integer
             format: int32
@@ -8322,6 +8320,88 @@ paths:
             - giving.read
       tags:
         - Custom Fields
+  /giving/declarations:
+    get:
+      operationId: list_declarations
+      summary: List declarations
+      description: Returns a list of declarations.
+      parameters:
+        - name: giver_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - name: fund_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - name: statuses[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              example: active
+              enum:
+                - active
+                - expired
+                - future
+            default:
+              - active
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Declaration'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                additionalProperties: false
+                required:
+                  - data
+                  - pagination
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - api_enabled_user:
+            - full_access
+        - api_enabled_user:
+            - giving.read
+        - oauth_app:
+            - full_access
+        - oauth_app:
+            - giving.read
+      tags:
+        - Declarations
   /giving/donations:
     get:
       operationId: list_donations
@@ -11258,7 +11338,7 @@ paths:
     get:
       operationId: list_plan_items
       summary: List plan items
-      description: Returns a list of plan items, sorted by date.
+      description: Returns a list of plan items, sorted by ID.
       parameters:
         - name: plan_ids[]
           in: query
@@ -21413,6 +21493,105 @@ components:
         - created_by
         - modified_at
         - modified_by
+    Declaration:
+      type: object
+      properties:
+        id:
+          description: The Declaration's ID.
+          type: integer
+          example: 12
+          minimum: 1
+        giver_id:
+          description: The ID of the Giver the Declaration is linked to.
+          type: integer
+          example: 87
+          minimum: 1
+        donation_id:
+          description: The ID of the Donation the Declaration is linked to.
+          type: integer
+          example: 16
+          minimum: 1
+          nullable: true
+        funds:
+          description: Fund details for this Declaration
+          type: object
+          additionalProperties: false
+          properties:
+            fund_ids:
+              description: An array of Fund IDs this Declaration is linked to
+              type: array
+              items:
+                type: integer
+                example: 1
+                minimum: 1
+              example:
+                - 1
+                - 2
+                - 5
+              minItems: 1
+            all_funds:
+              description: Whether the Declaration covers all funds.
+              type: boolean
+              example: false
+          required:
+            - fund_ids
+            - all_funds
+        date_start:
+          description: The start date of the Declaration.
+          type: string
+          format: date
+          example: '2014-04-25'
+        date_end:
+          description: The end date of the Declaration.
+          type: string
+          format: date
+          example: '2014-04-26'
+          nullable: true
+        digitally_signed:
+          description: The source of the digital signature for this Declaration.
+          type: string
+          example: donate
+          nullable: true
+        status:
+          description: The current status of the Declaration.
+          type: string
+          example: active
+          enum:
+            - active
+            - expired
+            - future
+        created_at:
+          description: Date and time the Declaration was created in ISO 8601 UTC.
+          type: string
+          format: date-time
+          example: '2014-04-25T10:10:32Z'
+        created_by:
+          description: The user who created the Declaration.
+          type: string
+          example: kelly
+        modified_at:
+          description: Date and time the Declaration was last modified in ISO 8601 UTC.
+          type: string
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        modified_by:
+          description: The user who last modified the Declaration.
+          type: string
+          example: anthony
+      additionalProperties: false
+      required:
+        - id
+        - giver_id
+        - donation_id
+        - funds
+        - date_start
+        - date_end
+        - digitally_signed
+        - status
+        - created_at
+        - created_by
+        - modified_at
+        - modified_by
     Donation:
       type: object
       properties:
@@ -26435,6 +26614,14 @@ tags:
         help.
       url: >-
         https://https://support.churchsuite.com/article/81-how-to-link-a-child-to-their-parent
+  - name: Declarations
+    description: Manage the Gift Aid declarations made by your givers (UK only).
+    externalDocs:
+      description: >-
+        Explore our large database of online support articles for step-by-step
+        help.
+      url: >-
+        https://support.churchsuite.com/article/118-managing-your-gift-aid-declarations
   - name: Donations
     description: Manage the donations you receive.
     externalDocs:
