@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  version: 2.89.2
+  version: 2.91.2
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -3223,6 +3223,28 @@ paths:
             format: date
             example: '2024-01-24'
         - name: customer_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - name: booking_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - name: sequence_ids[]
           in: query
           description: >-
             Filter records to those matching values in the provided array. This
@@ -8229,6 +8251,77 @@ paths:
             - giving.read
       tags:
         - Donations
+  /giving/claims:
+    get:
+      operationId: list_giving_claims
+      summary: List claims
+      description: Returns a list of Gift Aid claims (UK only)
+      parameters:
+        - name: claim_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - name: statuses[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              example: pending
+              enum:
+                - complete
+                - pending
+                - processing
+                - reviewed
+                - submitted
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Claim'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                additionalProperties: false
+                required:
+                  - data
+                  - pagination
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - api_enabled_user:
+            - full_access
+        - api_enabled_user:
+            - giving.read
+        - oauth_app:
+            - full_access
+        - oauth_app:
+            - giving.read
+      tags:
+        - Claims
   /giving/custom_fields/{id}:
     parameters:
       - name: id
@@ -9297,6 +9390,80 @@ paths:
             - giving.read
       tags:
         - Pledges
+    delete:
+      operationId: delete_pledge
+      summary: Delete a pledge
+      description: Delete a single pledge identified by ID.
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - api_enabled_user:
+            - full_access
+        - api_enabled_user:
+            - giving.write
+        - oauth_app:
+            - full_access
+        - oauth_app:
+            - giving.write
+      tags:
+        - Pledges
+    put:
+      operationId: edit_pledge
+      summary: Update a pledge
+      description: Update a single pledge identified by ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/PledgeEditOneOff'
+                - $ref: '#/components/schemas/PledgeEditRecurring'
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Pledge'
+                additionalProperties: false
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - api_enabled_user:
+            - full_access
+        - api_enabled_user:
+            - giving.write
+        - oauth_app:
+            - full_access
+        - oauth_app:
+            - giving.write
+      tags:
+        - Pledges
   /giving/pledges:
     get:
       operationId: list_pledges
@@ -9392,6 +9559,63 @@ paths:
             - full_access
         - oauth_app:
             - giving.read
+      tags:
+        - Pledges
+    post:
+      operationId: create_pledge
+      summary: Create a pledge
+      description: Create a pledge with the provided settings.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/PledgeAddRecurring'
+                - $ref: '#/components/schemas/PledgeAddOneOff'
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Pledge'
+                additionalProperties: false
+                required:
+                  - data
+          links:
+            EditPledgeByID:
+              operationId: edit_pledge
+              parameters:
+                id: $response.body#/data/id
+            GetPledgeByID:
+              operationId: get_pledge
+              parameters:
+                id: $response.body#/data/id
+            DeletePledgeByID:
+              operationId: delete_pledge
+              parameters:
+                id: $response.body#/data/id
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - api_enabled_user:
+            - full_access
+        - api_enabled_user:
+            - giving.write
+        - oauth_app:
+            - full_access
+        - oauth_app:
+            - giving.write
       tags:
         - Pledges
   /giving/tags/{id}:
@@ -11461,6 +11685,7 @@ paths:
             description: A string to query by
             type: string
             example: Blessed
+            minLength: 1
         - name: statuses[]
           in: query
           description: >-
@@ -11586,7 +11811,7 @@ paths:
               type: integer
               format: int32
               minimum: 1
-        - name: song_statuses
+        - name: song_statuses[]
           in: query
           description: >-
             Filter records to those matching values in the provided array. This
@@ -15665,6 +15890,7 @@ components:
             minimum: 1
             example: 2
           minItems: 1
+      additionalProperties: false
       required:
         - address
         - all_sites
@@ -19032,6 +19258,14 @@ components:
                   description: Whether the Event is visible in My ChurchSuite at all.
                   type: boolean
                   example: true
+                visible_to_all_contacts:
+                  description: Whether the Event is visible to all contacts
+                  type: boolean
+                  example: true
+                visible_to_all_children:
+                  description: Whether the Event is visible to all children
+                  type: boolean
+                  example: true
                 visible_to:
                   description: List of tags who can view this Event.
                   type: array
@@ -19065,6 +19299,8 @@ components:
                   example: true
               required:
                 - visible
+                - visible_to_all_contacts
+                - visible_to_all_children
                 - visible_to
                 - featured_events
             embed:
@@ -21493,6 +21729,167 @@ components:
         - created_by
         - modified_at
         - modified_by
+    Claim:
+      type: object
+      properties:
+        id:
+          description: The Claim's ID.
+          type: integer
+          example: 12
+          minimum: 1
+        name:
+          description: The name of the Claim.
+          type: string
+          example: GA-YRZC
+        site_ids:
+          description: The Claim's site ID returned in a single item array.
+          type: array
+          items:
+            type: integer
+          example:
+            - 1
+          maxItems: 1
+          minItems: 1
+        starts_at:
+          description: The start date of the Claim.
+          type: string
+          format: date
+          example: '2014-04-25'
+        ends_at:
+          description: The end date of the Claim.
+          type: string
+          format: date
+          example: '2014-04-26'
+        funds:
+          description: Fund details for this Claim
+          type: object
+          additionalProperties: false
+          properties:
+            fund_ids:
+              description: An array of Fund IDs this Claim is linked to
+              type: array
+              items:
+                type: integer
+                example: 1
+                minimum: 1
+              example:
+                - 1
+                - 2
+                - 5
+              minItems: 1
+            all_funds:
+              description: Whether the Claim covers all funds.
+              type: boolean
+              example: false
+          required:
+            - fund_ids
+            - all_funds
+        methods:
+          description: >-
+            List of the giving Methods this Claim covers. Where an empty array
+            is returned, the claim methods represented all methods that were
+            available to the account on the date the claim was created.
+          type: array
+          items:
+            type: string
+          example:
+            - bank
+            - card
+        num_donations:
+          description: The number of donations included in this Claim.
+          type: integer
+          example: 12
+          minimum: 1
+        num_refunds:
+          description: The number of refunds included in this Claim.
+          type: integer
+          example: 5
+          minimum: 0
+        total:
+          description: >-
+            The total amount of all donations included in the Claim, in the
+            smallest unit of the account currency.
+          type: integer
+          example: 3999
+          minimum: 1
+        giftaid_total:
+          description: >-
+            The total (gross) Gift Aid amount included in the Claim, in the
+            smallest unit of the account currency.
+          type: integer
+          example: 254
+          minimum: 0
+        giftaid_refund_total:
+          description: >-
+            The total amount of all refunds included in the Claim, in the
+            smallest unit of the account currency.
+          type: integer
+          example: 199
+          minimum: 0
+        status:
+          description: The current status of the Claim.
+          type: string
+          example: complete
+          enum:
+            - complete
+            - pending
+            - processing
+            - reviewed
+            - submitted
+        claimed_at:
+          description: >-
+            Date and time the Claim was submitted in ISO 8601 UTC or null if the
+            claim has not been submitted.
+          type: string
+          format: date-time
+          example: '2014-04-25T10:10:32Z'
+          nullable: true
+        claimed_by:
+          description: >-
+            The user who submitted the Claim or null if the claim has not been
+            submitted.
+          type: string
+          example: kelly
+          nullable: true
+        created_at:
+          description: Date and time the Claim was created in ISO 8601 UTC.
+          type: string
+          format: date-time
+          example: '2014-04-25T10:10:32Z'
+        created_by:
+          description: The user who created the Claim.
+          type: string
+          example: kelly
+        modified_at:
+          description: Date and time the Claim was last modified in ISO 8601 UTC.
+          type: string
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        modified_by:
+          description: The user who last modified the Claim.
+          type: string
+          example: anthony
+      additionalProperties: false
+      required:
+        - id
+        - name
+        - site_ids
+        - starts_at
+        - ends_at
+        - funds
+        - methods
+        - num_donations
+        - num_refunds
+        - total
+        - giftaid_total
+        - giftaid_refund_total
+        - status
+        - claimed_at
+        - claimed_by
+        - created_at
+        - created_by
+        - modified_at
+        - modified_by
     Declaration:
       type: object
       properties:
@@ -22357,6 +22754,206 @@ components:
         - created_by
         - modified_at
         - modified_by
+    PledgeAddOneOff:
+      description: Create a one-off Pledge, to donate a certain amount on a certain date.
+      type: object
+      properties:
+        giver_id:
+          description: The Giver ID the Pledge is linked to.
+          type: integer
+          example: 256
+          minimum: 1
+        fund_id:
+          description: The Fund ID the Pledge is linked to.
+          type: integer
+          example: 256
+          minimum: 1
+        starts_at:
+          description: The date the Pledge begins.
+          type: string
+          format: date
+          example: '2023-01-20'
+        amount_oneoff:
+          description: >-
+            The Pledge's one off amount in the smallest monetary unit of your
+            account's currency.
+          type: integer
+          example: 5025
+          minimum: 1
+      additionalProperties: false
+      required:
+        - giver_id
+        - fund_id
+        - starts_at
+        - amount_oneoff
+      title: Create a one-off Pledge.
+    PledgeAddRecurring:
+      description: Create a recurring Pledge, with an optional additional one-off donation.
+      type: object
+      properties:
+        giver_id:
+          description: The Giver ID the Pledge is linked to.
+          type: integer
+          example: 256
+          minimum: 1
+        fund_id:
+          description: The Fund ID the Pledge is linked to.
+          type: integer
+          example: 256
+          minimum: 1
+        frequency:
+          description: The Pledge's frequency.
+          type: string
+          example: monthly
+          default: weekly
+          enum:
+            - weekly
+            - fortnightly
+            - twice-monthly
+            - monthly
+            - quarterly
+            - yearly
+        starts_at:
+          description: The date the Pledge begins.
+          type: string
+          format: date
+          example: '2023-01-20'
+        ends_at:
+          description: The date the Pledge ends.
+          type: string
+          format: date
+          example: '2023-01-20'
+        amount_recurring:
+          description: >-
+            The Pledge's recurring amount in the smallest monetary unit of your
+            account's currency.
+          type: integer
+          example: 5025
+          minimum: 1
+        amount_oneoff:
+          description: >-
+            The Pledge's one off amount in the smallest monetary unit of your
+            account's currency.
+          type: integer
+          example: 5025
+          minimum: 1
+      additionalProperties: false
+      required:
+        - giver_id
+        - fund_id
+        - frequency
+        - starts_at
+        - amount_recurring
+      title: Create a recurring Pledge.
+    PledgeEditOneOff:
+      description: Edit a one-off Pledge, to donate a certain amount on a certain date.
+      type: object
+      properties:
+        fund_id:
+          description: The Fund ID the Pledge is linked to.
+          type: integer
+          example: 256
+          minimum: 1
+        frequency:
+          description: >-
+            The Pledge's frequency. This is only respected if the Pledge has an
+            amount_recurring non-null value.
+          type: string
+          example: monthly
+          enum:
+            - weekly
+            - fortnightly
+            - twice-monthly
+            - monthly
+            - quarterly
+            - yearly
+        starts_at:
+          description: The date the Pledge begins.
+          type: string
+          format: date
+          example: '2023-01-20'
+        ends_at:
+          description: The date the Pledge ends.
+          type: string
+          format: date
+          example: '2023-01-20'
+          nullable: true
+        amount_recurring:
+          description: The Pledge's recurring amount - null for a one-off pledge.
+          type: integer
+          enum:
+            - null
+          nullable: true
+        amount_oneoff:
+          description: >-
+            The Pledge's one off amount in the smallest monetary unit of your
+            account's currency.
+          type: integer
+          example: 5025
+      additionalProperties: false
+      required:
+        - fund_id
+        - frequency
+        - starts_at
+        - ends_at
+        - amount_recurring
+        - amount_oneoff
+      title: Edit a one-off Pledge.
+    PledgeEditRecurring:
+      description: Edit a recurring Pledge, with an optional additional one-off donation.
+      type: object
+      properties:
+        fund_id:
+          description: The Fund ID the Pledge is linked to.
+          type: integer
+          example: 256
+          minimum: 1
+        frequency:
+          description: >-
+            The Pledge's frequency. This is only respected if the Pledge has an
+            amount_recurring non-null value.
+          type: string
+          example: monthly
+          enum:
+            - weekly
+            - fortnightly
+            - twice-monthly
+            - monthly
+            - quarterly
+            - yearly
+        starts_at:
+          description: The date the Pledge begins.
+          type: string
+          format: date
+          example: '2023-01-20'
+        ends_at:
+          description: The date the Pledge ends.
+          type: string
+          format: date
+          example: '2023-01-20'
+          nullable: true
+        amount_recurring:
+          description: >-
+            The Pledge's recurring amount in the smallest monetary unit of your
+            account's currency.
+          type: integer
+          example: 5025
+        amount_oneoff:
+          description: >-
+            The Pledge's one off amount in the smallest monetary unit of your
+            account's currency.
+          type: integer
+          example: 5025
+          nullable: true
+      additionalProperties: false
+      required:
+        - fund_id
+        - frequency
+        - starts_at
+        - ends_at
+        - amount_recurring
+        - amount_oneoff
+      title: Edit a recurring Pledge.
     Pledge:
       type: object
       properties:
@@ -22403,7 +23000,7 @@ components:
             account's currency.
           type: integer
           example: 5025
-          minimum: 50
+          minimum: 1
           nullable: true
         amount_oneoff:
           description: >-
@@ -22411,7 +23008,7 @@ components:
             account's currency.
           type: integer
           example: 5025
-          minimum: 50
+          minimum: 1
           nullable: true
         cancelled_at:
           description: Date and time the Pledge was cancelled.
@@ -26614,6 +27211,13 @@ tags:
         help.
       url: >-
         https://https://support.churchsuite.com/article/81-how-to-link-a-child-to-their-parent
+  - name: Claims
+    description: Manage your Gift Aid claims (UK only).
+    externalDocs:
+      description: >-
+        Explore our large database of online support articles for step-by-step
+        help.
+      url: https://support.churchsuite.com/article/119-reclaiming-gift-aid
   - name: Declarations
     description: Manage the Gift Aid declarations made by your givers (UK only).
     externalDocs:

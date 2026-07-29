@@ -5,6 +5,39 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.91.2] - 2026-07-27
+
+### Added
+
+- Added new booking_ids[] and sequence_ids[] filters to `bookings/bookings` list endpoint.
+
+### Changed
+
+- Added explicit boolean fields for `visible_to_all_children` and `visible_to_all_contacts` on the Event schema to replace the legacy behaviour where these tag visibilities were represented by an ID of 0.
+
+### Fixed
+
+- Added missing additionalProperties set to false on Contact PUT specification, with no change in API behaviour
+- Corrected `song_statuses[]` filter on `/planning/song_arrangements` GET to correctly show square brackets
+- Added missing minLength to `q` parameter on `/planning/songs` GET endpoint
+
+## [2.91.0] - 2026-07-24
+
+# Added
+
+- Added new POST `giving/pledges` endpoint to create a single Pledge in the Giving module.
+- Added new PUT `giving/pledges/{id}` endpoint to update a single Pledge in the Giving module.
+- Added new DELETE `giving/pledges/{id}` endpoint to delete a single Pledge in the Giving module.
+
+## Changed
+- Updated the Pledge schema `amount_oneoff` and `amount_recurring` minimum values from 50 to 1, with no functional changes to the API.
+
+## [2.90.0] - 2026-07-17
+
+### Added
+
+- Added a new GET `giving/claims` endpoint to list Claims in the Giving module.
+
 ## [2.89.2] - 2026-07-15
 
 ### Fixed
