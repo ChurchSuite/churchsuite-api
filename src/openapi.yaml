@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  version: 2.91.2
+  version: 2.92.2
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -8633,6 +8633,48 @@ paths:
             - full_access
         - oauth_app:
             - giving.read
+      tags:
+        - Donations
+    post:
+      operationId: create_giving_donation
+      summary: Create a Donation
+      description: Create a Donation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DonationAdd'
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Donation'
+                additionalProperties: false
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - api_enabled_user:
+            - full_access
+        - api_enabled_user:
+            - giving.write
+        - oauth_app:
+            - full_access
+        - oauth_app:
+            - giving.write
       tags:
         - Donations
   /giving/flows/{id}:
@@ -22050,8 +22092,8 @@ components:
           description: >-
             When method is cheque, the cheque number associated with the
             Donation.
-          type: integer
-          example: 123456
+          type: string
+          example: '123456'
           maxLength: 20
           nullable: true
         notes:
@@ -22249,6 +22291,119 @@ components:
         - created_source
         - modified_at
         - modified_by
+    DonationAdd:
+      type: object
+      properties:
+        batch_id:
+          description: The ID of the Batch the Donation is linked to.
+          type: integer
+          example: 1226
+          minimum: 1
+        giver_id:
+          description: The ID of the Giver the Donation is linked to.
+          type: integer
+          example: 87
+          minimum: 1
+        fund_id:
+          description: The ID of the Fund the Donation is linked to.
+          type: integer
+          example: 7
+          minimum: 1
+        pledge_id:
+          description: The ID of the Pledge the Donation is linked to.
+          type: integer
+          example: 87
+          minimum: 1
+        date:
+          description: The date of the Donation.
+          type: string
+          format: date
+          example: '2021-01-01'
+        amount:
+          description: The Donation amount, in the smallest unit of the account currency.
+          type: integer
+          example: 3999
+          minimum: 1
+        method:
+          description: >-
+            The method through which the Donation was made. Value must be either
+            system-defined or a user-defined value from the module settings.
+          type: string
+          example: bank
+          maxLength: 20
+          minLength: 1
+        cheque_number:
+          description: >-
+            When `method` is `cheque`, the cheque number associated with the
+            Donation.
+          type: string
+          example: '123456'
+          maxLength: 20
+          minLength: 1
+        notes:
+          description: The notes of the Donation.
+          type: string
+          example: Legacy gift
+          maxLength: 65535
+          minLength: 1
+        giftaid:
+          type: object
+          additionalProperties: false
+          properties:
+            process:
+              description: >-
+                How the Donation should process Gift Aid. If not present this
+                will default to `auto_detect` for UK accounts, or `null` for
+                non-UK accounts.
+
+                - `auto_detect` - Gift Aid will be claimable where an existing
+                declaration, covering the donation date and fund, is present.
+
+                - `override` - No Gift Aid will be claimable, even if a covering
+                declaration is present.
+
+                - `oneoff` - A one-off declaration will be automatically created
+                against the giver to cover the donation date and fund.
+              type: string
+              example: auto_detect
+              enum:
+                - auto_detect
+                - override
+                - oneoff
+            percentage_giver:
+              description: >-
+                If the linked Giver is a couple, this may be used to override
+                the percentage of the Gift Aid contribution for the Giver. If
+                omitted, this defaults to the value defined on the linked Giver.
+                If this property is provided, `percentage_spouse` must also be
+                provided and the sum of both values must be 100.
+              type: integer
+              maximum: 100
+              minimum: 0
+            percentage_spouse:
+              description: >-
+                If the linked Giver is a couple, this may be used to override
+                the percentage of the Gift Aid contribution for the Giver's
+                spouse. If omitted, this defaults to the value defined on the
+                linked Giver. If this property is provided, `percentage_giver`
+                must also be provided and the sum of both values must be 100.
+              type: integer
+              maximum: 100
+              minimum: 0
+        tax_deductible:
+          description: >-
+            Whether the Donation is tax deductible. If not present this will
+            either respect the setting of the Fund the Donation is linked to, or
+            default to null for accounts without tax deductible giving.
+          type: boolean
+          example: true
+      additionalProperties: false
+      required:
+        - giver_id
+        - fund_id
+        - date
+        - amount
+        - method
     Fund:
       type: object
       properties:
