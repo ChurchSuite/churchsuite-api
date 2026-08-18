@@ -5,6 +5,28 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.94.0] - 2026-08-17
+
+### Added
+
+- Added a new POST `calendar/signups` endpoint to create a single Sign-Up in the Calendar module
+- Added a new PUT `calendar/signups/{id}` endpoint to update a single Sign-Up in the Calendar module
+- Added a new DELETE `calendar/signups/{id}` endpoint to delete a single Sign-Up in the Calendar module
+
+### Changed
+
+- Added `person`, `notes` and `question_responses` to the Sign-Up schema in the Calendar module
+- Deprecated `contact_id` and `child_id` on the Sign-Up schema in the Calendar module, in favour of the new `person` field
+- Added `question_responses` to the Booking and BookedResource schemas in the Booking module
+
+## [2.93.0] - 2026-08-04
+
+The ChurchSuite Core API specification has been updated to OpenAPI 3.1, with no functional changes to the API.
+
+### Fixed
+
+- Documented missing 409 response on Pledge DELETE, that can be returned if a pledge relates to an active online donation
+
 ## [2.92.2] - 2026-08-03
 
 ### Added

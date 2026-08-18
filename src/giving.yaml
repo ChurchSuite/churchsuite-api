@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
-  version: 2.92.2
+  version: 2.94.0
   title: Giving Module
   description: >-
     This module is designed to help manage the donations you receive and the
@@ -370,26 +370,30 @@ paths:
           schema:
             type: string
             format: date
-            example: '2024-02-24'
+            examples:
+              - '2024-02-24'
         - name: after
           in: query
           description: Only include records after this date.
           schema:
             type: string
             format: date
-            example: '2024-01-24'
+            examples:
+              - '2024-01-24'
         - name: giftaid_claimable
           in: query
           description: Filter records by the provided status.
           schema:
             type: boolean
-            example: true
+            examples:
+              - true
         - name: giftaid_claimed
           in: query
           description: Filter records by the provided status.
           schema:
             type: boolean
-            example: true
+            examples:
+              - true
         - name: q
           in: query
           description: >-
@@ -399,7 +403,8 @@ paths:
           schema:
             description: A URL encoded string.
             type: string
-            example: Card
+            examples:
+              - Card
         - name: statuses[]
           in: query
           description: >-
@@ -555,7 +560,8 @@ paths:
           description: Filter records by the provided status.
           schema:
             type: string
-            example: active
+            examples:
+              - active
             default: active
             enum:
               - active
@@ -568,7 +574,8 @@ paths:
           schema:
             description: A URL encoded string.
             type: string
-            example: wedding
+            examples:
+              - wedding
             minLength: 1
       responses:
         '200':
@@ -616,7 +623,8 @@ paths:
         schema:
           type: integer
           format: int32
-          example: 45
+          examples:
+            - 45
           minimum: 1
     delete:
       operationId: delete_giving_flow_stage
@@ -896,7 +904,8 @@ paths:
           description: Filter records by the provided status.
           schema:
             type: string
-            example: active
+            examples:
+              - active
             default: active
             enum:
               - active
@@ -909,20 +918,23 @@ paths:
           schema:
             description: A URL encoded string.
             type: string
-            example: General Church Fund
+            examples:
+              - General Church Fund
             minLength: 1
         - name: visible_in_donate
           in: query
           description: Filter funds to only those visible in Donate.
           schema:
             type: boolean
-            example: true
+            examples:
+              - true
         - name: visible_in_tap_to_donate
           in: query
           description: Filter funds to only those visible in Tap to Donate.
           schema:
             type: boolean
-            example: true
+            examples:
+              - true
       responses:
         '200':
           description: OK Success
@@ -1043,7 +1055,8 @@ paths:
         schema:
           type: integer
           format: int32
-          example: 717
+          examples:
+            - 717
           minimum: 1
     get:
       operationId: list_giver_notes
@@ -1142,7 +1155,8 @@ paths:
           description: Filter records by the provided status.
           schema:
             type: string
-            example: active
+            examples:
+              - active
             default: active
             enum:
               - active
@@ -1155,7 +1169,8 @@ paths:
           schema:
             description: A URL encoded string.
             type: string
-            example: Annabel
+            examples:
+              - Annabel
             minLength: 1
         - name: tag_ids[]
           in: query
@@ -1264,6 +1279,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
       security:
@@ -1361,14 +1378,16 @@ paths:
           schema:
             type: string
             format: date
-            example: '2024-02-24'
+            examples:
+              - '2024-02-24'
         - name: starts_after
           in: query
           description: Only include records that starts after this date.
           schema:
             type: string
             format: date
-            example: '2024-01-24'
+            examples:
+              - '2024-01-24'
         - name: statuses[]
           in: query
           description: >-
@@ -1615,7 +1634,8 @@ paths:
           schema:
             description: A string to query by
             type: string
-            example: supporters
+            examples:
+              - supporters
             minLength: 1
       responses:
         '200':
@@ -1970,7 +1990,8 @@ components:
       description: Page number of items to return
       schema:
         type: integer
-        example: 2
+        examples:
+          - 2
         default: 1
         minimum: 1
     PaginationPerPage:
@@ -1979,7 +2000,8 @@ components:
       description: Number of items to return per request
       schema:
         type: integer
-        example: 10
+        examples:
+          - 10
         default: 50
         maximum: 250
         minimum: 1
@@ -1990,16 +2012,19 @@ components:
         id:
           description: The Batch's ID.
           type: integer
-          example: 12
+          examples:
+            - 12
           minimum: 1
         name:
           description: The name of the Batch.
           type: string
-          example: Special offering
+          examples:
+            - Special offering
         type:
           description: The Batch type.
           type: string
-          example: manual
+          examples:
+            - manual
           enum:
             - manual
             - import
@@ -2007,20 +2032,24 @@ components:
           description: Date and time the Batch was created in ISO 8601 UTC.
           type: string
           format: date-time
-          example: '2014-04-25T10:10:32Z'
+          examples:
+            - '2014-04-25T10:10:32Z'
         created_by:
           description: The user who created the Batch.
           type: string
-          example: kelly
+          examples:
+            - kelly
         modified_at:
           description: Date and time the Batch was last modified in ISO 8601 UTC.
           type: string
           format: date-time
-          example: '2023-09-19T14:52:40Z'
+          examples:
+            - '2023-09-19T14:52:40Z'
         modified_by:
           description: The user who last modified the Batch.
           type: string
-          example: anthony
+          examples:
+            - anthony
       additionalProperties: false
       required:
         - id
@@ -2036,31 +2065,35 @@ components:
         id:
           description: The Claim's ID.
           type: integer
-          example: 12
+          examples:
+            - 12
           minimum: 1
         name:
           description: The name of the Claim.
           type: string
-          example: GA-YRZC
+          examples:
+            - GA-YRZC
         site_ids:
           description: The Claim's site ID returned in a single item array.
           type: array
           items:
             type: integer
-          example:
-            - 1
+          examples:
+            - - 1
           maxItems: 1
           minItems: 1
         starts_at:
           description: The start date of the Claim.
           type: string
           format: date
-          example: '2014-04-25'
+          examples:
+            - '2014-04-25'
         ends_at:
           description: The end date of the Claim.
           type: string
           format: date
-          example: '2014-04-26'
+          examples:
+            - '2014-04-26'
         funds:
           description: Fund details for this Claim
           type: object
@@ -2071,17 +2104,19 @@ components:
               type: array
               items:
                 type: integer
-                example: 1
+                examples:
+                  - 1
                 minimum: 1
-              example:
-                - 1
-                - 2
-                - 5
+              examples:
+                - - 1
+                  - 2
+                  - 5
               minItems: 1
             all_funds:
               description: Whether the Claim covers all funds.
               type: boolean
-              example: false
+              examples:
+                - false
           required:
             - fund_ids
             - all_funds
@@ -2093,44 +2128,50 @@ components:
           type: array
           items:
             type: string
-          example:
-            - bank
-            - card
+          examples:
+            - - bank
+              - card
         num_donations:
           description: The number of donations included in this Claim.
           type: integer
-          example: 12
+          examples:
+            - 12
           minimum: 1
         num_refunds:
           description: The number of refunds included in this Claim.
           type: integer
-          example: 5
+          examples:
+            - 5
           minimum: 0
         total:
           description: >-
             The total amount of all donations included in the Claim, in the
             smallest unit of the account currency.
           type: integer
-          example: 3999
+          examples:
+            - 3999
           minimum: 1
         giftaid_total:
           description: >-
             The total (gross) Gift Aid amount included in the Claim, in the
             smallest unit of the account currency.
           type: integer
-          example: 254
+          examples:
+            - 254
           minimum: 0
         giftaid_refund_total:
           description: >-
             The total amount of all refunds included in the Claim, in the
             smallest unit of the account currency.
           type: integer
-          example: 199
+          examples:
+            - 199
           minimum: 0
         status:
           description: The current status of the Claim.
           type: string
-          example: complete
+          examples:
+            - complete
           enum:
             - complete
             - pending
@@ -2141,35 +2182,43 @@ components:
           description: >-
             Date and time the Claim was submitted in ISO 8601 UTC or null if the
             claim has not been submitted.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2014-04-25T10:10:32Z'
-          nullable: true
+          examples:
+            - '2014-04-25T10:10:32Z'
         claimed_by:
           description: >-
             The user who submitted the Claim or null if the claim has not been
             submitted.
-          type: string
-          example: kelly
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - kelly
         created_at:
           description: Date and time the Claim was created in ISO 8601 UTC.
           type: string
           format: date-time
-          example: '2014-04-25T10:10:32Z'
+          examples:
+            - '2014-04-25T10:10:32Z'
         created_by:
           description: The user who created the Claim.
           type: string
-          example: kelly
+          examples:
+            - kelly
         modified_at:
           description: Date and time the Claim was last modified in ISO 8601 UTC.
           type: string
           format: date-time
-          example: '2023-09-19T14:52:40Z'
+          examples:
+            - '2023-09-19T14:52:40Z'
         modified_by:
           description: The user who last modified the Claim.
           type: string
-          example: anthony
+          examples:
+            - anthony
       additionalProperties: false
       required:
         - id
@@ -2198,15 +2247,18 @@ components:
         id:
           description: The ID of the Custom Field.
           type: integer
-          example: 1
+          examples:
+            - 1
         order:
           description: Order the Custom Field appears.
           type: integer
-          example: 1
+          examples:
+            - 1
         type:
           description: The Custom Field type.
           type: string
-          example: text
+          examples:
+            - text
           enum:
             - text
             - textarea
@@ -2219,17 +2271,22 @@ components:
         name:
           description: Name of the Custom Field.
           type: string
-          example: Receive weekly newsletter
+          examples:
+            - Receive weekly newsletter
         help:
           description: Some text to help explain the purpose of the field.
-          type: string
-          example: Tick if you would like to receive the weekly newsletter or not.
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - Tick if you would like to receive the weekly newsletter or not.
         options:
           description: >-
             Field types checkbox, radio or select - will contain options for the
             field
-          type: array
+          type:
+            - array
+            - 'null'
           items:
             type: object
             properties:
@@ -2237,15 +2294,18 @@ components:
                 description: UUID of the option.
                 type: string
                 format: uuid
-                example: ffbfc9fd-4579-4370-9783-2e4390cd0e30
+                examples:
+                  - ffbfc9fd-4579-4370-9783-2e4390cd0e30
               name:
                 description: Name of the option.
                 type: string
-                example: Yes I would love to receive the newsletter!
+                examples:
+                  - Yes I would love to receive the newsletter!
               status:
                 description: Status of the option.
                 type: string
-                example: active
+                examples:
+                  - active
                 enum:
                   - active
                   - archived
@@ -2254,15 +2314,16 @@ components:
               - name
               - status
             additionalProperties: false
-          nullable: true
         required:
           description: Whether the field is required or not.
           type: boolean
-          example: true
+          examples:
+            - true
         settings:
           description: Settings relating to My, Embed and Connect.
-          type: object
-          nullable: true
+          type:
+            - object
+            - 'null'
           properties:
             my:
               description: My ChurchSuite and My Consent settings.
@@ -2272,15 +2333,18 @@ components:
                 editable:
                   description: Whether the field is editable in My.
                   type: boolean
-                  example: false
+                  examples:
+                    - false
                 viewable:
                   description: Whether the field is viewable in My.
                   type: boolean
-                  example: true
+                  examples:
+                    - true
                 required:
                   description: Whether the field is a required in My.
                   type: boolean
-                  example: false
+                  examples:
+                    - false
               required:
                 - editable
                 - viewable
@@ -2293,15 +2357,18 @@ components:
                 editable:
                   description: Whether the field is editable in Embed.
                   type: boolean
-                  example: false
+                  examples:
+                    - false
                 viewable:
                   description: Whether the field is viewable in Embed.
                   type: boolean
-                  example: true
+                  examples:
+                    - true
                 required:
                   description: Whether the field is required in Embed.
                   type: boolean
-                  example: false
+                  examples:
+                    - false
               required:
                 - editable
                 - viewable
@@ -2314,41 +2381,52 @@ components:
                 editable:
                   description: Whether the field is editable in Connect.
                   type: boolean
-                  example: false
+                  examples:
+                    - false
                 viewable:
                   description: Whether the field is viewable in Connect.
                   type: boolean
-                  example: true
+                  examples:
+                    - true
                 required:
                   description: Whether the field is required in Connect.
                   type: boolean
-                  example: false
+                  examples:
+                    - false
               required:
                 - editable
                 - viewable
                 - required
         created_at:
           description: Date and time the Custom Field was created.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2022-11-17T16:48:13Z'
-          nullable: true
+          examples:
+            - '2022-11-17T16:48:13Z'
         created_by:
           description: The user who created the Custom Field.
-          type: string
-          example: import
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - import
         modified_at:
           description: Date and time the Custom Field was last modified.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2022-11-17T16:48:13Z'
-          nullable: true
+          examples:
+            - '2022-11-17T16:48:13Z'
         modified_by:
           description: The user who last modified the Custom Field.
-          type: string
-          example: import
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - import
       additionalProperties: false
       required:
         - id
@@ -2369,19 +2447,23 @@ components:
         id:
           description: The Declaration's ID.
           type: integer
-          example: 12
+          examples:
+            - 12
           minimum: 1
         giver_id:
           description: The ID of the Giver the Declaration is linked to.
           type: integer
-          example: 87
+          examples:
+            - 87
           minimum: 1
         donation_id:
           description: The ID of the Donation the Declaration is linked to.
-          type: integer
-          example: 16
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 16
           minimum: 1
-          nullable: true
         funds:
           description: Fund details for this Declaration
           type: object
@@ -2392,17 +2474,19 @@ components:
               type: array
               items:
                 type: integer
-                example: 1
+                examples:
+                  - 1
                 minimum: 1
-              example:
-                - 1
-                - 2
-                - 5
+              examples:
+                - - 1
+                  - 2
+                  - 5
               minItems: 1
             all_funds:
               description: Whether the Declaration covers all funds.
               type: boolean
-              example: false
+              examples:
+                - false
           required:
             - fund_ids
             - all_funds
@@ -2410,22 +2494,28 @@ components:
           description: The start date of the Declaration.
           type: string
           format: date
-          example: '2014-04-25'
+          examples:
+            - '2014-04-25'
         date_end:
           description: The end date of the Declaration.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date
-          example: '2014-04-26'
-          nullable: true
+          examples:
+            - '2014-04-26'
         digitally_signed:
           description: The source of the digital signature for this Declaration.
-          type: string
-          example: donate
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - donate
         status:
           description: The current status of the Declaration.
           type: string
-          example: active
+          examples:
+            - active
           enum:
             - active
             - expired
@@ -2434,20 +2524,24 @@ components:
           description: Date and time the Declaration was created in ISO 8601 UTC.
           type: string
           format: date-time
-          example: '2014-04-25T10:10:32Z'
+          examples:
+            - '2014-04-25T10:10:32Z'
         created_by:
           description: The user who created the Declaration.
           type: string
-          example: kelly
+          examples:
+            - kelly
         modified_at:
           description: Date and time the Declaration was last modified in ISO 8601 UTC.
           type: string
           format: date-time
-          example: '2023-09-19T14:52:40Z'
+          examples:
+            - '2023-09-19T14:52:40Z'
         modified_by:
           description: The user who last modified the Declaration.
           type: string
-          example: anthony
+          examples:
+            - anthony
       additionalProperties: false
       required:
         - id
@@ -2468,131 +2562,161 @@ components:
         id:
           description: The Donation's ID.
           type: integer
-          example: 12
+          examples:
+            - 12
           minimum: 1
         batch_id:
           description: >-
             The ID of the Batch the Donation is linked to, or null if it isn't
             linked one.
-          type: integer
-          example: 1226
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 1226
           minimum: 1
-          nullable: true
         giver_id:
           description: The ID of the Giver the Donation is linked to.
           type: integer
-          example: 87
+          examples:
+            - 87
           minimum: 1
         fund_id:
           description: The ID of the Fund the Donation is linked to.
           type: integer
-          example: 7
+          examples:
+            - 7
           minimum: 1
         pledge_id:
           description: >-
             The ID of the Pledge the Donation is linked to, or null if it isn't
             linked one.
-          type: integer
-          example: 87
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 87
           minimum: 1
-          nullable: true
         claim_id:
           description: >-
             The ID of the Claim the Donation is linked to, or null if it isn't
             linked to one, or if the account is not in the UK.
-          type: integer
-          example: 365
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 365
           minimum: 1
-          nullable: true
         date:
           description: The date of the Donation.
           type: string
           format: date
-          example: '2021-01-01'
+          examples:
+            - '2021-01-01'
         amount:
           description: The Donation amount, in the smallest unit of the account currency.
           type: integer
-          example: 3999
+          examples:
+            - 3999
         method:
           description: >-
             The method through which the Donation was made. Value must be either
             system-defined or a user-defined value from the module settings.
           type: string
-          example: bank
+          examples:
+            - bank
         cheque_number:
           description: >-
             When method is cheque, the cheque number associated with the
             Donation.
-          type: string
-          example: '123456'
+          type:
+            - string
+            - 'null'
+          examples:
+            - '123456'
           maxLength: 20
-          nullable: true
         notes:
           description: The notes of the Donation.
-          type: string
-          example: Legacy gift
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - Legacy gift
         giftaid:
           description: >-
             The Gift Aid details of the Donation, or null if the account is not
             in the UK.
-          type: object
+          type:
+            - object
+            - 'null'
           additionalProperties: false
-          nullable: true
           properties:
             percentage_giver:
               description: >-
                 The percentage of Gift Aid contribution for the Giver, or null
                 if the Giver is not a couple.
-              type: integer
-              example: 20
-              nullable: true
+              type:
+                - integer
+                - 'null'
+              examples:
+                - 20
             percentage_spouse:
               description: >-
                 The percentage of Gift Aid contribution for the Giver's spouse,
                 or null if the Giver is not a couple.
-              type: integer
-              example: 80
-              nullable: true
+              type:
+                - integer
+                - 'null'
+              examples:
+                - 80
             claimable_amount:
               description: >-
                 The amount of Gift Aid that is claimable for this Donation, in
                 the smallest unit of the account currency, or null if the Giver
                 does not have a declaration or overrode the declaration.
-              type: integer
-              example: 200
-              nullable: true
+              type:
+                - integer
+                - 'null'
+              examples:
+                - 200
             claimed_amount:
               description: >-
                 The amount of Gift Aid that has been claimed for this Donation,
                 in the smallest unit of the account currency, or null if the
                 Donation has not had Gift Aid claimed on it.
-              type: integer
-              example: 200
-              nullable: true
+              type:
+                - integer
+                - 'null'
+              examples:
+                - 200
             refund_claim_id:
               description: >-
                 The ID of the Claim the Donation's refunded Gift Aid has been
                 processed in if the Gift Aid has been refunded, or null if the
                 Gift Aid has not been refunded.
-              type: integer
-              example: 365
-              nullable: true
+              type:
+                - integer
+                - 'null'
+              examples:
+                - 365
             refund_amount:
               description: >-
                 The amount of Gift Aid that has been refunded for this Donation,
                 in the smallest unit of the account currency, or null if the
                 Gift Aid has not been refunded.
-              type: integer
-              example: 200
-              nullable: true
+              type:
+                - integer
+                - 'null'
+              examples:
+                - 200
             overridden:
               description: >-
                 Indicates when Gift Aid has been overridden for the Donation.
                 When true, the Donation should not be subject to Gift Aid, even
                 when a covering declaration exists.
               type: boolean
-              example: false
+              examples:
+                - false
           required:
             - percentage_giver
             - percentage_spouse
@@ -2605,58 +2729,72 @@ components:
           description: >-
             Whether the Donation is tax deductible. Null for accounts outside of
             AU, CA, HK and US.
-          type: boolean
-          example: true
-          nullable: true
+          type:
+            - boolean
+            - 'null'
+          examples:
+            - true
         gateway:
           description: >-
             For donations processed through a payment gateway, null if a payment
             gateway has not been used.
-          type: object
+          type:
+            - object
+            - 'null'
           additionalProperties: false
-          nullable: true
           properties:
             service:
               description: The payment gateway used for the Donation.
               type: string
-              example: Stripe
+              examples:
+                - Stripe
             status:
               description: >-
                 The last reported status for the Donation, as reported by the
                 payment gateway.
-              type: string
-              example: paid
-              nullable: true
+              type:
+                - string
+                - 'null'
+              examples:
+                - paid
             payout_id:
               description: >-
                 The payment gateway's payout ID for the Donation, null if the
                 Donation has not been paid out.
-              type: string
-              example: PO000019JL29J1
-              nullable: true
+              type:
+                - string
+                - 'null'
+              examples:
+                - PO000019JL29J1
             fees:
               description: >-
                 The total amount of fees for the Donation, in the smallest unit
                 of the account currency.
-              type: integer
-              example: 113
-              nullable: true
+              type:
+                - integer
+                - 'null'
+              examples:
+                - 113
             paid_out_at:
               description: >-
                 Date and time the payment gateway reported the Donation was paid
                 out.
-              type: string
+              type:
+                - string
+                - 'null'
               format: date
-              example: '2023-09-19'
-              nullable: true
+              examples:
+                - '2023-09-19'
             modified_at:
               description: >-
                 Date and time the payment gateway last reported a change to the
                 Donation.
-              type: string
+              type:
+                - string
+                - 'null'
               format: date-time
-              example: '2023-09-19T14:52:40Z'
-              nullable: true
+              examples:
+                - '2023-09-19T14:52:40Z'
           required:
             - service
             - status
@@ -2667,7 +2805,8 @@ components:
         status:
           description: The current status of the Donation.
           type: string
-          example: active
+          examples:
+            - active
           enum:
             - active
             - deleted
@@ -2675,31 +2814,41 @@ components:
             - refunded
         created_at:
           description: Date and time the Donation was created.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2014-04-25T10:10:32Z'
-          nullable: true
+          examples:
+            - '2014-04-25T10:10:32Z'
         created_by:
           description: The user who created the Donation.
-          type: string
-          example: kelly
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - kelly
         created_source:
           description: Where the Donation was created.
-          type: string
-          example: Donate
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - Donate
         modified_at:
           description: Date and time the Donation was last modified.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2023-09-19T14:52:40Z'
-          nullable: true
+          examples:
+            - '2023-09-19T14:52:40Z'
         modified_by:
           description: The user who last modified the Donation.
-          type: string
-          example: anthony
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - anthony
       additionalProperties: false
       required:
         - id
@@ -2728,39 +2877,46 @@ components:
         batch_id:
           description: The ID of the Batch the Donation is linked to.
           type: integer
-          example: 1226
+          examples:
+            - 1226
           minimum: 1
         giver_id:
           description: The ID of the Giver the Donation is linked to.
           type: integer
-          example: 87
+          examples:
+            - 87
           minimum: 1
         fund_id:
           description: The ID of the Fund the Donation is linked to.
           type: integer
-          example: 7
+          examples:
+            - 7
           minimum: 1
         pledge_id:
           description: The ID of the Pledge the Donation is linked to.
           type: integer
-          example: 87
+          examples:
+            - 87
           minimum: 1
         date:
           description: The date of the Donation.
           type: string
           format: date
-          example: '2021-01-01'
+          examples:
+            - '2021-01-01'
         amount:
           description: The Donation amount, in the smallest unit of the account currency.
           type: integer
-          example: 3999
+          examples:
+            - 3999
           minimum: 1
         method:
           description: >-
             The method through which the Donation was made. Value must be either
             system-defined or a user-defined value from the module settings.
           type: string
-          example: bank
+          examples:
+            - bank
           maxLength: 20
           minLength: 1
         cheque_number:
@@ -2768,13 +2924,15 @@ components:
             When `method` is `cheque`, the cheque number associated with the
             Donation.
           type: string
-          example: '123456'
+          examples:
+            - '123456'
           maxLength: 20
           minLength: 1
         notes:
           description: The notes of the Donation.
           type: string
-          example: Legacy gift
+          examples:
+            - Legacy gift
           maxLength: 65535
           minLength: 1
         giftaid:
@@ -2796,7 +2954,8 @@ components:
                 - `oneoff` - A one-off declaration will be automatically created
                 against the giver to cover the donation date and fund.
               type: string
-              example: auto_detect
+              examples:
+                - auto_detect
               enum:
                 - auto_detect
                 - override
@@ -2827,7 +2986,8 @@ components:
             either respect the setting of the Fund the Donation is linked to, or
             default to null for accounts without tax deductible giving.
           type: boolean
-          example: true
+          examples:
+            - true
       additionalProperties: false
       required:
         - giver_id
@@ -2842,18 +3002,22 @@ components:
         id:
           description: The Flow's ID.
           type: integer
-          example: 1
+          examples:
+            - 1
           minimum: 1
         name:
           description: The Flow's name.
           type: string
-          example: Welcome new member
+          examples:
+            - Welcome new member
         notification_days:
           description: >-
             The days of the week where the Flow's managers receive emails when
             actions in this Flow are due/overdue, or null if no notification
             days are set.
-          type: array
+          type:
+            - array
+            - 'null'
           items:
             type: string
             enum:
@@ -2864,11 +3028,10 @@ components:
               - Friday
               - Saturday
               - Sunday
-          example:
-            - Monday
-            - Friday
-            - Sunday
-          nullable: true
+          examples:
+            - - Monday
+              - Friday
+              - Sunday
         visible_in:
           description: Modules the resource is visible in.
           type: array
@@ -2879,46 +3042,57 @@ components:
               - bookings
               - children
               - giving
-          example:
-            - addressbook
-            - bookings
+          examples:
+            - - addressbook
+              - bookings
         visible_to:
           $ref: '#/components/schemas/Tag/properties/visible_to'
         status:
           description: The current status of the Flow.
           type: string
-          example: active
+          examples:
+            - active
           enum:
             - active
             - archived
         archived_at:
           description: Date and time the Flow was archived.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2014-04-25T10:10:32Z'
-          nullable: true
+          examples:
+            - '2014-04-25T10:10:32Z'
         created_at:
           description: Date and time the Flow was created.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2014-04-25T10:10:32Z'
-          nullable: true
+          examples:
+            - '2014-04-25T10:10:32Z'
         created_by:
           description: The user that created the Flow.
-          type: string
-          example: jennie
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - jennie
         modified_at:
           description: Date and time the Flow was last modified.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2023-09-19T14:52:40Z'
-          nullable: true
+          examples:
+            - '2023-09-19T14:52:40Z'
         modified_by:
           description: The user that last modified the Flow.
-          type: string
-          example: caroline
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - caroline
       additionalProperties: false
       required:
         - id
@@ -2938,25 +3112,29 @@ components:
         id:
           description: The Stage's ID.
           type: integer
-          example: 1
+          examples:
+            - 1
           minimum: 1
         flow_id:
           description: The Flow ID the Stage belongs to.
           type: integer
-          example: 1
+          examples:
+            - 1
           minimum: 1
         name:
           description: The Stage's name.
           type: string
-          example: Welcome Call
+          examples:
+            - Welcome Call
           maxLength: 50
           minLength: 1
         instructions:
           description: The instructions for the Stage.
           type: string
-          example: >-
-            Give them a call, see how they found the service and if they have
-            any questions or would like to meet.
+          examples:
+            - >-
+              Give them a call, see how they found the service and if they have
+              any questions or would like to meet.
           maxLength: 65535
           minLength: 0
         due_interval:
@@ -2965,7 +3143,8 @@ components:
             linked to the Stage, either relative to when they are first added to
             the flow or when they are processed from a previous stage.
           type: integer
-          example: 35
+          examples:
+            - 35
           minimum: 0
         due_period:
           description: >-
@@ -2973,7 +3152,8 @@ components:
             either relative to when they are first added to the flow or when
             they are processed from a previous stage.
           type: string
-          example: days
+          examples:
+            - days
           enum:
             - days
             - weeks
@@ -2984,7 +3164,8 @@ components:
             either when they are first added to the flow or when they are
             processed from a previous stage.
           type: string
-          example: first_added
+          examples:
+            - first_added
           enum:
             - first_added
             - previous_stage
@@ -2992,50 +3173,63 @@ components:
           description: >-
             The ID of the user automatically assigned to people in this stage or
             null if no user is assigned.
-          type: integer
-          example: 15
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 15
           minimum: 1
-          nullable: true
         automate_time:
           description: >-
             The UTC time the Stage will automatically process any due or overdue
             people if it is automated, or null if it is not automated.
-          type: string
+          type:
+            - string
+            - 'null'
           format: time
-          example: 09:30:00Z
-          nullable: true
+          examples:
+            - 09:30:00Z
           pattern: ^([01]\d|2[0-3]):(00|15|30|45):00Z$
         order:
           description: The order the Stage appears.
           type: integer
-          example: 1
+          examples:
+            - 1
           minimum: 1
         created_at:
           description: Date and time the Stage was created.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2014-04-25T10:10:32Z'
-          nullable: true
+          examples:
+            - '2014-04-25T10:10:32Z'
         created_by:
           description: The user that created the Stage.
-          type: string
-          example: abraham
+          type:
+            - string
+            - 'null'
+          examples:
+            - abraham
           maxLength: 25
           minLength: 1
-          nullable: true
         modified_at:
           description: Date and time the Stage was last modified.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2023-09-19T14:52:40Z'
-          nullable: true
+          examples:
+            - '2023-09-19T14:52:40Z'
         modified_by:
           description: The user that last modified the Stage.
-          type: string
-          example: zoe
+          type:
+            - string
+            - 'null'
+          examples:
+            - zoe
           maxLength: 25
           minLength: 1
-          nullable: true
       additionalProperties: false
       required:
         - id
@@ -3058,20 +3252,23 @@ components:
         flow_id:
           description: The Flow ID the Stage belongs to.
           type: integer
-          example: 1
+          examples:
+            - 1
           minimum: 1
         name:
           description: The Stage's name.
           type: string
-          example: Welcome Call
+          examples:
+            - Welcome Call
           maxLength: 50
           minLength: 1
         instructions:
           description: The instructions for the Stage.
           type: string
-          example: >-
-            Give them a call, see how they found the service and if they have
-            any questions or would like to meet.
+          examples:
+            - >-
+              Give them a call, see how they found the service and if they have
+              any questions or would like to meet.
           maxLength: 65535
           minLength: 0
         due_interval:
@@ -3080,7 +3277,8 @@ components:
             linked to the Stage, either relative to when they are first added to
             the flow or when they are processed from a previous stage.
           type: integer
-          example: 35
+          examples:
+            - 35
           minimum: 0
         due_period:
           description: >-
@@ -3088,7 +3286,8 @@ components:
             either relative to when they are first added to the flow or when
             they are processed from a previous stage.
           type: string
-          example: days
+          examples:
+            - days
           enum:
             - days
             - weeks
@@ -3099,7 +3298,8 @@ components:
             either when they are first added to the flow or when they are
             processed from a previous stage.
           type: string
-          example: previous_stage
+          examples:
+            - previous_stage
           enum:
             - first_added
             - previous_stage
@@ -3108,7 +3308,8 @@ components:
             The ID of the user automatically assigned to people in this stage,
             or null if no user is assigned.
           type: integer
-          example: 3
+          examples:
+            - 3
           minimum: 1
         automate_time:
           description: >-
@@ -3116,7 +3317,8 @@ components:
             people if it is automated, or null if it is not automated.
           type: string
           format: time
-          example: 09:30:00Z
+          examples:
+            - 09:30:00Z
           pattern: ^([01]\d|2[0-3]):(00|15|30|45):00Z$
       additionalProperties: false
       required:
@@ -3131,15 +3333,17 @@ components:
         name:
           description: The Stage's name.
           type: string
-          example: Welcome Call
+          examples:
+            - Welcome Call
           maxLength: 50
           minLength: 1
         instructions:
           description: The instructions for the Stage.
           type: string
-          example: >-
-            Give them a call, see how they found the service and if they have
-            any questions or would like to meet.
+          examples:
+            - >-
+              Give them a call, see how they found the service and if they have
+              any questions or would like to meet.
           maxLength: 65535
           minLength: 0
         due_interval:
@@ -3148,7 +3352,8 @@ components:
             linked to the Stage, either relative to when they are first added to
             the flow or when they are processed from a previous stage.
           type: integer
-          example: 35
+          examples:
+            - 35
           minimum: 0
         due_period:
           description: >-
@@ -3156,7 +3361,8 @@ components:
             either relative to when they are first added to the flow or when
             they are processed from a previous stage.
           type: string
-          example: days
+          examples:
+            - days
           enum:
             - days
             - weeks
@@ -3167,7 +3373,8 @@ components:
             either when they are first added to the flow or when they are
             processed from a previous stage.
           type: string
-          example: first_added
+          examples:
+            - first_added
           enum:
             - first_added
             - previous_stage
@@ -3175,18 +3382,22 @@ components:
           description: >-
             The ID of the user automatically assigned to people in this stage,
             or null if no user is assigned.
-          type: integer
-          example: 33
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 33
           minimum: 1
-          nullable: true
         automate_time:
           description: >-
             The UTC time the Stage will automatically process any due or overdue
             people if it is automated, or null if it is not automated.
-          type: string
+          type:
+            - string
+            - 'null'
           format: time
-          example: 09:30:00Z
-          nullable: true
+          examples:
+            - 09:30:00Z
           pattern: ^([01]\d|2[0-3]):(00|15|30|45):00Z$
       additionalProperties: false
       required:
@@ -3203,37 +3414,45 @@ components:
         id:
           description: The Fund's ID.
           type: integer
-          example: 12
+          examples:
+            - 12
           minimum: 1
         identifier:
           description: The unique identifier for the Fund.
           type: string
-          example: es4fj4sg
+          examples:
+            - es4fj4sg
         name:
           description: The name of the Fund.
           type: string
-          example: General Church Fund
+          examples:
+            - General Church Fund
         color:
           description: The Fund's hexadecimal colour value.
           type: string
-          example: '#ab12cd'
+          examples:
+            - '#ab12cd'
         brand_id:
           description: The Brand ID linked to the Fund.
           type: integer
-          example: 1
+          examples:
+            - 1
           minimum: 1
         visible_in_donate:
           description: Whether the Fund is shown in Donate or not.
           type: boolean
-          example: true
+          examples:
+            - true
         visible_in_tap_to_donate:
           description: Whether the Fund is shown in Tap to Donate or not.
           type: boolean
-          example: true
+          examples:
+            - true
         donate_frequency:
           description: The frequency of the donation.
           type: string
-          example: oneoff_recurring
+          examples:
+            - oneoff_recurring
           enum:
             - oneoff
             - oneoff_recurring
@@ -3246,24 +3465,28 @@ components:
           items:
             type: integer
             minimum: 1
-          example:
-            - 500
-            - 1000
-            - 1500
+          examples:
+            - - 500
+              - 1000
+              - 1500
         gift_aid:
           description: >-
             Whether Gift Aid can be claimed on this Fund, or null if your
             account cannot have Gift Aid applied to it.
-          type: boolean
-          example: false
-          nullable: true
+          type:
+            - boolean
+            - 'null'
+          examples:
+            - false
         tax_deductible:
           description: >-
             Whether this Fund is tax deductible, or null if your accounts
             country does not have tax deductible giving.
-          type: boolean
-          example: true
-          nullable: true
+          type:
+            - boolean
+            - 'null'
+          examples:
+            - true
         confirmation_email:
           description: Confirmation email details.
           type: object
@@ -3273,21 +3496,25 @@ components:
               description: The sender's email address for the confirmation email.
               type: string
               format: email
-              example: admin@kingshopechurch.co.uk
+              examples:
+                - admin@kingshopechurch.co.uk
             sender_name:
               description: The sender's name for the confirmation email.
               type: string
-              example: Kings Hope Booking
+              examples:
+                - Kings Hope Booking
             subject:
               description: The subject for the confirmation email.
               type: string
-              example: You're booked!
+              examples:
+                - You're booked!
             body:
               description: The html body for the confirmation email.
               type: string
-              example: >-
-                <div>Dear ::first_name::,</div> <div>&nbsp;</div> <div>Here are
-                your details!</div>
+              examples:
+                - >-
+                  <div>Dear ::first_name::,</div> <div>&nbsp;</div> <div>Here
+                  are your details!</div>
           required:
             - sender_email
             - sender_name
@@ -3296,52 +3523,65 @@ components:
         description:
           description: The description of the Fund.
           type: string
-          example: This fund is for regular giving to the church in all areas.
+          examples:
+            - This fund is for regular giving to the church in all areas.
         order:
           description: The position of the Fund when ordered.
           type: integer
-          example: 12
+          examples:
+            - 12
           minimum: 1
         status:
           description: The current status of the Fund.
           type: string
-          example: active
+          examples:
+            - active
           enum:
             - active
             - archived
         image:
           description: A collection of different sized variations of an Image.
-          type: object
+          type:
+            - object
+            - 'null'
           additionalProperties: false
-          nullable: true
           properties:
             thumbnail:
               description: The thumbnail Image url. Thumbnail images are 128x128px.
               type: string
               format: url
-              example: >-
-                https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_thumb.jpg
+              examples:
+                - >-
+                  https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_thumb.jpg
             small:
               description: The small resolution Image url
               type: string
               format: url
-              example: https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_sm.jpg
+              examples:
+                - >-
+                  https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_sm.jpg
             medium:
               description: The medium resolution Image url
               type: string
               format: url
-              example: https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_md.jpg
+              examples:
+                - >-
+                  https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_md.jpg
             large:
               description: The large resolution Image url
               type: string
               format: url
-              example: https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_lg.jpg
+              examples:
+                - >-
+                  https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_lg.jpg
             uploaded_at:
               description: Date and time the Image was uploaded at.
-              type: string
+              type:
+                - string
+                - 'null'
               format: date-time
-              example: '2014-04-25T10:10:32Z'
-              nullable: true
+              examples:
+                - '2014-04-25T10:10:32Z'
           required:
             - thumbnail
             - small
@@ -3350,32 +3590,42 @@ components:
             - uploaded_at
         archived_at:
           description: Date and time the Fund was archived.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2023-09-19T14:52:40Z'
-          nullable: true
+          examples:
+            - '2023-09-19T14:52:40Z'
         created_at:
           description: Date and time the Fund was created.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2023-09-19T14:52:40Z'
-          nullable: true
+          examples:
+            - '2023-09-19T14:52:40Z'
         created_by:
           description: The user who created the Fund.
-          type: string
-          example: anthony
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - anthony
         modified_at:
           description: Date and time the Fund was last modified.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2023-09-19T14:52:40Z'
-          nullable: true
+          examples:
+            - '2023-09-19T14:52:40Z'
         modified_by:
           description: The user who last modified the Fund.
-          type: string
-          example: anthony
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - anthony
       additionalProperties: false
       required:
         - id
@@ -3404,155 +3654,192 @@ components:
         id:
           description: The Giver's ID.
           type: integer
-          example: 12
+          examples:
+            - 12
           minimum: 1
         contact_id:
           description: The Contact ID, if the Giver is linked to a Contact.
-          type: integer
-          example: 256
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 256
           minimum: 1
-          nullable: true
         reference:
           description: The unique reference identifier for the Giver.
           type: string
-          example: G-0128
+          examples:
+            - G-0128
         bank_references:
           description: An array of bank references for the Giver.
           type: array
           items:
             type: string
-          example:
-            - JaneSmith
-            - JohnDoe
+          examples:
+            - - JaneSmith
+              - JohnDoe
         first_name:
           description: The Giver's first name.
           type: string
-          example: Kev
+          examples:
+            - Kev
         last_name:
           description: The Giver's last name.
           type: string
-          example: Bramley
+          examples:
+            - Bramley
         mobile:
           description: The mobile number of the Giver.
           type: string
-          example: '07700700153'
+          examples:
+            - '07700700153'
         email:
           description: The email address of the Giver.
-          type: string
+          type:
+            - string
+            - 'null'
           format: email
-          example: kevbramley@kingshopechurch.com
-          nullable: true
+          examples:
+            - kevbramley@kingshopechurch.com
         telephone:
           description: The phone number of the Giver.
           type: string
-          example: '01154960231'
+          examples:
+            - '01154960231'
         is_couple:
           description: Whether the Giver is a couple or not.
           type: boolean
-          example: true
+          examples:
+            - true
         spouse_first_name:
           description: The spouse's first name, null if the giver is not a couple.
-          type: string
-          example: John
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - John
         spouse_last_name:
           description: The spouse's last name, null if the giver is not a couple.
-          type: string
-          example: Smith
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - Smith
         giftaid_percentage_giver:
           description: >-
             The percentage of giftaid contribution for the Giver, or null if the
             giver is not a couple or the account is not in the UK.
-          type: integer
-          example: 50
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 50
           maximum: 100
           minimum: 0
-          nullable: true
         giftaid_percentage_spouse:
           description: >-
             The percentage of giftaid contribution for the Giver's spouse, or
             null if the giver is not a couple or the account is not in the UK.
-          type: integer
-          example: 50
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 50
           maximum: 100
           minimum: 0
-          nullable: true
         first_donation_date:
           description: >-
             The date of the Give's first donation or null if no donations have
             been made.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date
-          example: '2014-04-25'
-          nullable: true
+          examples:
+            - '2014-04-25'
         last_donation_date:
           description: >-
             The date of the Give's last donation or null if no donations have
             been made.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date
-          example: '2024-08-17'
-          nullable: true
+          examples:
+            - '2024-08-17'
         site_ids:
           description: The Giver's site ID returned in a single item array.
           type: array
           items:
             type: integer
-          example:
-            - 1
+          examples:
+            - - 1
           maxItems: 1
           minItems: 1
         address:
           description: A street Address.
-          type: object
+          type:
+            - object
+            - 'null'
           additionalProperties: false
-          nullable: true
           properties:
             line_1:
               description: The first line of the Address
               type: string
-              example: Floor 2
+              examples:
+                - Floor 2
             line_2:
               description: The second line of the Address
               type: string
-              example: 1 Broadway
+              examples:
+                - 1 Broadway
             line_3:
               description: The third line of the Address
-              type: string
-              example: Lace Market
-              nullable: true
+              type:
+                - string
+                - 'null'
+              examples:
+                - Lace Market
             city:
               description: The city of the Address
               type: string
-              example: Nottingham
+              examples:
+                - Nottingham
             county:
               description: The county of the Address
               type: string
-              example: Nottinghamshire
+              examples:
+                - Nottinghamshire
             country:
               description: The country of the Address, in ISO3166 alpha 2 format
-              type: string
-              example: GB
+              type:
+                - string
+                - 'null'
+              examples:
+                - GB
               maxLength: 2
               minLength: 2
-              nullable: true
             postcode:
               description: The postcode of the Address
               type: string
-              example: NG1 1PR
+              examples:
+                - NG1 1PR
             latitude:
               description: The latitude of the Address, to 6 decimal places
-              type: number
+              type:
+                - number
+                - 'null'
               format: float
-              example: 52.952089
-              nullable: true
+              examples:
+                - 52.952089
             longitude:
               description: The longitude of the Address, to 6 decimal places
-              type: number
+              type:
+                - number
+                - 'null'
               format: float
-              example: -1.1448
-              nullable: true
+              examples:
+                - -1.1448
           required:
             - line_1
             - line_2
@@ -3573,13 +3860,15 @@ components:
               id:
                 description: The ID of the Custom Field
                 type: integer
-                example: 1
+                examples:
+                  - 1
               field_type:
                 description: >-
                   A discriminator to determine the type of Custom Field this
                   response belongs to.
                 type: string
-                example: text
+                examples:
+                  - text
                 enum:
                   - checkbox
                   - date
@@ -3590,23 +3879,24 @@ components:
                   - text
                   - textarea
               value:
-                nullable: true
                 oneOf:
                   - type: string
                     description: The raw value of a text, textarea, email, phone or date.
-                    example: support@churchsuite.com
+                    examples:
+                      - support@churchsuite.com
                   - type: object
                     description: >-
                       The UUID of the selected response for a radio or select
                       field.
-                    example:
-                      id: ffbfc9fd-4579-4370-9783-2e4390cd0e30
+                    examples:
+                      - id: ffbfc9fd-4579-4370-9783-2e4390cd0e30
                     properties:
                       id:
                         description: The UUID
                         type: string
                         format: uuid
-                        example: ffbfc9fd-4579-4370-9783-2e4390cd0e30
+                        examples:
+                          - ffbfc9fd-4579-4370-9783-2e4390cd0e30
                         maxLength: 36
                         minLength: 36
                     required:
@@ -3622,19 +3912,21 @@ components:
                       description: >-
                         The UUID of the selected response for a radio or select
                         field.
-                      example:
-                        id: ffbfc9fd-4579-4370-9783-2e4390cd0e30
+                      examples:
+                        - id: ffbfc9fd-4579-4370-9783-2e4390cd0e30
                       properties:
                         id:
                           description: The UUID
                           type: string
                           format: uuid
-                          example: ffbfc9fd-4579-4370-9783-2e4390cd0e30
+                          examples:
+                            - ffbfc9fd-4579-4370-9783-2e4390cd0e30
                           maxLength: 36
                           minLength: 36
                       required:
                         - id
                       additionalProperties: false
+                  - type: 'null'
             required:
               - id
               - value
@@ -3643,38 +3935,49 @@ components:
         status:
           description: Current status of the Giver.
           type: string
-          example: active
+          examples:
+            - active
           enum:
             - active
             - archived
         archived_at:
           description: Date and time the Giver's record was archived.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2014-04-25T10:10:32Z'
-          nullable: true
+          examples:
+            - '2014-04-25T10:10:32Z'
         created_at:
           description: Date and time the Giver's record was created.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2014-04-25T10:10:32Z'
-          nullable: true
+          examples:
+            - '2014-04-25T10:10:32Z'
         created_by:
           description: The user who created the Giver's record.
-          type: string
-          example: neil
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - neil
         modified_at:
           description: Date and time the Giver's record was last modified.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2023-09-19T14:52:40Z'
-          nullable: true
+          examples:
+            - '2023-09-19T14:52:40Z'
         modified_by:
           description: The user who last modified the Giver's record.
-          type: string
-          example: anthony
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - anthony
       additionalProperties: false
       required:
         - id
@@ -3709,44 +4012,55 @@ components:
         id:
           description: The ID of the Note.
           type: integer
-          example: 1
+          examples:
+            - 1
           minimum: 1
           readOnly: true
         content:
           description: The content of the Note.
-          example: Had a conversation about this on 12th of July.
+          examples:
+            - Had a conversation about this on 12th of July.
           type: string
         pinned:
           description: Whether the Note has been pinned.
           type: boolean
-          example: true
+          examples:
+            - true
         visible_to:
           $ref: '#/components/schemas/Tag/properties/visible_to'
         created_at:
           description: Date and time the Note was created.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2014-04-25T10:10:32Z'
-          nullable: true
+          examples:
+            - '2014-04-25T10:10:32Z'
           readOnly: true
         created_by:
           description: The user that created the Note.
-          type: string
-          example: neil
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - neil
           readOnly: true
         modified_at:
           description: Date and time the Note was last modified.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2023-09-19T14:52:40Z'
-          nullable: true
+          examples:
+            - '2023-09-19T14:52:40Z'
           readOnly: true
         modified_by:
           description: The user that last modified the Note.
-          type: string
-          example: anthony
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - anthony
           readOnly: true
       additionalProperties: false
       required:
@@ -3763,14 +4077,16 @@ components:
       properties:
         content:
           description: The content of the Note.
-          example: Had a conversation about this on 12th of July.
+          examples:
+            - Had a conversation about this on 12th of July.
           maxLength: 65535
           minLength: 1
           type: string
         pinned:
           description: Whether the Note should be pinned.
           type: boolean
-          example: true
+          examples:
+            - true
           default: false
         visible_to:
           $ref: '#/components/schemas/TagAdd/properties/visible_to'
@@ -3797,16 +4113,18 @@ components:
           minimum: 1
         next_page:
           description: The page number of the next page of results, if there is one
-          type: integer
+          type:
+            - integer
+            - 'null'
           format: int32
           minimum: 1
-          nullable: true
         prev_page:
           description: The page number of the previous page of results, if there is one
-          type: integer
+          type:
+            - integer
+            - 'null'
           format: int32
           minimum: 1
-          nullable: true
       additionalProperties: false
       required:
         - num_results
@@ -3821,24 +4139,28 @@ components:
         giver_id:
           description: The Giver ID the Pledge is linked to.
           type: integer
-          example: 256
+          examples:
+            - 256
           minimum: 1
         fund_id:
           description: The Fund ID the Pledge is linked to.
           type: integer
-          example: 256
+          examples:
+            - 256
           minimum: 1
         starts_at:
           description: The date the Pledge begins.
           type: string
           format: date
-          example: '2023-01-20'
+          examples:
+            - '2023-01-20'
         amount_oneoff:
           description: >-
             The Pledge's one off amount in the smallest monetary unit of your
             account's currency.
           type: integer
-          example: 5025
+          examples:
+            - 5025
           minimum: 1
       additionalProperties: false
       required:
@@ -3854,17 +4176,20 @@ components:
         giver_id:
           description: The Giver ID the Pledge is linked to.
           type: integer
-          example: 256
+          examples:
+            - 256
           minimum: 1
         fund_id:
           description: The Fund ID the Pledge is linked to.
           type: integer
-          example: 256
+          examples:
+            - 256
           minimum: 1
         frequency:
           description: The Pledge's frequency.
           type: string
-          example: monthly
+          examples:
+            - monthly
           default: weekly
           enum:
             - weekly
@@ -3877,25 +4202,29 @@ components:
           description: The date the Pledge begins.
           type: string
           format: date
-          example: '2023-01-20'
+          examples:
+            - '2023-01-20'
         ends_at:
           description: The date the Pledge ends.
           type: string
           format: date
-          example: '2023-01-20'
+          examples:
+            - '2023-01-20'
         amount_recurring:
           description: >-
             The Pledge's recurring amount in the smallest monetary unit of your
             account's currency.
           type: integer
-          example: 5025
+          examples:
+            - 5025
           minimum: 1
         amount_oneoff:
           description: >-
             The Pledge's one off amount in the smallest monetary unit of your
             account's currency.
           type: integer
-          example: 5025
+          examples:
+            - 5025
           minimum: 1
       additionalProperties: false
       required:
@@ -3912,14 +4241,16 @@ components:
         fund_id:
           description: The Fund ID the Pledge is linked to.
           type: integer
-          example: 256
+          examples:
+            - 256
           minimum: 1
         frequency:
           description: >-
             The Pledge's frequency. This is only respected if the Pledge has an
             amount_recurring non-null value.
           type: string
-          example: monthly
+          examples:
+            - monthly
           enum:
             - weekly
             - fortnightly
@@ -3931,25 +4262,27 @@ components:
           description: The date the Pledge begins.
           type: string
           format: date
-          example: '2023-01-20'
+          examples:
+            - '2023-01-20'
         ends_at:
           description: The date the Pledge ends.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date
-          example: '2023-01-20'
-          nullable: true
+          examples:
+            - '2023-01-20'
         amount_recurring:
-          description: The Pledge's recurring amount - null for a one-off pledge.
-          type: integer
-          enum:
-            - null
-          nullable: true
+          description: The Pledge's recurring amount - 'null' for a one-off pledge.
+          type:
+            - 'null'
         amount_oneoff:
           description: >-
             The Pledge's one off amount in the smallest monetary unit of your
             account's currency.
           type: integer
-          example: 5025
+          examples:
+            - 5025
       additionalProperties: false
       required:
         - fund_id
@@ -3966,14 +4299,16 @@ components:
         fund_id:
           description: The Fund ID the Pledge is linked to.
           type: integer
-          example: 256
+          examples:
+            - 256
           minimum: 1
         frequency:
           description: >-
             The Pledge's frequency. This is only respected if the Pledge has an
             amount_recurring non-null value.
           type: string
-          example: monthly
+          examples:
+            - monthly
           enum:
             - weekly
             - fortnightly
@@ -3985,26 +4320,32 @@ components:
           description: The date the Pledge begins.
           type: string
           format: date
-          example: '2023-01-20'
+          examples:
+            - '2023-01-20'
         ends_at:
           description: The date the Pledge ends.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date
-          example: '2023-01-20'
-          nullable: true
+          examples:
+            - '2023-01-20'
         amount_recurring:
           description: >-
             The Pledge's recurring amount in the smallest monetary unit of your
             account's currency.
           type: integer
-          example: 5025
+          examples:
+            - 5025
         amount_oneoff:
           description: >-
             The Pledge's one off amount in the smallest monetary unit of your
             account's currency.
-          type: integer
-          example: 5025
-          nullable: true
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 5025
       additionalProperties: false
       required:
         - fund_id
@@ -4020,22 +4361,26 @@ components:
         id:
           description: The Pledge's ID.
           type: integer
-          example: 12
+          examples:
+            - 12
           minimum: 1
         giver_id:
           description: The Giver ID the Pledge is linked to.
           type: integer
-          example: 256
+          examples:
+            - 256
           minimum: 1
         fund_id:
           description: The Fund ID the Pledge is linked to.
           type: integer
-          example: 256
+          examples:
+            - 256
           minimum: 1
         frequency:
           description: The Pledge's frequency.
           type: string
-          example: monthly
+          examples:
+            - monthly
           enum:
             - weekly
             - fortnightly
@@ -4047,49 +4392,63 @@ components:
           description: The date the Pledge begins.
           type: string
           format: date
-          example: '2023-01-20'
+          examples:
+            - '2023-01-20'
         ends_at:
           description: The date the Pledge ends.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date
-          example: '2023-01-20'
-          nullable: true
+          examples:
+            - '2023-01-20'
         amount_recurring:
           description: >-
             The Pledge's recurring amount in the smallest monetary unit of your
             account's currency.
-          type: integer
-          example: 5025
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 5025
           minimum: 1
-          nullable: true
         amount_oneoff:
           description: >-
             The Pledge's one off amount in the smallest monetary unit of your
             account's currency.
-          type: integer
-          example: 5025
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 5025
           minimum: 1
-          nullable: true
         cancelled_at:
           description: Date and time the Pledge was cancelled.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2014-04-25T10:10:32Z'
-          nullable: true
+          examples:
+            - '2014-04-25T10:10:32Z'
         cancelled_by:
           description: The user who cancelled the Pledge.
-          type: string
-          example: neil
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - neil
         cancelled_source:
           description: Where the Pledge was cancelled.
-          type: string
-          example: neil
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - neil
         status:
           description: The current status of the Pledge.
           type: string
-          example: active
+          examples:
+            - active
           enum:
             - active
             - cancelled
@@ -4098,31 +4457,41 @@ components:
             - incomplete
         created_at:
           description: Date and time the Pledge's record was created.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2014-04-25T10:10:32Z'
-          nullable: true
+          examples:
+            - '2014-04-25T10:10:32Z'
         created_by:
           description: The user who created the Pledge's record.
-          type: string
-          example: neil
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - neil
         created_source:
           description: The source of the Pledge.
-          type: string
-          example: donate
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - donate
         modified_at:
           description: Date and time the Pledge's record was last modified.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2023-09-19T14:52:40Z'
-          nullable: true
+          examples:
+            - '2023-09-19T14:52:40Z'
         modified_by:
           description: The user who last modified the Pledge's record.
-          type: string
-          example: anthony
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - anthony
       additionalProperties: false
       required:
         - id
@@ -4149,26 +4518,32 @@ components:
         id:
           description: The Tag's ID.
           type: integer
-          example: 1
+          examples:
+            - 1
           minimum: 1
         name:
           description: The Tag's name.
           type: string
-          example: Serving
+          examples:
+            - Serving
         category_id:
           description: The Tag's Category ID.
-          type: integer
-          example: 12
+          type:
+            - integer
+            - 'null'
+          examples:
+            - 12
           minimum: 1
-          nullable: true
         description:
           description: The description of the Tag.
           type: string
-          example: A individual who is serving for the church.
+          examples:
+            - A individual who is serving for the church.
         colour:
           description: The name of the colour of the Tag.
           type: string
-          example: blue
+          examples:
+            - blue
           enum:
             - blue
             - brown
@@ -4181,29 +4556,32 @@ components:
         is_smart:
           description: Whether the Tag is smart or fixed.
           type: boolean
-          example: true
+          examples:
+            - true
         visible_to:
           description: >-
             Who the resource is visible to, or null if there are no
             restrictions.
-          type: object
+          type:
+            - object
+            - 'null'
           additionalProperties: false
-          nullable: true
           properties:
             just_me:
               description: Whether the resource is visible to just the current user or not.
               type: boolean
-              example: false
+              examples:
+                - false
             user_group_ids:
               description: List of user group IDs the resource is visible to.
               type: array
               items:
                 type: integer
                 minimum: 1
-              example:
-                - 1
-                - 5
-                - 10
+              examples:
+                - - 1
+                  - 5
+                  - 10
           required:
             - just_me
             - user_group_ids
@@ -4212,8 +4590,11 @@ components:
             This Tag's pinned icon. Pinned tags give you a quick way to see your
             most important tags at a glance; they're displayed at the top of the
             page when viewing a person's profile.
-          type: string
-          example: tick
+          type:
+            - string
+            - 'null'
+          examples:
+            - tick
           enum:
             - tick
             - cross
@@ -4235,29 +4616,36 @@ components:
             - smiley-happy
             - smiley-neutral
             - smiley-sad
-          nullable: true
         created_at:
           description: Date and time the Tag was created.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2014-04-25T10:10:32Z'
-          nullable: true
+          examples:
+            - '2014-04-25T10:10:32Z'
         created_by:
           description: The user that created the Tag.
-          type: string
-          example: neil
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - neil
         modified_at:
           description: Date and time the Tag was last modified.
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
-          example: '2023-09-19T14:52:40Z'
-          nullable: true
+          examples:
+            - '2023-09-19T14:52:40Z'
         modified_by:
           description: The user that last modified the Tag.
-          type: string
-          example: anthony
-          nullable: true
+          type:
+            - string
+            - 'null'
+          examples:
+            - anthony
       additionalProperties: false
       required:
         - id
@@ -4279,7 +4667,8 @@ components:
         name:
           description: The Tag's name.
           type: string
-          example: Serving
+          examples:
+            - Serving
           maxLength: 50
           minLength: 1
           pattern: ^[a-zA-Z]+$
@@ -4296,7 +4685,8 @@ components:
         description:
           description: The description of the Tag.
           type: string
-          example: The Kings Hope staff team (paid and unpaid).
+          examples:
+            - The Kings Hope staff team (paid and unpaid).
           maxLength: 65535
           minLength: 0
         colour:
@@ -4304,7 +4694,8 @@ components:
             The name of the colour of the Tag. If not specified, the Category
             colour will be used where applicable, falling back to 'blue'.
           type: string
-          example: blue
+          examples:
+            - blue
           default: blue
           enum:
             - blue
@@ -4318,7 +4709,8 @@ components:
         is_smart:
           description: Whether the Tag is smart or fixed.
           type: boolean
-          example: true
+          examples:
+            - true
         visible_to:
           oneOf:
             - type: object
@@ -4330,9 +4722,9 @@ components:
                 just_me:
                   description: The resource should only be visible to the current user
                   type: boolean
-                  example: true
-                  enum:
+                  examples:
                     - true
+                  const: true
               additionalProperties: false
             - type: object
               description: >-
@@ -4348,9 +4740,9 @@ components:
                   items:
                     type: integer
                     minimum: 1
-                  example:
-                    - 13
-                    - 31
+                  examples:
+                    - - 13
+                      - 31
               additionalProperties: false
         pinned_icon:
           description: >-
@@ -4358,7 +4750,8 @@ components:
             to see your most important tags at a glance; they're displayed at
             the top of the page when viewing a person's profile.
           type: string
-          example: tick
+          examples:
+            - tick
           enum:
             - tick
             - cross
@@ -4391,16 +4784,19 @@ components:
         id:
           description: The tag category's ID.
           type: integer
-          example: 1
+          examples:
+            - 1
           minimum: 1
         name:
           description: The tag category's name
           type: string
-          example: Admin
+          examples:
+            - Admin
         color:
           description: The name of the colour of the tag category
           type: string
-          example: blue
+          examples:
+            - blue
           enum:
             - blue
             - red
@@ -4422,29 +4818,33 @@ components:
         name:
           description: The Tag's name.
           type: string
-          example: Serving
+          examples:
+            - Serving
           maxLength: 50
           minLength: 1
           pattern: ^[a-zA-Z]+$
         category_id:
           description: The Tag's Category ID.
-          type: integer
+          type:
+            - integer
+            - 'null'
           examples:
             - 1
             - 7
             - 12
           minimum: 1
-          nullable: true
         description:
           description: The description of the Tag.
           type: string
-          example: The Kings Hope staff team (paid and unpaid).
+          examples:
+            - The Kings Hope staff team (paid and unpaid).
           maxLength: 65535
           minLength: 0
         colour:
           description: The name of the colour of the Tag.
           type: string
-          example: blue
+          examples:
+            - blue
           enum:
             - blue
             - red
@@ -4460,8 +4860,9 @@ components:
             If `just_me` is true, `user_group_ids` must be empty or not set. If
             `just_me` is false, `user_group_ids` must contain at least one User
             Group ID.
-          type: object
-          nullable: true
+          type:
+            - object
+            - 'null'
           oneOf:
             - type: object
               title: Visible to User Groups
@@ -4469,18 +4870,18 @@ components:
                 just_me:
                   description: The resource should only be visible to the current user
                   type: boolean
-                  example: false
-                  enum:
+                  examples:
                     - false
+                  const: false
                 user_group_ids:
                   description: List of user group IDs the resource is visible to.
                   type: array
                   items:
                     type: integer
                     minimum: 1
-                  example:
-                    - 13
-                    - 31
+                  examples:
+                    - - 13
+                      - 31
               required:
                 - user_group_ids
               additionalProperties: false
@@ -4490,15 +4891,16 @@ components:
                 just_me:
                   description: The resource should only be visible to the current user
                   type: boolean
-                  example: true
-                  enum:
+                  examples:
                     - true
+                  const: true
                 user_group_ids:
                   description: List of user group IDs the resource is visible to.
                   type: array
                   items:
                     type: integer
-                  example: []
+                  examples:
+                    - []
                   maxItems: 0
               required:
                 - just_me
@@ -4507,8 +4909,11 @@ components:
           description: >-
             Pin this Tag by specifying an icon. This will be displayed within
             the application.
-          type: string
-          example: tick
+          type:
+            - string
+            - 'null'
+          examples:
+            - tick
           enum:
             - tick
             - cross
@@ -4530,7 +4935,6 @@ components:
             - smiley-happy
             - smiley-neutral
             - smiley-sad
-          nullable: true
       additionalProperties: false
       required:
         - name
@@ -4553,13 +4957,14 @@ components:
                 The Person's type, indicating whether they are a Child, Contact,
                 Customer or Giver.
               type: string
-              example: giving_giver
-              enum:
+              examples:
                 - giving_giver
+              const: giving_giver
             id:
               description: The Person's ID.
               type: integer
-              example: 12
+              examples:
+                - 12
               minimum: 1
           required:
             - type
@@ -4569,13 +4974,15 @@ components:
             This is no longer recommended - please use `person` to get the
             Person's details. The Giver's ID.
           type: integer
-          example: 12
+          examples:
+            - 12
           deprecated: true
           minimum: 1
         tag_id:
           description: The Tag's ID.
           type: integer
-          example: 5
+          examples:
+            - 5
           minimum: 1
       additionalProperties: false
       required:
@@ -4596,13 +5003,14 @@ components:
                 The Person's type, indicating whether they are a Child, Contact,
                 Customer or Giver.
               type: string
-              example: giving_giver
-              enum:
+              examples:
                 - giving_giver
+              const: giving_giver
             id:
               description: The Person's ID.
               type: integer
-              example: 12
+              examples:
+                - 12
               minimum: 1
           required:
             - type
@@ -4610,7 +5018,8 @@ components:
         tag_id:
           description: The Tag's ID.
           type: integer
-          example: 5
+          examples:
+            - 5
           minimum: 1
       additionalProperties: false
       required:
@@ -4630,13 +5039,12 @@ components:
                 properties:
                   status:
                     type: integer
-                    enum:
-                      - 400
+                    const: 400
                   errors:
                     type: object
-                    example:
-                      first_name: This field is required.
-                      ticket_id: This ticket_id is invalid for this event.
+                    examples:
+                      - first_name: This field is required.
+                        ticket_id: This ticket_id is invalid for this event.
                     additionalProperties:
                       oneOf:
                         - type: string
@@ -4645,7 +5053,8 @@ components:
                             type: string
                   message:
                     type: string
-                    example: There were validation errors with the data you provided.
+                    examples:
+                      - There were validation errors with the data you provided.
                 required:
                   - status
                   - errors
@@ -4668,11 +5077,11 @@ components:
                 properties:
                   status:
                     type: integer
-                    enum:
-                      - 401
+                    const: 401
                   message:
                     type: string
-                    example: Unauthorized
+                    examples:
+                      - Unauthorized
                 required:
                   - status
                   - message
@@ -4692,11 +5101,11 @@ components:
                 properties:
                   status:
                     type: integer
-                    enum:
-                      - 403
+                    const: 403
                   message:
                     type: string
-                    example: You do not have sufficient permissions for this action
+                    examples:
+                      - You do not have sufficient permissions for this action
                 required:
                   - status
                   - message
@@ -4716,11 +5125,11 @@ components:
                 properties:
                   status:
                     type: integer
-                    enum:
-                      - 404
+                    const: 404
                   message:
                     type: string
-                    example: Not Found
+                    examples:
+                      - Not Found
                 required:
                   - status
                   - message
@@ -4740,21 +5149,21 @@ components:
                 properties:
                   status:
                     type: integer
-                    enum:
-                      - 409
+                    const: 409
                   errors:
                     type: object
-                    example:
-                      name: >-
-                        A category with this name already exists. Please choose
-                        a different name.
+                    examples:
+                      - name: >-
+                          A category with this name already exists. Please
+                          choose a different name.
                     additionalProperties:
                       type: string
                   message:
                     type: string
-                    example: >-
-                      A conflict exists that prevents your request from being
-                      completed.
+                    examples:
+                      - >-
+                        A conflict exists that prevents your request from being
+                        completed.
                 required:
                   - status
                   - message
@@ -4779,13 +5188,12 @@ components:
                 properties:
                   status:
                     type: integer
-                    enum:
-                      - 429
+                    const: 429
                   message:
                     type: string
-                    example: The rate limit has been exceeded.
-                    enum:
+                    examples:
                       - The rate limit has been exceeded.
+                    const: The rate limit has been exceeded.
                 required:
                   - status
                   - message
