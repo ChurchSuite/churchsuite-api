@@ -1,6 +1,6 @@
 > [!WARNING]
 > **The v1 API has been deprecated and is replaced by [API v2](https://developer.churchsuite.com/).**
-> We recommend you use the API v2, which is more extensive and offers better documentation. We anticipate the v1 API will be turned off in 2027.
+> The v1 API will be turned off on 1st August 2027 - all existing applications should be migrated to use the v2 API.
 
 # ChurchSuite API v2
 
