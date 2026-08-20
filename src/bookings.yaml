@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  version: 2.94.0
+  version: 2.95.0
   title: Bookings Module
   description: >-
     The Bookings module enables you to manage the booking of resources,
@@ -111,6 +111,31 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - in: query
+          name: resource_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: starts_before
+          description: Only include records that start before this date.
+          schema:
+            type: string
+            format: date
+            example: '2024-02-24'
+        - in: query
+          name: starts_after
+          description: Only include records that start after this date.
+          schema:
+            type: string
+            format: date
+            example: '2024-01-24'
       security:
         - api_enabled_user:
             - full_access

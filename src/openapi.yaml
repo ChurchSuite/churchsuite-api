@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  version: 2.94.0
+  version: 2.95.0
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -3037,6 +3037,33 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - name: resource_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - name: starts_before
+          in: query
+          description: Only include records that start before this date.
+          schema:
+            type: string
+            format: date
+            examples:
+              - '2024-02-24'
+        - name: starts_after
+          in: query
+          description: Only include records that start after this date.
+          schema:
+            type: string
+            format: date
+            examples:
+              - '2024-01-24'
       responses:
         '200':
           description: OK Success
