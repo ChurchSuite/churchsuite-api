@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  version: 2.95.0
+  version: 2.96.0
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -37,13 +37,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - profile.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - profile.read
       tags:
         - Profile
@@ -74,13 +70,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - account
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - account
       tags:
         - Brands
@@ -122,13 +114,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - brands.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - brands.read
       tags:
         - Brands
@@ -159,13 +147,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - brands.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - brands.read
       tags:
         - Brands
@@ -197,13 +181,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - account
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - account
       tags:
         - Profile
@@ -236,9 +216,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - full_access
       tags:
         - Integrations
@@ -280,13 +258,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - account
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - account
       tags:
         - Sites
@@ -317,13 +291,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - account
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - account
       tags:
         - Sites
@@ -352,13 +322,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - user
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - user
       tags:
         - Users
@@ -400,13 +366,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - users.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - users.read
       tags:
         - Users
@@ -445,13 +407,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - users.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - users.read
       tags:
         - Users
@@ -490,13 +448,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - usergroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - usergroups.read
       tags:
         - Users
@@ -538,13 +492,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Contacts
@@ -564,13 +514,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Contacts
@@ -608,13 +554,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Contacts
@@ -660,13 +602,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Contacts
@@ -704,13 +642,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Contacts
@@ -786,13 +720,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Contacts
@@ -855,13 +785,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Contacts
@@ -903,13 +829,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Custom Fields
@@ -948,13 +870,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Custom Fields
@@ -996,13 +914,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Flows
@@ -1063,13 +977,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Flows
@@ -1105,13 +1015,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Flows
@@ -1141,13 +1047,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Flows
@@ -1183,13 +1085,9 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Flows
@@ -1239,13 +1137,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Flows
@@ -1294,13 +1188,9 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Flows
@@ -1342,13 +1232,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Form Fields
@@ -1398,13 +1284,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Form Fields
@@ -1446,13 +1328,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Form Responses
@@ -1542,13 +1420,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Form Responses
@@ -1582,13 +1456,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Key Dates
@@ -1626,13 +1496,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Key Dates
@@ -1696,13 +1562,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Key Dates
@@ -1749,13 +1611,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Key Dates
@@ -1797,13 +1655,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Key Dates
@@ -1823,13 +1677,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Key Dates
@@ -1867,13 +1717,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Key Dates
@@ -1923,13 +1769,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Key Dates
@@ -1982,13 +1824,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Key Dates
@@ -2020,13 +1858,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Tags
@@ -2056,13 +1890,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Tags
@@ -2102,13 +1932,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Tags
@@ -2158,13 +1984,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Tags
@@ -2215,13 +2037,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Tags
@@ -2261,13 +2079,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Tags
@@ -2298,13 +2112,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Tags
@@ -2348,13 +2158,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Tags
@@ -2418,13 +2224,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.read
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.read
       tags:
         - Tags
@@ -2464,13 +2266,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user1:
+        - oauth_token1:
             - full_access
-        - api_enabled_user1:
-            - addressbook.write
-        - oauth_app1:
-            - full_access
-        - oauth_app1:
+        - oauth_token1:
             - addressbook.write
       tags:
         - Tags
@@ -2510,13 +2308,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user2:
+        - oauth_token2:
             - full_access
-        - api_enabled_user2:
-            - attendance.read
-        - oauth_app2:
-            - full_access
-        - oauth_app2:
+        - oauth_token2:
             - attendance.read
       tags:
         - Gatherings
@@ -2577,13 +2371,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user2:
+        - oauth_token2:
             - full_access
-        - api_enabled_user2:
-            - attendance.read
-        - oauth_app2:
-            - full_access
-        - oauth_app2:
+        - oauth_token2:
             - attendance.read
       tags:
         - Gatherings
@@ -2623,13 +2413,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user2:
+        - oauth_token2:
             - full_access
-        - api_enabled_user2:
-            - attendance.read
-        - oauth_app2:
-            - full_access
-        - oauth_app2:
+        - oauth_token2:
             - attendance.read
       tags:
         - Metricsets
@@ -2679,13 +2465,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user2:
+        - oauth_token2:
             - full_access
-        - api_enabled_user2:
-            - attendance.read
-        - oauth_app2:
-            - full_access
-        - oauth_app2:
+        - oauth_token2:
             - attendance.read
       tags:
         - Metricsets
@@ -2735,13 +2517,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user2:
+        - oauth_token2:
             - full_access
-        - api_enabled_user2:
-            - attendance.read
-        - oauth_app2:
-            - full_access
-        - oauth_app2:
+        - oauth_token2:
             - attendance.read
       tags:
         - Metrics
@@ -2781,13 +2559,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user2:
+        - oauth_token2:
             - full_access
-        - api_enabled_user2:
-            - attendance.read
-        - oauth_app2:
-            - full_access
-        - oauth_app2:
+        - oauth_token2:
             - attendance.read
       tags:
         - Records
@@ -2872,13 +2646,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user2:
+        - oauth_token2:
             - full_access
-        - api_enabled_user2:
-            - attendance.read
-        - oauth_app2:
-            - full_access
-        - oauth_app2:
+        - oauth_token2:
             - attendance.read
       tags:
         - Records
@@ -2939,13 +2709,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user2:
+        - oauth_token2:
             - full_access
-        - api_enabled_user2:
-            - attendance.read
-        - oauth_app2:
-            - full_access
-        - oauth_app2:
+        - oauth_token2:
             - attendance.read
       tags:
         - Records
@@ -3008,13 +2774,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user2:
+        - oauth_token2:
             - full_access
-        - api_enabled_user2:
-            - attendance.read
-        - oauth_app2:
-            - full_access
-        - oauth_app2:
+        - oauth_token2:
             - attendance.read
       tags:
         - Records
@@ -3091,13 +2853,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Resources
@@ -3137,13 +2895,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Bookings
@@ -3189,13 +2943,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Bookings
@@ -3233,13 +2983,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.write
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.write
       tags:
         - Bookings
@@ -3362,13 +3108,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Bookings
@@ -3430,13 +3172,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Charges
@@ -3476,13 +3214,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Customers
@@ -3528,13 +3262,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Customers
@@ -3572,13 +3302,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.write
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.write
       tags:
         - Customers
@@ -3661,13 +3387,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Customers
@@ -3707,13 +3429,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Custom Fields
@@ -3752,13 +3470,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Custom Fields
@@ -3798,13 +3512,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Flows
@@ -3865,13 +3575,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Flows
@@ -3907,13 +3613,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.write
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.write
       tags:
         - Flows
@@ -3943,13 +3645,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Flows
@@ -3985,13 +3683,9 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.write
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.write
       tags:
         - Flows
@@ -4041,13 +3735,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Flows
@@ -4096,13 +3786,9 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.write
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.write
       tags:
         - Flows
@@ -4179,13 +3865,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Prices
@@ -4225,13 +3907,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Resources
@@ -4300,13 +3978,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Resources
@@ -4338,13 +4012,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.write
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.write
       tags:
         - Tags
@@ -4374,13 +4044,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Tags
@@ -4420,13 +4086,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.write
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.write
       tags:
         - Tags
@@ -4476,13 +4138,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Tags
@@ -4533,13 +4191,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.write
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.write
       tags:
         - Tags
@@ -4579,13 +4233,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Tags
@@ -4616,13 +4266,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Tags
@@ -4666,13 +4312,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.write
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.write
       tags:
         - Tags
@@ -4738,13 +4380,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Tags
@@ -4784,13 +4422,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.write
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.write
       tags:
         - Tags
@@ -4830,13 +4464,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Types
@@ -4897,13 +4527,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user3:
+        - oauth_token3:
             - full_access
-        - api_enabled_user3:
-            - bookings.read
-        - oauth_app3:
-            - full_access
-        - oauth_app3:
+        - oauth_token3:
             - bookings.read
       tags:
         - Types
@@ -4943,13 +4569,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.read
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.read
       tags:
         - Categories
@@ -4988,13 +4610,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.write
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.write
       tags:
         - Categories
@@ -5034,13 +4652,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.write
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.write
       tags:
         - Categories
@@ -5101,13 +4715,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.read
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.read
       tags:
         - Categories
@@ -5158,13 +4768,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.write
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.write
       tags:
         - Categories
@@ -5206,13 +4812,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.read
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.read
       tags:
         - Events
@@ -5234,13 +4836,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.write
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.write
       tags:
         - Events
@@ -5352,13 +4950,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.write
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.write
       tags:
         - Events
@@ -5456,13 +5050,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.read
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.read
       tags:
         - Events
@@ -5601,13 +5191,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.write
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.write
       tags:
         - Events
@@ -5653,13 +5239,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.read
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.read
       tags:
         - Events
@@ -5697,13 +5279,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.write
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.write
       tags:
         - Events
@@ -5743,13 +5321,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.read
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.read
       tags:
         - Invites
@@ -5850,13 +5424,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.read
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.read
       tags:
         - Invites
@@ -5888,13 +5458,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.write
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.write
       tags:
         - Sign-Ups
@@ -5936,13 +5502,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.write
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.write
       tags:
         - Sign-Ups
@@ -6001,13 +5563,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.read
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.read
       tags:
         - Sign-Ups
@@ -6058,13 +5616,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.write
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.write
       tags:
         - Sign-Ups
@@ -6110,13 +5664,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user4:
+        - oauth_token4:
             - full_access
-        - api_enabled_user4:
-            - calendar.read
-        - oauth_app4:
-            - full_access
-        - oauth_app4:
+        - oauth_token4:
             - calendar.read
       tags:
         - Tickets
@@ -6156,13 +5706,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Children
@@ -6182,13 +5728,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Children
@@ -6226,13 +5768,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Children
@@ -6278,13 +5816,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Children
@@ -6322,13 +5856,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Children
@@ -6414,13 +5944,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Children
@@ -6483,13 +6009,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Children
@@ -6529,13 +6051,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Custom Fields
@@ -6574,13 +6092,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Custom Fields
@@ -6620,13 +6134,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Flows
@@ -6687,13 +6197,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Flows
@@ -6729,13 +6235,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Flows
@@ -6765,13 +6267,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Flows
@@ -6807,13 +6305,9 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Flows
@@ -6863,13 +6357,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Flows
@@ -6918,13 +6408,9 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Flows
@@ -6966,13 +6452,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Form Fields
@@ -7022,13 +6504,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Form Fields
@@ -7070,13 +6548,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Form Responses
@@ -7166,13 +6640,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Form Responses
@@ -7212,13 +6682,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Group Setups
@@ -7268,13 +6734,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Group Setups
@@ -7346,13 +6808,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Groups
@@ -7392,13 +6850,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Groups
@@ -7470,13 +6924,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Groups
@@ -7516,13 +6966,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Key Dates
@@ -7542,13 +6988,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Key Dates
@@ -7586,13 +7028,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Key Dates
@@ -7642,13 +7080,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Key Dates
@@ -7701,13 +7135,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Key Dates
@@ -7741,13 +7171,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Key Dates
@@ -7785,13 +7211,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Key Dates
@@ -7855,13 +7277,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Key Dates
@@ -7908,13 +7326,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Key Dates
@@ -7964,13 +7378,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Parent/Carers
@@ -8002,13 +7412,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Tags
@@ -8038,13 +7444,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Tags
@@ -8084,13 +7486,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Tags
@@ -8142,13 +7540,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Tags
@@ -8199,13 +7593,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Tags
@@ -8245,13 +7635,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Tags
@@ -8282,13 +7668,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Tags
@@ -8332,13 +7714,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Tags
@@ -8402,13 +7780,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.read
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.read
       tags:
         - Tags
@@ -8448,13 +7822,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user5:
+        - oauth_token5:
             - full_access
-        - api_enabled_user5:
-            - children.write
-        - oauth_app5:
-            - full_access
-        - oauth_app5:
+        - oauth_token5:
             - children.write
       tags:
         - Tags
@@ -8504,13 +7874,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Donations
@@ -8575,13 +7941,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Claims
@@ -8621,13 +7983,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Custom Fields
@@ -8666,13 +8024,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Custom Fields
@@ -8748,13 +8102,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Declarations
@@ -8893,13 +8243,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Donations
@@ -8935,13 +8281,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Donations
@@ -8981,13 +8323,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Flows
@@ -9048,13 +8386,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Flows
@@ -9090,13 +8424,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Flows
@@ -9126,13 +8456,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Flows
@@ -9168,13 +8494,9 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Flows
@@ -9224,13 +8546,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Flows
@@ -9279,13 +8597,9 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Flows
@@ -9325,13 +8639,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Funds
@@ -9406,13 +8716,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Funds
@@ -9452,13 +8758,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Givers
@@ -9480,13 +8782,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Givers
@@ -9532,13 +8830,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Givers
@@ -9576,13 +8870,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Givers
@@ -9654,13 +8944,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Givers
@@ -9700,13 +8986,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Pledges
@@ -9728,13 +9010,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Pledges
@@ -9776,13 +9054,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Pledges
@@ -9875,13 +9149,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Pledges
@@ -9932,13 +9202,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Pledges
@@ -9970,13 +9236,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Tags
@@ -10006,13 +9268,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Tags
@@ -10052,13 +9310,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Tags
@@ -10110,13 +9364,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Tags
@@ -10167,13 +9417,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Tags
@@ -10213,13 +9459,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Tags
@@ -10250,13 +9492,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Tags
@@ -10300,13 +9538,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Tags
@@ -10370,13 +9604,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.read
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.read
       tags:
         - Tags
@@ -10416,13 +9646,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user6:
+        - oauth_token6:
             - full_access
-        - api_enabled_user6:
-            - giving.write
-        - oauth_app6:
-            - full_access
-        - oauth_app6:
+        - oauth_token6:
             - giving.write
       tags:
         - Tags
@@ -10462,13 +9688,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Custom Fields
@@ -10507,13 +9729,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Custom Fields
@@ -10547,13 +9765,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.write
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.write
       tags:
         - Key Dates
@@ -10591,13 +9805,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.write
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.write
       tags:
         - Key Dates
@@ -10661,13 +9871,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Key Dates
@@ -10714,13 +9920,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.write
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.write
       tags:
         - Key Dates
@@ -10760,13 +9962,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Key Dates
@@ -10786,13 +9984,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.write
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.write
       tags:
         - Key Dates
@@ -10830,13 +10024,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.write
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.write
       tags:
         - Key Dates
@@ -10886,13 +10076,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Key Dates
@@ -10945,13 +10131,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.write
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.write
       tags:
         - Key Dates
@@ -10991,13 +10173,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Labels
@@ -11047,13 +10225,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Labels
@@ -11114,13 +10288,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Labels
@@ -11181,13 +10351,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Members
@@ -11227,13 +10393,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Organisations
@@ -11279,13 +10441,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Organisations
@@ -11323,13 +10481,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.write
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.write
       tags:
         - Organisations
@@ -11390,13 +10544,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Organisations
@@ -11436,13 +10586,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Roles
@@ -11492,13 +10638,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user7:
+        - oauth_token7:
             - full_access
-        - api_enabled_user7:
-            - network.read
-        - oauth_app7:
-            - full_access
-        - oauth_app7:
+        - oauth_token7:
             - network.read
       tags:
         - Roles
@@ -11538,13 +10680,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - LibraryItems
@@ -11616,13 +10754,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - LibraryItems
@@ -11662,13 +10796,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - Plans
@@ -11714,13 +10844,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - Plans
@@ -11758,13 +10884,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.write
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.write
       tags:
         - Plans
@@ -11841,13 +10963,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - Plans
@@ -11887,13 +11005,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - PlanItems
@@ -11944,13 +11058,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - PlanItems
@@ -11990,13 +11100,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - Songs
@@ -12070,13 +11176,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - Songs
@@ -12116,13 +11218,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - SongArrangements
@@ -12197,13 +11295,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - SongArrangements
@@ -12243,13 +11337,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - Templates
@@ -12310,13 +11400,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - Templates
@@ -12356,13 +11442,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - TemplateItems
@@ -12434,13 +11516,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - TemplateItems
@@ -12480,13 +11558,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - Types
@@ -12536,13 +11610,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user8:
+        - oauth_token8:
             - full_access
-        - api_enabled_user8:
-            - planning.read
-        - oauth_app8:
-            - full_access
-        - oauth_app8:
+        - oauth_token8:
             - planning.read
       tags:
         - Types
@@ -12584,13 +11654,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user9:
+        - oauth_token9:
             - full_access
-        - api_enabled_user9:
-            - rotas.read
-        - oauth_app9:
-            - full_access
-        - oauth_app9:
+        - oauth_token9:
             - rotas.read
       tags:
         - Ministries
@@ -12667,13 +11733,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user9:
+        - oauth_token9:
             - full_access
-        - api_enabled_user9:
-            - rotas.read
-        - oauth_app9:
-            - full_access
-        - oauth_app9:
+        - oauth_token9:
             - rotas.read
       tags:
         - Ministries
@@ -12745,13 +11807,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user9:
+        - oauth_token9:
             - full_access
-        - api_enabled_user9:
-            - rotas.read
-        - oauth_app9:
-            - full_access
-        - oauth_app9:
+        - oauth_token9:
             - rotas.read
       tags:
         - Members
@@ -12793,13 +11851,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user9:
+        - oauth_token9:
             - full_access
-        - api_enabled_user9:
-            - rotas.read
-        - oauth_app9:
-            - full_access
-        - oauth_app9:
+        - oauth_token9:
             - rotas.read
       tags:
         - Teams
@@ -12860,13 +11914,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user9:
+        - oauth_token9:
             - full_access
-        - api_enabled_user9:
-            - rotas.read
-        - oauth_app9:
-            - full_access
-        - oauth_app9:
+        - oauth_token9:
             - rotas.read
       tags:
         - Teams
@@ -12927,13 +11977,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user9:
+        - oauth_token9:
             - full_access
-        - api_enabled_user9:
-            - rotas.read
-        - oauth_app9:
-            - full_access
-        - oauth_app9:
+        - oauth_token9:
             - rotas.read
       tags:
         - Roles
@@ -12999,13 +12045,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Attendance
@@ -13045,13 +12087,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Clusters
@@ -13074,13 +12112,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.write
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.write
       tags:
         - Clusters
@@ -13120,13 +12154,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.write
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.write
       tags:
         - Clusters
@@ -13176,13 +12206,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Clusters
@@ -13222,13 +12248,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.write
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.write
       tags:
         - Clusters
@@ -13268,13 +12290,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Custom Fields
@@ -13313,13 +12331,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Custom Fields
@@ -13359,13 +12373,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Groups
@@ -13411,13 +12421,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Groups
@@ -13455,13 +12461,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.write
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.write
       tags:
         - Groups
@@ -13567,13 +12569,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Groups
@@ -13613,13 +12611,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Labels
@@ -13669,13 +12663,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Labels
@@ -13736,13 +12726,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Labels
@@ -13782,13 +12768,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Members
@@ -13808,13 +12790,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.write
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.write
       tags:
         - Members
@@ -13852,13 +12830,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.write
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.write
       tags:
         - Members
@@ -13948,13 +12922,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Members
@@ -13994,13 +12964,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.write
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.write
       tags:
         - Members
@@ -14040,13 +13006,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Roles
@@ -14070,13 +13032,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.write
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.write
       tags:
         - Roles
@@ -14116,13 +13074,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.write
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.write
       tags:
         - Roles
@@ -14161,13 +13115,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.read
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.read
       tags:
         - Roles
@@ -14207,13 +13157,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user10:
+        - oauth_token10:
             - full_access
-        - api_enabled_user10:
-            - smallgroups.write
-        - oauth_app10:
-            - full_access
-        - oauth_app10:
+        - oauth_token10:
             - smallgroups.write
       tags:
         - Roles
@@ -30518,16 +29464,14 @@ components:
             required:
               - error
   securitySchemes:
-    api_enabled_user:
+    oauth_token:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             account: >-
               Read access to the default brand, sites, and non-sensitive account
               details
@@ -30536,17 +29480,11 @@ components:
             user: Read access to the current user profile
             usergroups.read: Read access to all user groups in the account
             users.read: Read access to all users in the account
-    oauth_app:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             account: >-
               Read access to the default brand, sites, and non-sensitive account
               details
@@ -30555,271 +29493,183 @@ components:
             user: Read access to the current user profile
             usergroups.read: Read access to all user groups in the account
             users.read: Read access to all users in the account
-    api_enabled_user1:
+    oauth_token1:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             addressbook.read: Read access to the Address Book module
             addressbook.write: Write access to the Address Book module
-    oauth_app1:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             addressbook.read: Read access to the Address Book module
             addressbook.write: Write access to the Address Book module
-    api_enabled_user2:
+    oauth_token2:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             attendance.read: Read access to the Attendance module
-    oauth_app2:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             attendance.read: Read access to the Attendance module
-    api_enabled_user3:
+    oauth_token3:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             bookings.read: Read access to the Bookings module
             bookings.write: Write access to the Bookings module
-    oauth_app3:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             bookings.read: Read access to the Bookings module
             bookings.write: Write access to the Bookings module
-    api_enabled_user4:
+    oauth_token4:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             calendar.read: Read access to the Calendar module
             calendar.write: Write access to the Calendar module
-    oauth_app4:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             calendar.read: Read access to the Calendar module
             calendar.write: Write access to the Calendar module
-    api_enabled_user5:
+    oauth_token5:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             children.read: Read access to the Children module
             children.write: Write access to the Children module
-    oauth_app5:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             children.read: Read access to the Children module
             children.write: Write access to the Children module
-    api_enabled_user6:
+    oauth_token6:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             giving.read: Read access to the Giving module
             giving.write: Write access to the Giving module
             tap_to_donate: Access via the Tap to Donate app
-    oauth_app6:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             giving.read: Read access to the Giving module
             giving.write: Write access to the Giving module
             tap_to_donate: Access via the Tap to Donate app
-    api_enabled_user7:
+    oauth_token7:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             network.read: Read access to the Network module
             network.write: Write access to the Network module
-    oauth_app7:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             network.read: Read access to the Network module
             network.write: Write access to the Network module
-    api_enabled_user8:
+    oauth_token8:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             planning.read: Read access to the Planning module
             planning.write: Write access to the Planning module
-    oauth_app8:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             planning.read: Read access to the Planning module
             planning.write: Write access to the Planning module
-    api_enabled_user9:
+    oauth_token9:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             rotas.read: Read access to the Rotas module
-    oauth_app9:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             rotas.read: Read access to the Rotas module
-    api_enabled_user10:
+    oauth_token10:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             smallgroups.read: Read access to the Small Groups module
             smallgroups.write: Write access to the Small Groups module
-    oauth_app10:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             smallgroups.read: Read access to the Small Groups module
             smallgroups.write: Write access to the Small Groups module
-    api_enabled_user11:
+    oauth_token11:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
             checkin: Access via the Check-In app
             core: Access via the Core app
-    oauth_app11:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token

@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  version: 2.95.0
+  version: 2.96.0
   title: Calendar Module
   description: Manage events, sign-ups and staff leave across your account.
   termsOfService: https://churchsuite.com/terms-of-service/
@@ -71,13 +71,9 @@ paths:
       description: Retrieve a single category identified by ID.
       operationId: get_category
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.read
       responses:
         '200':
@@ -121,13 +117,9 @@ paths:
             minimum: 1
             example: 21
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.write
       responses:
         '204':
@@ -157,13 +149,9 @@ paths:
             schema:
               $ref: '#/components/schemas/CategoryWrite'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.write
       responses:
         '200':
@@ -221,13 +209,9 @@ paths:
             example: Christmas Events
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.read
       responses:
         '200':
@@ -268,13 +252,9 @@ paths:
             schema:
               $ref: '#/components/schemas/CategoryWrite'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.write
       responses:
         '201':
@@ -329,13 +309,9 @@ paths:
       description: Retrieve a single event identified by ID.
       operationId: get_event
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.read
       responses:
         '200':
@@ -367,13 +343,9 @@ paths:
       description: Delete a single event identified by ID.
       operationId: delete_event
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.write
       responses:
         '204':
@@ -468,13 +440,9 @@ paths:
                             type: integer
               additionalProperties: false
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.write
       responses:
         '200':
@@ -564,13 +532,9 @@ paths:
               - pending
             default: confirmed
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.read
       responses:
         '200':
@@ -688,13 +652,9 @@ paths:
                         - site_ids
               additionalProperties: false
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.write
       responses:
         '201':
@@ -754,13 +714,9 @@ paths:
       description: Returns a list of event notes, sorted by pinned, created_at.
       operationId: list_event_notes
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.read
       responses:
         '200':
@@ -800,13 +756,9 @@ paths:
             schema:
               $ref: '#/components/schemas/NoteAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.write
       responses:
         '201':
@@ -848,13 +800,9 @@ paths:
       description: Retrieve a single invite identified by ID.
       operationId: get_invite
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.read
       responses:
         '200':
@@ -948,13 +896,9 @@ paths:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.read
       responses:
         '200':
@@ -999,13 +943,9 @@ paths:
       description: Delete a single sign-up identified by an ID.
       operationId: delete_calendar_signup
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.write
       responses:
         '204':
@@ -1035,13 +975,9 @@ paths:
                 - $ref: '#/components/schemas/SignupEditLinkedPerson'
                 - $ref: '#/components/schemas/SignupEditNonLinkedPerson'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.write
       responses:
         '200':
@@ -1098,13 +1034,9 @@ paths:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.read
       responses:
         '200':
@@ -1147,13 +1079,9 @@ paths:
                 - $ref: '#/components/schemas/SignupAddLinkedPerson'
                 - $ref: '#/components/schemas/SignupAddNonLinkedPerson'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.write
       responses:
         '201':
@@ -1207,13 +1135,9 @@ paths:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - calendar.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - calendar.read
       responses:
         '200':
@@ -3227,28 +3151,20 @@ components:
         - modified_by
       additionalProperties: false
   securitySchemes:
-    api_enabled_user:
+    oauth_token:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             calendar.read: Read access to the Calendar module
             calendar.write: Write access to the Calendar module
-    oauth_app:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             calendar.read: Read access to the Calendar module
             calendar.write: Write access to the Calendar module

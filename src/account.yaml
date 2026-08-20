@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  version: 2.95.0
+  version: 2.96.0
   title: Account Data
   description: >-
     Access account-level configuration data about account. The data available
@@ -37,13 +37,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - profile.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - profile.read
       tags:
         - Profile
@@ -74,13 +70,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - account
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - account
       tags:
         - Brands
@@ -122,13 +114,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - brands.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - brands.read
       tags:
         - Brands
@@ -159,13 +147,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - brands.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - brands.read
       tags:
         - Brands
@@ -197,13 +181,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - account
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - account
       tags:
         - Profile
@@ -236,9 +216,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - full_access
       tags:
         - Integrations
@@ -280,13 +258,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - account
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - account
       tags:
         - Sites
@@ -317,13 +291,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - account
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - account
       tags:
         - Sites
@@ -352,13 +322,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - user
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - user
       tags:
         - Users
@@ -400,13 +366,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - users.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - users.read
       tags:
         - Users
@@ -445,13 +407,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - users.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - users.read
       tags:
         - Users
@@ -490,13 +448,9 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - usergroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - usergroups.read
       tags:
         - Users
@@ -1695,16 +1649,14 @@ components:
             required:
               - error
   securitySchemes:
-    api_enabled_user:
+    oauth_token:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             account: >-
               Read access to the default brand, sites, and non-sensitive account
               details
@@ -1713,17 +1665,11 @@ components:
             user: Read access to the current user profile
             usergroups.read: Read access to all user groups in the account
             users.read: Read access to all users in the account
-    oauth_app:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             account: >-
               Read access to the default brand, sites, and non-sensitive account
               details

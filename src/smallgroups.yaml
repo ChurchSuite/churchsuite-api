@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  version: 2.95.0
+  version: 2.96.0
   title: Small Groups Module
   description: >-
     This module enables you to manage all data relating to small groups. Access
@@ -110,13 +110,9 @@ paths:
             format: date
             example: '2025-04-07'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -161,13 +157,9 @@ paths:
       description: Retrieve a single cluster identified by ID.
       operationId: get_cluster
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -200,13 +192,9 @@ paths:
         affected.
       operationId: delete_cluster
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.write
       responses:
         '204':
@@ -232,13 +220,9 @@ paths:
             schema:
               $ref: '#/components/schemas/ClusterWrite'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.write
       responses:
         '200':
@@ -286,13 +270,9 @@ paths:
             example: Nottingham
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -333,13 +313,9 @@ paths:
             schema:
               $ref: '#/components/schemas/ClusterWrite'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.write
       responses:
         '201':
@@ -383,13 +359,9 @@ paths:
       description: Retrieve a single custom field identified by ID.
       operationId: get_smallgroups_custom_field
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -423,13 +395,9 @@ paths:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -474,13 +442,9 @@ paths:
       description: Retrieve a single group identified by ID.
       operationId: get_group
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -521,13 +485,9 @@ paths:
       description: Returns a list of group notes, sorted by pinned, created_at.
       operationId: list_group_notes
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -567,13 +527,9 @@ paths:
             schema:
               $ref: '#/components/schemas/NoteAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.write
       responses:
         '201':
@@ -672,13 +628,9 @@ paths:
               - future
             default: active
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -723,13 +675,9 @@ paths:
       description: Retrieve a single label identified by ID.
       operationId: get_smallgroups_label
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -773,13 +721,9 @@ paths:
             example: theme
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -840,13 +784,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -891,13 +831,9 @@ paths:
       description: Retrieve a single member identified by ID.
       operationId: get_small_groups_member
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -927,13 +863,9 @@ paths:
       description: Delete a single member identified by ID.
       operationId: delete_small_groups_member
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.write
       responses:
         '204':
@@ -959,13 +891,9 @@ paths:
             schema:
               $ref: '#/components/schemas/MemberEdit'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.write
       responses:
         '200':
@@ -1051,13 +979,9 @@ paths:
               - pending
             default: active
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -1098,13 +1022,9 @@ paths:
             schema:
               $ref: '#/components/schemas/MemberAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.write
       responses:
         '201':
@@ -1148,13 +1068,9 @@ paths:
       description: Retrieve a single role identified by ID.
       operationId: get_role
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -1188,13 +1104,9 @@ paths:
         affected.
       operationId: delete_small_groups_role
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.write
       responses:
         '204':
@@ -1220,13 +1132,9 @@ paths:
             schema:
               $ref: '#/components/schemas/RoleEdit'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.write
       responses:
         '200':
@@ -1264,13 +1172,9 @@ paths:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.read
       responses:
         '200':
@@ -1311,13 +1215,9 @@ paths:
             schema:
               $ref: '#/components/schemas/RoleAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - smallgroups.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - smallgroups.write
       responses:
         '201':
@@ -3059,28 +2959,20 @@ components:
         - modified_by
       additionalProperties: false
   securitySchemes:
-    api_enabled_user:
+    oauth_token:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             smallgroups.read: Read access to the Small Groups module
             smallgroups.write: Write access to the Small Groups module
-    oauth_app:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             smallgroups.read: Read access to the Small Groups module
             smallgroups.write: Write access to the Small Groups module

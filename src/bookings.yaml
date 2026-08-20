@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  version: 2.95.0
+  version: 2.96.0
   title: Bookings Module
   description: >-
     The Bookings module enables you to manage the booking of resources,
@@ -137,13 +137,9 @@ paths:
             format: date
             example: '2024-01-24'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -188,13 +184,9 @@ paths:
       description: Retrieve a single booking identified by ID.
       operationId: get_booking
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -235,13 +227,9 @@ paths:
       description: Returns a list of booking notes, sorted by pinned, created_at.
       operationId: list_booking_notes
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -281,13 +269,9 @@ paths:
             schema:
               $ref: '#/components/schemas/NoteAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.write
       responses:
         '201':
@@ -403,13 +387,9 @@ paths:
             example: '2024-04-12'
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -470,13 +450,9 @@ paths:
             type: boolean
             example: true
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -521,13 +497,9 @@ paths:
       description: Retrieve a single customer identified by ID.
       operationId: get_customer
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -568,13 +540,9 @@ paths:
       description: Returns a list of customer notes, sorted by pinned, created_at.
       operationId: list_customer_notes
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -614,13 +582,9 @@ paths:
             schema:
               $ref: '#/components/schemas/NoteAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.write
       responses:
         '201':
@@ -698,13 +662,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -749,13 +709,9 @@ paths:
       description: Retrieve a single custom field identified by ID.
       operationId: get_bookings_custom_field
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -789,13 +745,9 @@ paths:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -840,13 +792,9 @@ paths:
       description: Retrieve a single flow identified by ID.
       operationId: get_bookings_flow
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -900,13 +848,9 @@ paths:
             example: wedding
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -954,13 +898,9 @@ paths:
         actions and flow trackings linked to the stage will be deleted.
       operationId: delete_bookings_flow_stage
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.write
       responses:
         '204':
@@ -982,13 +922,9 @@ paths:
       description: Retrieve a single stage identified by ID.
       operationId: get_bookings_flow_stage
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -1024,13 +960,9 @@ paths:
             schema:
               $ref: '#/components/schemas/FlowStageEdit'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.write
       responses:
         '200':
@@ -1075,13 +1007,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -1122,13 +1050,9 @@ paths:
             schema:
               $ref: '#/components/schemas/FlowStageAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.write
       responses:
         '201':
@@ -1213,13 +1137,9 @@ paths:
               - past
             default: active
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -1262,13 +1182,9 @@ paths:
       description: Retrieve a single resource identified by ID.
       operationId: get_resource
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -1329,13 +1245,9 @@ paths:
               - archived
             example: active
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -1380,13 +1292,9 @@ paths:
       description: Delete a single tag identified by an ID.
       operationId: delete_bookings_tag
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.write
       responses:
         '204':
@@ -1408,13 +1316,9 @@ paths:
       description: Retrieve a single tag identified by ID.
       operationId: get_bookings_tag
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -1450,13 +1354,9 @@ paths:
             schema:
               $ref: '#/components/schemas/TagEdit'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.write
       responses:
         '200':
@@ -1504,13 +1404,9 @@ paths:
             example: suppliers
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -1551,13 +1447,9 @@ paths:
             schema:
               $ref: '#/components/schemas/TagAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.write
       responses:
         '201':
@@ -1612,13 +1504,9 @@ paths:
       description: Retrieve a single tag category identified by ID
       operationId: get_bookings_tag_category
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -1649,13 +1537,9 @@ paths:
       description: Returns a list of tag categories, sorted alphabetically by name.
       operationId: list_bookings_tag_categories
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -1705,13 +1589,9 @@ paths:
             format: int32
             minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.write
       responses:
         '204':
@@ -1762,13 +1642,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -1813,13 +1689,9 @@ paths:
             schema:
               $ref: '#/components/schemas/TagResourceAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.write
       responses:
         '201':
@@ -1863,13 +1735,9 @@ paths:
       description: Retrieve a single type identified by ID.
       operationId: get_type
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -1923,13 +1791,9 @@ paths:
             example: wedding
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - bookings.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - bookings.read
       responses:
         '200':
@@ -4560,28 +4424,20 @@ components:
         - modified_by
       additionalProperties: false
   securitySchemes:
-    api_enabled_user:
+    oauth_token:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             bookings.read: Read access to the Bookings module
             bookings.write: Write access to the Bookings module
-    oauth_app:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             bookings.read: Read access to the Bookings module
             bookings.write: Write access to the Bookings module

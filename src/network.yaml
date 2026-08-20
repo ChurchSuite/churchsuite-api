@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  version: 2.95.0
+  version: 2.96.0
   title: Network Module
   description: >-
     The Network module is designed for networks/denominations to manage the
@@ -84,13 +84,9 @@ paths:
       description: Retrieve a single custom field identified by ID.
       operationId: get_network_custom_field
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -124,13 +120,9 @@ paths:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -178,13 +170,9 @@ paths:
         organisation from a key date.
       operationId: delete_organisation_key_date_resource
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.write
       responses:
         '204':
@@ -210,13 +198,9 @@ paths:
             schema:
               $ref: '#/components/schemas/KeyDateResourceEdit'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.write
       responses:
         '200':
@@ -277,13 +261,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -324,13 +304,9 @@ paths:
             schema:
               $ref: '#/components/schemas/KeyDateResourceAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.write
       responses:
         '201':
@@ -381,13 +357,9 @@ paths:
       description: Retrieve a single key date identified by ID.
       operationId: get_network_key_date
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -417,13 +389,9 @@ paths:
       description: Delete a single key date identified by ID.
       operationId: delete_network_key_date
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.write
       responses:
         '204':
@@ -449,13 +417,9 @@ paths:
             schema:
               $ref: '#/components/schemas/KeyDateEdit'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.write
       responses:
         '200':
@@ -501,13 +465,9 @@ paths:
             example: Joined
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -548,13 +508,9 @@ paths:
             schema:
               $ref: '#/components/schemas/KeyDateAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.write
       responses:
         '201':
@@ -611,13 +567,9 @@ paths:
       description: Retrieve a single label identified by ID.
       operationId: get_network_label
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -661,13 +613,9 @@ paths:
             example: region
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -728,13 +676,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -795,13 +739,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -846,13 +786,9 @@ paths:
       description: Retrieve a single organisation identified by ID.
       operationId: get_organisation
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -893,13 +829,9 @@ paths:
       description: Returns a list of organisation notes, sorted by pinned, created_at.
       operationId: list_organisation_notes
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -939,13 +871,9 @@ paths:
             schema:
               $ref: '#/components/schemas/NoteAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.write
       responses:
         '201':
@@ -1001,13 +929,9 @@ paths:
               - archived
             example: active
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -1052,13 +976,9 @@ paths:
       description: Retrieve a single role identified by ID.
       operationId: get_role
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -1102,13 +1022,9 @@ paths:
             example: region
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - network.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - network.read
       responses:
         '200':
@@ -2483,28 +2399,20 @@ components:
         - modified_by
       additionalProperties: false
   securitySchemes:
-    api_enabled_user:
+    oauth_token:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             network.read: Read access to the Network module
             network.write: Write access to the Network module
-    oauth_app:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             network.read: Read access to the Network module
             network.write: Write access to the Network module

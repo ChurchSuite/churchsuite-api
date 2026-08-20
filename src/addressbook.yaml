@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  version: 2.95.0
+  version: 2.96.0
   title: Address Book Module
   description: >-
     The Address Book module manages all adult contacts associated with your
@@ -96,13 +96,9 @@ paths:
       description: Retrieve a single contact identified by ID.
       operationId: get_contact
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -132,13 +128,9 @@ paths:
       description: Delete a single contact identified by ID.
       operationId: delete_contact
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '204':
@@ -164,13 +156,9 @@ paths:
             schema:
               $ref: '#/components/schemas/ContactEdit'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '200':
@@ -213,13 +201,9 @@ paths:
       description: Returns a list of contact notes, sorted by pinned, created_at.
       operationId: list_contact_notes
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -259,13 +243,9 @@ paths:
             schema:
               $ref: '#/components/schemas/NoteAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '201':
@@ -336,13 +316,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -383,13 +359,9 @@ paths:
             schema:
               $ref: '#/components/schemas/ContactAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '201':
@@ -457,13 +429,9 @@ paths:
       description: Retrieve a single custom field identified by ID.
       operationId: get_addressbook_custom_field
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -497,13 +465,9 @@ paths:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -549,13 +513,9 @@ paths:
       description: Retrieve a single flow identified by ID.
       operationId: get_contact_flow
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -609,13 +569,9 @@ paths:
             example: wedding
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -663,13 +619,9 @@ paths:
         actions and flow trackings linked to the stage will be deleted.
       operationId: delete_addressbook_flow_stage
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '204':
@@ -691,13 +643,9 @@ paths:
       description: Retrieve a single stage identified by ID.
       operationId: get_addressbook_flow_stage
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -727,13 +675,9 @@ paths:
       description: Update a single stage identified by ID.
       operationId: edit_addressbook_flow_stage
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       requestBody:
         required: true
@@ -784,13 +728,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -831,13 +771,9 @@ paths:
             schema:
               $ref: '#/components/schemas/FlowStageAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '201':
@@ -891,13 +827,9 @@ paths:
       description: Retrieve a single form field identified by ID.
       operationId: get_addressbook_form_field
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -942,13 +874,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -994,13 +922,9 @@ paths:
       description: Retrieve a single form response identified by ID.
       operationId: get_addressbook_form_response
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -1081,13 +1005,9 @@ paths:
             type: boolean
             example: false
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -1135,13 +1055,9 @@ paths:
         contact from a key date.
       operationId: delete_contact_key_date_resource
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '204':
@@ -1167,13 +1083,9 @@ paths:
             schema:
               $ref: '#/components/schemas/KeyDateResourceEdit'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '200':
@@ -1234,13 +1146,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -1281,13 +1189,9 @@ paths:
             schema:
               $ref: '#/components/schemas/KeyDateResourceAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '201':
@@ -1339,13 +1243,9 @@ paths:
       description: Retrieve a single key date identified by ID.
       operationId: get_addressbook_key_date
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -1375,13 +1275,9 @@ paths:
       description: Delete a single key date identified by ID.
       operationId: delete_addressbook_key_date
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '204':
@@ -1407,13 +1303,9 @@ paths:
             schema:
               $ref: '#/components/schemas/KeyDateEdit'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '200':
@@ -1459,13 +1351,9 @@ paths:
             example: Joined
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -1506,13 +1394,9 @@ paths:
             schema:
               $ref: '#/components/schemas/KeyDateAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '201':
@@ -1569,13 +1453,9 @@ paths:
       description: Delete a single tag identified by an ID.
       operationId: delete_addressbook_tag
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '204':
@@ -1597,13 +1477,9 @@ paths:
       description: Retrieve a single tag identified by ID.
       operationId: get_addressbook_tag
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -1639,13 +1515,9 @@ paths:
             schema:
               $ref: '#/components/schemas/TagEdit'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '200':
@@ -1693,13 +1565,9 @@ paths:
             example: leaders
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -1740,13 +1608,9 @@ paths:
             schema:
               $ref: '#/components/schemas/TagAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '201':
@@ -1801,13 +1665,9 @@ paths:
       description: Retrieve a single tag category identified by ID
       operationId: get_addressbook_tag_category
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -1838,13 +1698,9 @@ paths:
       description: Returns a list of tag categories, sorted alphabetically by name.
       operationId: list_addressbook_tag_categories
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -1894,13 +1750,9 @@ paths:
             format: int32
             minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '204':
@@ -1951,13 +1803,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.read
       responses:
         '200':
@@ -2000,13 +1848,9 @@ paths:
             schema:
               $ref: '#/components/schemas/TagResourceAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - addressbook.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - addressbook.write
       responses:
         '201':
@@ -5285,28 +5129,20 @@ components:
         - tag_id
       additionalProperties: false
   securitySchemes:
-    api_enabled_user:
+    oauth_token:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             addressbook.read: Read access to the Address Book module
             addressbook.write: Write access to the Address Book module
-    oauth_app:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             addressbook.read: Read access to the Address Book module
             addressbook.write: Write access to the Address Book module

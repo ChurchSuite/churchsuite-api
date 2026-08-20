@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  version: 2.95.0
+  version: 2.96.0
   title: Planning Module
   description: >-
     The Planning module enables organisations/churches to produce plans for
@@ -91,13 +91,9 @@ paths:
       description: Retrieve a single library item identified by ID.
       operationId: get_planning_library_item
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -162,13 +158,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -213,13 +205,9 @@ paths:
       description: Retrieve a single plan identified by ID.
       operationId: get_plan
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -260,13 +248,9 @@ paths:
       description: Returns a list of plan notes, sorted by pinned, created_at.
       operationId: list_plan_notes
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -306,13 +290,9 @@ paths:
             schema:
               $ref: '#/components/schemas/NoteAdd'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.write
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.write
       responses:
         '201':
@@ -382,13 +362,9 @@ paths:
               - draft
               - published
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -433,13 +409,9 @@ paths:
       description: Retrieve a single plan item identified by ID.
       operationId: get_plan_item
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -485,13 +457,9 @@ paths:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -536,13 +504,9 @@ paths:
       description: Retrieve a single song, identified by ID.
       operationId: get_song
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -608,13 +572,9 @@ paths:
             default:
               - active
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -659,13 +619,9 @@ paths:
       description: Retrieve a single song arrangement identified by ID.
       operationId: get_planning_song_arrangement
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -733,13 +689,9 @@ paths:
             default:
               - active
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -784,13 +736,9 @@ paths:
       description: Retrieve a single template identified by ID.
       operationId: get_planning_template
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -844,13 +792,9 @@ paths:
               - active
               - archived
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -895,13 +839,9 @@ paths:
       description: Retrieve a single template item identified by ID.
       operationId: get_planning_template_item
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -968,13 +908,9 @@ paths:
               format: int32
               minimum: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -1019,13 +955,9 @@ paths:
       description: Retrieve a single type identified by ID.
       operationId: get_planning_type
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -1069,13 +1001,9 @@ paths:
             example: Morning Service
             minLength: 1
       security:
-        - api_enabled_user:
+        - oauth_token:
             - full_access
-        - api_enabled_user:
-            - planning.read
-        - oauth_app:
-            - full_access
-        - oauth_app:
+        - oauth_token:
             - planning.read
       responses:
         '200':
@@ -2834,28 +2762,20 @@ components:
         - modified_by
       additionalProperties: false
   securitySchemes:
-    api_enabled_user:
+    oauth_token:
       type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Client Credentials grant flow by enabling
-        API access for a user.
+      description: Access APIv2 using an API enabled user, or via an OAuth App.
       flows:
         clientCredentials:
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the API-enabled user
+            full_access: Full access on behalf of the user
             planning.read: Read access to the Planning module
             planning.write: Write access to the Planning module
-    oauth_app:
-      type: oauth2
-      description: >-
-        Access APIv2 using the OAuth2 Authorization Code grant flow by creating
-        an OAuth App.
-      flows:
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
-            full_access: Full access on behalf of the user who logs in using the OAuth App
+            full_access: Full access on behalf of the user
             planning.read: Read access to the Planning module
             planning.write: Write access to the Planning module
