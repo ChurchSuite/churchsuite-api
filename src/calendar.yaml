@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  version: 2.96.0
+  version: 2.97.0
   title: Calendar Module
   description: Manage events, sign-ups and staff leave across your account.
   termsOfService: https://churchsuite.com/terms-of-service/
@@ -10,7 +10,16 @@ servers:
   - url: https://api.churchsuite.com/v2
     description: Public API server
 tags:
+  - name: Calendar Module
+    description: Manage events, sign-ups and staff leave across your account.
+    externalDocs:
+      description: >-
+        Explore our large database of online support articles for step-by-step
+        help.
+      url: >-
+        https://support.churchsuite.com/article/532-getting-started-with-the-calendar-module
   - name: Categories
+    parent: Calendar Module
     description: >-
       Organise your events using categories, e.g. "Family events",
       "Discipleship", etc.
@@ -20,6 +29,7 @@ tags:
         help.
       url: https://support.churchsuite.com/article/102-event-categories
   - name: Events
+    parent: Calendar Module
     description: Manage your organisation's events.
     externalDocs:
       description: >-
@@ -28,6 +38,7 @@ tags:
       url: >-
         https://support.churchsuite.com/article/98-adding-events-to-your-church-calendar
   - name: Invites
+    parent: Calendar Module
     description: Manage your organisation's event invites.
     externalDocs:
       description: >-
@@ -35,6 +46,7 @@ tags:
         help.
       url: https://support.churchsuite.com/article/460-event-invitations
   - name: Sign-Ups
+    parent: Calendar Module
     description: >-
       When a person signs up to attend an event, a sign-up is created for them.
       A sign-up may be linked to a contact, child or be standalone and only
@@ -46,6 +58,7 @@ tags:
       url: >-
         https://support.churchsuite.com/article/193-adding-custom-question-to-event-sign-up
   - name: Tickets
+    parent: Calendar Module
     description: >-
       Add tickets to an event to provide sign-ups with a choice of options,
       which may have an optional cost or capacity.

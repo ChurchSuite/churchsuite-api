@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  version: 2.96.0
+  version: 2.97.0
   title: Planning Module
   description: >-
     The Planning module enables organisations/churches to produce plans for
@@ -15,7 +15,21 @@ servers:
   - url: https://api.churchsuite.com/v2
     description: Public API server
 tags:
+  - name: Planning Module
+    description: >-
+      The Planning module enables organisations/churches to produce plans for
+      services, events and bookings or to create an unlinked plan. Plans are a
+      great way to keep everyone in the loop about the running order for an
+      occasion so that those involved know precisely who's doing what and when
+      within the running order.
+    externalDocs:
+      description: >-
+        Explore our large database of online support articles for step-by-step
+        help.
+      url: >-
+        https://support.churchsuite.com/article/492-getting-started-with-the-planning-module
   - name: LibraryItems
+    parent: Planning Module
     description: >-
       Library items can be added to plans on an adhoc basis but you can save
       time by building a library of the items that you use time and again.
@@ -25,6 +39,7 @@ tags:
         help.
       url: https://support.churchsuite.com/article/493-adding-library-items
   - name: Plans
+    parent: Planning Module
     description: Add plans for managing and organising your services, events and bookings.
     externalDocs:
       description: >-
@@ -32,6 +47,7 @@ tags:
         help.
       url: https://support.churchsuite.com/article/514-creating-a-plan
   - name: PlanItems
+    parent: Planning Module
     description: Individual items within a plan.
     externalDocs:
       description: >-
@@ -39,6 +55,7 @@ tags:
         help.
       url: https://support.churchsuite.com/article/514-creating-a-plan
   - name: Songs
+    parent: Planning Module
     description: Add songs to your library, to use as building blocks to plan services.
     externalDocs:
       description: >-
@@ -46,6 +63,7 @@ tags:
         help.
       url: https://support.churchsuite.com/article/608-managing-songs
   - name: SongArrangements
+    parent: Planning Module
     description: Individual arrangements of a Song.
     externalDocs:
       description: >-
@@ -53,6 +71,7 @@ tags:
         help.
       url: https://support.churchsuite.com/article/608-managing-songs
   - name: TemplateItems
+    parent: Planning Module
     description: Individual items within a template.
     externalDocs:
       description: >-
@@ -60,13 +79,16 @@ tags:
         help.
       url: https://support.churchsuite.com/article/518-working-with-templates
   - name: Templates
+    parent: Planning Module
     description: Create templates where the same or similar plans are added time and again.
     externalDocs:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/518-working-with-templates
-  - name: Types
+  - name: Types PL
+    summary: Types
+    parent: Planning Module
     description: >-
       Add types to help categorise items. For example, you might add types for
       Prayers, Liturgy, Readings and Announcements.
@@ -981,7 +1003,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Types
+        - Types PL
   /planning/types:
     get:
       summary: List types
@@ -1032,7 +1054,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Types
+        - Types PL
 components:
   parameters:
     PaginationPage:

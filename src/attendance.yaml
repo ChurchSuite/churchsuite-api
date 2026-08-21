@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  version: 2.96.0
+  version: 2.97.0
   title: Attendance Module
   description: >-
     The Attendance module is the core repository for maintaining historic
@@ -15,7 +15,22 @@ servers:
   - url: https://api.churchsuite.com/v2
     description: Public API server
 tags:
+  - name: Attendance Module
+    description: >-
+      The Attendance module is the core repository for maintaining historic
+      attendance data for each of your gatherings. A gathering could be a
+      weekend service or a mid-week event where sign-up is not required in
+      advance. You can also optionally track the people who attend your
+      gatherings, but at its simplest level, the module records key attendance
+      metrics.
+    externalDocs:
+      description: >-
+        Explore our large database of online support articles for step-by-step
+        help.
+      url: >-
+        https://support.churchsuite.com/article/657-getting-started-with-the-attendance-module
   - name: Gatherings
+    parent: Attendance Module
     description: Add each gathering you want to record attendance for.
     externalDocs:
       description: >-
@@ -24,6 +39,7 @@ tags:
       url: >-
         https://support.churchsuite.com/article/653-adding-and-managing-gatherings-for-attendance
   - name: Metricsets
+    parent: Attendance Module
     description: A metricset is the structure under which metrics can be assigned.
     externalDocs:
       description: >-
@@ -32,6 +48,7 @@ tags:
       url: >-
         https://support.churchsuite.com/article/653-adding-and-managing-gatherings-for-attendance#addmetricsets
   - name: Metrics
+    parent: Attendance Module
     description: >-
       Metrics allow you to record number/currency values for the individual
       metrics you wish to track.
@@ -42,6 +59,7 @@ tags:
       url: >-
         https://support.churchsuite.com/article/653-adding-and-managing-attendance-gatherings#addmetricsets
   - name: Records
+    parent: Attendance Module
     description: >-
       A record is the structure used to record attendance for a gathering on a
       given date.

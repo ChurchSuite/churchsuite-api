@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  version: 2.96.0
+  version: 2.97.0
   title: Account Data
   description: >-
     Access account-level configuration data about account. The data available
@@ -85,8 +85,7 @@ paths:
         schema:
           type: integer
           format: int32
-          examples:
-            - 678
+          example: 678
           minimum: 1
     get:
       operationId: get_brand
@@ -229,8 +228,7 @@ paths:
         schema:
           type: integer
           format: int32
-          examples:
-            - 678
+          example: 678
           minimum: 1
     get:
       operationId: get_site
@@ -337,8 +335,7 @@ paths:
         schema:
           type: integer
           format: int32
-          examples:
-            - 678
+          example: 678
           minimum: 1
     get:
       operationId: get_user
@@ -462,8 +459,7 @@ components:
       description: Page number of items to return
       schema:
         type: integer
-        examples:
-          - 2
+        example: 2
         default: 1
         minimum: 1
     PaginationPerPage:
@@ -472,8 +468,7 @@ components:
       description: Number of items to return per request
       schema:
         type: integer
-        examples:
-          - 10
+        example: 10
         default: 50
         maximum: 250
         minimum: 1
@@ -484,33 +479,28 @@ components:
         name:
           description: The name of your Account.
           type: string
-          examples:
-            - Kings Hope Church
+          example: Kings Hope Church
         uuid:
           description: The Account's unique identifier.
           type: string
           format: uuid
-          examples:
-            - f1bacf7c-6e18-41f4-b94a-4a93887d6db4
+          example: f1bacf7c-6e18-41f4-b94a-4a93887d6db4
         timezone:
           description: >-
             The Account timezone, in [IANA Time Zone
             Database](http://www.iana.org/time-zones) format.
           type: string
-          examples:
-            - Europe/London
+          example: Europe/London
         currency:
           description: The Account currency.
           type: string
           format: iso-4217
-          examples:
-            - GBP
+          example: GBP
         language:
           description: The Account language.
           type: string
           format: IETF BCP47
-          examples:
-            - en_GB
+          example: en_GB
         give2_keyword:
           description: >-
             The give2 reference for your Account, only available in UK and North
@@ -518,47 +508,39 @@ components:
           type:
             - string
             - 'null'
-          examples:
-            - KingsHope
+          example: KingsHope
         first_day_of_week:
           description: The start of the week for your Account.
           type: string
-          examples:
-            - Sunday
+          example: Sunday
         data_protection_title:
           description: The title for the data protection notice for your Account.
           type: string
-          examples:
-            - Kings Hope Privacy policy
+          example: Kings Hope Privacy policy
         data_protection_body:
           description: The Account's html data protection statement.
           type: string
-          examples:
-            - '<span style="color: #a7509f;">helloworld</span>'
+          example: '<span style="color: #a7509f;">helloworld</span>'
         data_protection_help:
           description: The helper text that sits alongside the "I accept..." checkbox.
           type: string
-          examples:
-            - >-
-              It is important that you read our privacy policy, to understand
-              how your personal data is used.
+          example: >-
+            It is important that you read our privacy policy, to understand how
+            your personal data is used.
         email_open_tracking:
           description: Tracks whether an email is opened or not.
           type: boolean
-          examples:
-            - true
+          example: true
         enforce_mfa:
           description: Whether to enforce multi-factor authentication to all users.
           type: boolean
-          examples:
-            - true
+          example: true
         billing_address:
           $ref: '#/components/schemas/Site/properties/address'
         billing_region:
           description: The region for the billing of your Account.
           type: string
-          examples:
-            - Washington
+          example: Washington
         billing_contact:
           type: object
           additionalProperties: false
@@ -566,18 +548,15 @@ components:
             name:
               description: The Contact's full name.
               type: string
-              examples:
-                - Esther Louise Daniels
+              example: Esther Louise Daniels
             telephone:
               description: The Contact's telephone.
               type: string
-              examples:
-                - '01154960565'
+              example: '01154960565'
             email:
               description: The Contact's email.
               type: string
-              examples:
-                - estherdaniels23@kingshopechurch.com
+              example: estherdaniels23@kingshopechurch.com
           required:
             - name
             - telephone
@@ -589,57 +568,50 @@ components:
         application:
           description: Whether the Account is a ChurchSuite or CharitySuite account.
           type: string
-          examples:
-            - charitysuite
+          example: charitysuite
           enum:
             - charitysuite
             - churchsuite
         subdomain:
           description: The subdomain of your Account.
           type: string
-          examples:
-            - kingshope
+          example: kingshope
         feature_flags:
           description: A list of feature flags enabled for the Account.
           type: array
           items:
             type: string
             description: A single feature flag that is enabled for the Account.
-            examples:
-              - new-feature-flag
-          examples:
-            - - feature-flag-1
-              - feature-flag-2
+            example: new-feature-flag
+          example:
+            - feature-flag-1
+            - feature-flag-2
         created_at:
           description: Date and time the Account was created.
           type:
             - string
             - 'null'
           format: date-time
-          examples:
-            - '2014-04-25T10:10:32Z'
+          example: '2014-04-25T10:10:32Z'
         created_by:
           description: The user who created the Account.
           type:
             - string
             - 'null'
-          examples:
-            - neil
+          example: neil
         modified_at:
           description: Date and time the Account details was last modified.
           type:
             - string
             - 'null'
           format: date-time
-          examples:
-            - '2023-09-19T14:52:40Z'
+          example: '2023-09-19T14:52:40Z'
         modified_by:
           description: The user who last modified the Account details.
           type:
             - string
             - 'null'
-          examples:
-            - anthony
+          example: anthony
       additionalProperties: false
       required:
         - name
@@ -673,19 +645,16 @@ components:
         id:
           description: The Brand's ID.
           type: integer
-          examples:
-            - 12
+          example: 12
           minimum: 1
         name:
           description: The name of the Brand.
           type: string
-          examples:
-            - General Kings Hope Church.
+          example: General Kings Hope Church.
         default:
           description: Whether this is the account's default Brand or not.
           type: boolean
-          examples:
-            - true
+          example: true
         emblem:
           description: A Brand Emblem, to use as a square avatar or icon
           type:
@@ -697,50 +666,37 @@ components:
               description: The emblem url for a 16x16px image.
               type: string
               format: url
-              examples:
-                - >-
-                  https://cdn.churchsuite.com/2mCEi8cf/brand/emblem_bWxJxu_16.png
+              example: https://cdn.churchsuite.com/2mCEi8cf/brand/emblem_bWxJxu_16.png
             px_32:
               description: The Emblem url for a 32x32px image.
               type: string
               format: url
-              examples:
-                - >-
-                  https://cdn.churchsuite.com/2mCEi8cf/brand/emblem_bWxJxu_32.png
+              example: https://cdn.churchsuite.com/2mCEi8cf/brand/emblem_bWxJxu_32.png
             px_64:
               description: The Emblem url for a 64x64px image.
               type: string
               format: url
-              examples:
-                - >-
-                  https://cdn.churchsuite.com/2mCEi8cf/brand/emblem_bWxJxu_64.png
+              example: https://cdn.churchsuite.com/2mCEi8cf/brand/emblem_bWxJxu_64.png
             px_128:
               description: The Emblem url for a 128x128px image.
               type: string
               format: url
-              examples:
-                - >-
-                  https://cdn.churchsuite.com/2mCEi8cf/brand/emblem_bWxJxu_128.png
+              example: https://cdn.churchsuite.com/2mCEi8cf/brand/emblem_bWxJxu_128.png
             px_152:
               description: The Emblem url for a 152x152px image.
               type: string
               format: url
-              examples:
-                - >-
-                  https://cdn.churchsuite.com/2mCEi8cf/brand/emblem_bWxJxu_152.png
+              example: https://cdn.churchsuite.com/2mCEi8cf/brand/emblem_bWxJxu_152.png
             px_200:
               description: The Emblem url for a 200x200px image.
               type: string
               format: url
-              examples:
-                - >-
-                  https://cdn.churchsuite.com/2mCEi8cf/brand/emblem_bWxJxu_200.png
+              example: https://cdn.churchsuite.com/2mCEi8cf/brand/emblem_bWxJxu_200.png
             uploaded_at:
               description: Date and time the Emblem was uploaded at.
               type: string
               format: date-time
-              examples:
-                - '2014-04-25T10:10:32Z'
+              example: '2014-04-25T10:10:32Z'
           required:
             - px_16
             - px_32
@@ -759,25 +715,21 @@ components:
             height:
               description: The height of the Logo in pixels.
               type: integer
-              examples:
-                - 200
+              example: 200
             width:
               description: The width of the Logo in pixels.
               type: integer
-              examples:
-                - 1000
+              example: 1000
             url:
               description: The url for the Logo.
               type: string
               format: url
-              examples:
-                - https://cdn.churchsuite.com/2mCEi8cf/brand/logo_IgBBdl.png
+              example: https://cdn.churchsuite.com/2mCEi8cf/brand/logo_IgBBdl.png
             uploaded_at:
               description: Date and time the Logo was uploaded at.
               type: string
               format: date-time
-              examples:
-                - '2014-04-25T10:10:32Z'
+              example: '2014-04-25T10:10:32Z'
           required:
             - width
             - height
@@ -786,18 +738,15 @@ components:
         colour:
           description: Deprecated, do not use - The Brand's hexadecimal colour value.
           type: string
-          examples:
-            - '#ab12cd'
+          example: '#ab12cd'
         color:
           description: The Brand's hexadecimal colour value.
           type: string
-          examples:
-            - '#ab12cd'
+          example: '#ab12cd'
         email_font:
           description: The Brand's font for emails.
           type: string
-          examples:
-            - Helvetica
+          example: Helvetica
           default: Open Sans
           enum:
             - Andale Mono
@@ -818,42 +767,37 @@ components:
         email_footer:
           description: The Brand's html for email footers.
           type: string
-          examples:
-            - >-
-              <span style="color: #4697c9; font-size: 8pt;"><a style="color:
-              #4697c9;" href="https://kingshope.churchsuite" target="_blank"
-              rel="noopener">Kings Hope Church</a>&dagger;Easter
-              Park&dagger;Lenton Lane&dagger;Nottingham&dagger;NG7 2PX</span>
+          example: >-
+            <span style="color: #4697c9; font-size: 8pt;"><a style="color:
+            #4697c9;" href="https://kingshope.churchsuite" target="_blank"
+            rel="noopener">Kings Hope Church</a>&dagger;Easter
+            Park&dagger;Lenton Lane&dagger;Nottingham&dagger;NG7 2PX</span>
         created_at:
           description: Date and time the Brand was created.
           type:
             - string
             - 'null'
           format: date-time
-          examples:
-            - '2014-04-25T10:10:32Z'
+          example: '2014-04-25T10:10:32Z'
         created_by:
           description: The user who created the Brand.
           type:
             - string
             - 'null'
-          examples:
-            - neil
+          example: neil
         modified_at:
           description: Date and time the Brand was last modified.
           type:
             - string
             - 'null'
           format: date-time
-          examples:
-            - '2023-09-19T14:52:40Z'
+          example: '2023-09-19T14:52:40Z'
         modified_by:
           description: The user who last modified the Brand.
           type:
             - string
             - 'null'
-          examples:
-            - anthony
+          example: anthony
       additionalProperties: false
       required:
         - id
@@ -874,62 +818,53 @@ components:
         name:
           description: The name of your Account.
           type: string
-          examples:
-            - Kings Hope Church
+          example: Kings Hope Church
         uuid:
           description: The Account's unique identifier.
           type: string
           format: uuid
-          examples:
-            - f1bacf7c-6e18-41f4-b94a-4a93887d6db4
+          example: f1bacf7c-6e18-41f4-b94a-4a93887d6db4
         timezone:
           description: >-
             The Account timezone, in [IANA Time Zone
             Database](http://www.iana.org/time-zones) format.
           type: string
-          examples:
-            - Europe/London
+          example: Europe/London
         currency:
           description: The Account currency.
           type: string
           format: iso-4217
-          examples:
-            - GBP
+          example: GBP
         language:
           description: The Account language.
           type: string
           format: IETF BCP47
-          examples:
-            - en_GB
+          example: en_GB
         first_day_of_week:
           description: The start of the week for your Account.
           type: string
-          examples:
-            - Sunday
+          example: Sunday
         application:
           description: Whether the Account is a ChurchSuite or CharitySuite account.
           type: string
-          examples:
-            - charitysuite
+          example: charitysuite
           enum:
             - charitysuite
             - churchsuite
         subdomain:
           description: The subdomain of your Account.
           type: string
-          examples:
-            - kingshope
+          example: kingshope
         feature_flags:
           description: A list of feature flags enabled for the Account.
           type: array
           items:
             type: string
             description: A single feature flag that is enabled for the Account.
-            examples:
-              - new-feature-flag
-          examples:
-            - - feature-flag-1
-              - feature-flag-2
+            example: new-feature-flag
+          example:
+            - feature-flag-1
+            - feature-flag-2
       additionalProperties: false
       required:
         - name
@@ -987,28 +922,23 @@ components:
         id:
           description: The ID of the Site.
           type: integer
-          examples:
-            - 1
+          example: 1
         name:
           description: The name of the Site.
           type: string
-          examples:
-            - Nottingham
+          example: Nottingham
         initials:
           description: The initials of the Site.
           type: string
-          examples:
-            - NOT
+          example: NOT
         color:
           description: The hex colour value of the Site.
           type: string
-          examples:
-            - '#ff4c67'
+          example: '#ff4c67'
         order:
           description: The Sites order of precedence.
           type: integer
-          examples:
-            - 1
+          example: 1
         address:
           description: A street Address.
           type:
@@ -1019,60 +949,51 @@ components:
             line_1:
               description: The first line of the Address
               type: string
-              examples:
-                - Floor 2
+              example: Floor 2
             line_2:
               description: The second line of the Address
               type: string
-              examples:
-                - 1 Broadway
+              example: 1 Broadway
             line_3:
               description: The third line of the Address
               type:
                 - string
                 - 'null'
-              examples:
-                - Lace Market
+              example: Lace Market
             city:
               description: The city of the Address
               type: string
-              examples:
-                - Nottingham
+              example: Nottingham
             county:
               description: The county of the Address
               type: string
-              examples:
-                - Nottinghamshire
+              example: Nottinghamshire
             country:
               description: The country of the Address, in ISO3166 alpha 2 format
               type:
                 - string
                 - 'null'
-              examples:
-                - GB
+              example: GB
               maxLength: 2
               minLength: 2
             postcode:
               description: The postcode of the Address
               type: string
-              examples:
-                - NG1 1PR
+              example: NG1 1PR
             latitude:
               description: The latitude of the Address, to 6 decimal places
               type:
                 - number
                 - 'null'
               format: float
-              examples:
-                - 52.952089
+              example: 52.952089
             longitude:
               description: The longitude of the Address, to 6 decimal places
               type:
                 - number
                 - 'null'
               format: float
-              examples:
-                - -1.1448
+              example: -1.1448
           required:
             - line_1
             - line_2
@@ -1089,30 +1010,26 @@ components:
             - string
             - 'null'
           format: date-time
-          examples:
-            - '2014-04-25T10:10:32Z'
+          example: '2014-04-25T10:10:32Z'
         created_by:
           description: The user that created the Site.
           type:
             - string
             - 'null'
-          examples:
-            - neil
+          example: neil
         modified_at:
           description: Date and time the Site was last modified.
           type:
             - string
             - 'null'
           format: date-time
-          examples:
-            - '2023-09-19T14:52:40Z'
+          example: '2023-09-19T14:52:40Z'
         modified_by:
           description: The user that last modified the Site.
           type:
             - string
             - 'null'
-          examples:
-            - anthony
+          example: anthony
       additionalProperties: false
       required:
         - id
@@ -1132,23 +1049,19 @@ components:
         id:
           description: The ChurchSuite ID for the Stripe account.
           type: integer
-          examples:
-            - 1
+          example: 1
         name:
           description: The name of the Stripe account.
           type: string
-          examples:
-            - The Kings Hope Current Account
+          example: The Kings Hope Current Account
         publishable_key:
           description: The publishable key of the Stripe account.
           type: string
-          examples:
-            - pk_test_qblFNYngBkEdjEZ16jxxoWSM
+          example: pk_test_qblFNYngBkEdjEZ16jxxoWSM
         default:
           description: Whether this is the default Stripe account or not.
           type: boolean
-          examples:
-            - true
+          example: true
         payment_methods:
           description: List of payment methods for the Stripe account.
           type: array
@@ -1163,9 +1076,9 @@ components:
               - p24
               - sepa_debit
               - sofort
-          examples:
-            - - card
-              - ideal
+          example:
+            - card
+            - ideal
         fund_ids:
           description: >-
             Fund IDs this Stripe account is responsible for handling donations
@@ -1175,10 +1088,10 @@ components:
             - 'null'
           items:
             type: integer
-          examples:
-            - - 1
-              - 4
-              - 8
+          example:
+            - 1
+            - 4
+            - 8
         type_ids:
           description: >-
             Booking type IDs this Stripe account is responsible for handling
@@ -1189,8 +1102,8 @@ components:
             - 'null'
           items:
             type: integer
-          examples:
-            - - 3
+          example:
+            - 3
         category_ids:
           description: >-
             Category IDs this Stripe account is responsible for handling sign-up
@@ -1201,24 +1114,22 @@ components:
             - 'null'
           items:
             type: integer
-          examples:
-            - - 10
-              - 15
+          example:
+            - 10
+            - 15
         modified_at:
           description: Date and time the Stripe account was last modified.
           type:
             - string
             - 'null'
           format: date-time
-          examples:
-            - '2023-09-19T14:52:40Z'
+          example: '2023-09-19T14:52:40Z'
         modified_by:
           description: The user who last modified the Stripe account.
           type:
             - string
             - 'null'
-          examples:
-            - helen
+          example: helen
       additionalProperties: false
       required:
         - id
@@ -1237,37 +1148,31 @@ components:
         id:
           description: The User's ID.
           type: integer
-          examples:
-            - 12
+          example: 12
           minimum: 1
         username:
           description: The User's username.
           type: string
-          examples:
-            - jenny
+          example: jenny
         contact_id:
           description: The User's Contact ID if the User is linked to a Contact.
           type:
             - integer
             - 'null'
-          examples:
-            - 6
+          example: 6
         name:
           description: The name of the User.
           type: string
-          examples:
-            - Jenny
+          example: Jenny
         email:
           description: The User's email address.
           type: string
           format: email
-          examples:
-            - jenny@kingshope.com
+          example: jenny@kingshope.com
         logins:
           description: The number of times the User has logged in.
           type: integer
-          examples:
-            - 678
+          example: 678
           minimum: 0
         last_login:
           description: Date and time the User last logged in.
@@ -1275,15 +1180,13 @@ components:
             - string
             - 'null'
           format: date-time
-          examples:
-            - '2014-04-25T10:10:32Z'
+          example: '2014-04-25T10:10:32Z'
         user_type:
           description: >-
             The permission type of the User, admins have full access, User
             permissions can be managed.
           type: string
-          examples:
-            - admin
+          example: admin
           enum:
             - admin
             - user
@@ -1291,9 +1194,8 @@ components:
           description: The url for the User's ical feed.
           type: string
           format: uri
-          examples:
-            - >-
-              https://examplechurch.churchsuite.com/ical/jenny-pnnnx6o6gdzdgyzp0hl4.ics
+          example: >-
+            https://examplechurch.churchsuite.com/ical/jenny-pnnnx6o6gdzdgyzp0hl4.ics
         image:
           description: A collection of different sized variations of an Image.
           type:
@@ -1305,38 +1207,30 @@ components:
               description: The thumbnail Image url. Thumbnail images are 128x128px.
               type: string
               format: url
-              examples:
-                - >-
-                  https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_thumb.jpg
+              example: >-
+                https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_thumb.jpg
             small:
               description: The small resolution Image url
               type: string
               format: url
-              examples:
-                - >-
-                  https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_sm.jpg
+              example: https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_sm.jpg
             medium:
               description: The medium resolution Image url
               type: string
               format: url
-              examples:
-                - >-
-                  https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_md.jpg
+              example: https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_md.jpg
             large:
               description: The large resolution Image url
               type: string
               format: url
-              examples:
-                - >-
-                  https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_lg.jpg
+              example: https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_lg.jpg
             uploaded_at:
               description: Date and time the Image was uploaded at.
               type:
                 - string
                 - 'null'
               format: date-time
-              examples:
-                - '2014-04-25T10:10:32Z'
+              example: '2014-04-25T10:10:32Z'
           required:
             - thumbnail
             - small
@@ -1346,32 +1240,28 @@ components:
         all_sites:
           description: Whether the User belongs to all sites or not.
           type: boolean
-          examples:
-            - false
+          example: false
         site_ids:
           description: List of all site IDs the User belongs to.
           type: array
           items:
             type: integer
-          examples:
-            - - 1
-              - 5
-              - 10
+          example:
+            - 1
+            - 5
+            - 10
         mfa_enabled:
           description: Whether or not the User has multi factor authentication enabled.
           type: boolean
-          examples:
-            - true
+          example: true
         email_signature:
           description: The User's email signature.
           type: string
-          examples:
-            - '<h2><span style="font-size: 14pt;">Jenny Cooper</span></h2>'
+          example: '<h2><span style="font-size: 14pt;">Jenny Cooper</span></h2>'
         status:
           description: Current status of the User.
           type: string
-          examples:
-            - active
+          example: active
           enum:
             - active
             - archived
@@ -1381,30 +1271,26 @@ components:
             - string
             - 'null'
           format: date-time
-          examples:
-            - '2014-04-25T10:10:32Z'
+          example: '2014-04-25T10:10:32Z'
         created_by:
           description: The user who created this User.
           type:
             - string
             - 'null'
-          examples:
-            - neil
+          example: neil
         modified_at:
           description: Date and time the User was last modified.
           type:
             - string
             - 'null'
           format: date-time
-          examples:
-            - '2023-09-19T14:52:40Z'
+          example: '2023-09-19T14:52:40Z'
         modified_by:
           description: The user who last modified this User.
           type:
             - string
             - 'null'
-          examples:
-            - anthony
+          example: anthony
       additionalProperties: false
       required:
         - id
@@ -1432,14 +1318,12 @@ components:
         id:
           description: The User Group's ID.
           type: integer
-          examples:
-            - 12
+          example: 12
           minimum: 1
         name:
           description: The name of the User Group.
           type: string
-          examples:
-            - Pastors
+          example: Pastors
         visibility_restricted:
           description: Whether this User Group is only visible to Users who are part of it.
           type: boolean
@@ -1449,52 +1333,45 @@ components:
             - string
             - 'null'
           format: email
-          examples:
-            - pastors@kingshope.com
+          example: pastors@kingshope.com
         email_from:
           description: The User Group's email "From" name.
           type:
             - string
             - 'null'
-          examples:
-            - Kings Hope Pastors
+          example: Kings Hope Pastors
         email_signature:
           description: The email signature for outbound emails from this User Group.
           type: string
-          examples:
-            - >-
-              <h2><span style="font-size: 14pt;">The Kings Hope
-              Pastors</span></h2>
+          example: >-
+            <h2><span style="font-size: 14pt;">The Kings Hope
+            Pastors</span></h2>
         created_at:
           description: Date and time the User Group was created.
           type:
             - string
             - 'null'
           format: date-time
-          examples:
-            - '2014-04-25T10:10:32Z'
+          example: '2014-04-25T10:10:32Z'
         created_by:
           description: The user who created this User Group.
           type:
             - string
             - 'null'
-          examples:
-            - neil
+          example: neil
         modified_at:
           description: Date and time the User Group was last modified.
           type:
             - string
             - 'null'
           format: date-time
-          examples:
-            - '2023-09-19T14:52:40Z'
+          example: '2023-09-19T14:52:40Z'
         modified_by:
           description: The user who last modified this User Group.
           type:
             - string
             - 'null'
-          examples:
-            - anthony
+          example: anthony
       additionalProperties: false
       required:
         - id
@@ -1521,12 +1398,13 @@ components:
                 properties:
                   status:
                     type: integer
-                    const: 400
+                    enum:
+                      - 400
                   errors:
                     type: object
-                    examples:
-                      - first_name: This field is required.
-                        ticket_id: This ticket_id is invalid for this event.
+                    example:
+                      first_name: This field is required.
+                      ticket_id: This ticket_id is invalid for this event.
                     additionalProperties:
                       oneOf:
                         - type: string
@@ -1535,8 +1413,7 @@ components:
                             type: string
                   message:
                     type: string
-                    examples:
-                      - There were validation errors with the data you provided.
+                    example: There were validation errors with the data you provided.
                 required:
                   - status
                   - errors
@@ -1559,11 +1436,11 @@ components:
                 properties:
                   status:
                     type: integer
-                    const: 401
+                    enum:
+                      - 401
                   message:
                     type: string
-                    examples:
-                      - Unauthorized
+                    example: Unauthorized
                 required:
                   - status
                   - message
@@ -1583,11 +1460,11 @@ components:
                 properties:
                   status:
                     type: integer
-                    const: 403
+                    enum:
+                      - 403
                   message:
                     type: string
-                    examples:
-                      - You do not have sufficient permissions for this action
+                    example: You do not have sufficient permissions for this action
                 required:
                   - status
                   - message
@@ -1607,11 +1484,11 @@ components:
                 properties:
                   status:
                     type: integer
-                    const: 404
+                    enum:
+                      - 404
                   message:
                     type: string
-                    examples:
-                      - Not Found
+                    example: Not Found
                 required:
                   - status
                   - message
@@ -1636,12 +1513,13 @@ components:
                 properties:
                   status:
                     type: integer
-                    const: 429
+                    enum:
+                      - 429
                   message:
                     type: string
-                    examples:
+                    example: The rate limit has been exceeded.
+                    enum:
                       - The rate limit has been exceeded.
-                    const: The rate limit has been exceeded.
                 required:
                   - status
                   - message
@@ -1679,19 +1557,29 @@ components:
             usergroups.read: Read access to all user groups in the account
             users.read: Read access to all users in the account
 tags:
+  - name: Account
+    summary: Account Settings
+    description: >-
+      Access account-level configuration data about account. The data available
+      here will typically spread across multiple modules.
   - name: Brands
+    parent: Account
     description: Brands allow you to control styling in different parts of your account.
   - name: Integrations
+    parent: Account
     description: >-
       Integrations allow you to access additional functionality provided by
       third-party services.
   - name: Profile
+    parent: Account
     description: >-
       Access details about your account, e.g. name, address, points of contact,
       etc.
   - name: Sites
+    parent: Account
     description: >-
       For organisations that span multiple physical locations, sites can be used
       to partition your account.
   - name: Users
+    parent: Account
     description: Manage who has access to view or modify data within your account.

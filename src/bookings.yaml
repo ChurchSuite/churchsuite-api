@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  version: 2.96.0
+  version: 2.97.0
   title: Bookings Module
   description: >-
     The Bookings module enables you to manage the booking of resources,
@@ -13,7 +13,19 @@ servers:
   - url: https://api.churchsuite.com/v2
     description: Public API server
 tags:
+  - name: Bookings Module
+    description: >-
+      The Bookings module enables you to manage the booking of resources,
+      customers who instruct the booking, along with any prices and charges
+      associated with a booking.
+    externalDocs:
+      description: >-
+        Explore our large database of online support articles for step-by-step
+        help.
+      url: >-
+        https://support.churchsuite.com/article/536-getting-started-with-the-bookings-module
   - name: Bookings
+    parent: Bookings Module
     description: Manage room and resource bookings for your organisation.
     externalDocs:
       description: >-
@@ -21,6 +33,7 @@ tags:
         help.
       url: https://support.churchsuite.com/article/121-adding-and-viewing-bookings
   - name: Charges
+    parent: Bookings Module
     description: Charges can be raised against a booking for hire or maintenance fees.
     externalDocs:
       description: >-
@@ -28,13 +41,16 @@ tags:
         help.
       url: https://support.churchsuite.com/article/426-booking-charges
   - name: Customers
+    parent: Bookings Module
     description: Customers are used to identify who is the point of contact for a booking.
     externalDocs:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/412-managing-booking-customers
-  - name: Custom Fields
+  - name: Custom Fields BO
+    summary: Fields
+    parent: Bookings Module
     description: >-
       Custom Fields collect and manage information that doesn't fit in the
       module's standard or optional fields.
@@ -43,7 +59,9 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/39-creating-custom-fields
-  - name: Flows
+  - name: Flows BO
+    summary: Flows
+    parent: Bookings Module
     description: >-
       Flows are an incredibly versatile tool designed to streamline repetitive
       people-processing tasks by breaking them down into manageable stages. For
@@ -55,6 +73,7 @@ tags:
         help.
       url: https://support.churchsuite.com/article/154-flows
   - name: Prices
+    parent: Bookings Module
     description: >-
       Prices let you set up suggested charges for the use of your organisation's
       resources.
@@ -64,6 +83,7 @@ tags:
         help.
       url: https://support.churchsuite.com/article/628-booking-prices
   - name: Resources
+    parent: Bookings Module
     description: >-
       Define a list of the rooms and other resources that can be allocated to a
       booking.
@@ -73,7 +93,9 @@ tags:
         help.
       url: >-
         https://support.churchsuite.com/article/122-creating-booking-types-and-resources
-  - name: Tags
+  - name: Tags BO
+    summary: Tags
+    parent: Bookings Module
     description: Tags allow you to flexibly categorise or group people together.
     externalDocs:
       description: >-
@@ -81,7 +103,9 @@ tags:
         help.
       url: >-
         https://support.churchsuite.com/article/33-communicate-with-groups-of-contacts-in-a-fixed-tag
-  - name: Types
+  - name: Types BO
+    summary: Types
+    parent: Bookings Module
     description: >-
       Categorise and manage the different types of bookings you handle, e.g.
       Internal Booking, External Booking, Wedding, etc.
@@ -735,7 +759,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Custom Fields
+        - Custom Fields BO
   /bookings/custom_fields:
     get:
       summary: List custom fields
@@ -776,7 +800,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Custom Fields
+        - Custom Fields BO
   /bookings/flows/{id}:
     parameters:
       - name: id
@@ -818,7 +842,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows
+        - Flows BO
   /bookings/flows:
     get:
       summary: List flows
@@ -879,7 +903,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows
+        - Flows BO
   /bookings/flow_stages/{id}:
     parameters:
       - name: id
@@ -916,7 +940,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows
+        - Flows BO
     get:
       summary: Get a flow stage
       description: Retrieve a single stage identified by ID.
@@ -948,7 +972,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows
+        - Flows BO
     put:
       summary: Update a flow stage
       description: Update a single stage identified by ID.
@@ -986,7 +1010,7 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       tags:
-        - Flows
+        - Flows BO
   /bookings/flow_stages:
     get:
       summary: List flow stages
@@ -1038,7 +1062,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows
+        - Flows BO
     post:
       summary: Create a flow stage
       description: Create a stage for a flow.
@@ -1089,7 +1113,7 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       tags:
-        - Flows
+        - Flows BO
   /bookings/prices:
     get:
       summary: List prices
@@ -1310,7 +1334,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags
+        - Tags BO
     get:
       summary: Get a tag
       description: Retrieve a single tag identified by ID.
@@ -1342,7 +1366,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags
+        - Tags BO
     put:
       summary: Update a tag
       description: Update a tag
@@ -1384,7 +1408,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags
+        - Tags BO
   /bookings/tags:
     get:
       summary: List tags
@@ -1435,7 +1459,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags
+        - Tags BO
     post:
       summary: Create a tag
       description: Create a tag
@@ -1488,7 +1512,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags
+        - Tags BO
   /bookings/tag_categories/{id}:
     parameters:
       - name: id
@@ -1530,7 +1554,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags
+        - Tags BO
   /bookings/tag_categories:
     get:
       summary: List tag categories
@@ -1563,7 +1587,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags
+        - Tags BO
   /bookings/tag_resources:
     delete:
       summary: Delete a tag resource
@@ -1609,7 +1633,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags
+        - Tags BO
     get:
       summary: List tag resources
       description: >-
@@ -1677,7 +1701,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags
+        - Tags BO
     post:
       summary: Create a tag resource
       description: Create a tag resource linking a customer to a tag
@@ -1719,7 +1743,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags
+        - Tags BO
   /bookings/types/{id}:
     parameters:
       - name: id
@@ -1761,7 +1785,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Types
+        - Types BO
   /bookings/types:
     get:
       summary: List types
@@ -1822,7 +1846,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Types
+        - Types BO
 components:
   parameters:
     PaginationPage:

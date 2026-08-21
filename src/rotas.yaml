@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  version: 2.96.0
+  version: 2.97.0
   title: Rotas Module
   description: >-
     The Rotas module enables churches and other organisations to manage all
@@ -13,7 +13,19 @@ servers:
   - url: https://api.churchsuite.com/v2
     description: Public API server
 tags:
+  - name: Rotas Module
+    description: >-
+      The Rotas module enables churches and other organisations to manage all
+      aspects of their serving ministries, teams, roles and automated serving
+      reminders.
+    externalDocs:
+      description: >-
+        Explore our large database of online support articles for step-by-step
+        help.
+      url: >-
+        https://support.churchsuite.com/article/524-getting-started-with-the-rotas-module
   - name: Ministries
+    parent: Rotas Module
     description: >-
       Ministries are serving areas such as Welcome or Worship, where members can
       be grouped into teams and assigned roles. They are the building block from
@@ -23,13 +35,18 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/666-how-to-add-a-ministry
-  - name: Members
+  - name: Members RO
+    summary: Members
+    parent: Rotas Module
     description: Ministry Members are the people who serve within your ministry.
-  - name: Roles
+  - name: Roles RO
+    summary: Roles
+    parent: Rotas Module
     description: >-
       Roles can be assigned to your Ministry Members to keep track of their role
       within the team.
   - name: Teams
+    parent: Rotas Module
     description: Group together Ministry Members into Teams, and assign roles to them.
 paths:
   /rotas/ministries/{id}:
@@ -225,7 +242,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Members
+        - Members RO
   /rotas/ministry_teams/{id}:
     parameters:
       - name: id
@@ -394,7 +411,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Roles
+        - Roles RO
 components:
   parameters:
     PaginationPage:
