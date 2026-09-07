@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.97.0
+  version: 2.99.0
   title: Bookings Module
   description: >-
     The Bookings module enables you to manage the booking of resources,
@@ -2992,6 +2992,12 @@ components:
           items:
             type: object
             properties:
+              help:
+                type: string
+                description: Help text describing the option.
+                example: >-
+                  Selecting this option will opt you into receiving our weekly
+                  newsletters.
               id:
                 type: string
                 format: uuid

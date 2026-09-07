@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.97.0
+  version: 2.99.0
   title: Giving Module
   description: >-
     This module is designed to help manage the donations you receive and the
@@ -2096,6 +2096,12 @@ components:
           items:
             type: object
             properties:
+              help:
+                description: Help text describing the option.
+                type: string
+                example: >-
+                  Selecting this option will opt you into receiving our weekly
+                  newsletters.
               id:
                 description: UUID of the option.
                 type: string

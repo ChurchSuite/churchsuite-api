@@ -5,6 +5,15 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.99.0] - 2026-09-07
+
+- Added `name_visible`, `email_visible`, `address_visible` and `mobile_visible` query filters to `/children/children` GET
+- Added `name_visible`, `email_visible`, `address_visible`, `mobile_visible` and `telephone_visible` query filters to `/addressbook/contacts` GET
+
+## [2.98.0] - 2026-09-04
+
+- Added new `option` property `help` to the Custom Fields schema.
+
 ## [2.97.0] - 2026-08-21
 
 The ChurchSuite Core API specification has been updated to OpenAPI 3.2, with no functional changes to the API.

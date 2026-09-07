@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.97.0
+  version: 2.99.0
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -686,6 +686,46 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - name: name_visible
+          in: query
+          description: >-
+            Filter records to those matching marked as having their name visible
+            in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
+        - name: address_visible
+          in: query
+          description: >-
+            Filter records to those matching marked as having their address
+            visible in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
+        - name: mobile_visible
+          in: query
+          description: >-
+            Filter records to those matching marked as having their mobile
+            visible in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
+        - name: email_visible
+          in: query
+          description: >-
+            Filter records to those matching marked as having their email
+            visible in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
+        - name: telephone_visible
+          in: query
+          description: >-
+            Filter records to those matching marked as having their telephone
+            visible in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
       responses:
         '200':
           description: OK Success
@@ -5839,6 +5879,38 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - name: name_visible
+          in: query
+          description: >-
+            Filter records to those matching marked as having their name visible
+            in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
+        - name: address_visible
+          in: query
+          description: >-
+            Filter records to those matching marked as having their address
+            visible in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
+        - name: mobile_visible
+          in: query
+          description: >-
+            Filter records to those matching marked as having their mobile
+            visible in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
+        - name: email_visible
+          in: query
+          description: >-
+            Filter records to those matching marked as having their email
+            visible in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
       responses:
         '200':
           description: OK Success
@@ -15186,6 +15258,12 @@ components:
           items:
             type: object
             properties:
+              help:
+                description: Help text describing the option.
+                type: string
+                example: >-
+                  Selecting this option will opt you into receiving our weekly
+                  newsletters.
               id:
                 description: UUID of the option.
                 type: string

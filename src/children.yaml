@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.97.0
+  version: 2.99.0
   title: Children Module
   description: >-
     This module is for managing all the children and young people associated
@@ -375,6 +375,38 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - in: query
+          name: name_visible
+          description: >-
+            Filter records to those matching marked as having their name visible
+            in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
+        - in: query
+          name: address_visible
+          description: >-
+            Filter records to those matching marked as having their address
+            visible in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
+        - in: query
+          name: mobile_visible
+          description: >-
+            Filter records to those matching marked as having their mobile
+            visible in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
+        - in: query
+          name: email_visible
+          description: >-
+            Filter records to those matching marked as having their email
+            visible in My ChurchSuite.
+          schema:
+            type: boolean
+            example: true
       security:
         - oauth_token:
             - full_access
@@ -3665,6 +3697,12 @@ components:
           items:
             type: object
             properties:
+              help:
+                type: string
+                description: Help text describing the option.
+                example: >-
+                  Selecting this option will opt you into receiving our weekly
+                  newsletters.
               id:
                 type: string
                 format: uuid
