@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.99.0
+  version: 2.100.0
   title: Bookings Module
   description: >-
     The Bookings module enables you to manage the booking of resources,
@@ -1112,6 +1112,262 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+      tags:
+        - Flows BO
+  /bookings/flow_trackings/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the record to retrieve.
+        required: true
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          example: 45
+    get:
+      summary: Get a flow tracking
+      description: >-
+        Retrieve a single flow tracking, linked to a person's process through a
+        flow, identified by ID.
+      operationId: get_bookings_flow_tracking
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - bookings.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/FlowTracking'
+                required:
+                  - data
+                additionalProperties: false
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Flows BO
+    put:
+      summary: Update a flow tracking
+      description: >-
+        Update a single flow tracking, linked to a person's process through a
+        flow, identified by ID.
+      operationId: edit_bookings_flow_tracking
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - bookings.write
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowTrackingEdit'
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/FlowTracking'
+                required:
+                  - data
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Flows BO
+    delete:
+      summary: Delete a flow tracking
+      description: >-
+        Delete a single flow tracking, linked to a person's process through a
+        flow, identified by ID.
+      operationId: delete_bookings_flow_tracking
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - bookings.write
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Flows BO
+  /bookings/flow_trackings:
+    get:
+      summary: List flow trackings
+      description: >-
+        Returns a list of flow trackings linked to people's progress through a
+        flow.
+      operationId: list_bookings_flow_trackings
+      parameters:
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+        - in: query
+          name: due_before
+          description: Only include records that start before this date.
+          schema:
+            type: string
+            format: date
+            example: '2024-02-24'
+        - in: query
+          name: due_after
+          description: Only include records that start after this date.
+          schema:
+            type: string
+            format: date
+            example: '2024-01-24'
+        - in: query
+          name: flow_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: customer_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: stage_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - bookings.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FlowTracking'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                required:
+                  - data
+                  - pagination
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Flows BO
+    post:
+      summary: Create a flow tracking
+      description: >-
+        Create a flow tracking, linked to a person's process through a flow,
+        with the provided settings.
+      operationId: create_bookings_flow_tracking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowTrackingAdd'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - bookings.write
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/FlowTracking'
+                required:
+                  - data
+                additionalProperties: false
+          links:
+            EditFlowTrackingByID:
+              operationId: edit_bookings_flow_tracking
+              parameters:
+                id: $response.body#/data/id
+            GetFlowTrackingByID:
+              operationId: get_bookings_flow_tracking
+              parameters:
+                id: $response.body#/data/id
+            DeleteFlowTrackingByID:
+              operationId: delete_bookings_flow_tracking
+              parameters:
+                id: $response.body#/data/id
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
       tags:
         - Flows BO
   /bookings/prices:
@@ -3207,7 +3463,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that created the Flow.
+          description: The user who created the Flow.
           example: jennie
         modified_at:
           type:
@@ -3220,7 +3476,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that last modified the Flow.
+          description: The user who last modified the Flow.
           example: caroline
       required:
         - id
@@ -3326,7 +3582,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that created the Stage.
+          description: The user who created the Stage.
           example: abraham
           minLength: 1
           maxLength: 25
@@ -3341,7 +3597,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that last modified the Stage.
+          description: The user who last modified the Stage.
           example: zoe
           minLength: 1
           maxLength: 25
@@ -3508,6 +3764,170 @@ components:
         - assigned_user_id
         - automate_time
       additionalProperties: false
+    FlowTracking:
+      type: object
+      description: A single Flow Tracking as found in several modules.
+      properties:
+        id:
+          type: integer
+          minimum: 1
+          description: The Tracking ID.
+          example: 1
+        flow_id:
+          type: integer
+          minimum: 1
+          description: The Flow ID the Tracking is linked to.
+          example: 1
+        stage_id:
+          type:
+            - integer
+            - 'null'
+          minimum: 1
+          description: >-
+            The Stage ID the Tracking is linked to, or null if the person has
+            completed the flow process.
+          example: 1
+        person:
+          type: object
+          description: The Tracking's Person details.
+          properties:
+            type:
+              type: string
+              description: >-
+                The Person's type, indicating whether they are a Contact,
+                Customer, Child or Giver.
+              example: addressbook_contact
+              enum:
+                - addressbook_contact
+                - bookings_customer
+                - children_child
+                - giving_giver
+            id:
+              type: integer
+              minimum: 1
+              description: The Person's ID.
+              example: 12
+          required:
+            - type
+            - id
+          additionalProperties: false
+        status:
+          type: string
+          description: The Tracking's status.
+          example: overdue
+          enum:
+            - completed
+            - due
+            - overdue
+            - pending
+        due_date:
+          type: string
+          description: The Tracking's due date.
+          format: date
+          example: '2026-05-21'
+        assigned_user_id:
+          type:
+            - integer
+            - 'null'
+          minimum: 1
+          description: The Tracking's assigned User ID, or null if not assigned to a user.
+          example: 1
+        created_at:
+          type:
+            - string
+            - 'null'
+          description: Date and time the Tracking was created.
+          format: date-time
+          example: '2014-04-25T10:10:32Z'
+        created_by:
+          type:
+            - string
+            - 'null'
+          description: The user who created the Tracking.
+          example: jennie
+        modified_at:
+          type:
+            - string
+            - 'null'
+          description: Date and time the Tracking was last modified.
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        modified_by:
+          type:
+            - string
+            - 'null'
+          description: The user who last modified the Tracking.
+          example: caroline
+      required:
+        - id
+        - flow_id
+        - stage_id
+        - person
+        - status
+        - due_date
+        - assigned_user_id
+        - created_at
+        - created_by
+        - modified_at
+        - modified_by
+      additionalProperties: false
+    FlowTrackingAdd:
+      type: object
+      properties:
+        flow_id:
+          type: integer
+          minimum: 1
+          description: The Flow ID the Tracking is linked to.
+          example: 1
+        stage_id:
+          type: integer
+          minimum: 1
+          description: The Stage ID the Tracking is linked to.
+          example: 1
+        person:
+          type: object
+          description: The Tracking's Person details.
+          properties:
+            type:
+              type: string
+              description: >-
+                The Person's type, indicating whether they are a Child, Contact,
+                Customer or Giver.
+              example: bookings_customer
+              const: bookings_customer
+            id:
+              type: integer
+              minimum: 1
+              description: The Person's ID.
+              example: 12
+          required:
+            - type
+            - id
+          additionalProperties: false
+      required:
+        - flow_id
+        - stage_id
+        - person
+      additionalProperties: false
+    FlowTrackingEdit:
+      type: object
+      properties:
+        due_date:
+          type: string
+          description: The Tracking's due date.
+          format: date
+          example: '2026-05-21'
+        assigned_user_id:
+          type:
+            - integer
+            - 'null'
+          minimum: 1
+          description: The Tracking's assigned user ID, or null if not assigned to a user.
+          example: 1
+      required:
+        - due_date
+        - assigned_user_id
+      additionalProperties: false
     Note:
       type: object
       description: A single Note, as found in multiple modules.
@@ -3540,7 +3960,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that created the Note.
+          description: The user who created the Note.
           example: neil
           readOnly: true
         modified_at:
@@ -3555,7 +3975,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that last modified the Note.
+          description: The user who last modified the Note.
           example: anthony
           readOnly: true
       required:
@@ -3960,7 +4380,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that created the Tag.
+          description: The user who created the Tag.
           example: neil
         modified_at:
           type:
@@ -3973,7 +4393,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that last modified the Tag.
+          description: The user who last modified the Tag.
           example: anthony
       required:
         - id

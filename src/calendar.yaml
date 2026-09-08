@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.99.0
+  version: 2.100.0
   title: Calendar Module
   description: Manage events, sign-ups and staff leave across your account.
   termsOfService: https://churchsuite.com/terms-of-service/
@@ -2009,7 +2009,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that created the Note.
+          description: The user who created the Note.
           example: neil
           readOnly: true
         modified_at:
@@ -2024,7 +2024,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that last modified the Note.
+          description: The user who last modified the Note.
           example: anthony
           readOnly: true
       required:

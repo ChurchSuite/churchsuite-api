@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.99.0
+  version: 2.100.0
   title: Small Groups Module
   description: >-
     This module enables you to manage all data relating to small groups. Access
@@ -2284,7 +2284,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that created the Label.
+          description: The user who created the Label.
           example: jennie
         modified_at:
           type:
@@ -2297,7 +2297,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that last modified the Label.
+          description: The user who last modified the Label.
           example: caroline
       required:
         - id
@@ -2693,7 +2693,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that created the Note.
+          description: The user who created the Note.
           example: neil
           readOnly: true
         modified_at:
@@ -2708,7 +2708,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that last modified the Note.
+          description: The user who last modified the Note.
           example: anthony
           readOnly: true
       required:

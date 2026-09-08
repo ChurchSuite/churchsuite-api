@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.99.0
+  version: 2.100.0
   title: Network Module
   description: >-
     The Network module is designed for networks/denominations to manage the
@@ -1464,7 +1464,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that created the Key Date.
+          description: The user who created the Key Date.
           example: jennie
         modified_at:
           type:
@@ -1477,7 +1477,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that last modified the Key Date.
+          description: The user who last modified the Key Date.
           example: caroline
       required:
         - id
@@ -1823,7 +1823,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that created the Label.
+          description: The user who created the Label.
           example: jennie
         modified_at:
           type:
@@ -1836,7 +1836,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that last modified the Label.
+          description: The user who last modified the Label.
           example: caroline
       required:
         - id
@@ -2004,7 +2004,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that created the Note.
+          description: The user who created the Note.
           example: neil
           readOnly: true
         modified_at:
@@ -2019,7 +2019,7 @@ components:
           type:
             - string
             - 'null'
-          description: The user that last modified the Note.
+          description: The user who last modified the Note.
           example: anthony
           readOnly: true
       required:

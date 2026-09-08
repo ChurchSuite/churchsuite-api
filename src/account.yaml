@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.99.0
+  version: 2.100.0
   title: Account Data
   description: >-
     Access account-level configuration data about account. The data available
@@ -1012,7 +1012,7 @@ components:
           format: date-time
           example: '2014-04-25T10:10:32Z'
         created_by:
-          description: The user that created the Site.
+          description: The user who created the Site.
           type:
             - string
             - 'null'
@@ -1025,7 +1025,7 @@ components:
           format: date-time
           example: '2023-09-19T14:52:40Z'
         modified_by:
-          description: The user that last modified the Site.
+          description: The user who last modified the Site.
           type:
             - string
             - 'null'

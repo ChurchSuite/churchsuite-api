@@ -5,8 +5,17 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.99.0] - 2026-09-07
+## [2.100.0] - 2026-09-07
 
+### Added
+
+- Added a new GET `<module>/flow_trackings` endpoint to list Flow Trackings in the Address Book, Bookings, Children and Giving modules
+- Added a new POST `<module>/flow_trackings` endpoint to create a single Flow Tracking in the Address Book, Bookings, Children and Giving modules
+- Added a new GET `<module>/flow_trackings/{id}` endpoint to retrieve a single Flow Tracking in the Address Book, Bookings, Children and Giving modules
+- Added a new PUT `<module>/flow_trackings/{id}` endpoint to update a single Flow Tracking in the Address Book, Bookings, Children and Giving modules
+- Added a new DELETE `<module>/flow_trackings/{id}` endpoint to delete a single Flow Tracking in the Address Book, Bookings, Children and Giving modules
+
+## [2.99.0] - 2026-09-07
 - Added `name_visible`, `email_visible`, `address_visible` and `mobile_visible` query filters to `/children/children` GET
 - Added `name_visible`, `email_visible`, `address_visible`, `mobile_visible` and `telephone_visible` query filters to `/addressbook/contacts` GET
 
