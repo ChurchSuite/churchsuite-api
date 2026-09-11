@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.100.0
+  version: 2.101.0
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -1469,6 +1469,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
       security:
@@ -4294,6 +4296,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
       security:
@@ -7164,6 +7168,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
       security:
@@ -9589,6 +9595,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
       security:
@@ -12879,6 +12887,94 @@ paths:
             - rotas.read
       tags:
         - Teams
+  /rotas/unavailability:
+    get:
+      operationId: list_unavailability
+      summary: List unavailability
+      description: Returns a list of unavailability, sorted by date created.
+      parameters:
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+        - name: contact_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - name: child_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - name: ministry_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - name: starts_before
+          in: query
+          description: Only include records that start before this date.
+          schema:
+            type: string
+            format: date
+            example: '2026-09-01'
+        - name: starts_after
+          in: query
+          description: Only include records that start after this date.
+          schema:
+            type: string
+            format: date
+            example: '2026-08-01'
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Unavailability'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                additionalProperties: false
+                required:
+                  - data
+                  - pagination
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token9:
+            - full_access
+        - oauth_token9:
+            - rotas.read
+      tags:
+        - Unavailability
   /rotas/roles:
     get:
       operationId: list_rotas_roles
@@ -27719,6 +27815,80 @@ components:
         - created_by
         - modified_at
         - modified_by
+    Unavailability:
+      description: A single Unavailability record from the Rotas module.
+      type: object
+      properties:
+        id:
+          description: The Unavailability's ID.
+          type: integer
+          example: 109
+          minimum: 1
+        person:
+          description: The Person this Unavailability record belongs to.
+          type: object
+          additionalProperties: false
+          properties:
+            type:
+              description: >-
+                The Person's type, indicating whether they are a Contact, or
+                Child.
+              type: string
+              example: addressbook_contact
+              enum:
+                - addressbook_contact
+                - children_child
+            id:
+              description: The Person's ID.
+              type: integer
+              example: 12
+              minimum: 1
+          required:
+            - type
+            - id
+        description:
+          description: The Unavailability's description.
+          type: string
+          example: On holiday
+        starts_at:
+          description: The date and time the Unavailability starts.
+          type: string
+          format: date-time
+          example: '2026-10-12T00:00:00Z'
+        ends_at:
+          description: The date and time the Unavailability ends.
+          type: string
+          format: date-time
+          example: '2026-10-24T23:59:59Z'
+        created_at:
+          description: Date and time the Unavailability was created.
+          type: string
+          format: date-time
+          example: '2014-04-25T10:10:32Z'
+        created_by:
+          description: The user who created the Unavailability.
+          type: string
+          example: neil
+        modified_at:
+          description: Date and time the Unavailability was last modified.
+          type: string
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        modified_by:
+          description: The user who last modified the Unavailability.
+          type: string
+          example: anthony
+      additionalProperties: false
+      required:
+        - id
+        - person
+        - description
+        - starts_at
+        - ends_at
+        - created_at
+        - created_by
+        - modified_at
+        - modified_by
     AttendanceDate:
       description: A single Attendance record from the Small Groups module.
       type: object
@@ -30015,6 +30185,11 @@ tags:
   - name: Teams
     parent: Rotas Module
     description: Group together Ministry Members into Teams, and assign roles to them.
+  - name: Unavailability
+    parent: Rotas Module
+    description: >-
+      Unavailability can be used to indicate when a ministry member is not
+      available to serve.
   - name: Small Groups Module
     description: >-
       This module enables you to manage all data relating to small groups.

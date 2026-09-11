@@ -5,6 +5,18 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.101.0] - 2026-09-11
+
+### Added
+
+- Added a new GET `rotas/unavailability` endpoint to list Unavailability in the Rotas module
+
+## [2.100.1] - 2026-09-10
+
+### Fixed
+
+- Added missing 409 response to `<module>/flow_trackings` POST endpoints
+
 ## [2.100.0] - 2026-09-07
 
 ### Added

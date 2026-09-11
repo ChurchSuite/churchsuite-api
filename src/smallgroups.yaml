@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.100.0
+  version: 2.101.0
   title: Small Groups Module
   description: >-
     This module enables you to manage all data relating to small groups. Access

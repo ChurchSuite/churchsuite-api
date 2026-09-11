@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.100.0
+  version: 2.101.0
   title: Address Book Module
   description: >-
     The Address Book module manages all adult contacts associated with your
@@ -1127,6 +1127,8 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
         '429':
           $ref: '#/components/responses/429'
       tags:

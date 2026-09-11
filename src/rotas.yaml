@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.100.0
+  version: 2.101.0
   title: Rotas Module
   description: >-
     The Rotas module enables churches and other organisations to manage all
@@ -48,6 +48,11 @@ tags:
   - name: Teams
     parent: Rotas Module
     description: Group together Ministry Members into Teams, and assign roles to them.
+  - name: Unavailability
+    parent: Rotas Module
+    description: >-
+      Unavailability can be used to indicate when a ministry member is not
+      available to serve.
 paths:
   /rotas/ministries/{id}:
     parameters:
@@ -349,6 +354,94 @@ paths:
           $ref: '#/components/responses/429'
       tags:
         - Teams
+  /rotas/unavailability:
+    get:
+      summary: List unavailability
+      description: Returns a list of unavailability, sorted by date created.
+      operationId: list_unavailability
+      parameters:
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+        - in: query
+          name: contact_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: child_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: ministry_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: starts_before
+          description: Only include records that start before this date.
+          schema:
+            type: string
+            format: date
+            example: '2026-09-01'
+        - in: query
+          name: starts_after
+          description: Only include records that start after this date.
+          schema:
+            type: string
+            format: date
+            example: '2026-08-01'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - rotas.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Unavailability'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                required:
+                  - data
+                  - pagination
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Unavailability
   /rotas/roles:
     get:
       summary: List roles
@@ -975,6 +1068,80 @@ components:
         - ministry_id
         - name
         - order
+        - created_at
+        - created_by
+        - modified_at
+        - modified_by
+      additionalProperties: false
+    Unavailability:
+      type: object
+      description: A single Unavailability record from the Rotas module.
+      properties:
+        id:
+          type: integer
+          minimum: 1
+          description: The Unavailability's ID.
+          example: 109
+        person:
+          type: object
+          description: The Person this Unavailability record belongs to.
+          properties:
+            type:
+              type: string
+              description: >-
+                The Person's type, indicating whether they are a Contact, or
+                Child.
+              example: addressbook_contact
+              enum:
+                - addressbook_contact
+                - children_child
+            id:
+              type: integer
+              minimum: 1
+              description: The Person's ID.
+              example: 12
+          required:
+            - type
+            - id
+          additionalProperties: false
+        description:
+          type: string
+          description: The Unavailability's description.
+          example: On holiday
+        starts_at:
+          type: string
+          description: The date and time the Unavailability starts.
+          format: date-time
+          example: '2026-10-12T00:00:00Z'
+        ends_at:
+          type: string
+          description: The date and time the Unavailability ends.
+          format: date-time
+          example: '2026-10-24T23:59:59Z'
+        created_at:
+          type: string
+          description: Date and time the Unavailability was created.
+          format: date-time
+          example: '2014-04-25T10:10:32Z'
+        created_by:
+          type: string
+          description: The user who created the Unavailability.
+          example: neil
+        modified_at:
+          type: string
+          description: Date and time the Unavailability was last modified.
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        modified_by:
+          type: string
+          description: The user who last modified the Unavailability.
+          example: anthony
+      required:
+        - id
+        - person
+        - description
+        - starts_at
+        - ends_at
         - created_at
         - created_by
         - modified_at
