@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.101.0
+  version: 2.104.0
   title: Account Data
   description: >-
     Access account-level configuration data about account. The data available
@@ -267,6 +267,18 @@ paths:
       operationId: list_sites
       summary: List sites
       description: Returns a list of sites, sorted by the order property.
+      parameters:
+        - name: ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
       responses:
         '200':
           description: OK Success
@@ -282,6 +294,8 @@ paths:
                 additionalProperties: false
                 required:
                   - data
+        '400':
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':

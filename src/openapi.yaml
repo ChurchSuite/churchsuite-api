@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.101.0
+  version: 2.104.0
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -267,6 +267,18 @@ paths:
       operationId: list_sites
       summary: List sites
       description: Returns a list of sites, sorted by the order property.
+      parameters:
+        - name: ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
       responses:
         '200':
           description: OK Success
@@ -282,6 +294,8 @@ paths:
                 additionalProperties: false
                 required:
                   - data
+        '400':
+          $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -653,6 +667,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: status
           in: query
           description: Filter records by the provided status.
@@ -2598,6 +2613,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: status
           in: query
           description: Filter records by the provided status.
@@ -3265,6 +3281,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: status
           in: query
           description: Filter records by the provided status.
@@ -3578,6 +3595,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: status
           in: query
           description: Filter records by the provided status.
@@ -4434,6 +4452,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: category
           in: query
           description: Filter records by the provided value.
@@ -5461,6 +5480,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: category_ids[]
           in: query
           description: >-
@@ -6052,8 +6072,8 @@ paths:
         - Sign-Ups
     post:
       operationId: create_calendar_signup
-      summary: Create a signup
-      description: Create a signup with the provided settings.
+      summary: Create a sign-up
+      description: Create a sign-up with the provided settings.
       requestBody:
         required: true
         content:
@@ -6352,6 +6372,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: status
           in: query
           description: Filter records by the provided status.
@@ -7455,6 +7476,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: status
           in: query
           description: Filter records by the provided status.
@@ -8667,6 +8689,7 @@ paths:
                 - submitted
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
       responses:
         '200':
           description: OK Success
@@ -9648,6 +9671,72 @@ paths:
             - giving.read
       tags:
         - Funds
+    delete:
+      operationId: delete_fund
+      summary: Delete a fund
+      description: Delete a single fund identified by ID.
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token6:
+            - full_access
+        - oauth_token6:
+            - giving.write
+      tags:
+        - Funds
+    put:
+      operationId: edit_fund
+      summary: Update a fund
+      description: Update a single fund identified by ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FundEdit'
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Fund'
+                additionalProperties: false
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token6:
+            - full_access
+        - oauth_token6:
+            - giving.write
+      tags:
+        - Funds
   /giving/funds:
     get:
       operationId: list_funds
@@ -9719,6 +9808,61 @@ paths:
             - full_access
         - oauth_token6:
             - giving.read
+      tags:
+        - Funds
+    post:
+      operationId: create_fund
+      summary: Create a fund
+      description: Create a fund with the provided settings.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FundAdd'
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Fund'
+                additionalProperties: false
+                required:
+                  - data
+          links:
+            EditFundByID:
+              operationId: edit_fund
+              parameters:
+                id: $response.body#/data/id
+            GetFundByID:
+              operationId: get_fund
+              parameters:
+                id: $response.body#/data/id
+            DeleteFundByID:
+              operationId: delete_fund
+              parameters:
+                id: $response.body#/data/id
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token6:
+            - full_access
+        - oauth_token6:
+            - giving.write
       tags:
         - Funds
   /giving/givers/{id}:
@@ -9882,6 +10026,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: status
           in: query
           description: Filter records by the provided status.
@@ -11484,6 +11629,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: q
           in: query
           description: >-
@@ -11881,6 +12027,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: q
           in: query
           description: >-
@@ -12638,6 +12785,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: statuses[]
           in: query
           description: >-
@@ -12887,6 +13035,39 @@ paths:
             - rotas.read
       tags:
         - Teams
+  /rotas/unavailability/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the record to retrieve.
+        required: true
+        schema:
+          type: integer
+          format: int32
+          example: 45
+          minimum: 1
+    delete:
+      operationId: delete_rota_unavailability
+      summary: Delete an unavailability
+      description: Delete a single unavailability, identified by ID.
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token9:
+            - full_access
+        - oauth_token9:
+            - rotas.write
+      tags:
+        - Unavailability
   /rotas/unavailability:
     get:
       operationId: list_unavailability
@@ -12973,6 +13154,46 @@ paths:
             - full_access
         - oauth_token9:
             - rotas.read
+      tags:
+        - Unavailability
+    post:
+      operationId: create_rotas_unavailability
+      summary: Create unavailability
+      description: Create unavailability, with the provided settings.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnavailabilityAdd'
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Unavailability'
+                additionalProperties: false
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token9:
+            - full_access
+        - oauth_token9:
+            - rotas.write
       tags:
         - Unavailability
   /rotas/roles:
@@ -13526,6 +13747,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - name: cluster_ids[]
           in: query
           description: >-
@@ -14229,6 +14451,18 @@ components:
         default: 50
         maximum: 250
         minimum: 1
+    SiteIds:
+      in: query
+      name: site_ids[]
+      description: >-
+        Filter records to those matching values in the provided array. This
+        filter uses the logical OR operator.
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+          minimum: 1
   schemas:
     Account:
       type: object
@@ -20805,9 +21039,8 @@ components:
             - id
         contact_id:
           description: >-
-            This is no longer recommended - please use `person_details` to get
-            the Sign-Up's contact details. The Contact ID the Sign-Up is linked
-            to.
+            This is no longer recommended - please use `person` to get the
+            Sign-Up's contact details. The Contact ID the Sign-Up is linked to.
           type:
             - integer
             - 'null'
@@ -20816,8 +21049,8 @@ components:
           minimum: 1
         child_id:
           description: >-
-            This is no longer recommended - please use `person_details` to get
-            the Sign-Up's child details. The Child ID the Sign-Up is linked to.
+            This is no longer recommended - please use `person` to get the
+            Sign-Up's child details. The Child ID the Sign-Up is linked to.
           type:
             - integer
             - 'null'
@@ -24307,8 +24540,8 @@ components:
             - recurring
         tap_to_donate_amounts:
           description: >-
-            The preset amounts available for this fund within the Tap to Donate
-            app.
+            The preset amounts in the smallest monetary unit available for this
+            fund within the Tap to Donate app.
           type: array
           items:
             type: integer
@@ -24474,6 +24707,270 @@ components:
         - created_by
         - modified_at
         - modified_by
+    FundAdd:
+      type: object
+      properties:
+        name:
+          description: The name of the Fund.
+          type: string
+          example: General Church Fund
+          maxLength: 50
+          minLength: 1
+        color:
+          description: The Fund's hexadecimal colour value.
+          type: string
+          example: '#ab12cd'
+          pattern: ^#([a-f0-9]{6})$
+        brand_id:
+          description: >-
+            The Brand ID linked to the Fund. If not provided, the default Brand
+            ID will be used.
+          type: integer
+          example: 1
+          minimum: 1
+        visible_in_donate:
+          description: Whether the Fund is shown in Donate or not.
+          type: boolean
+          example: true
+          default: false
+        visible_in_tap_to_donate:
+          description: Whether the Fund is shown in Tap to Donate or not.
+          type: boolean
+          example: true
+          default: false
+        donate_frequency:
+          description: >-
+            The frequency of the donation. If visible_in_donate is false, this
+            will be ignored.
+          type: string
+          default: oneoff_recurring
+          enum:
+            - oneoff
+            - oneoff_recurring
+            - recurring
+          examples:
+            - oneoff
+            - oneoff_recurring
+            - recurring
+        tap_to_donate_amounts:
+          description: >-
+            The preset amounts in the smallest monetary unit available for this
+            fund within the Tap to Donate app. The default amounts are only
+            respected if visible_in_tap_to_donate is true and there are no
+            preset amounts in the request.
+          type: array
+          items:
+            type: integer
+            minimum: 100
+          example:
+            - 500
+            - 1000
+            - 1500
+            - 5000
+          default:
+            - 500
+            - 1000
+            - 2000
+            - 3000
+          maxItems: 4
+          minItems: 1
+        gift_aid:
+          description: >-
+            Whether Gift Aid can be claimed on this Fund. If visible_in_donate
+            is false, this will be ignored. Do not include this field if your
+            account cannot have Gift Aid applied to it.
+          type: boolean
+          example: false
+          default: false
+        tax_deductible:
+          description: >-
+            Whether this Fund is tax deductible. Do not include this field if
+            account's country does not have tax deductible giving.
+          type: boolean
+          example: true
+          default: false
+        confirmation_email:
+          description: Add confirmation email details.
+          type: object
+          additionalProperties: false
+          properties:
+            sender_email:
+              description: >-
+                The sender's email address for the confirmation email. If not
+                provided the Account no-reply email address will be used.
+              type: string
+              format: email
+              example: admin@kingshopechurch.co.uk
+              maxLength: 100
+              minLength: 1
+            sender_name:
+              description: >-
+                The sender's name for the confirmation email. If not provided
+                the Account name will be used with a suffix of Giving.
+              type: string
+              example: Kings Hope Giving
+              maxLength: 50
+              minLength: 1
+            subject:
+              description: >-
+                The subject for the confirmation email. If not provided the
+                Account name will be used with the Fund's name.
+              type: string
+              example: '[Kings Hope Church] Building Fund'
+              maxLength: 100
+              minLength: 1
+            body:
+              description: >-
+                The HTML body for the confirmation email. Available merge fields
+                for the body are ::first_name::, ::last_name:: and ::email::.
+              type: string
+              example: >-
+                <div>Dear ::first_name::,</div> <div>&nbsp;</div> <div>Here are
+                your details!</div>
+              maxLength: 65535
+              minLength: 1
+          required:
+            - body
+        description:
+          description: The description of the Fund.
+          type: string
+          example: This fund is for regular giving to the church in all areas.
+          maxLength: 65535
+          minLength: 1
+      additionalProperties: false
+      required:
+        - name
+        - color
+    FundEdit:
+      type: object
+      properties:
+        name:
+          description: The name of the Fund.
+          type: string
+          example: General Church Fund
+          maxLength: 50
+          minLength: 1
+        color:
+          description: The Fund's hexadecimal colour value.
+          type: string
+          example: '#ab12cd'
+          pattern: ^#([a-f0-9]{6})$
+        brand_id:
+          description: The Brand ID linked to the Fund.
+          type: integer
+          example: 1
+          minimum: 1
+        visible_in_donate:
+          description: Whether the Fund is shown in Donate or not.
+          type: boolean
+          example: true
+        visible_in_tap_to_donate:
+          description: Whether the Fund is shown in Tap to Donate or not.
+          type: boolean
+          example: true
+        donate_frequency:
+          description: The frequency of the donation.
+          type: string
+          enum:
+            - oneoff
+            - oneoff_recurring
+            - recurring
+          examples:
+            - oneoff
+            - oneoff_recurring
+            - recurring
+        tap_to_donate_amounts:
+          description: >-
+            The preset amounts in the smallest monetary unit available for this
+            fund within the Tap to Donate app. If visible_in_tap_to_donate is
+            true and there are no preset amounts in the request, the default
+            amounts will be used.
+          type: array
+          items:
+            type: integer
+            minimum: 1
+          example:
+            - 500
+            - 1000
+            - 1500
+            - 5000
+          default:
+            - 500
+            - 1000
+            - 2000
+            - 3000
+          maxItems: 4
+        gift_aid:
+          description: >-
+            Whether Gift Aid can be claimed on this Fund, if your account can
+            have Gift Aid applied to it. This is required if your account has
+            Gift Aid enabled.
+          type: boolean
+          example: false
+        tax_deductible:
+          description: >-
+            Whether this Fund is tax deductible, if your account's country has
+            tax deductible giving. This is required if your account has tax
+            deductible giving enabled.
+          type: boolean
+          example: true
+        confirmation_email:
+          description: Edit confirmation email details.
+          type: object
+          additionalProperties: false
+          properties:
+            sender_email:
+              description: >-
+                The sender's email address for the confirmation email. If not
+                provided the Account no-reply email address will be used.
+              type: string
+              format: email
+              example: admin@kingshopechurch.co.uk
+              maxLength: 100
+            sender_name:
+              description: >-
+                The sender's name for the confirmation email. If not provided
+                the Account name will be used with a suffix of Giving.
+              type: string
+              example: Kings Hope Giving
+              maxLength: 50
+            subject:
+              description: >-
+                The subject for the confirmation email. If not provided the
+                Account name will be used with the Fund's name.
+              type: string
+              example: '[Kings Hope Church] Building Fund'
+              maxLength: 100
+            body:
+              description: >-
+                The HTML body for the confirmation email. Available merge fields
+                for the body are ::first_name::, ::last_name:: and ::email::.
+              type: string
+              example: >-
+                <div>Dear ::first_name::,</div> <div>&nbsp;</div> <div>Here are
+                your details!</div>
+              maxLength: 65535
+          required:
+            - sender_email
+            - sender_name
+            - subject
+            - body
+        description:
+          description: The description of the Fund.
+          type: string
+          example: This fund is for regular giving to the church in all areas.
+          maxLength: 65535
+      additionalProperties: false
+      required:
+        - name
+        - color
+        - brand_id
+        - visible_in_donate
+        - visible_in_tap_to_donate
+        - donate_frequency
+        - tap_to_donate_amounts
+        - confirmation_email
+        - description
     Giver:
       type: object
       properties:
@@ -27889,6 +28386,58 @@ components:
         - created_by
         - modified_at
         - modified_by
+    UnavailabilityAdd:
+      description: A single Unavailability record from the Rotas module.
+      type: object
+      properties:
+        person:
+          description: The Person this Unavailability record belongs to.
+          type: object
+          additionalProperties: false
+          properties:
+            type:
+              description: >-
+                The Person's type, indicating whether they are a Contact, or
+                Child.
+              type: string
+              example: addressbook_contact
+              enum:
+                - addressbook_contact
+                - children_child
+            id:
+              description: The Person's ID.
+              type: integer
+              example: 12
+              minimum: 1
+          required:
+            - type
+            - id
+        description:
+          description: The Unavailability's description.
+          type: string
+          example: On holiday
+          maxLength: 250
+          minLength: 1
+        starts_at:
+          description: >-
+            The date and time the Unavailability starts. To create
+            unavailability lasting all day, start at 00:00:00 and end at
+            23:59:59.
+          type: string
+          format: date-time
+          example: '2026-10-12T00:00:00Z'
+        ends_at:
+          description: >-
+            The date and time the Unavailability ends. To create unavailability
+            lasting all day, start at 00:00:00 and end at 23:59:59.
+          type: string
+          format: date-time
+          example: '2026-10-24T23:59:59Z'
+      additionalProperties: false
+      required:
+        - person
+        - starts_at
+        - ends_at
     AttendanceDate:
       description: A single Attendance record from the Small Groups module.
       type: object
@@ -29407,12 +29956,14 @@ components:
           scopes:
             full_access: Full access on behalf of the user
             rotas.read: Read access to the Rotas module
+            rotas.write: Write access to the Rotas module
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
             full_access: Full access on behalf of the user
             rotas.read: Read access to the Rotas module
+            rotas.write: Write access to the Rotas module
     oauth_token10:
       type: oauth2
       description: Access APIv2 using an API enabled user, or via an OAuth App.

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.101.0
+  version: 2.104.0
   title: Calendar Module
   description: Manage events, sign-ups and staff leave across your account.
   termsOfService: https://churchsuite.com/terms-of-service/
@@ -490,6 +490,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - in: query
           name: category_ids[]
           description: >-
@@ -1080,8 +1081,8 @@ paths:
       tags:
         - Sign-Ups
     post:
-      summary: Create a signup
-      description: Create a signup with the provided settings.
+      summary: Create a sign-up
+      description: Create a sign-up with the provided settings.
       operationId: create_calendar_signup
       requestBody:
         required: true
@@ -1201,6 +1202,18 @@ components:
         minimum: 1
         maximum: 250
         default: 50
+    SiteIds:
+      in: query
+      name: site_ids[]
+      description: >-
+        Filter records to those matching values in the provided array. This
+        filter uses the logical OR operator.
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+          minimum: 1
   responses:
     '400':
       description: Invalid request.
@@ -2191,9 +2204,8 @@ components:
             - 'null'
           minimum: 1
           description: >-
-            This is no longer recommended - please use `person_details` to get
-            the Sign-Up's contact details. The Contact ID the Sign-Up is linked
-            to.
+            This is no longer recommended - please use `person` to get the
+            Sign-Up's contact details. The Contact ID the Sign-Up is linked to.
           deprecated: true
           example: 12
         child_id:
@@ -2202,8 +2214,8 @@ components:
             - 'null'
           minimum: 1
           description: >-
-            This is no longer recommended - please use `person_details` to get
-            the Sign-Up's child details. The Child ID the Sign-Up is linked to.
+            This is no longer recommended - please use `person` to get the
+            Sign-Up's child details. The Child ID the Sign-Up is linked to.
           deprecated: true
           example: 25
         first_name:

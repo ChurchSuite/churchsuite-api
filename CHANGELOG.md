@@ -5,6 +5,48 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.104.0] - 2026-09-15
+
+### Added
+
+- Added a new DELETE `rotas/unavailability/{id}` endpoint to delete Unavailability in the Rotas module
+- Added a new POST `rotas/unavailability` endpoint to add Unavailability in the Rotas module
+
+## [2.103.0] - 2026-09-14
+
+### Added
+
+- Added an `ids[]` filter to the GET `account/sites` endpoint
+- Added a `site_ids[]` filter to the GET `addressbook/contacts` endpoint
+- Added a `site_ids[]` filter to the GET `attendance/gatherings` endpoint
+- Added a `site_ids[]` filter to the GET `bookings/bookings` endpoint
+- Added a `site_ids[]` filter to the GET `bookings/customers` endpoint
+- Added a `site_ids[]` filter to the GET `bookings/resources` endpoint
+- Added a `site_ids[]` filter to the GET `calendar/events` endpoint
+- Added a `site_ids[]` filter to the GET `children/children` endpoint
+- Added a `site_ids[]` filter to the GET `children/group_setups` endpoint
+- Added a `site_ids[]` filter to the GET `giving/claims` endpoint
+- Added a `site_ids[]` filter to the GET `giving/givers` endpoint
+- Added a `site_ids[]` filter to the GET `network/organisations` endpoint
+- Added a `site_ids[]` filter to the GET `planning/plans` endpoint
+- Added a `site_ids[]` filter to the GET `rotas/ministries` endpoint
+- Added a `site_ids[]` filter to the GET `smallgroups/groups` endpoint
+
+## [2.102.1] - 2026-09-11
+
+### Fixed
+
+- Corrected some incorrect references of singups to sign-ups for the POST `calendar/signups` endpoint.
+- Corrected references to `person_details` in the Sign-up schema to be `person`.
+
+## [2.102.0] - 2026-09-11
+
+## Added
+
+- Added a new POST `giving/funds` endpoint to create a single Fund in the Giving module
+- Added a new PUT `giving/funds/{id}` endpoint to update a single Fund in the Giving module
+- Added a new DELETE `giving/funds/{id}` endpoint to delete a single Fund in the Giving module
+
 ## [2.101.0] - 2026-09-11
 
 ### Added

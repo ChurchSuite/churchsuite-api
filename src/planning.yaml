@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.101.0
+  version: 2.104.0
   title: Planning Module
   description: >-
     The Planning module enables organisations/churches to produce plans for
@@ -349,6 +349,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - in: query
           name: q
           description: >-
@@ -1076,6 +1077,18 @@ components:
         minimum: 1
         maximum: 250
         default: 50
+    SiteIds:
+      in: query
+      name: site_ids[]
+      description: >-
+        Filter records to those matching values in the provided array. This
+        filter uses the logical OR operator.
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+          minimum: 1
   responses:
     '400':
       description: Invalid request.

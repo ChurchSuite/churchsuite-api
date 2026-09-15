@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.101.0
+  version: 2.104.0
   title: Rotas Module
   description: >-
     The Rotas module enables churches and other organisations to manage all
@@ -105,6 +105,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - $ref: '#/components/parameters/SiteIds'
         - in: query
           name: statuses[]
           description: >-
@@ -354,6 +355,39 @@ paths:
           $ref: '#/components/responses/429'
       tags:
         - Teams
+  /rotas/unavailability/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the record to retrieve.
+        required: true
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          example: 45
+    delete:
+      summary: Delete an unavailability
+      description: Delete a single unavailability, identified by ID.
+      operationId: delete_rota_unavailability
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - rotas.write
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Unavailability
   /rotas/unavailability:
     get:
       summary: List unavailability
@@ -442,6 +476,46 @@ paths:
           $ref: '#/components/responses/429'
       tags:
         - Unavailability
+    post:
+      summary: Create unavailability
+      description: Create unavailability, with the provided settings.
+      operationId: create_rotas_unavailability
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnavailabilityAdd'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - rotas.write
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Unavailability'
+                required:
+                  - data
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Unavailability
   /rotas/roles:
     get:
       summary: List roles
@@ -526,6 +600,18 @@ components:
         minimum: 1
         maximum: 250
         default: 50
+    SiteIds:
+      in: query
+      name: site_ids[]
+      description: >-
+        Filter records to those matching values in the provided array. This
+        filter uses the logical OR operator.
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+          minimum: 1
   responses:
     '400':
       description: Invalid request.
@@ -1147,6 +1233,58 @@ components:
         - modified_at
         - modified_by
       additionalProperties: false
+    UnavailabilityAdd:
+      type: object
+      description: A single Unavailability record from the Rotas module.
+      properties:
+        person:
+          type: object
+          description: The Person this Unavailability record belongs to.
+          properties:
+            type:
+              type: string
+              description: >-
+                The Person's type, indicating whether they are a Contact, or
+                Child.
+              example: addressbook_contact
+              enum:
+                - addressbook_contact
+                - children_child
+            id:
+              type: integer
+              minimum: 1
+              description: The Person's ID.
+              example: 12
+          required:
+            - type
+            - id
+          additionalProperties: false
+        description:
+          type: string
+          description: The Unavailability's description.
+          example: On holiday
+          maxLength: 250
+          minLength: 1
+        starts_at:
+          type: string
+          description: >-
+            The date and time the Unavailability starts. To create
+            unavailability lasting all day, start at 00:00:00 and end at
+            23:59:59.
+          format: date-time
+          example: '2026-10-12T00:00:00Z'
+        ends_at:
+          type: string
+          description: >-
+            The date and time the Unavailability ends. To create unavailability
+            lasting all day, start at 00:00:00 and end at 23:59:59.
+          format: date-time
+          example: '2026-10-24T23:59:59Z'
+      required:
+        - person
+        - starts_at
+        - ends_at
+      additionalProperties: false
   securitySchemes:
     oauth_token:
       type: oauth2
@@ -1157,9 +1295,11 @@ components:
           scopes:
             full_access: Full access on behalf of the user
             rotas.read: Read access to the Rotas module
+            rotas.write: Write access to the Rotas module
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
           tokenUrl: https://login.churchsuite.com/oauth2/token
           scopes:
             full_access: Full access on behalf of the user
             rotas.read: Read access to the Rotas module
+            rotas.write: Write access to the Rotas module
