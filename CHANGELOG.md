@@ -5,6 +5,12 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.105.0] - 2026-09-15
+
+### Added
+
+- Added an `order_by` query parameter to the GET `addressbook/contacts` and GET `children/children` endpoints, allowing the results to be sorted by the specified fields.
+
 ## [2.104.0] - 2026-09-15
 
 ### Added

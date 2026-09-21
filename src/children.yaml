@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.104.0
+  version: 2.105.0
   title: Children Module
   description: >-
     This module is for managing all the children and young people associated
@@ -325,9 +325,7 @@ paths:
   /children/children:
     get:
       summary: List children
-      description: >-
-        Returns a list of flows, sorted alphabetically by last_name then
-        first_name.
+      description: Returns a list of children.
       operationId: list_children
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -408,6 +406,31 @@ paths:
           schema:
             type: boolean
             example: true
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Last name (A to Z) then first name (A to Z)
+              name:desc: Last name (Z to A) then first name (A to Z)
       security:
         - oauth_token:
             - full_access

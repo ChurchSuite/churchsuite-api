@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.104.0
+  version: 2.105.0
   title: Calendar Module
   description: Manage events, sign-ups and staff leave across your account.
   termsOfService: https://churchsuite.com/terms-of-service/
