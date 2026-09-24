@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.105.0
+  version: 2.106.0
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -16589,30 +16589,7 @@ components:
             example: 2
           minItems: 1
       additionalProperties: false
-      required:
-        - address
-        - all_sites
-        - communication
-        - custom_fields
-        - date_of_birth
-        - email
-        - employer
-        - first_name
-        - formal_name
-        - former_name
-        - job
-        - last_name
-        - login
-        - marital_status
-        - middle_name
-        - mobile
-        - privacy
-        - sex
-        - site_ids
-        - spouse_id
-        - telephone
-        - title
-        - work_telephone
+      minProperties: 1
     CustomField:
       description: A Custom Field, as found in several modules
       type: object
@@ -23188,29 +23165,7 @@ components:
             example: 2
           minItems: 1
       additionalProperties: false
-      required:
-        - additional_info
-        - additional_needs
-        - address
-        - all_sites
-        - communication
-        - custom_fields
-        - date_of_birth
-        - doctor_details
-        - email
-        - first_name
-        - formal_name
-        - last_name
-        - login
-        - medical
-        - medical_short
-        - middle_name
-        - mobile
-        - privacy
-        - school
-        - school_year_offset
-        - sex
-        - site_ids
+      minProperties: 1
     FlowTrackingAdd2:
       type: object
       properties:

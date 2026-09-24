@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.105.0
+  version: 2.106.0
   title: Children Module
   description: >-
     This module is for managing all the children and young people associated
@@ -3677,6 +3677,7 @@ components:
     ChildEdit:
       type: object
       description: Edit a single Child from the Children's module.
+      minProperties: 1
       properties:
         first_name:
           type: string
@@ -3923,29 +3924,6 @@ components:
             minimum: 1
             example: 2
           minItems: 1
-      required:
-        - additional_info
-        - additional_needs
-        - address
-        - all_sites
-        - communication
-        - custom_fields
-        - date_of_birth
-        - doctor_details
-        - email
-        - first_name
-        - formal_name
-        - last_name
-        - login
-        - medical
-        - medical_short
-        - middle_name
-        - mobile
-        - privacy
-        - school
-        - school_year_offset
-        - sex
-        - site_ids
       additionalProperties: false
     CustomField:
       type: object

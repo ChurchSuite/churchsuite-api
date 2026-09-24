@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.105.0
+  version: 2.106.0
   title: Rotas Module
   description: >-
     The Rotas module enables churches and other organisations to manage all

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.105.0
+  version: 2.106.0
   title: Attendance Module
   description: >-
     The Attendance module is the core repository for maintaining historic

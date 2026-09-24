@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.105.0
+  version: 2.106.0
   title: Address Book Module
   description: >-
     The Address Book module manages all adult contacts associated with your
@@ -3333,6 +3333,7 @@ components:
     ContactEdit:
       type: object
       description: Edit a Contact in the Address Book module.
+      minProperties: 1
       properties:
         first_name:
           type: string
@@ -3602,30 +3603,6 @@ components:
             minimum: 1
             example: 2
           minItems: 1
-      required:
-        - address
-        - all_sites
-        - communication
-        - custom_fields
-        - date_of_birth
-        - email
-        - employer
-        - first_name
-        - formal_name
-        - former_name
-        - job
-        - last_name
-        - login
-        - marital_status
-        - middle_name
-        - mobile
-        - privacy
-        - sex
-        - site_ids
-        - spouse_id
-        - telephone
-        - title
-        - work_telephone
       additionalProperties: false
     CustomField:
       type: object

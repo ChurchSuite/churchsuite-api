@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.105.0
+  version: 2.106.0
   title: Planning Module
   description: >-
     The Planning module enables organisations/churches to produce plans for

@@ -5,6 +5,12 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.106.0] - 2026-09-22
+
+### Changed
+
+- Requests made to `addressbook/contacts/{id}` PUT and `children/children/{id}` PUT to edit a Contact or Child no longer require all keys to be present, so that patch updates can be made more simply.
+
 ## [2.105.0] - 2026-09-15
 
 ### Added
