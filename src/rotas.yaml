@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.106.0
+  version: 2.109.0
   title: Rotas Module
   description: >-
     The Rotas module enables churches and other organisations to manage all
@@ -35,10 +35,6 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/666-how-to-add-a-ministry
-  - name: Members RO
-    summary: Members
-    parent: Rotas Module
-    description: Ministry Members are the people who serve within your ministry.
   - name: Roles RO
     summary: Roles
     parent: Rotas Module
@@ -178,7 +174,7 @@ paths:
   /rotas/ministry_members:
     get:
       summary: List ministry members
-      description: Returns a list of ministry members, sorted by date created.
+      description: Returns a list of team members.
       operationId: list_ministry_members
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -216,6 +212,31 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: id:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Last name (A to Z) then first name (A to Z)
+              name:desc: Last name (Z to A) then first name (A to Z)
       security:
         - oauth_token:
             - full_access
@@ -248,7 +269,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Members RO
+        - Teams
   /rotas/ministry_teams/{id}:
     parameters:
       - name: id

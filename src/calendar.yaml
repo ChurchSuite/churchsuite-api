@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.106.0
+  version: 2.109.0
   title: Calendar Module
   description: Manage events, sign-ups and staff leave across your account.
   termsOfService: https://churchsuite.com/terms-of-service/
@@ -45,6 +45,16 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/460-event-invitations
+  - name: Labels CA
+    summary: Labels
+    parent: Calendar Module
+    description: Labels are a way of further categorising your events.
+    externalDocs:
+      description: >-
+        Explore our large database of online support articles for step-by-step
+        help.
+      url: >-
+        https://support.churchsuite.com/article/738-categorising-events-using-labels
   - name: Sign-Ups
     parent: Calendar Module
     description: >-
@@ -942,6 +952,162 @@ paths:
           $ref: '#/components/responses/429'
       tags:
         - Invites
+  /calendar/labels/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the record to retrieve.
+        required: true
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+    get:
+      summary: Get a label
+      description: Retrieve a single label identified by ID.
+      operationId: get_calendar_label
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - calendar.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                required:
+                  - data
+                additionalProperties: false
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Labels CA
+  /calendar/labels:
+    get:
+      summary: List labels
+      description: Returns a list of labels, sorted by their order property.
+      operationId: list_calendar_labels
+      parameters:
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+        - in: query
+          name: q
+          description: >-
+            Filter records with a fuzzy string match against the following
+            properties: name.
+          schema:
+            type: string
+            description: A URL encoded string.
+            example: theme
+            minLength: 1
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - calendar.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Label'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                required:
+                  - data
+                  - pagination
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Labels CA
+  /calendar/label_resources:
+    get:
+      summary: List label resources
+      description: Returns a list of label resources
+      operationId: list_calendar_label_resources
+      parameters:
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+        - in: query
+          name: label_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: event_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - calendar.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LabelResource'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                required:
+                  - data
+                  - pagination
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Labels CA
   /calendar/signups/{id}:
     parameters:
       - name: id
@@ -1965,6 +2131,135 @@ components:
         - created_by
         - modified_at
         - modified_by
+      additionalProperties: false
+    Label:
+      type: object
+      description: Label data, as found in several modules.
+      properties:
+        id:
+          type: integer
+          minimum: 1
+          description: The Label's ID.
+          example: 15
+        name:
+          type: string
+          description: The Label's name.
+          example: Label
+        colour:
+          type: string
+          description: The Label's colour.
+          example: blue
+          enum:
+            - blue
+            - red
+            - orange
+            - green
+            - purple
+            - pink
+            - brown
+            - grey
+        multiple_responses:
+          type: boolean
+          description: Whether multiple responses can be selected or not.
+          example: true
+        required:
+          type: boolean
+          description: >-
+            Whether at least one response will be required when this Label is
+            added to a resource
+          example: true
+        options:
+          type: array
+          description: An array of options for the Label.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The Label option ID.
+                example: cf17e695-1y75-4b00-pfa2-087581ce1ec7
+              name:
+                type: string
+                description: The Label option's name.
+                example: North
+            required:
+              - id
+              - name
+            additionalProperties: false
+        order:
+          type: integer
+          minimum: 1
+          description: The position of the Label when ordered.
+          example: 5
+        created_at:
+          type:
+            - string
+            - 'null'
+          description: Date and time the Label was created.
+          format: date-time
+          example: '2014-04-25T10:10:32Z'
+        created_by:
+          type:
+            - string
+            - 'null'
+          description: The user who created the Label.
+          example: jennie
+        modified_at:
+          type:
+            - string
+            - 'null'
+          description: Date and time the Label was last modified.
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        modified_by:
+          type:
+            - string
+            - 'null'
+          description: The user who last modified the Label.
+          example: caroline
+      required:
+        - id
+        - name
+        - colour
+        - multiple_responses
+        - required
+        - options
+        - order
+        - created_at
+        - created_by
+        - modified_at
+        - modified_by
+      additionalProperties: false
+    LabelResource:
+      type: object
+      description: A single Label Resource - an instance of a Label for a specific model
+      properties:
+        resource_id:
+          type: integer
+          description: >-
+            The ID of the model the Label Resource belongs to, depending on
+            which module you are accessing.
+          minimum: 1
+          example: 1
+        label_id:
+          type: integer
+          description: The ID of the label the Label Resource belongs to
+          minimum: 1
+          example: 1
+        option_ids:
+          type: array
+          description: List of option IDs for this Label assigned to this resource
+          example:
+            - e85e2162-9a51-4178-9640-53a3da2aaaa1
+            - 7aa81321-9ae5-4d31-bd6e-d28cc0e15f09
+            - d4624d04-2b5a-4807-a3c6-adaa295a907c
+          items:
+            format: uuid
+            type: string
+      required:
+        - resource_id
+        - label_id
+        - option_ids
       additionalProperties: false
     Note:
       type: object

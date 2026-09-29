@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.106.0
+  version: 2.109.0
   title: Address Book Module
   description: >-
     The Address Book module manages all adult contacts associated with your

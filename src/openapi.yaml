@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.106.0
+  version: 2.109.0
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -3661,6 +3661,31 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Last name (A to Z) then first name (A to Z)
+              name:desc: Last name (Z to A) then first name (A to Z)
       responses:
         '200':
           description: OK Success
@@ -5955,6 +5980,162 @@ paths:
             - calendar.read
       tags:
         - Invites
+  /calendar/labels/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the record to retrieve.
+        required: true
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+    get:
+      operationId: get_calendar_label
+      summary: Get a label
+      description: Retrieve a single label identified by ID.
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                additionalProperties: false
+                required:
+                  - data
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token4:
+            - full_access
+        - oauth_token4:
+            - calendar.read
+      tags:
+        - Labels CA
+  /calendar/labels:
+    get:
+      operationId: list_calendar_labels
+      summary: List labels
+      description: Returns a list of labels, sorted by their order property.
+      parameters:
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+        - name: q
+          in: query
+          description: >-
+            Filter records with a fuzzy string match against the following
+            properties: name.
+          schema:
+            description: A URL encoded string.
+            type: string
+            example: theme
+            minLength: 1
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Label'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                additionalProperties: false
+                required:
+                  - data
+                  - pagination
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token4:
+            - full_access
+        - oauth_token4:
+            - calendar.read
+      tags:
+        - Labels CA
+  /calendar/label_resources:
+    get:
+      operationId: list_calendar_label_resources
+      summary: List label resources
+      description: Returns a list of label resources
+      parameters:
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+        - name: label_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - name: event_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LabelResource'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                additionalProperties: false
+                required:
+                  - data
+                  - pagination
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token4:
+            - full_access
+        - oauth_token4:
+            - calendar.read
+      tags:
+        - Labels CA
   /calendar/signups/{id}:
     parameters:
       - name: id
@@ -6420,7 +6601,8 @@ paths:
           in: query
           description: >-
             Filter records with a fuzzy string match against the following
-            properties: first_name, last_name, formal_name, email, address.
+            properties: first_name, last_name, formal_name, email, mobile,
+            address.
           schema:
             description: A URL encoded string
             type: string
@@ -10068,7 +10250,7 @@ paths:
     get:
       operationId: list_givers
       summary: List givers
-      description: Returns a list of givers, sorted alphabetically by name.
+      description: Returns a list of givers.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -10104,6 +10286,31 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Last name (A to Z) then first name (A to Z)
+              name:desc: Last name (Z to A) then first name (A to Z)
       responses:
         '200':
           description: OK Success
@@ -11505,6 +11712,31 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Last name (A to Z) then first name (A to Z)
+              name:desc: Last name (Z to A) then first name (A to Z)
       responses:
         '200':
           description: OK Success
@@ -12905,7 +13137,7 @@ paths:
     get:
       operationId: list_ministry_members
       summary: List ministry members
-      description: Returns a list of ministry members, sorted by date created.
+      description: Returns a list of team members.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -12942,6 +13174,31 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: id:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Last name (A to Z) then first name (A to Z)
+              name:desc: Last name (Z to A) then first name (A to Z)
       responses:
         '200':
           description: OK Success
@@ -12974,7 +13231,7 @@ paths:
         - oauth_token9:
             - rotas.read
       tags:
-        - Members RO
+        - Teams
   /rotas/ministry_teams/{id}:
     parameters:
       - name: id
@@ -13857,6 +14114,31 @@ paths:
               - active
               - active_future
               - future
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name (A to Z)
+              name:desc: Name (Z to A)
       responses:
         '200':
           description: OK Success
@@ -14208,6 +14490,31 @@ paths:
             enum:
               - active
               - pending
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Last name (A to Z) then first name (A to Z)
+              name:desc: Last name (Z to A) then first name (A to Z)
       responses:
         '200':
           description: OK Success
@@ -20867,6 +21174,135 @@ components:
         - created_by
         - modified_at
         - modified_by
+    Label:
+      description: Label data, as found in several modules.
+      type: object
+      properties:
+        id:
+          description: The Label's ID.
+          type: integer
+          example: 15
+          minimum: 1
+        name:
+          description: The Label's name.
+          type: string
+          example: Label
+        colour:
+          description: The Label's colour.
+          type: string
+          example: blue
+          enum:
+            - blue
+            - red
+            - orange
+            - green
+            - purple
+            - pink
+            - brown
+            - grey
+        multiple_responses:
+          description: Whether multiple responses can be selected or not.
+          type: boolean
+          example: true
+        required:
+          description: >-
+            Whether at least one response will be required when this Label is
+            added to a resource
+          type: boolean
+          example: true
+        options:
+          description: An array of options for the Label.
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                description: The Label option ID.
+                type: string
+                example: cf17e695-1y75-4b00-pfa2-087581ce1ec7
+              name:
+                description: The Label option's name.
+                type: string
+                example: North
+            required:
+              - id
+              - name
+            additionalProperties: false
+        order:
+          description: The position of the Label when ordered.
+          type: integer
+          example: 5
+          minimum: 1
+        created_at:
+          description: Date and time the Label was created.
+          type:
+            - string
+            - 'null'
+          format: date-time
+          example: '2014-04-25T10:10:32Z'
+        created_by:
+          description: The user who created the Label.
+          type:
+            - string
+            - 'null'
+          example: jennie
+        modified_at:
+          description: Date and time the Label was last modified.
+          type:
+            - string
+            - 'null'
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        modified_by:
+          description: The user who last modified the Label.
+          type:
+            - string
+            - 'null'
+          example: caroline
+      additionalProperties: false
+      required:
+        - id
+        - name
+        - colour
+        - multiple_responses
+        - required
+        - options
+        - order
+        - created_at
+        - created_by
+        - modified_at
+        - modified_by
+    LabelResource:
+      description: A single Label Resource - an instance of a Label for a specific model
+      type: object
+      properties:
+        resource_id:
+          description: >-
+            The ID of the model the Label Resource belongs to, depending on
+            which module you are accessing.
+          type: integer
+          example: 1
+          minimum: 1
+        label_id:
+          description: The ID of the label the Label Resource belongs to
+          type: integer
+          example: 1
+          minimum: 1
+        option_ids:
+          description: List of option IDs for this Label assigned to this resource
+          type: array
+          items:
+            format: uuid
+            type: string
+          example:
+            - e85e2162-9a51-4178-9640-53a3da2aaaa1
+            - 7aa81321-9ae5-4d31-bd6e-d28cc0e15f09
+            - d4624d04-2b5a-4807-a3c6-adaa295a907c
+      additionalProperties: false
+      required:
+        - resource_id
+        - label_id
+        - option_ids
     Note1:
       description: A single Note, as found in multiple modules.
       type: object
@@ -25789,135 +26225,6 @@ components:
         - name
         - colour
         - visible_to
-    Label:
-      description: Label data, as found in several modules.
-      type: object
-      properties:
-        id:
-          description: The Label's ID.
-          type: integer
-          example: 15
-          minimum: 1
-        name:
-          description: The Label's name.
-          type: string
-          example: Label
-        colour:
-          description: The Label's colour.
-          type: string
-          example: blue
-          enum:
-            - blue
-            - red
-            - orange
-            - green
-            - purple
-            - pink
-            - brown
-            - grey
-        multiple_responses:
-          description: Whether multiple responses can be selected or not.
-          type: boolean
-          example: true
-        required:
-          description: >-
-            Whether at least one response will be required when this Label is
-            added to a resource
-          type: boolean
-          example: true
-        options:
-          description: An array of options for the Label.
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                description: The Label option ID.
-                type: string
-                example: cf17e695-1y75-4b00-pfa2-087581ce1ec7
-              name:
-                description: The Label option's name.
-                type: string
-                example: North
-            required:
-              - id
-              - name
-            additionalProperties: false
-        order:
-          description: The position of the Label when ordered.
-          type: integer
-          example: 5
-          minimum: 1
-        created_at:
-          description: Date and time the Label was created.
-          type:
-            - string
-            - 'null'
-          format: date-time
-          example: '2014-04-25T10:10:32Z'
-        created_by:
-          description: The user who created the Label.
-          type:
-            - string
-            - 'null'
-          example: jennie
-        modified_at:
-          description: Date and time the Label was last modified.
-          type:
-            - string
-            - 'null'
-          format: date-time
-          example: '2023-09-19T14:52:40Z'
-        modified_by:
-          description: The user who last modified the Label.
-          type:
-            - string
-            - 'null'
-          example: caroline
-      additionalProperties: false
-      required:
-        - id
-        - name
-        - colour
-        - multiple_responses
-        - required
-        - options
-        - order
-        - created_at
-        - created_by
-        - modified_at
-        - modified_by
-    LabelResource:
-      description: A single Label Resource - an instance of a Label for a specific model
-      type: object
-      properties:
-        resource_id:
-          description: >-
-            The ID of the model the Label Resource belongs to, depending on
-            which module you are accessing.
-          type: integer
-          example: 1
-          minimum: 1
-        label_id:
-          description: The ID of the label the Label Resource belongs to
-          type: integer
-          example: 1
-          minimum: 1
-        option_ids:
-          description: List of option IDs for this Label assigned to this resource
-          type: array
-          items:
-            format: uuid
-            type: string
-          example:
-            - e85e2162-9a51-4178-9640-53a3da2aaaa1
-            - 7aa81321-9ae5-4d31-bd6e-d28cc0e15f09
-            - d4624d04-2b5a-4807-a3c6-adaa295a907c
-      additionalProperties: false
-      required:
-        - resource_id
-        - label_id
-        - option_ids
     Member:
       description: A single Member from the Network module.
       type: object
@@ -30305,6 +30612,16 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/460-event-invitations
+  - name: Labels CA
+    summary: Labels
+    parent: Calendar Module
+    description: Labels are a way of further categorising your events.
+    externalDocs:
+      description: >-
+        Explore our large database of online support articles for step-by-step
+        help.
+      url: >-
+        https://support.churchsuite.com/article/738-categorising-events-using-labels
   - name: Sign-Ups
     parent: Calendar Module
     description: >-
@@ -30724,10 +31041,6 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/666-how-to-add-a-ministry
-  - name: Members RO
-    summary: Members
-    parent: Rotas Module
-    description: Ministry Members are the people who serve within your ministry.
   - name: Roles RO
     summary: Roles
     parent: Rotas Module

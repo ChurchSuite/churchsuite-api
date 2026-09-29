@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.106.0
+  version: 2.109.0
   title: Bookings Module
   description: >-
     The Bookings module enables you to manage the booking of resources,
@@ -687,6 +687,31 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Last name (A to Z) then first name (A to Z)
+              name:desc: Last name (Z to A) then first name (A to Z)
       security:
         - oauth_token:
             - full_access

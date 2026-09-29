@@ -5,6 +5,38 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.109.0] - 2026-09-29
+
+- Added an `order_by` query parameter to the GET `smallgroups/groups` endpoint, allowing the results to be sorted by the specified fields.
+
+## [2.108.0] - 2026-09-28
+
+### Added
+
+- Added `calendar/labels/{id}` endpoint to retrieve a single Label
+- Added `calendar/labels` endpoint to list Labels
+- Added a new `calendar/label_resources` endpoint to list Label Resources
+
+### Fixed
+
+- Corrected `q` filter on `children/children` GET to show that it also filters by mobile
+
+## [2.107.0] - 2026-09-25
+
+### Added
+
+Added an `order_by` query parameter to the following endpoints:
+
+- GET `bookings/customers`
+- GET `giving/givers`
+- GET `network/members`
+- GET `rotas/ministry_members`
+- GET `smallgroups/members`
+
+### Changed
+
+- The default sorting option for the GET `rotas/ministry_members` endpoint is now ascending Member ID.
+
 ## [2.106.0] - 2026-09-22
 
 ### Changed
@@ -53,7 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.102.0] - 2026-09-11
 
-## Added
+### Added
 
 - Added a new POST `giving/funds` endpoint to create a single Fund in the Giving module
 - Added a new PUT `giving/funds/{id}` endpoint to update a single Fund in the Giving module
@@ -161,7 +193,7 @@ The ChurchSuite Core API specification has been updated to OpenAPI 3.1, with no 
 - Added new PUT `giving/pledges/{id}` endpoint to update a single Pledge in the Giving module.
 - Added new DELETE `giving/pledges/{id}` endpoint to delete a single Pledge in the Giving module.
 
-## Changed
+### Changed
 - Updated the Pledge schema `amount_oneoff` and `amount_recurring` minimum values from 50 to 1, with no functional changes to the API.
 
 ## [2.90.0] - 2026-07-17
@@ -200,7 +232,7 @@ The ChurchSuite Core API specification has changed from JSON to YAML, with no fu
 
 ## [2.86.1] - 2026-07-02
 
-## Fixed
+### Fixed
 
 - Documented minimum length for string properties on POST and PUT schemas.
 - Documented maximum length for phone number properties on POST and PUT schemas.
@@ -229,20 +261,20 @@ The ChurchSuite Core API specification has changed from JSON to YAML, with no fu
 
 ## [2.85.3] - 2026-06-22
 
-## Added
+### Added
 
 - Added an `errors` object to the 409 error response.
 
 ## [2.85.2] - 2026-06-19
 
-## Added
+### Added
 
 - Added 409 as a possible response to the following POST endpoints `calendar\categories`, `smallgroups\clusters`, `smallgroups\roles`, `addressbook\tags`, `bookings\tags`, `children\tags` and `giving\tags`.
 - Added 409 as a possible response to the following PUT endpoints `calendar\categories\{id}`, `smallgroups\clusters\{id}`, `smallgroups\roles\{id}`, `addressbook\tags\{id}`, `bookings\tags\{id}`, `children\tags\{id}` and `giving\tags\{id}`.
 
 ## [2.85.1] - 2026-06-05
 
-## Added
+### Added
 
 - Added a `ministry_id` key to the `rotas/ministry_members` response
 
@@ -252,7 +284,7 @@ We're excited to begin opening up the data within the Rotas module through our A
 
 These initial Rotas API endpoints give you read access to your Ministry, Team and Member information, allowing you to pull insights about a person's Ministry involvement into your own applications.
 
-## Added
+### Added
 
 - Added a new `rotas/ministries/{id}` endpoint to retrieve a single Ministry in the Rotas module
 - Added a new `rotas/ministries` endpoint to list all Ministries in the Rotas module
@@ -267,7 +299,7 @@ The Core v2 API now supports scoped OAuth2 tokens, allowing third-party integrat
 
 If your application uses the Client Credentials grant with an API-enabled user, you likely want to continue using the `full_access` scope and managing permissions directly on the user via the ChurchSuite web interface. If you are using the Authorisation Code grant via an OAuth App, though, you should consider updating your application to request a restricted scope of access.
 
-## Added
+### Added
 
 - Added read and write scopes for each module.
 - Added `account` scope providing read access to the default brand, sites, and non-sensitive account details.
@@ -355,17 +387,17 @@ If your application uses the Client Credentials grant with an API-enabled user, 
 
 ## [2.80.1] - 2026-02-23
 
-## Fixed
+### Fixed
 
 - The  GET `/addressbook/form_responses/{id}` and `/children/form_responses/{id}` endpoints are now correctly tagged.
 
 ## [2.80.0] - 2026-02-13
 
-## Changed
+### Changed
 
 - The Tag response now contains a "pinned_icon" property. See the [support article](https://support.churchsuite.com/article/37-smart-tags#how) for an explanation of pinned tags.
 
-## Fixed
+### Fixed
 
 - The Tag response now returns {"visible_to": null} where there are no visibility restrictions. This behaviour now matches the documentation, and is consistent with "visible_to" elsewhere.
 

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.106.0
+  version: 2.109.0
   title: Children Module
   description: >-
     This module is for managing all the children and young people associated
@@ -357,7 +357,8 @@ paths:
           name: q
           description: >-
             Filter records with a fuzzy string match against the following
-            properties: first_name, last_name, formal_name, email, address.
+            properties: first_name, last_name, formal_name, email, mobile,
+            address.
           schema:
             type: string
             description: A URL encoded string
