@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.109.0
+  version: 2.110.0
   title: Calendar Module
   description: Manage events, sign-ups and staff leave across your account.
   termsOfService: https://churchsuite.com/terms-of-service/
@@ -16,8 +16,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/532-getting-started-with-the-calendar-module
+      url: https://support.churchsuite.com/article/532-getting-started-with-the-calendar-module
   - name: Categories
     parent: Calendar Module
     description: >-
@@ -35,8 +34,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/98-adding-events-to-your-church-calendar
+      url: https://support.churchsuite.com/article/98-adding-events-to-your-church-calendar
   - name: Invites
     parent: Calendar Module
     description: Manage your organisation's event invites.
@@ -53,8 +51,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/738-categorising-events-using-labels
+      url: https://support.churchsuite.com/article/738-categorising-events-using-labels
   - name: Sign-Ups
     parent: Calendar Module
     description: >-
@@ -65,8 +62,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/193-adding-custom-question-to-event-sign-up
+      url: https://support.churchsuite.com/article/193-adding-custom-question-to-event-sign-up
   - name: Tickets
     parent: Calendar Module
     description: >-
@@ -76,8 +72,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/337-adding-tickets-to-your-events
+      url: https://support.churchsuite.com/article/337-adding-tickets-to-your-events
 paths:
   /calendar/categories/{id}:
     parameters:
@@ -1867,8 +1862,7 @@ components:
               type: string
               format: url
               description: The thumbnail Image url. Thumbnail images are 128x128px.
-              example: >-
-                https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_thumb.jpg
+              example: https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_thumb.jpg
             small:
               type: string
               format: url
@@ -3155,8 +3149,7 @@ components:
             This is required if the Event has tickets.
           example: 500
         question_responses:
-          $ref: >-
-            #/components/schemas/SignupAddLinkedPerson/properties/question_responses
+          $ref: '#/components/schemas/SignupAddLinkedPerson/properties/question_responses'
         send_confirmation:
           type: boolean
           description: Whether to send a confirmation email to the Sign-Up.
@@ -3255,8 +3248,7 @@ components:
             If the Event has tickets, this cannot be null.
           example: 500
         question_responses:
-          $ref: >-
-            #/components/schemas/SignupAddLinkedPerson/properties/question_responses
+          $ref: '#/components/schemas/SignupAddLinkedPerson/properties/question_responses'
       required:
         - ticket_id
         - person
@@ -3338,8 +3330,7 @@ components:
             If the Event has tickets, this cannot be null.
           example: 500
         question_responses:
-          $ref: >-
-            #/components/schemas/SignupAddLinkedPerson/properties/question_responses
+          $ref: '#/components/schemas/SignupAddLinkedPerson/properties/question_responses'
       required:
         - ticket_id
         - person

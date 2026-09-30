@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.109.0
+  version: 2.110.0
   title: Giving Module
   description: >-
     This module is designed to help manage the donations you receive and the
@@ -299,7 +299,7 @@ paths:
     get:
       operationId: list_donations
       summary: List donations
-      description: Returns a list of donations, sorted by the most recent first.
+      description: Returns a list of donations.
       parameters:
         - name: claim_ids[]
           in: query
@@ -395,7 +395,36 @@ paths:
                 - deleted
                 - pending
                 - refunded
-              default: active
+            default: active
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: date:desc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: >-
+                Date of donation (earliest first), then fund name (A to Z), then
+                last name (A to Z)
+              date:desc: >-
+                Date of donation (latest first), then fund name (A to Z), then
+                last name (A to Z)
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       responses:
@@ -3818,8 +3847,7 @@ components:
               description: The thumbnail Image url. Thumbnail images are 128x128px.
               type: string
               format: url
-              example: >-
-                https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_thumb.jpg
+              example: https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_thumb.jpg
             small:
               description: The small resolution Image url
               type: string
@@ -5636,8 +5664,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/455-getting-started-with-the-giving-module
+      url: https://support.churchsuite.com/article/455-getting-started-with-the-giving-module
   - name: Claims
     parent: Giving Module
     description: Manage your Gift Aid claims (UK only).
@@ -5664,8 +5691,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/118-managing-your-gift-aid-declarations
+      url: https://support.churchsuite.com/article/118-managing-your-gift-aid-declarations
   - name: Donations
     parent: Giving Module
     description: Manage the donations you receive.
@@ -5696,8 +5722,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/115-setting-up-and-managing-funds-in-giving
+      url: https://support.churchsuite.com/article/115-setting-up-and-managing-funds-in-giving
   - name: Givers
     parent: Giving Module
     description: Add givers and manage their giving profile.
@@ -5724,5 +5749,4 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/33-communicate-with-groups-of-contacts-in-a-fixed-tag
+      url: https://support.churchsuite.com/article/33-communicate-with-groups-of-contacts-in-a-fixed-tag

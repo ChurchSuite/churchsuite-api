@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.109.0
+  version: 2.110.0
   title: Account Data
   description: >-
     Access account-level configuration data about account. The data available
@@ -1208,8 +1208,7 @@ components:
           description: The url for the User's ical feed.
           type: string
           format: uri
-          example: >-
-            https://examplechurch.churchsuite.com/ical/jenny-pnnnx6o6gdzdgyzp0hl4.ics
+          example: https://examplechurch.churchsuite.com/ical/jenny-pnnnx6o6gdzdgyzp0hl4.ics
         image:
           description: A collection of different sized variations of an Image.
           type:
@@ -1221,8 +1220,7 @@ components:
               description: The thumbnail Image url. Thumbnail images are 128x128px.
               type: string
               format: url
-              example: >-
-                https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_thumb.jpg
+              example: https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_thumb.jpg
             small:
               description: The small resolution Image url
               type: string

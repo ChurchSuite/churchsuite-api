@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.109.0
+  version: 2.110.0
   title: Planning Module
   description: >-
     The Planning module enables organisations/churches to produce plans for
@@ -26,8 +26,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/492-getting-started-with-the-planning-module
+      url: https://support.churchsuite.com/article/492-getting-started-with-the-planning-module
   - name: LibraryItems
     parent: Planning Module
     description: >-
@@ -1981,24 +1980,21 @@ components:
                               - 'null'
                             format: url
                             description: The small resolution image url.
-                            example: >-
-                              https://i.scdn.co/image/ab67616d00004851c586bce112747b06991a85a3
+                            example: https://i.scdn.co/image/ab67616d00004851c586bce112747b06991a85a3
                           md:
                             type:
                               - string
                               - 'null'
                             format: url
                             description: The medium resolution image url.
-                            example: >-
-                              https://i.scdn.co/image/ab67616d00004851c586bce112747b06991a85a3
+                            example: https://i.scdn.co/image/ab67616d00004851c586bce112747b06991a85a3
                           lg:
                             type:
                               - string
                               - 'null'
                             format: url
                             description: The large resolution image url.
-                            example: >-
-                              https://i.scdn.co/image/ab67616d00004851c586bce112747b06991a85a3
+                            example: https://i.scdn.co/image/ab67616d00004851c586bce112747b06991a85a3
                         required:
                           - sm
                           - md
@@ -2363,24 +2359,21 @@ components:
                     - 'null'
                   format: url
                   description: The small resolution image url.
-                  example: >-
-                    https://i.scdn.co/image/ab67616d00004851c586bce112747b06991a85a3
+                  example: https://i.scdn.co/image/ab67616d00004851c586bce112747b06991a85a3
                 md:
                   type:
                     - string
                     - 'null'
                   format: url
                   description: The medium resolution image url.
-                  example: >-
-                    https://i.scdn.co/image/ab67616d00004851c586bce112747b06991a85a3
+                  example: https://i.scdn.co/image/ab67616d00004851c586bce112747b06991a85a3
                 lg:
                   type:
                     - string
                     - 'null'
                   format: url
                   description: The large resolution image url.
-                  example: >-
-                    https://i.scdn.co/image/ab67616d00004851c586bce112747b06991a85a3
+                  example: https://i.scdn.co/image/ab67616d00004851c586bce112747b06991a85a3
               required:
                 - sm
                 - md

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.109.0
+  version: 2.110.0
   title: Network Module
   description: >-
     The Network module is designed for networks/denominations to manage the
@@ -22,8 +22,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/619-getting-started-with-the-network-module
+      url: https://support.churchsuite.com/article/619-getting-started-with-the-network-module
   - name: Custom Fields NE
     summary: Custom Fields
     parent: Network Module
@@ -34,8 +33,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/621-adding-custom-fields-for-organisations
+      url: https://support.churchsuite.com/article/621-adding-custom-fields-for-organisations
   - name: Key Dates NE
     summary: Key Dates
     parent: Network Module
@@ -46,8 +44,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/31-stay-on-top-of-your-church-member-key-dates
+      url: https://support.churchsuite.com/article/31-stay-on-top-of-your-church-member-key-dates
   - name: Labels NE
     summary: Labels
     parent: Network Module
@@ -58,8 +55,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/612-managing-organisations-with-labels
+      url: https://support.churchsuite.com/article/612-managing-organisations-with-labels
   - name: Members NE
     summary: Members
     parent: Network Module
@@ -68,8 +64,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/613-adding-people-to-organisations
+      url: https://support.churchsuite.com/article/613-adding-people-to-organisations
   - name: Organisations
     parent: Network Module
     description: >-
@@ -88,8 +83,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/614-assigning-roles-within-organisations
+      url: https://support.churchsuite.com/article/614-assigning-roles-within-organisations
 paths:
   /network/custom_fields/{id}:
     parameters:

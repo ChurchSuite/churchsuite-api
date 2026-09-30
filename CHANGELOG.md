@@ -5,6 +5,12 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.110.0] - 2026-09-29
+
+### Added
+
+- Added an `order_by` query parameter to the GET `giving/donations` endpoint
+
 ## [2.109.0] - 2026-09-29
 
 - Added an `order_by` query parameter to the GET `smallgroups/groups` endpoint, allowing the results to be sorted by the specified fields.

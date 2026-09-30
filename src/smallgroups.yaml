@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.109.0
+  version: 2.110.0
   title: Small Groups Module
   description: >-
     This module enables you to manage all data relating to small groups. Access
@@ -24,8 +24,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/537-getting-started-with-the-small-groups-module
+      url: https://support.churchsuite.com/article/537-getting-started-with-the-small-groups-module
   - name: Attendance
     parent: Small Groups Module
     description: >-
@@ -44,8 +43,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/211-managing-small-group-oversight-with-clusters
+      url: https://support.churchsuite.com/article/211-managing-small-group-oversight-with-clusters
   - name: Custom Fields SG
     summary: Custom Fields
     parent: Small Groups Module
@@ -56,8 +54,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/546-custom-fields-for-small-groups
+      url: https://support.churchsuite.com/article/546-custom-fields-for-small-groups
   - name: Groups SG
     summary: Groups
     parent: Small Groups Module
@@ -97,8 +94,7 @@ tags:
       description: >-
         Explore our large database of online support articles for step-by-step
         help.
-      url: >-
-        https://support.churchsuite.com/article/342-assigning-roles-within-your-small-groups
+      url: https://support.churchsuite.com/article/342-assigning-roles-within-your-small-groups
 paths:
   /smallgroups/attendances:
     get:
@@ -2184,8 +2180,7 @@ components:
               type: string
               format: url
               description: The thumbnail Image url. Thumbnail images are 128x128px.
-              example: >-
-                https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_thumb.jpg
+              example: https://cdn.churchsuite.com/abcdefgh/smallgroups/groups/x_thumb.jpg
             small:
               type: string
               format: url
