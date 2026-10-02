@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.110.0
+  version: 2.112.0
   title: Bookings Module
   description: >-
     The Bookings module enables you to manage the booking of resources,
@@ -321,7 +321,7 @@ paths:
   /bookings/bookings:
     get:
       summary: List bookings
-      description: Returns a list of bookings, sorted alphabetically start date.
+      description: Returns a list of bookings.
       operationId: list_bookings
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -407,6 +407,35 @@ paths:
             description: A string to query by
             example: '2024-04-12'
             minLength: 1
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Start date, earliest first
+              date:desc: Start date, latest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       security:
         - oauth_token:
             - full_access
@@ -1709,6 +1738,31 @@ paths:
             description: A string to query by
             example: suppliers
             minLength: 1
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name (A to Z)
+              name:desc: Name (Z to A)
       security:
         - oauth_token:
             - full_access

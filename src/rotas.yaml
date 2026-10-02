@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.110.0
+  version: 2.112.0
   title: Rotas Module
   description: >-
     The Rotas module enables churches and other organisations to manage all
@@ -411,7 +411,7 @@ paths:
   /rotas/unavailability:
     get:
       summary: List unavailability
-      description: Returns a list of unavailability, sorted by date created.
+      description: Returns a list of unavailability.
       operationId: list_unavailability
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -463,6 +463,31 @@ paths:
             type: string
             format: date
             example: '2026-08-01'
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: created_at:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Start date, earliest first
+              date:desc: Start date, latest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
       security:
         - oauth_token:
             - full_access

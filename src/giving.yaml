@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.110.0
+  version: 2.112.0
   title: Giving Module
   description: >-
     This module is designed to help manage the donations you receive and the
@@ -260,6 +260,33 @@ paths:
                 - future
             default:
               - active
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: id:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Start date, earliest to latest
+              date:desc: >-
+                End date (null first, then latest to earliest), then start date
+                (latest to earliest)
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       responses:
@@ -1938,6 +1965,31 @@ paths:
             type: string
             example: supporters
             minLength: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name (A to Z)
+              name:desc: Name (Z to A)
       responses:
         '200':
           description: OK Success

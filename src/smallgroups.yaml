@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.110.0
+  version: 2.112.0
   title: Small Groups Module
   description: >-
     This module enables you to manage all data relating to small groups. Access
@@ -748,6 +748,71 @@ paths:
           $ref: '#/components/responses/429'
       tags:
         - Labels SG
+    delete:
+      summary: Delete a label
+      description: >-
+        Delete a single label identified by ID. Label responses will be deleted
+        from all groups. Module settings that reference this label will be
+        affected. Embedded lists or maps of groups may be affected.
+      operationId: delete_smallgroups_label
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - smallgroups.write
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - SG Labels
+    put:
+      summary: Update a label
+      description: Update a single label identified by ID.
+      operationId: edit_smallgroups_label
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelEdit'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - smallgroups.write
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                required:
+                  - data
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - SG Labels
   /smallgroups/labels:
     get:
       summary: List labels
@@ -799,6 +864,46 @@ paths:
           $ref: '#/components/responses/429'
       tags:
         - Labels SG
+    post:
+      summary: Create a label
+      description: Create a label with the provided settings.
+      operationId: create_smallgroups_label
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelAdd'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - smallgroups.write
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                required:
+                  - data
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - SG Labels
   /smallgroups/label_resources:
     get:
       summary: List label resources
@@ -2369,6 +2474,86 @@ components:
         - created_by
         - modified_at
         - modified_by
+      additionalProperties: false
+    LabelAdd:
+      type: object
+      description: A Label.
+      properties:
+        name:
+          type: string
+          description: The Label's name.
+          example: Mission Priorities
+          maxLength: 50
+          minLength: 1
+        colour:
+          type: string
+          description: The Label's colour.
+          example: blue
+          enum:
+            - blue
+            - red
+            - orange
+            - green
+            - purple
+            - pink
+            - brown
+            - grey
+        options:
+          type: array
+          description: List of options that belong to the Label.
+          example:
+            - Option 1
+            - Option 2
+          items:
+            type: string
+            description: A single option of the Label.
+            example: Option 1
+        multiple_responses:
+          type: boolean
+          description: Whether the Label can have multiple responses.
+          example: true
+        required:
+          type: boolean
+          description: Whether the Label is required.
+          example: true
+      required:
+        - name
+        - colour
+        - options
+        - multiple_responses
+        - required
+      additionalProperties: false
+    LabelEdit:
+      type: object
+      description: A Label.
+      properties:
+        name:
+          type: string
+          description: The Label's name.
+          example: Mission Priorities
+          maxLength: 50
+          minLength: 1
+        colour:
+          type: string
+          description: The Label's colour.
+          example: blue
+          enum:
+            - blue
+            - red
+            - orange
+            - green
+            - purple
+            - pink
+            - brown
+            - grey
+        multiple_responses:
+          type: boolean
+          description: Whether the Label can have multiple responses.
+          example: true
+        required:
+          type: boolean
+          description: Whether the Label is required.
+          example: true
       additionalProperties: false
     LabelResource:
       type: object

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.110.0
+  version: 2.112.0
   title: Planning Module
   description: >-
     The Planning module enables organisations/churches to produce plans for
@@ -343,7 +343,7 @@ paths:
   /planning/plans:
     get:
       summary: List plans
-      description: Returns a list of plans, sorted by date and time.
+      description: Returns a list of plans.
       operationId: list_plans
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -383,6 +383,35 @@ paths:
             enum:
               - draft
               - published
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: date:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Date and start time, earliest first
+              date:desc: Date and start time, latest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       security:
         - oauth_token:
             - full_access
@@ -461,7 +490,7 @@ paths:
   /planning/plan_items:
     get:
       summary: List plan items
-      description: Returns a list of plan items, sorted by ID.
+      description: Returns a list of plan items.
       operationId: list_plan_items
       parameters:
         - in: query
@@ -476,6 +505,35 @@ paths:
               format: int32
               minimum: 1
           required: true
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: id:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+              - order:asc
+              - order:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
+              order:asc: Order (lowest first) then date modified (newest first)
+              order:desc: Order (highest first) then date modified (oldest first)
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       security:

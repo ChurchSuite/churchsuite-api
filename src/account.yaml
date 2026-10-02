@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.110.0
+  version: 2.112.0
   title: Account Data
   description: >-
     Access account-level configuration data about account. The data available
@@ -550,7 +550,70 @@ components:
           type: boolean
           example: true
         billing_address:
-          $ref: '#/components/schemas/Site/properties/address'
+          description: A street Address.
+          type:
+            - object
+            - 'null'
+          additionalProperties: false
+          properties:
+            line_1:
+              description: The first line of the Address
+              type: string
+              example: Floor 2
+            line_2:
+              description: The second line of the Address
+              type: string
+              example: 1 Broadway
+            line_3:
+              description: The third line of the Address
+              type:
+                - string
+                - 'null'
+              example: Lace Market
+            city:
+              description: The city of the Address
+              type: string
+              example: Nottingham
+            county:
+              description: The county of the Address
+              type: string
+              example: Nottinghamshire
+            country:
+              description: The country of the Address, in ISO3166 alpha 2 format
+              type:
+                - string
+                - 'null'
+              example: GB
+              maxLength: 2
+              minLength: 2
+            postcode:
+              description: The postcode of the Address
+              type: string
+              example: NG1 1PR
+            latitude:
+              description: The latitude of the Address, to 6 decimal places
+              type:
+                - number
+                - 'null'
+              format: float
+              example: 52.952089
+            longitude:
+              description: The longitude of the Address, to 6 decimal places
+              type:
+                - number
+                - 'null'
+              format: float
+              example: -1.1448
+          required:
+            - line_1
+            - line_2
+            - line_3
+            - city
+            - county
+            - country
+            - postcode
+            - latitude
+            - longitude
         billing_region:
           description: The region for the billing of your Account.
           type: string
@@ -954,70 +1017,7 @@ components:
           type: integer
           example: 1
         address:
-          description: A street Address.
-          type:
-            - object
-            - 'null'
-          additionalProperties: false
-          properties:
-            line_1:
-              description: The first line of the Address
-              type: string
-              example: Floor 2
-            line_2:
-              description: The second line of the Address
-              type: string
-              example: 1 Broadway
-            line_3:
-              description: The third line of the Address
-              type:
-                - string
-                - 'null'
-              example: Lace Market
-            city:
-              description: The city of the Address
-              type: string
-              example: Nottingham
-            county:
-              description: The county of the Address
-              type: string
-              example: Nottinghamshire
-            country:
-              description: The country of the Address, in ISO3166 alpha 2 format
-              type:
-                - string
-                - 'null'
-              example: GB
-              maxLength: 2
-              minLength: 2
-            postcode:
-              description: The postcode of the Address
-              type: string
-              example: NG1 1PR
-            latitude:
-              description: The latitude of the Address, to 6 decimal places
-              type:
-                - number
-                - 'null'
-              format: float
-              example: 52.952089
-            longitude:
-              description: The longitude of the Address, to 6 decimal places
-              type:
-                - number
-                - 'null'
-              format: float
-              example: -1.1448
-          required:
-            - line_1
-            - line_2
-            - line_3
-            - city
-            - county
-            - country
-            - postcode
-            - latitude
-            - longitude
+          $ref: '#/components/schemas/Account/properties/billing_address'
         created_at:
           description: Date and time the Site was created.
           type:

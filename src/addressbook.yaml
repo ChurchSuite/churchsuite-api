@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.110.0
+  version: 2.112.0
   title: Address Book Module
   description: >-
     The Address Book module manages all adult contacts associated with your
@@ -1487,6 +1487,31 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: date:desc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Date (earliest to latest), then key date ID (lowest first)
+              date:desc: Date (latest to earliest), then key date ID (highest first)
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
       security:
         - oauth_token:
             - full_access
@@ -1677,7 +1702,7 @@ paths:
   /addressbook/key_dates:
     get:
       summary: List key dates
-      description: Returns a list of key dates, sorted alphabetically by name.
+      description: Returns a list of key dates.
       operationId: list_addressbook_key_dates
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -1692,6 +1717,31 @@ paths:
             description: A URL encoded string.
             example: Joined
             minLength: 1
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       security:
         - oauth_token:
             - full_access
@@ -1906,6 +1956,31 @@ paths:
             description: A string to query by
             example: leaders
             minLength: 1
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name (A to Z)
+              name:desc: Name (Z to A)
       security:
         - oauth_token:
             - full_access
@@ -2740,24 +2815,7 @@ components:
             - granted_by
           additionalProperties: false
         login:
-          $comment: This can currently be used for both reading and writing
-          type: object
-          description: My ChurchSuite/CharitySuite login information.
-          properties:
-            enabled:
-              type: boolean
-              description: Whether the person is able to log into My.
-              example: false
-            invited:
-              $comment: Readonly because this is never changed directly by the user
-              type: boolean
-              description: Whether the person has been invited to create a My account.
-              readOnly: true
-              example: true
-          required:
-            - enabled
-            - invited
-          additionalProperties: false
+          $ref: '#/components/schemas/ContactAdd/properties/login'
         privacy:
           type: object
           description: The Contact's privacy settings.
@@ -3262,7 +3320,24 @@ components:
             - rota_sms
           additionalProperties: false
         login:
-          $ref: '#/components/schemas/Contact/properties/login'
+          $comment: This can currently be used for both reading and writing
+          type: object
+          description: My ChurchSuite/CharitySuite login information.
+          properties:
+            enabled:
+              type: boolean
+              description: Whether the person is able to log into My.
+              example: false
+            invited:
+              $comment: Readonly because this is never changed directly by the user
+              type: boolean
+              description: Whether the person has been invited to create a My account.
+              readOnly: true
+              example: true
+          required:
+            - enabled
+            - invited
+          additionalProperties: false
         privacy:
           type: object
           description: >-
@@ -3542,7 +3617,7 @@ components:
             - rota_sms
           additionalProperties: false
         login:
-          $ref: '#/components/schemas/Contact/properties/login'
+          $ref: '#/components/schemas/ContactAdd/properties/login'
         privacy:
           type: object
           description: Edit the Contact's privacy settings

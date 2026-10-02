@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.110.0
+  version: 2.112.0
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -1852,6 +1852,31 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: date:desc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Date (earliest to latest), then key date ID (lowest first)
+              date:desc: Date (latest to earliest), then key date ID (highest first)
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
       responses:
         '200':
           description: OK Success
@@ -2043,7 +2068,7 @@ paths:
     get:
       operationId: list_addressbook_key_dates
       summary: List key dates
-      description: Returns a list of key dates, sorted alphabetically by name.
+      description: Returns a list of key dates.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -2057,6 +2082,31 @@ paths:
             type: string
             example: Joined
             minLength: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       responses:
         '200':
           description: OK Success
@@ -2271,6 +2321,31 @@ paths:
             type: string
             example: leaders
             minLength: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name (A to Z)
+              name:desc: Name (Z to A)
       responses:
         '200':
           description: OK Success
@@ -3300,7 +3375,7 @@ paths:
     get:
       operationId: list_bookings
       summary: List bookings
-      description: Returns a list of bookings, sorted alphabetically start date.
+      description: Returns a list of bookings.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -3385,6 +3460,35 @@ paths:
             type: string
             example: '2024-04-12'
             minLength: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Start date, earliest first
+              date:desc: Start date, latest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       responses:
         '200':
           description: OK Success
@@ -4687,6 +4791,31 @@ paths:
             type: string
             example: suppliers
             minLength: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name (A to Z)
+              name:desc: Name (Z to A)
       responses:
         '200':
           description: OK Success
@@ -5524,7 +5653,7 @@ paths:
     get:
       operationId: list_events
       summary: List events
-      description: Returns a list of events, sorted by starts_at date.
+      description: Returns a list of events.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -5583,6 +5712,35 @@ paths:
               - cancelled
               - confirmed
               - pending
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: date:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Start date and time (earliest first) then name (A to Z)
+              date:desc: Start date and time (latest first) then name (Z to A)
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       responses:
         '200':
           description: OK Success
@@ -6022,6 +6180,71 @@ paths:
             - calendar.read
       tags:
         - Labels CA
+    delete:
+      operationId: delete_calendar_label
+      summary: Delete a label
+      description: >-
+        Delete a single label identified by ID. Label responses will be deleted
+        from all events. Module settings that reference this label will be
+        affected. Embedded lists of events may be affected.
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - calendar.write
+      tags:
+        - CA Labels
+    put:
+      operationId: edit_calendar_label
+      summary: Update a label
+      description: Update a single label identified by ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelEdit'
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                additionalProperties: false
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - calendar.write
+      tags:
+        - CA Labels
   /calendar/labels:
     get:
       operationId: list_calendar_labels
@@ -6073,6 +6296,46 @@ paths:
             - calendar.read
       tags:
         - Labels CA
+    post:
+      operationId: create_calendar_label
+      summary: Create a label
+      description: Create a label with the provided settings.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelAdd'
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                additionalProperties: false
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - calendar.write
+      tags:
+        - CA Labels
   /calendar/label_resources:
     get:
       operationId: list_calendar_label_resources
@@ -8044,7 +8307,7 @@ paths:
     get:
       operationId: list_children_key_dates
       summary: List key dates
-      description: Returns a list of key dates, sorted alphabetically by name.
+      description: Returns a list of key dates.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -8058,6 +8321,31 @@ paths:
             type: string
             example: Joined
             minLength: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       responses:
         '200':
           description: OK Success
@@ -8254,6 +8542,31 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: date:desc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Date (earliest to latest), then key date ID (lowest first)
+              date:desc: Date (latest to earliest), then key date ID (highest first)
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
       responses:
         '200':
           description: OK Success
@@ -8514,6 +8827,31 @@ paths:
             type: string
             example: holiday club
             minLength: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name (A to Z)
+              name:desc: Name (Z to A)
       responses:
         '200':
           description: OK Success
@@ -9077,6 +9415,33 @@ paths:
                 - future
             default:
               - active
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: id:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Start date, earliest to latest
+              date:desc: >-
+                End date (null first, then latest to earliest), then start date
+                (latest to earliest)
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       responses:
@@ -10755,6 +11120,31 @@ paths:
             type: string
             example: supporters
             minLength: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name (A to Z)
+              name:desc: Name (Z to A)
       responses:
         '200':
           description: OK Success
@@ -11263,6 +11653,31 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: date:desc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Date (earliest to latest), then key date ID (lowest first)
+              date:desc: Date (latest to earliest), then key date ID (highest first)
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
       responses:
         '200':
           description: OK Success
@@ -11368,7 +11783,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/KeyDate'
+                    $ref: '#/components/schemas/KeyDate1'
                 additionalProperties: false
                 required:
                   - data
@@ -11428,7 +11843,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/KeyDate'
+                    $ref: '#/components/schemas/KeyDate1'
                 additionalProperties: false
                 required:
                   - data
@@ -11453,7 +11868,7 @@ paths:
     get:
       operationId: list_network_key_dates
       summary: List key dates
-      description: Returns a list of key dates, sorted alphabetically by name.
+      description: Returns a list of key dates.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -11467,6 +11882,31 @@ paths:
             type: string
             example: Joined
             minLength: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       responses:
         '200':
           description: OK Success
@@ -11478,7 +11918,7 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/KeyDate'
+                      $ref: '#/components/schemas/KeyDate1'
                   pagination:
                     $ref: '#/components/schemas/Pagination'
                 additionalProperties: false
@@ -11509,7 +11949,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/KeyDateAdd'
+              $ref: '#/components/schemas/KeyDateAdd1'
       responses:
         '201':
           description: OK Success
@@ -11519,7 +11959,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/KeyDate'
+                    $ref: '#/components/schemas/KeyDate1'
                 additionalProperties: false
                 required:
                   - data
@@ -11597,6 +12037,71 @@ paths:
             - network.read
       tags:
         - Labels NE
+    delete:
+      operationId: delete_network_label
+      summary: Delete a label
+      description: >-
+        Delete a single label identified by ID. Label responses will be deleted
+        from all organisations. Module settings that reference this label will
+        be affected. Embedded lists or maps of organisations may be affected.
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - network.write
+      tags:
+        - NE Labels
+    put:
+      operationId: edit_network_label
+      summary: Update a label
+      description: Update a single label identified by ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelEdit'
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                additionalProperties: false
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - network.write
+      tags:
+        - NE Labels
   /network/labels:
     get:
       operationId: list_network_labels
@@ -11648,6 +12153,46 @@ paths:
             - network.read
       tags:
         - Labels NE
+    post:
+      operationId: create_network_label
+      summary: Create a label
+      description: Create a label with the provided settings.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelAdd'
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                additionalProperties: false
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - network.write
+      tags:
+        - NE Labels
   /network/label_resources:
     get:
       operationId: list_network_label_resources
@@ -11867,7 +12412,7 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Note2'
+                      $ref: '#/components/schemas/Note'
                 additionalProperties: false
                 required:
                   - data
@@ -11897,7 +12442,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NoteAdd2'
+              $ref: '#/components/schemas/NoteAdd'
       responses:
         '201':
           description: OK Success
@@ -11907,7 +12452,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Note2'
+                    $ref: '#/components/schemas/Note'
                 additionalProperties: false
                 required:
                   - data
@@ -11932,7 +12477,7 @@ paths:
     get:
       operationId: list_organisations
       summary: List organisations
-      description: Returns a list of organisation, sorted alphabetically by name.
+      description: Returns a list of organisations.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -11957,6 +12502,31 @@ paths:
             enum:
               - active
               - archived
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       responses:
         '200':
           description: OK Success
@@ -12265,7 +12835,7 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Note3'
+                      $ref: '#/components/schemas/Note2'
                 additionalProperties: false
                 required:
                   - data
@@ -12295,7 +12865,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NoteAdd3'
+              $ref: '#/components/schemas/NoteAdd2'
       responses:
         '201':
           description: OK Success
@@ -12305,7 +12875,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Note3'
+                    $ref: '#/components/schemas/Note2'
                 additionalProperties: false
                 required:
                   - data
@@ -12330,7 +12900,7 @@ paths:
     get:
       operationId: list_plans
       summary: List plans
-      description: Returns a list of plans, sorted by date and time.
+      description: Returns a list of plans.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -12369,6 +12939,35 @@ paths:
             enum:
               - draft
               - published
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: date:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Date and start time, earliest first
+              date:desc: Date and start time, latest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       responses:
         '200':
           description: OK Success
@@ -12448,7 +13047,7 @@ paths:
     get:
       operationId: list_plan_items
       summary: List plan items
-      description: Returns a list of plan items, sorted by ID.
+      description: Returns a list of plan items.
       parameters:
         - name: plan_ids[]
           in: query
@@ -12462,6 +13061,35 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: id:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+              - order:asc
+              - order:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
+              order:asc: Order (lowest first) then date modified (newest first)
+              order:desc: Order (highest first) then date modified (oldest first)
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       responses:
@@ -13404,7 +14032,7 @@ paths:
     get:
       operationId: list_unavailability
       summary: List unavailability
-      description: Returns a list of unavailability, sorted by date created.
+      description: Returns a list of unavailability.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -13455,6 +14083,31 @@ paths:
             type: string
             format: date
             example: '2026-08-01'
+        - name: order_by
+          in: query
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: created_at:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Start date, earliest first
+              date:desc: Start date, latest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
       responses:
         '200':
           description: OK Success
@@ -14010,7 +14663,7 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Note4'
+                      $ref: '#/components/schemas/Note3'
                 additionalProperties: false
                 required:
                   - data
@@ -14040,7 +14693,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NoteAdd4'
+              $ref: '#/components/schemas/NoteAdd3'
       responses:
         '201':
           description: OK Success
@@ -14050,7 +14703,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Note4'
+                    $ref: '#/components/schemas/Note3'
                 additionalProperties: false
                 required:
                   - data
@@ -14243,6 +14896,71 @@ paths:
             - smallgroups.read
       tags:
         - Labels SG
+    delete:
+      operationId: delete_smallgroups_label
+      summary: Delete a label
+      description: >-
+        Delete a single label identified by ID. Label responses will be deleted
+        from all groups. Module settings that reference this label will be
+        affected. Embedded lists or maps of groups may be affected.
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - smallgroups.write
+      tags:
+        - SG Labels
+    put:
+      operationId: edit_smallgroups_label
+      summary: Update a label
+      description: Update a single label identified by ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelEdit'
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                additionalProperties: false
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - smallgroups.write
+      tags:
+        - SG Labels
   /smallgroups/labels:
     get:
       operationId: list_smallgroups_labels
@@ -14294,6 +15012,46 @@ paths:
             - smallgroups.read
       tags:
         - Labels SG
+    post:
+      operationId: create_smallgroups_label
+      summary: Create a label
+      description: Create a label with the provided settings.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelAdd'
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                additionalProperties: false
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - smallgroups.write
+      tags:
+        - SG Labels
   /smallgroups/label_resources:
     get:
       operationId: list_smallgroups_label_resources
@@ -14909,7 +15667,70 @@ components:
           type: boolean
           example: true
         billing_address:
-          $ref: '#/components/schemas/Site/properties/address'
+          description: A street Address.
+          type:
+            - object
+            - 'null'
+          additionalProperties: false
+          properties:
+            line_1:
+              description: The first line of the Address
+              type: string
+              example: Floor 2
+            line_2:
+              description: The second line of the Address
+              type: string
+              example: 1 Broadway
+            line_3:
+              description: The third line of the Address
+              type:
+                - string
+                - 'null'
+              example: Lace Market
+            city:
+              description: The city of the Address
+              type: string
+              example: Nottingham
+            county:
+              description: The county of the Address
+              type: string
+              example: Nottinghamshire
+            country:
+              description: The country of the Address, in ISO3166 alpha 2 format
+              type:
+                - string
+                - 'null'
+              example: GB
+              maxLength: 2
+              minLength: 2
+            postcode:
+              description: The postcode of the Address
+              type: string
+              example: NG1 1PR
+            latitude:
+              description: The latitude of the Address, to 6 decimal places
+              type:
+                - number
+                - 'null'
+              format: float
+              example: 52.952089
+            longitude:
+              description: The longitude of the Address, to 6 decimal places
+              type:
+                - number
+                - 'null'
+              format: float
+              example: -1.1448
+          required:
+            - line_1
+            - line_2
+            - line_3
+            - city
+            - county
+            - country
+            - postcode
+            - latitude
+            - longitude
         billing_region:
           description: The region for the billing of your Account.
           type: string
@@ -15313,70 +16134,7 @@ components:
           type: integer
           example: 1
         address:
-          description: A street Address.
-          type:
-            - object
-            - 'null'
-          additionalProperties: false
-          properties:
-            line_1:
-              description: The first line of the Address
-              type: string
-              example: Floor 2
-            line_2:
-              description: The second line of the Address
-              type: string
-              example: 1 Broadway
-            line_3:
-              description: The third line of the Address
-              type:
-                - string
-                - 'null'
-              example: Lace Market
-            city:
-              description: The city of the Address
-              type: string
-              example: Nottingham
-            county:
-              description: The county of the Address
-              type: string
-              example: Nottinghamshire
-            country:
-              description: The country of the Address, in ISO3166 alpha 2 format
-              type:
-                - string
-                - 'null'
-              example: GB
-              maxLength: 2
-              minLength: 2
-            postcode:
-              description: The postcode of the Address
-              type: string
-              example: NG1 1PR
-            latitude:
-              description: The latitude of the Address, to 6 decimal places
-              type:
-                - number
-                - 'null'
-              format: float
-              example: 52.952089
-            longitude:
-              description: The longitude of the Address, to 6 decimal places
-              type:
-                - number
-                - 'null'
-              format: float
-              example: -1.1448
-          required:
-            - line_1
-            - line_2
-            - line_3
-            - city
-            - county
-            - country
-            - postcode
-            - latitude
-            - longitude
+          $ref: '#/components/schemas/Account/properties/billing_address'
         created_at:
           description: Date and time the Site was created.
           type:
@@ -16064,24 +16822,7 @@ components:
             - granted_at
             - granted_by
         login:
-          description: My ChurchSuite/CharitySuite login information.
-          type: object
-          $comment: This can currently be used for both reading and writing
-          additionalProperties: false
-          properties:
-            enabled:
-              description: Whether the person is able to log into My.
-              type: boolean
-              example: false
-            invited:
-              description: Whether the person has been invited to create a My account.
-              type: boolean
-              example: true
-              $comment: Readonly because this is never changed directly by the user
-              readOnly: true
-          required:
-            - enabled
-            - invited
+          $ref: '#/components/schemas/ContactAdd/properties/login'
         privacy:
           description: The Contact's privacy settings.
           type: object
@@ -16586,7 +17327,24 @@ components:
             - rota_email
             - rota_sms
         login:
-          $ref: '#/components/schemas/Contact/properties/login'
+          description: My ChurchSuite/CharitySuite login information.
+          type: object
+          $comment: This can currently be used for both reading and writing
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether the person is able to log into My.
+              type: boolean
+              example: false
+            invited:
+              description: Whether the person has been invited to create a My account.
+              type: boolean
+              example: true
+              $comment: Readonly because this is never changed directly by the user
+              readOnly: true
+          required:
+            - enabled
+            - invited
         privacy:
           description: >-
             Add the Contact's privacy settings. If no data is provided, the
@@ -16865,7 +17623,7 @@ components:
             - rota_email
             - rota_sms
         login:
-          $ref: '#/components/schemas/Contact/properties/login'
+          $ref: '#/components/schemas/ContactAdd/properties/login'
         privacy:
           description: Edit the Contact's privacy settings
           type: object
@@ -18097,7 +18855,7 @@ components:
             - brown
             - grey
         visible_to:
-          $ref: '#/components/schemas/Note/properties/visible_to'
+          $ref: '#/components/schemas/Tag/properties/visible_to'
         created_at:
           description: Date and time the Key Date was created.
           type:
@@ -18158,7 +18916,7 @@ components:
             - brown
             - grey
         visible_to:
-          $ref: '#/components/schemas/NoteAdd/properties/visible_to'
+          $ref: '#/components/schemas/TagAdd/properties/visible_to'
       additionalProperties: false
       required:
         - name
@@ -18369,7 +19127,7 @@ components:
           type: boolean
           example: true
         visible_to:
-          $ref: '#/components/schemas/Tag/properties/visible_to'
+          $ref: '#/components/schemas/KeyDate/properties/visible_to'
         created_at:
           description: Date and time the Note was created.
           type:
@@ -18425,7 +19183,7 @@ components:
           example: true
           default: false
         visible_to:
-          $ref: '#/components/schemas/TagAdd/properties/visible_to'
+          $ref: '#/components/schemas/KeyDateAdd/properties/visible_to'
       additionalProperties: false
       required:
         - content
@@ -21296,6 +22054,86 @@ components:
         - created_by
         - modified_at
         - modified_by
+    LabelAdd:
+      description: A Label.
+      type: object
+      properties:
+        name:
+          description: The Label's name.
+          type: string
+          example: Mission Priorities
+          maxLength: 50
+          minLength: 1
+        colour:
+          description: The Label's colour.
+          type: string
+          example: blue
+          enum:
+            - blue
+            - red
+            - orange
+            - green
+            - purple
+            - pink
+            - brown
+            - grey
+        options:
+          description: List of options that belong to the Label.
+          type: array
+          items:
+            type: string
+            description: A single option of the Label.
+            example: Option 1
+          example:
+            - Option 1
+            - Option 2
+        multiple_responses:
+          description: Whether the Label can have multiple responses.
+          type: boolean
+          example: true
+        required:
+          description: Whether the Label is required.
+          type: boolean
+          example: true
+      additionalProperties: false
+      required:
+        - name
+        - colour
+        - options
+        - multiple_responses
+        - required
+    LabelEdit:
+      description: A Label.
+      type: object
+      properties:
+        name:
+          description: The Label's name.
+          type: string
+          example: Mission Priorities
+          maxLength: 50
+          minLength: 1
+        colour:
+          description: The Label's colour.
+          type: string
+          example: blue
+          enum:
+            - blue
+            - red
+            - orange
+            - green
+            - purple
+            - pink
+            - brown
+            - grey
+        multiple_responses:
+          description: Whether the Label can have multiple responses.
+          type: boolean
+          example: true
+        required:
+          description: Whether the Label is required.
+          type: boolean
+          example: true
+      additionalProperties: false
     LabelResource:
       description: A single Label Resource - an instance of a Label for a specific model
       type: object
@@ -22823,24 +23661,7 @@ components:
             - 5
             - 10
         login:
-          description: My ChurchSuite/CharitySuite login information.
-          type: object
-          $comment: This can currently be used for both reading and writing
-          additionalProperties: false
-          properties:
-            enabled:
-              description: Whether the person is able to log into My.
-              type: boolean
-              example: false
-            invited:
-              description: Whether the person has been invited to create a My account.
-              type: boolean
-              example: true
-              $comment: Readonly because this is never changed directly by the user
-              readOnly: true
-          required:
-            - enabled
-            - invited
+          $ref: '#/components/schemas/ChildAdd/properties/login'
         privacy:
           description: The Child's privacy settings.
           type: object
@@ -23315,7 +24136,24 @@ components:
           maxLength: 250
           minLength: 1
         login:
-          $ref: '#/components/schemas/Child/properties/login'
+          description: My ChurchSuite/CharitySuite login information.
+          type: object
+          $comment: This can currently be used for both reading and writing
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether the person is able to log into My.
+              type: boolean
+              example: false
+            invited:
+              description: Whether the person has been invited to create a My account.
+              type: boolean
+              example: true
+              $comment: Readonly because this is never changed directly by the user
+              readOnly: true
+          required:
+            - enabled
+            - invited
         privacy:
           description: >-
             The Child's privacy settings. If no data is provided, the default
@@ -23572,7 +24410,7 @@ components:
           maxLength: 250
           minLength: 0
         login:
-          $ref: '#/components/schemas/Child/properties/login'
+          $ref: '#/components/schemas/ChildAdd/properties/login'
         privacy:
           description: The Child's privacy settings
           type: object
@@ -26166,6 +27004,154 @@ components:
       required:
         - person
         - tag_id
+    KeyDate1:
+      description: Key Date data, as found in several modules.
+      type: object
+      properties:
+        id:
+          description: The Key Date's ID.
+          type: integer
+          example: 15
+          minimum: 1
+        name:
+          description: The Key Date's name.
+          type: string
+          example: Joined Kings Hope Church
+        colour:
+          description: The Key Date's colour.
+          type: string
+          example: blue
+          enum:
+            - blue
+            - red
+            - orange
+            - green
+            - purple
+            - pink
+            - brown
+            - grey
+        visible_to:
+          description: >-
+            Who the resource is visible to, or null if there are no
+            restrictions.
+          type:
+            - object
+            - 'null'
+          additionalProperties: false
+          properties:
+            just_me:
+              description: Whether the resource is visible to just the current user or not.
+              type: boolean
+              example: false
+            user_group_ids:
+              description: List of user group IDs the resource is visible to.
+              type: array
+              items:
+                type: integer
+                minimum: 1
+              example:
+                - 1
+                - 5
+                - 10
+          required:
+            - just_me
+            - user_group_ids
+        created_at:
+          description: Date and time the Key Date was created.
+          type:
+            - string
+            - 'null'
+          format: date-time
+          example: '2014-04-25T10:10:32Z'
+        created_by:
+          description: The user who created the Key Date.
+          type:
+            - string
+            - 'null'
+          example: jennie
+        modified_at:
+          description: Date and time the Key Date was last modified.
+          type:
+            - string
+            - 'null'
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        modified_by:
+          description: The user who last modified the Key Date.
+          type:
+            - string
+            - 'null'
+          example: caroline
+      additionalProperties: false
+      required:
+        - id
+        - name
+        - colour
+        - visible_to
+        - created_at
+        - created_by
+        - modified_at
+        - modified_by
+    KeyDateAdd1:
+      description: A Key Date.
+      type: object
+      properties:
+        name:
+          description: The Key Date's name.
+          type: string
+          example: Joined Kings Hope Church
+          maxLength: 50
+          minLength: 1
+        colour:
+          description: The Key Date's colour.
+          type: string
+          example: blue
+          enum:
+            - blue
+            - red
+            - orange
+            - green
+            - purple
+            - pink
+            - brown
+            - grey
+        visible_to:
+          oneOf:
+            - type: object
+              description: >-
+                Who the resource is visible to. Do not include in the request if
+                there are no restrictions. If included in the request, only one
+                of `just_me` or `user_group_ids` can be set.
+              properties:
+                just_me:
+                  description: The resource should only be visible to the current user
+                  type: boolean
+                  example: true
+                  enum:
+                    - true
+              additionalProperties: false
+            - type: object
+              description: >-
+                Who the resource is visible to, or null if there are no
+                restrictions.
+              properties:
+                user_group_ids:
+                  description: >-
+                    List of user group IDs the resource is visible to. You are
+                    only able to add user group IDs for user groups you have
+                    access to.
+                  type: array
+                  items:
+                    type: integer
+                    minimum: 1
+                  example:
+                    - 13
+                    - 31
+              additionalProperties: false
+      additionalProperties: false
+      required:
+        - name
+        - colour
     KeyDateEdit1:
       description: A Key Date data.
       type: object
@@ -26310,140 +27296,6 @@ components:
         - created_by
         - modified_at
         - modified_by
-    Note2:
-      description: A single Note, as found in multiple modules.
-      type: object
-      properties:
-        id:
-          description: The ID of the Note.
-          type: integer
-          example: 1
-          minimum: 1
-          readOnly: true
-        content:
-          description: The content of the Note.
-          example: Had a conversation about this on 12th of July.
-          type: string
-        pinned:
-          description: Whether the Note has been pinned.
-          type: boolean
-          example: true
-        visible_to:
-          description: >-
-            Who the resource is visible to, or null if there are no
-            restrictions.
-          type:
-            - object
-            - 'null'
-          additionalProperties: false
-          properties:
-            just_me:
-              description: Whether the resource is visible to just the current user or not.
-              type: boolean
-              example: false
-            user_group_ids:
-              description: List of user group IDs the resource is visible to.
-              type: array
-              items:
-                type: integer
-                minimum: 1
-              example:
-                - 1
-                - 5
-                - 10
-          required:
-            - just_me
-            - user_group_ids
-        created_at:
-          description: Date and time the Note was created.
-          type:
-            - string
-            - 'null'
-          format: date-time
-          example: '2014-04-25T10:10:32Z'
-          readOnly: true
-        created_by:
-          description: The user who created the Note.
-          type:
-            - string
-            - 'null'
-          example: neil
-          readOnly: true
-        modified_at:
-          description: Date and time the Note was last modified.
-          type:
-            - string
-            - 'null'
-          format: date-time
-          example: '2023-09-19T14:52:40Z'
-          readOnly: true
-        modified_by:
-          description: The user who last modified the Note.
-          type:
-            - string
-            - 'null'
-          example: anthony
-          readOnly: true
-      additionalProperties: false
-      required:
-        - id
-        - content
-        - pinned
-        - visible_to
-        - created_at
-        - created_by
-        - modified_at
-        - modified_by
-    NoteAdd2:
-      type: object
-      properties:
-        content:
-          description: The content of the Note.
-          example: Had a conversation about this on 12th of July.
-          maxLength: 65535
-          minLength: 1
-          type: string
-        pinned:
-          description: Whether the Note should be pinned.
-          type: boolean
-          example: true
-          default: false
-        visible_to:
-          oneOf:
-            - type: object
-              description: >-
-                Who the resource is visible to. Do not include in the request if
-                there are no restrictions. If included in the request, only one
-                of `just_me` or `user_group_ids` can be set.
-              properties:
-                just_me:
-                  description: The resource should only be visible to the current user
-                  type: boolean
-                  example: true
-                  enum:
-                    - true
-              additionalProperties: false
-            - type: object
-              description: >-
-                Who the resource is visible to, or null if there are no
-                restrictions.
-              properties:
-                user_group_ids:
-                  description: >-
-                    List of user group IDs the resource is visible to. You are
-                    only able to add user group IDs for user groups you have
-                    access to.
-                  type: array
-                  items:
-                    type: integer
-                    minimum: 1
-                  example:
-                    - 13
-                    - 31
-              additionalProperties: false
-      additionalProperties: false
-      required:
-        - content
     Organisation:
       description: A single Organisation from the Network module.
       type: object
@@ -26829,7 +27681,7 @@ components:
         - created_by
         - modified_at
         - modified_by
-    Note3:
+    Note2:
       description: A single Note, as found in multiple modules.
       type: object
       properties:
@@ -26913,7 +27765,7 @@ components:
         - created_by
         - modified_at
         - modified_by
-    NoteAdd3:
+    NoteAdd2:
       type: object
       properties:
         content:
@@ -29612,7 +30464,7 @@ components:
         - joined_date
         - status
         - privacy
-    Note4:
+    Note3:
       description: A single Note, as found in multiple modules.
       type: object
       properties:
@@ -29696,7 +30548,7 @@ components:
         - created_by
         - modified_at
         - modified_by
-    NoteAdd4:
+    NoteAdd3:
       type: object
       properties:
         content:

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.110.0
+  version: 2.112.0
   title: Calendar Module
   description: Manage events, sign-ups and staff leave across your account.
   termsOfService: https://churchsuite.com/terms-of-service/
@@ -490,7 +490,7 @@ paths:
   /calendar/events:
     get:
       summary: List events
-      description: Returns a list of events, sorted by starts_at date.
+      description: Returns a list of events.
       operationId: list_events
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -550,6 +550,35 @@ paths:
               - confirmed
               - pending
             default: confirmed
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: date:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Start date and time (earliest first) then name (A to Z)
+              date:desc: Start date and time (latest first) then name (Z to A)
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       security:
         - oauth_token:
             - full_access
@@ -989,6 +1018,71 @@ paths:
           $ref: '#/components/responses/429'
       tags:
         - Labels CA
+    delete:
+      summary: Delete a label
+      description: >-
+        Delete a single label identified by ID. Label responses will be deleted
+        from all events. Module settings that reference this label will be
+        affected. Embedded lists of events may be affected.
+      operationId: delete_calendar_label
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - calendar.write
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - CA Labels
+    put:
+      summary: Update a label
+      description: Update a single label identified by ID.
+      operationId: edit_calendar_label
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelEdit'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - calendar.write
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                required:
+                  - data
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - CA Labels
   /calendar/labels:
     get:
       summary: List labels
@@ -1040,6 +1134,46 @@ paths:
           $ref: '#/components/responses/429'
       tags:
         - Labels CA
+    post:
+      summary: Create a label
+      description: Create a label with the provided settings.
+      operationId: create_calendar_label
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelAdd'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - calendar.write
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                required:
+                  - data
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - CA Labels
   /calendar/label_resources:
     get:
       summary: List label resources
@@ -2223,6 +2357,86 @@ components:
         - created_by
         - modified_at
         - modified_by
+      additionalProperties: false
+    LabelAdd:
+      type: object
+      description: A Label.
+      properties:
+        name:
+          type: string
+          description: The Label's name.
+          example: Mission Priorities
+          maxLength: 50
+          minLength: 1
+        colour:
+          type: string
+          description: The Label's colour.
+          example: blue
+          enum:
+            - blue
+            - red
+            - orange
+            - green
+            - purple
+            - pink
+            - brown
+            - grey
+        options:
+          type: array
+          description: List of options that belong to the Label.
+          example:
+            - Option 1
+            - Option 2
+          items:
+            type: string
+            description: A single option of the Label.
+            example: Option 1
+        multiple_responses:
+          type: boolean
+          description: Whether the Label can have multiple responses.
+          example: true
+        required:
+          type: boolean
+          description: Whether the Label is required.
+          example: true
+      required:
+        - name
+        - colour
+        - options
+        - multiple_responses
+        - required
+      additionalProperties: false
+    LabelEdit:
+      type: object
+      description: A Label.
+      properties:
+        name:
+          type: string
+          description: The Label's name.
+          example: Mission Priorities
+          maxLength: 50
+          minLength: 1
+        colour:
+          type: string
+          description: The Label's colour.
+          example: blue
+          enum:
+            - blue
+            - red
+            - orange
+            - green
+            - purple
+            - pink
+            - brown
+            - grey
+        multiple_responses:
+          type: boolean
+          description: Whether the Label can have multiple responses.
+          example: true
+        required:
+          type: boolean
+          description: Whether the Label is required.
+          example: true
       additionalProperties: false
     LabelResource:
       type: object

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.110.0
+  version: 2.112.0
   title: Network Module
   description: >-
     The Network module is designed for networks/denominations to manage the
@@ -276,6 +276,31 @@ paths:
               type: integer
               format: int32
               minimum: 1
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: date:desc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Date (earliest to latest), then key date ID (lowest first)
+              date:desc: Date (latest to earliest), then key date ID (highest first)
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
       security:
         - oauth_token:
             - full_access
@@ -465,7 +490,7 @@ paths:
   /network/key_dates:
     get:
       summary: List key dates
-      description: Returns a list of key dates, sorted alphabetically by name.
+      description: Returns a list of key dates.
       operationId: list_network_key_dates
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -480,6 +505,31 @@ paths:
             description: A URL encoded string.
             example: Joined
             minLength: 1
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       security:
         - oauth_token:
             - full_access
@@ -610,6 +660,71 @@ paths:
           $ref: '#/components/responses/429'
       tags:
         - Labels NE
+    delete:
+      summary: Delete a label
+      description: >-
+        Delete a single label identified by ID. Label responses will be deleted
+        from all organisations. Module settings that reference this label will
+        be affected. Embedded lists or maps of organisations may be affected.
+      operationId: delete_network_label
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - network.write
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - NE Labels
+    put:
+      summary: Update a label
+      description: Update a single label identified by ID.
+      operationId: edit_network_label
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelEdit'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - network.write
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                required:
+                  - data
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - NE Labels
   /network/labels:
     get:
       summary: List labels
@@ -661,6 +776,46 @@ paths:
           $ref: '#/components/responses/429'
       tags:
         - Labels NE
+    post:
+      summary: Create a label
+      description: Create a label with the provided settings.
+      operationId: create_network_label
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelAdd'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - network.write
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Label'
+                required:
+                  - data
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - NE Labels
   /network/label_resources:
     get:
       summary: List label resources
@@ -944,7 +1099,7 @@ paths:
   /network/organisations:
     get:
       summary: List organisations
-      description: Returns a list of organisation, sorted alphabetically by name.
+      description: Returns a list of organisations.
       operationId: list_organisations
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -970,6 +1125,31 @@ paths:
               - active
               - archived
             example: active
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: name:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
       security:
         - oauth_token:
             - full_access
@@ -1484,7 +1664,31 @@ components:
             - brown
             - grey
         visible_to:
-          $ref: '#/components/schemas/Note/properties/visible_to'
+          type:
+            - object
+            - 'null'
+          description: >-
+            Who the resource is visible to, or null if there are no
+            restrictions.
+          properties:
+            just_me:
+              type: boolean
+              description: Whether the resource is visible to just the current user or not.
+              example: false
+            user_group_ids:
+              type: array
+              description: List of user group IDs the resource is visible to.
+              example:
+                - 1
+                - 5
+                - 10
+              items:
+                type: integer
+                minimum: 1
+          required:
+            - just_me
+            - user_group_ids
+          additionalProperties: false
         created_at:
           type:
             - string
@@ -1545,7 +1749,38 @@ components:
             - brown
             - grey
         visible_to:
-          $ref: '#/components/schemas/NoteAdd/properties/visible_to'
+          oneOf:
+            - type: object
+              description: >-
+                Who the resource is visible to. Do not include in the request if
+                there are no restrictions. If included in the request, only one
+                of `just_me` or `user_group_ids` can be set.
+              properties:
+                just_me:
+                  type: boolean
+                  description: The resource should only be visible to the current user
+                  example: true
+                  enum:
+                    - true
+              additionalProperties: false
+            - type: object
+              description: >-
+                Who the resource is visible to, or null if there are no
+                restrictions.
+              properties:
+                user_group_ids:
+                  type: array
+                  description: >-
+                    List of user group IDs the resource is visible to. You are
+                    only able to add user group IDs for user groups you have
+                    access to.
+                  example:
+                    - 13
+                    - 31
+                  items:
+                    type: integer
+                    minimum: 1
+              additionalProperties: false
       required:
         - name
         - colour
@@ -1883,6 +2118,86 @@ components:
         - modified_at
         - modified_by
       additionalProperties: false
+    LabelAdd:
+      type: object
+      description: A Label.
+      properties:
+        name:
+          type: string
+          description: The Label's name.
+          example: Mission Priorities
+          maxLength: 50
+          minLength: 1
+        colour:
+          type: string
+          description: The Label's colour.
+          example: blue
+          enum:
+            - blue
+            - red
+            - orange
+            - green
+            - purple
+            - pink
+            - brown
+            - grey
+        options:
+          type: array
+          description: List of options that belong to the Label.
+          example:
+            - Option 1
+            - Option 2
+          items:
+            type: string
+            description: A single option of the Label.
+            example: Option 1
+        multiple_responses:
+          type: boolean
+          description: Whether the Label can have multiple responses.
+          example: true
+        required:
+          type: boolean
+          description: Whether the Label is required.
+          example: true
+      required:
+        - name
+        - colour
+        - options
+        - multiple_responses
+        - required
+      additionalProperties: false
+    LabelEdit:
+      type: object
+      description: A Label.
+      properties:
+        name:
+          type: string
+          description: The Label's name.
+          example: Mission Priorities
+          maxLength: 50
+          minLength: 1
+        colour:
+          type: string
+          description: The Label's colour.
+          example: blue
+          enum:
+            - blue
+            - red
+            - orange
+            - green
+            - purple
+            - pink
+            - brown
+            - grey
+        multiple_responses:
+          type: boolean
+          description: Whether the Label can have multiple responses.
+          example: true
+        required:
+          type: boolean
+          description: Whether the Label is required.
+          example: true
+      additionalProperties: false
     LabelResource:
       type: object
       description: A single Label Resource - an instance of a Label for a specific model
@@ -1999,31 +2314,7 @@ components:
           description: Whether the Note has been pinned.
           example: true
         visible_to:
-          type:
-            - object
-            - 'null'
-          description: >-
-            Who the resource is visible to, or null if there are no
-            restrictions.
-          properties:
-            just_me:
-              type: boolean
-              description: Whether the resource is visible to just the current user or not.
-              example: false
-            user_group_ids:
-              type: array
-              description: List of user group IDs the resource is visible to.
-              example:
-                - 1
-                - 5
-                - 10
-              items:
-                type: integer
-                minimum: 1
-          required:
-            - just_me
-            - user_group_ids
-          additionalProperties: false
+          $ref: '#/components/schemas/KeyDate/properties/visible_to'
         created_at:
           type:
             - string
@@ -2079,38 +2370,7 @@ components:
           example: true
           default: false
         visible_to:
-          oneOf:
-            - type: object
-              description: >-
-                Who the resource is visible to. Do not include in the request if
-                there are no restrictions. If included in the request, only one
-                of `just_me` or `user_group_ids` can be set.
-              properties:
-                just_me:
-                  type: boolean
-                  description: The resource should only be visible to the current user
-                  example: true
-                  enum:
-                    - true
-              additionalProperties: false
-            - type: object
-              description: >-
-                Who the resource is visible to, or null if there are no
-                restrictions.
-              properties:
-                user_group_ids:
-                  type: array
-                  description: >-
-                    List of user group IDs the resource is visible to. You are
-                    only able to add user group IDs for user groups you have
-                    access to.
-                  example:
-                    - 13
-                    - 31
-                  items:
-                    type: integer
-                    minimum: 1
-              additionalProperties: false
+          $ref: '#/components/schemas/KeyDateAdd/properties/visible_to'
       required:
         - content
       additionalProperties: false

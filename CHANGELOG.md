@@ -5,6 +5,29 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.112.0] - 2026-10-02
+
+### Added
+
+- Added an `order_by` query parameter to the GET `bookings/bookings` endpoint
+- Added an `order_by` query parameter to the GET `calendar/events` endpoint
+- Added an `order_by` query parameter to the GET `giving/declarations` endpoint
+- Added an `order_by` query parameter to the GET `network/organisations` endpoint
+- Added an `order_by` query parameter to the GET `planning/plans` endpoint
+- Added an `order_by` query parameter to the GET `planning/plan_items` endpoint
+- Added an `order_by` query parameter to the GET `rotas/unavailability` endpoint
+- Added an `order_by` query parameter to the GET `<module>/tags` endpoints in the Address Book, Bookings, Children and Giving modules.
+- Added an `order_by` query parameter to the GET `<module>/key_dates` endpoints in the Address Book, Children and Network modules.
+- Added an `order_by` query parameter to the GET `<module>/key_date_resources` endpoints in the Address Book, Children and Network modules.
+
+## [2.111.1] - 2026-10-02
+
+### Added
+
+- Added `<module>/labels` POST endpoints to create labels in the Calendar, Network and Small Groups modules
+- Added `<module>/labels/{id}` PUT endpoints to edit labels in the Calendar, Network and Small Groups modules
+- Added `<module>/labels/{id}` DELETE endpoints to delete labels in the Calendar, Network and Small Groups modules
+
 ## [2.110.0] - 2026-09-29
 
 ### Added
