@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.0
+  version: 2.112.1
   title: Address Book Module
   description: >-
     The Address Book module manages all adult contacts associated with your
@@ -909,7 +909,7 @@ paths:
     get:
       summary: Get a flow tracking
       description: >-
-        Retrieve a single flow tracking, linked to a person's process through a
+        Retrieve a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
       operationId: get_addressbook_flow_tracking
       security:
@@ -943,7 +943,7 @@ paths:
     put:
       summary: Update a flow tracking
       description: >-
-        Update a single flow tracking, linked to a person's process through a
+        Update a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
       operationId: edit_addressbook_flow_tracking
       requestBody:
@@ -985,7 +985,7 @@ paths:
     delete:
       summary: Delete a flow tracking
       description: >-
-        Delete a single flow tracking, linked to a person's process through a
+        Delete a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
       operationId: delete_addressbook_flow_tracking
       security:
@@ -1099,7 +1099,7 @@ paths:
     post:
       summary: Create a flow tracking
       description: >-
-        Create a flow tracking, linked to a person's process through a flow,
+        Create a flow tracking, linked to a person's progress through a flow,
         with the provided settings.
       operationId: create_addressbook_flow_tracking
       requestBody:

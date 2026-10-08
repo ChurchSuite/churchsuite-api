@@ -5,6 +5,12 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.112.1] - 2026-10-02
+
+### Fixed
+
+- Corrected references to "process" in favour of "progress" for `<module>\flow_trackings\{id}` GET, PUT, DELETE and `<module>\flow_trackings` POST endpoint descriptions in the Address Book, Bookings, Children and Giving modules, with no functional changes to the API.
+
 ## [2.112.0] - 2026-10-02
 
 ### Added

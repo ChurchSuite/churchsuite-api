@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.0
+  version: 2.112.1
   title: Bookings Module
   description: >-
     The Bookings module enables you to manage the booking of resources,
@@ -1180,7 +1180,7 @@ paths:
     get:
       summary: Get a flow tracking
       description: >-
-        Retrieve a single flow tracking, linked to a person's process through a
+        Retrieve a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
       operationId: get_bookings_flow_tracking
       security:
@@ -1214,7 +1214,7 @@ paths:
     put:
       summary: Update a flow tracking
       description: >-
-        Update a single flow tracking, linked to a person's process through a
+        Update a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
       operationId: edit_bookings_flow_tracking
       security:
@@ -1256,7 +1256,7 @@ paths:
     delete:
       summary: Delete a flow tracking
       description: >-
-        Delete a single flow tracking, linked to a person's process through a
+        Delete a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
       operationId: delete_bookings_flow_tracking
       security:
@@ -1370,7 +1370,7 @@ paths:
     post:
       summary: Create a flow tracking
       description: >-
-        Create a flow tracking, linked to a person's process through a flow,
+        Create a flow tracking, linked to a person's progress through a flow,
         with the provided settings.
       operationId: create_bookings_flow_tracking
       requestBody:

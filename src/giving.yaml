@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.0
+  version: 2.112.1
   title: Giving Module
   description: >-
     This module is designed to help manage the donations you receive and the
@@ -853,7 +853,7 @@ paths:
       operationId: get_giving_flow_tracking
       summary: Get a flow tracking
       description: >-
-        Retrieve a single flow tracking, linked to a person's process through a
+        Retrieve a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
       responses:
         '200':
@@ -887,7 +887,7 @@ paths:
       operationId: edit_giving_flow_tracking
       summary: Update a flow tracking
       description: >-
-        Update a single flow tracking, linked to a person's process through a
+        Update a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
       requestBody:
         required: true
@@ -929,7 +929,7 @@ paths:
       operationId: delete_giving_flow_tracking
       summary: Delete a flow tracking
       description: >-
-        Delete a single flow tracking, linked to a person's process through a
+        Delete a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
       responses:
         '204':
@@ -1043,7 +1043,7 @@ paths:
       operationId: create_giving_flow_tracking
       summary: Create a flow tracking
       description: >-
-        Create a flow tracking, linked to a person's process through a flow,
+        Create a flow tracking, linked to a person's progress through a flow,
         with the provided settings.
       requestBody:
         required: true
