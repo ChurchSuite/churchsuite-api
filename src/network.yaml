@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.1
+  version: 2.112.2
   title: Network Module
   description: >-
     The Network module is designed for networks/denominations to manage the
@@ -2151,6 +2151,8 @@ components:
             type: string
             description: A single option of the Label.
             example: Option 1
+            minLength: 1
+            maxLength: 50
         multiple_responses:
           type: boolean
           description: Whether the Label can have multiple responses.

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.1
+  version: 2.112.2
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -22084,6 +22084,8 @@ components:
             type: string
             description: A single option of the Label.
             example: Option 1
+            minLength: 1
+            maxLength: 50
           example:
             - Option 1
             - Option 2
