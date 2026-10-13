@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.2
+  version: 2.112.3
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -6204,7 +6204,7 @@ paths:
         - oauth_token:
             - calendar.write
       tags:
-        - CA Labels
+        - Labels CA
     put:
       operationId: edit_calendar_label
       summary: Update a label
@@ -6244,7 +6244,7 @@ paths:
         - oauth_token:
             - calendar.write
       tags:
-        - CA Labels
+        - Labels CA
   /calendar/labels:
     get:
       operationId: list_calendar_labels
@@ -6335,7 +6335,7 @@ paths:
         - oauth_token:
             - calendar.write
       tags:
-        - CA Labels
+        - Labels CA
   /calendar/label_resources:
     get:
       operationId: list_calendar_label_resources
@@ -12061,7 +12061,7 @@ paths:
         - oauth_token:
             - network.write
       tags:
-        - NE Labels
+        - Labels NE
     put:
       operationId: edit_network_label
       summary: Update a label
@@ -12101,7 +12101,7 @@ paths:
         - oauth_token:
             - network.write
       tags:
-        - NE Labels
+        - Labels NE
   /network/labels:
     get:
       operationId: list_network_labels
@@ -12192,7 +12192,7 @@ paths:
         - oauth_token:
             - network.write
       tags:
-        - NE Labels
+        - Labels NE
   /network/label_resources:
     get:
       operationId: list_network_label_resources
@@ -14920,7 +14920,7 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - SG Labels
+        - Labels SG
     put:
       operationId: edit_smallgroups_label
       summary: Update a label
@@ -14960,7 +14960,7 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - SG Labels
+        - Labels SG
   /smallgroups/labels:
     get:
       operationId: list_smallgroups_labels
@@ -15051,7 +15051,7 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - SG Labels
+        - Labels SG
   /smallgroups/label_resources:
     get:
       operationId: list_smallgroups_label_resources

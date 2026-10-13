@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.2
+  version: 2.112.3
   title: Network Module
   description: >-
     The Network module is designed for networks/denominations to manage the
@@ -684,7 +684,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - NE Labels
+        - Labels NE
     put:
       summary: Update a label
       description: Update a single label identified by ID.
@@ -724,7 +724,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - NE Labels
+        - Labels NE
   /network/labels:
     get:
       summary: List labels
@@ -815,7 +815,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - NE Labels
+        - Labels NE
   /network/label_resources:
     get:
       summary: List label resources

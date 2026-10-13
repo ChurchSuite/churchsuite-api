@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.2
+  version: 2.112.3
   title: Small Groups Module
   description: >-
     This module enables you to manage all data relating to small groups. Access
@@ -772,7 +772,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - SG Labels
+        - Labels SG
     put:
       summary: Update a label
       description: Update a single label identified by ID.
@@ -812,7 +812,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - SG Labels
+        - Labels SG
   /smallgroups/labels:
     get:
       summary: List labels
@@ -903,7 +903,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - SG Labels
+        - Labels SG
   /smallgroups/label_resources:
     get:
       summary: List label resources

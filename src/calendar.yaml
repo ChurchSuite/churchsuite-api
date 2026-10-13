@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.2
+  version: 2.112.3
   title: Calendar Module
   description: Manage events, sign-ups and staff leave across your account.
   termsOfService: https://churchsuite.com/terms-of-service/
@@ -1042,7 +1042,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - CA Labels
+        - Labels CA
     put:
       summary: Update a label
       description: Update a single label identified by ID.
@@ -1082,7 +1082,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - CA Labels
+        - Labels CA
   /calendar/labels:
     get:
       summary: List labels
@@ -1173,7 +1173,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - CA Labels
+        - Labels CA
   /calendar/label_resources:
     get:
       summary: List label resources
