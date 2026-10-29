@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.7
+  version: 2.112.8
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -5554,65 +5554,114 @@ paths:
               description: >-
                 Edit an Event in the Calendar module. Provide either `all_sites`
                 or `site_ids`.
-              type: object
-              properties:
-                sequence_id:
-                  description: >-
-                    If the Event is part of a sequence, this field should
-                    contain the sequence ID from an existing Event in the
-                    sequence.
-                  type:
-                    - integer
-                    - 'null'
-                  example: 213
-                  minimum: 1
-                name:
-                  description: The Event's name.
-                  type: string
-                  example: Gibson's Wedding
-                  maxLength: 50
-                  minLength: 1
-                starts_at:
-                  description: Date and time the Event starts.
-                  type: string
-                  format: date-time
-                  example: '2018-01-01T10:00:00Z'
-                ends_at:
-                  description: Date and time the Event ends.
-                  type: string
-                  format: date-time
-                  example: '2018-01-01T11:00:00Z'
-                status:
-                  description: The current status of the Event.
-                  type: string
-                  example: confirmed
-                  enum:
-                    - confirmed
-                    - cancelled
-                    - pending
-                description:
-                  description: The description of the Event.
-                  type: string
-                  example: The reception of John Gibson and Anita Davis.
-                  minLength: 0
-                category_id:
-                  description: The Event's category ID.
-                  type: integer
-                  example: 25
               oneOf:
                 - title: Event belonging to all Sites
                   type: object
                   properties:
+                    sequence_id:
+                      description: >-
+                        If the Event is part of a sequence, this field should
+                        contain the sequence ID from an existing Event in the
+                        sequence.
+                      type:
+                        - integer
+                        - 'null'
+                      example: 213
+                      minimum: 1
+                    name:
+                      description: The Event's name.
+                      type: string
+                      example: Gibson's Wedding
+                      maxLength: 50
+                      minLength: 1
+                    starts_at:
+                      description: Date and time the Event starts.
+                      type: string
+                      format: date-time
+                      example: '2018-01-01T10:00:00Z'
+                    ends_at:
+                      description: Date and time the Event ends.
+                      type: string
+                      format: date-time
+                      example: '2018-01-01T11:00:00Z'
+                    status:
+                      description: The current status of the Event.
+                      type: string
+                      example: confirmed
+                      enum:
+                        - confirmed
+                        - cancelled
+                        - pending
+                    description:
+                      description: The description of the Event.
+                      type: string
+                      example: The reception of John Gibson and Anita Davis.
+                      minLength: 0
+                    category_id:
+                      description: The Event's category ID.
+                      type: integer
+                      example: 25
                     all_sites:
                       description: Whether the Event belongs to All Sites.
                       type: boolean
                       example: true
                       const: true
                   required:
+                    - sequence_id
+                    - name
+                    - starts_at
+                    - ends_at
+                    - status
+                    - description
+                    - category_id
                     - all_sites
+                  additionalProperties: false
                 - title: Event belonging to selected Sites
                   type: object
                   properties:
+                    sequence_id:
+                      description: >-
+                        If the Event is part of a sequence, this field should
+                        contain the sequence ID from an existing Event in the
+                        sequence.
+                      type:
+                        - integer
+                        - 'null'
+                      example: 213
+                      minimum: 1
+                    name:
+                      description: The Event's name.
+                      type: string
+                      example: Gibson's Wedding
+                      maxLength: 50
+                      minLength: 1
+                    starts_at:
+                      description: Date and time the Event starts.
+                      type: string
+                      format: date-time
+                      example: '2018-01-01T10:00:00Z'
+                    ends_at:
+                      description: Date and time the Event ends.
+                      type: string
+                      format: date-time
+                      example: '2018-01-01T11:00:00Z'
+                    status:
+                      description: The current status of the Event.
+                      type: string
+                      example: confirmed
+                      enum:
+                        - confirmed
+                        - cancelled
+                        - pending
+                    description:
+                      description: The description of the Event.
+                      type: string
+                      example: The reception of John Gibson and Anita Davis.
+                      minLength: 0
+                    category_id:
+                      description: The Event's category ID.
+                      type: integer
+                      example: 25
                     all_sites:
                       description: Whether the Event belongs to All Sites.
                       type: boolean
@@ -5628,16 +5677,15 @@ paths:
                         - 7
                         - 16
                   required:
+                    - sequence_id
+                    - name
+                    - starts_at
+                    - ends_at
+                    - status
+                    - description
+                    - category_id
                     - site_ids
-              required:
-                - sequence_id
-                - name
-                - starts_at
-                - ends_at
-                - status
-                - description
-                - category_id
-              unevaluatedProperties: false
+                  additionalProperties: false
       responses:
         '200':
           description: OK Success
@@ -5805,65 +5853,112 @@ paths:
               description: >-
                 Create an Event in the Calendar module. Provide either
                 `all_sites` or `site_ids`.
-              type: object
-              properties:
-                sequence_id:
-                  description: >-
-                    If the Event is part of a sequence, this field should
-                    contain the sequence ID from an existing Event in the
-                    sequence.
-                  type:
-                    - integer
-                    - 'null'
-                  example: 213
-                  minimum: 1
-                name:
-                  description: The Event's name.
-                  type: string
-                  example: Gibson's Wedding
-                  maxLength: 50
-                  minLength: 1
-                starts_at:
-                  description: Date and time the Event starts.
-                  type: string
-                  format: date-time
-                  example: '2018-01-01T10:00:00Z'
-                ends_at:
-                  description: Date and time the Event ends.
-                  type: string
-                  format: date-time
-                  example: '2018-01-01T11:00:00Z'
-                status:
-                  description: The current status of the Event.
-                  type: string
-                  example: confirmed
-                  enum:
-                    - confirmed
-                    - cancelled
-                    - pending
-                description:
-                  description: The description of the Event.
-                  type: string
-                  example: The reception of John Gibson and Anita Davis.
-                  minLength: 1
-                category_id:
-                  description: The Event's category ID.
-                  type: integer
-                  example: 25
               oneOf:
                 - title: Event belonging to all Sites
                   type: object
                   properties:
+                    sequence_id:
+                      description: >-
+                        If the Event is part of a sequence, this field should
+                        contain the sequence ID from an existing Event in the
+                        sequence.
+                      type:
+                        - integer
+                        - 'null'
+                      example: 213
+                      minimum: 1
+                    name:
+                      description: The Event's name.
+                      type: string
+                      example: Gibson's Wedding
+                      maxLength: 50
+                      minLength: 1
+                    starts_at:
+                      description: Date and time the Event starts.
+                      type: string
+                      format: date-time
+                      example: '2018-01-01T10:00:00Z'
+                    ends_at:
+                      description: Date and time the Event ends.
+                      type: string
+                      format: date-time
+                      example: '2018-01-01T11:00:00Z'
+                    status:
+                      description: The current status of the Event.
+                      type: string
+                      example: confirmed
+                      enum:
+                        - confirmed
+                        - cancelled
+                        - pending
+                    description:
+                      description: The description of the Event.
+                      type: string
+                      example: The reception of John Gibson and Anita Davis.
+                      minLength: 1
+                    category_id:
+                      description: The Event's category ID.
+                      type: integer
+                      example: 25
                     all_sites:
                       description: Whether the Event belongs to All Sites.
                       type: boolean
                       example: true
                       const: true
                   required:
+                    - name
+                    - starts_at
+                    - ends_at
+                    - status
+                    - category_id
                     - all_sites
+                  additionalProperties: false
                 - title: Event belonging to selected Sites
                   type: object
                   properties:
+                    sequence_id:
+                      description: >-
+                        If the Event is part of a sequence, this field should
+                        contain the sequence ID from an existing Event in the
+                        sequence.
+                      type:
+                        - integer
+                        - 'null'
+                      example: 213
+                      minimum: 1
+                    name:
+                      description: The Event's name.
+                      type: string
+                      example: Gibson's Wedding
+                      maxLength: 50
+                      minLength: 1
+                    starts_at:
+                      description: Date and time the Event starts.
+                      type: string
+                      format: date-time
+                      example: '2018-01-01T10:00:00Z'
+                    ends_at:
+                      description: Date and time the Event ends.
+                      type: string
+                      format: date-time
+                      example: '2018-01-01T11:00:00Z'
+                    status:
+                      description: The current status of the Event.
+                      type: string
+                      example: confirmed
+                      enum:
+                        - confirmed
+                        - cancelled
+                        - pending
+                    description:
+                      description: The description of the Event.
+                      type: string
+                      example: The reception of John Gibson and Anita Davis.
+                      minLength: 1
+                    category_id:
+                      description: The Event's category ID.
+                      type: integer
+                      example: 25
                     all_sites:
                       description: Whether the Event belongs to All Sites.
                       type: boolean
@@ -5879,14 +5974,13 @@ paths:
                         - 7
                         - 16
                   required:
+                    - name
+                    - starts_at
+                    - ends_at
+                    - status
+                    - category_id
                     - site_ids
-              required:
-                - name
-                - starts_at
-                - ends_at
-                - status
-                - category_id
-              unevaluatedProperties: false
+                  additionalProperties: false
       responses:
         '201':
           description: OK Success

@@ -5,7 +5,7 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.112.7] - 2026-10-29
+## [2.112.8] - 2026-10-29
 
 ### Fixed
 
@@ -180,6 +180,7 @@ Added an `order_by` query parameter to the following endpoints:
 - Added a new DELETE `<module>/flow_trackings/{id}` endpoint to delete a single Flow Tracking in the Address Book, Bookings, Children and Giving modules
 
 ## [2.99.0] - 2026-09-07
+
 - Added `name_visible`, `email_visible`, `address_visible` and `mobile_visible` query filters to `/children/children` GET
 - Added `name_visible`, `email_visible`, `address_visible`, `mobile_visible` and `telephone_visible` query filters to `/addressbook/contacts` GET
 
@@ -260,6 +261,7 @@ The ChurchSuite Core API specification has been updated to OpenAPI 3.1, with no 
 - Added new DELETE `giving/pledges/{id}` endpoint to delete a single Pledge in the Giving module.
 
 ### Changed
+
 - Updated the Pledge schema `amount_oneoff` and `amount_recurring` minimum values from 50 to 1, with no functional changes to the API.
 
 ## [2.90.0] - 2026-07-17
@@ -455,7 +457,7 @@ If your application uses the Client Credentials grant with an API-enabled user, 
 
 ### Fixed
 
-- The  GET `/addressbook/form_responses/{id}` and `/children/form_responses/{id}` endpoints are now correctly tagged.
+- The GET `/addressbook/form_responses/{id}` and `/children/form_responses/{id}` endpoints are now correctly tagged.
 
 ## [2.80.0] - 2026-02-13
 
