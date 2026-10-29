@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.3
+  version: 2.112.7
   title: Bookings Module
   description: >-
     The Bookings module enables you to manage the booking of resources,
@@ -47,7 +47,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/412-managing-booking-customers
-  - name: Custom Fields BO
+  - name: Bookings Custom Fields
     summary: Fields
     parent: Bookings Module
     description: >-
@@ -58,7 +58,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/39-creating-custom-fields
-  - name: Flows BO
+  - name: Bookings Flows
     summary: Flows
     parent: Bookings Module
     description: >-
@@ -91,7 +91,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/122-creating-booking-types-and-resources
-  - name: Tags BO
+  - name: Bookings Tags
     summary: Tags
     parent: Bookings Module
     description: Tags allow you to flexibly categorise or group people together.
@@ -100,7 +100,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/33-communicate-with-groups-of-contacts-in-a-fixed-tag
-  - name: Types BO
+  - name: Bookings Types
     summary: Types
     parent: Bookings Module
     description: >-
@@ -811,7 +811,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Custom Fields BO
+        - Bookings Custom Fields
   /bookings/custom_fields:
     get:
       summary: List custom fields
@@ -852,7 +852,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Custom Fields BO
+        - Bookings Custom Fields
   /bookings/flows/{id}:
     parameters:
       - name: id
@@ -894,7 +894,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows BO
+        - Bookings Flows
   /bookings/flows:
     get:
       summary: List flows
@@ -955,7 +955,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows BO
+        - Bookings Flows
   /bookings/flow_stages/{id}:
     parameters:
       - name: id
@@ -992,7 +992,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows BO
+        - Bookings Flows
     get:
       summary: Get a flow stage
       description: Retrieve a single stage identified by ID.
@@ -1024,7 +1024,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows BO
+        - Bookings Flows
     put:
       summary: Update a flow stage
       description: Update a single stage identified by ID.
@@ -1062,7 +1062,7 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       tags:
-        - Flows BO
+        - Bookings Flows
   /bookings/flow_stages:
     get:
       summary: List flow stages
@@ -1114,7 +1114,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows BO
+        - Bookings Flows
     post:
       summary: Create a flow stage
       description: Create a stage for a flow.
@@ -1165,7 +1165,7 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       tags:
-        - Flows BO
+        - Bookings Flows
   /bookings/flow_trackings/{id}:
     parameters:
       - name: id
@@ -1210,7 +1210,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows BO
+        - Bookings Flows
     put:
       summary: Update a flow tracking
       description: >-
@@ -1252,7 +1252,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows BO
+        - Bookings Flows
     delete:
       summary: Delete a flow tracking
       description: >-
@@ -1276,7 +1276,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows BO
+        - Bookings Flows
   /bookings/flow_trackings:
     get:
       summary: List flow trackings
@@ -1366,7 +1366,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows BO
+        - Bookings Flows
     post:
       summary: Create a flow tracking
       description: >-
@@ -1423,7 +1423,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows BO
+        - Bookings Flows
   /bookings/prices:
     get:
       summary: List prices
@@ -1547,7 +1547,7 @@ paths:
     get:
       summary: List resources
       description: Returns a list of resources, sorted by the order property.
-      operationId: list_resources
+      operationId: list_bookings_resources
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -1645,7 +1645,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags BO
+        - Bookings Tags
     get:
       summary: Get a tag
       description: Retrieve a single tag identified by ID.
@@ -1677,7 +1677,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags BO
+        - Bookings Tags
     put:
       summary: Update a tag
       description: Update a tag
@@ -1719,7 +1719,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags BO
+        - Bookings Tags
   /bookings/tags:
     get:
       summary: List tags
@@ -1795,7 +1795,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags BO
+        - Bookings Tags
     post:
       summary: Create a tag
       description: Create a tag
@@ -1848,7 +1848,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags BO
+        - Bookings Tags
   /bookings/tag_categories/{id}:
     parameters:
       - name: id
@@ -1890,7 +1890,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags BO
+        - Bookings Tags
   /bookings/tag_categories:
     get:
       summary: List tag categories
@@ -1923,7 +1923,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags BO
+        - Bookings Tags
   /bookings/tag_resources:
     delete:
       summary: Delete a tag resource
@@ -1969,7 +1969,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags BO
+        - Bookings Tags
     get:
       summary: List tag resources
       description: >-
@@ -2037,7 +2037,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags BO
+        - Bookings Tags
     post:
       summary: Create a tag resource
       description: Create a tag resource linking a customer to a tag
@@ -2079,7 +2079,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags BO
+        - Bookings Tags
   /bookings/types/{id}:
     parameters:
       - name: id
@@ -2121,7 +2121,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Types BO
+        - Bookings Types
   /bookings/types:
     get:
       summary: List types
@@ -2182,7 +2182,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Types BO
+        - Bookings Types
 components:
   parameters:
     PaginationPage:
@@ -4699,9 +4699,7 @@ components:
                 just_me:
                   type: boolean
                   description: The resource should only be visible to the current user
-                  example: false
-                  enum:
-                    - false
+                  const: false
                 user_group_ids:
                   type: array
                   description: List of user group IDs the resource is visible to.
@@ -4720,9 +4718,7 @@ components:
                 just_me:
                   type: boolean
                   description: The resource should only be visible to the current user
-                  example: true
-                  enum:
-                    - true
+                  const: true
                 user_group_ids:
                   type: array
                   description: List of user group IDs the resource is visible to.

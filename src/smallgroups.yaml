@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.3
+  version: 2.112.7
   title: Small Groups Module
   description: >-
     This module enables you to manage all data relating to small groups. Access
@@ -44,7 +44,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/211-managing-small-group-oversight-with-clusters
-  - name: Custom Fields SG
+  - name: Small Group Custom Fields
     summary: Custom Fields
     parent: Small Groups Module
     description: >-
@@ -55,7 +55,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/546-custom-fields-for-small-groups
-  - name: Groups SG
+  - name: Small Groups
     summary: Groups
     parent: Small Groups Module
     description: >-
@@ -66,7 +66,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/63-adding-a-new-small-group
-  - name: Labels SG
+  - name: Small Group Labels
     summary: Labels
     parent: Small Groups Module
     description: Labels are a way of further categorising your groups.
@@ -75,7 +75,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/616-small-group-labels
-  - name: Members SG
+  - name: Small Group Members
     summary: Members
     parent: Small Groups Module
     description: Members are contacts or children that attend a group.
@@ -84,7 +84,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/53-adding-people-to-small-groups
-  - name: Roles SG
+  - name: Small Group Roles
     summary: Roles
     parent: Small Groups Module
     description: >-
@@ -405,7 +405,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Custom Fields SG
+        - Small Group Custom Fields
   /smallgroups/custom_fields:
     get:
       summary: List custom fields
@@ -446,7 +446,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Custom Fields SG
+        - Small Group Custom Fields
   /smallgroups/groups/{id}:
     parameters:
       - name: id
@@ -460,7 +460,7 @@ paths:
     get:
       summary: Get a group
       description: Retrieve a single group identified by ID.
-      operationId: get_group
+      operationId: get_small_group
       security:
         - oauth_token:
             - full_access
@@ -488,7 +488,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Groups SG
+        - Small Groups
   /smallgroups/groups/{id}/notes:
     parameters:
       - name: id
@@ -535,7 +535,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Groups SG
+        - Small Groups
     post:
       summary: Create a group note
       description: Create a Note against a Group in the Small Groups module.
@@ -575,12 +575,12 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Groups SG
+        - Small Groups
   /smallgroups/groups:
     get:
       summary: List groups
       description: Returns a list of groups, sorted alphabetically by name.
-      operationId: list_groups
+      operationId: list_small_groups
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -705,7 +705,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Groups SG
+        - Small Groups
   /smallgroups/labels/{id}:
     parameters:
       - name: id
@@ -747,7 +747,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels SG
+        - Small Group Labels
     delete:
       summary: Delete a label
       description: >-
@@ -772,7 +772,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels SG
+        - Small Group Labels
     put:
       summary: Update a label
       description: Update a single label identified by ID.
@@ -812,7 +812,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels SG
+        - Small Group Labels
   /smallgroups/labels:
     get:
       summary: List labels
@@ -863,7 +863,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels SG
+        - Small Group Labels
     post:
       summary: Create a label
       description: Create a label with the provided settings.
@@ -903,7 +903,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels SG
+        - Small Group Labels
   /smallgroups/label_resources:
     get:
       summary: List label resources
@@ -966,7 +966,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels SG
+        - Small Group Labels
   /smallgroups/members/{id}:
     parameters:
       - name: id
@@ -1008,7 +1008,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Members SG
+        - Small Group Members
     delete:
       summary: Delete a member
       description: Delete a single member identified by ID.
@@ -1030,7 +1030,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Members SG
+        - Small Group Members
     put:
       summary: Update a member
       description: Update a single member identified by ID.
@@ -1070,7 +1070,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Members SG
+        - Small Group Members
   /smallgroups/members:
     get:
       summary: List members
@@ -1186,7 +1186,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Members SG
+        - Small Group Members
     post:
       summary: Create members
       description: Create a member with the provided settings.
@@ -1228,7 +1228,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Members SG
+        - Small Group Members
   /smallgroups/roles/{id}:
     parameters:
       - name: id
@@ -1242,7 +1242,7 @@ paths:
     get:
       summary: Get a role
       description: Retrieve a single role identified by ID.
-      operationId: get_role
+      operationId: get_group_role
       security:
         - oauth_token:
             - full_access
@@ -1270,7 +1270,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Roles SG
+        - Small Group Roles
     delete:
       summary: Delete a role
       description: >-
@@ -1296,7 +1296,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Roles SG
+        - Small Group Roles
     put:
       summary: Update a role
       description: Update a single role identified by ID.
@@ -1338,7 +1338,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Roles SG
+        - Small Group Roles
   /smallgroups/roles:
     get:
       summary: List roles
@@ -1379,7 +1379,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Roles SG
+        - Small Group Roles
     post:
       summary: Create a role
       description: Create a role with the provided settings.
@@ -1421,7 +1421,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Roles SG
+        - Small Group Roles
 components:
   parameters:
     PaginationPage:

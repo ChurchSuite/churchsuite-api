@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.3
+  version: 2.112.7
   title: Children Module
   description: >-
     This module is for managing all the children and young people associated
@@ -35,7 +35,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/575-adding-a-new-child
-  - name: Custom Fields CH
+  - name: Children Custom Fields
     summary: Custom Fields
     parent: Children Module
     description: >-
@@ -46,7 +46,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/39-creating-custom-fields
-  - name: Flows CH
+  - name: Children Flows
     summary: Flows
     parent: Children Module
     description: >-
@@ -59,7 +59,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/154-flows
-  - name: Form Fields CH
+  - name: Children Form Fields
     summary: Form Fields
     parent: Children Module
     description: Form Fields are the building blocks used to construct Forms
@@ -68,7 +68,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/589-forms
-  - name: Form Responses CH
+  - name: Children Form Responses
     summary: Form Responses
     parent: Children Module
     description: Form Responses are the responses of completed online forms.
@@ -85,7 +85,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/87-gatherings-groups-and-sessions-for-children
-  - name: Groups CH
+  - name: Children Groups
     summary: Groups
     parent: Children Module
     description: A group is a collection of children matching the group's age rules.
@@ -94,7 +94,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/87-gatherings-groups-and-sessions-for-children
-  - name: Key Dates CH
+  - name: Children Key Dates
     summary: Key Dates
     parent: Children Module
     description: >-
@@ -115,7 +115,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://https://support.churchsuite.com/article/81-how-to-link-a-child-to-their-parent
-  - name: Tags CH
+  - name: Children Tags
     summary: Tags
     parent: Children Module
     description: Tags allow you to flexibly categorise or group people together.
@@ -565,7 +565,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Custom Fields CH
+        - Children Custom Fields
   /children/custom_fields:
     get:
       summary: List custom fields
@@ -606,7 +606,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Custom Fields CH
+        - Children Custom Fields
   /children/flows/{id}:
     parameters:
       - name: id
@@ -648,7 +648,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows CH
+        - Children Flows
   /children/flows:
     get:
       summary: List flows
@@ -709,7 +709,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows CH
+        - Children Flows
   /children/flow_stages/{id}:
     parameters:
       - name: id
@@ -746,7 +746,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows CH
+        - Children Flows
     get:
       summary: Get a flow stage
       description: Retrieve a single stage identified by ID.
@@ -778,7 +778,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows CH
+        - Children Flows
     put:
       summary: Update a flow stage
       description: Update a single stage identified by ID.
@@ -816,7 +816,7 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       tags:
-        - Flows CH
+        - Children Flows
   /children/flow_stages:
     get:
       summary: List flow stages
@@ -868,7 +868,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows CH
+        - Children Flows
     post:
       summary: Create a flow stage
       description: Create a stage for a flow.
@@ -919,7 +919,7 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       tags:
-        - Flows CH
+        - Children Flows
   /children/flow_trackings/{id}:
     parameters:
       - name: id
@@ -964,7 +964,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows CH
+        - Children Flows
     put:
       summary: Update a flow tracking
       description: >-
@@ -1006,7 +1006,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows CH
+        - Children Flows
     delete:
       summary: Delete a flow tracking
       description: >-
@@ -1030,7 +1030,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows CH
+        - Children Flows
   /children/flow_trackings:
     get:
       summary: List flow trackings
@@ -1120,7 +1120,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows CH
+        - Children Flows
     post:
       summary: Create a flow tracking
       description: >-
@@ -1177,7 +1177,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows CH
+        - Children Flows
   /children/form_fields/{id}:
     parameters:
       - name: id
@@ -1220,7 +1220,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Form Fields CH
+        - Children Form Fields
   /children/form_fields:
     get:
       summary: List form fields
@@ -1272,7 +1272,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Form Fields CH
+        - Children Form Fields
   /children/form_responses/{id}:
     parameters:
       - name: id
@@ -1315,7 +1315,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Form Responses CH
+        - Children Form Responses
   /children/form_responses:
     get:
       summary: List form responses
@@ -1403,7 +1403,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Form Responses CH
+        - Children Form Responses
   /children/group_setups/{id}:
     parameters:
       - name: id
@@ -1571,7 +1571,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Groups CH
+        - Children Groups
   /children/groups/{id}:
     parameters:
       - name: id
@@ -1585,7 +1585,7 @@ paths:
     get:
       summary: Get a group
       description: Retrieve a single group identified by ID.
-      operationId: get_group
+      operationId: get_children_group
       security:
         - oauth_token:
             - full_access
@@ -1613,7 +1613,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Groups CH
+        - Children Groups
   /children/groups:
     parameters:
       - $ref: '#/components/parameters/PaginationPage'
@@ -1652,7 +1652,7 @@ paths:
     get:
       summary: List groups
       description: Returns a list of groups, sorted alphabetically by name.
-      operationId: list_groups
+      operationId: list_children_groups
       security:
         - oauth_token:
             - full_access
@@ -1685,7 +1685,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Groups CH
+        - Children Groups
   /children/key_dates/{id}:
     parameters:
       - name: id
@@ -1727,7 +1727,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates CH
+        - Children Key Dates
     delete:
       summary: Delete a key date
       description: Delete a single key date identified by ID.
@@ -1749,7 +1749,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates CH
+        - Children Key Dates
     put:
       summary: Update a key date
       description: Update a single key date identified by ID.
@@ -1789,7 +1789,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates CH
+        - Children Key Dates
   /children/key_dates:
     get:
       summary: List key dates
@@ -1865,7 +1865,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates CH
+        - Children Key Dates
     post:
       summary: Create a key date
       description: Create a key date with the provided settings.
@@ -1920,7 +1920,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates CH
+        - Children Key Dates
   /children/key_date_resources/{id}:
     parameters:
       - name: id
@@ -1955,7 +1955,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates CH
+        - Children Key Dates
     put:
       summary: Update a key date resource
       description: Update a single key date resource identified by ID.
@@ -1995,7 +1995,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates CH
+        - Children Key Dates
   /children/key_date_resources:
     get:
       summary: List key date resources
@@ -2086,7 +2086,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates CH
+        - Children Key Dates
     post:
       summary: Create a key date resource
       description: Create a key date resource adding a child to a key date
@@ -2135,7 +2135,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates CH
+        - Children Key Dates
   /children/parent_carer_relationships:
     get:
       summary: List parent/carer relationships
@@ -2221,7 +2221,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags CH
+        - Children Tags
     get:
       summary: Get a tag
       description: Retrieve a single tag identified by ID.
@@ -2253,7 +2253,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags CH
+        - Children Tags
     put:
       summary: Update a tag
       description: Update a tag
@@ -2295,7 +2295,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags CH
+        - Children Tags
   /children/tags:
     get:
       summary: List tags
@@ -2373,7 +2373,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags CH
+        - Children Tags
     post:
       summary: Create a tag
       description: Create a tag
@@ -2426,7 +2426,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags CH
+        - Children Tags
   /children/tag_categories/{id}:
     parameters:
       - name: id
@@ -2468,7 +2468,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags CH
+        - Children Tags
   /children/tag_categories:
     get:
       summary: List tag categories
@@ -2501,7 +2501,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags CH
+        - Children Tags
   /children/tag_resources:
     delete:
       summary: Delete a tag resource
@@ -2547,7 +2547,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags CH
+        - Children Tags
     get:
       summary: List tag resources
       description: >-
@@ -2613,7 +2613,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags CH
+        - Children Tags
     post:
       summary: Create a tag resource
       description: Create a tag resource linking a child to a tag
@@ -2655,7 +2655,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags CH
+        - Children Tags
 components:
   parameters:
     PaginationPage:
@@ -3484,9 +3484,7 @@ components:
                     description: >-
                       A discriminator to determine the type of Custom Field this
                       response belongs to.
-                    example: email
-                    enum:
-                      - email
+                    const: email
                   value:
                     type: string
                     description: The raw value of an email.
@@ -3553,9 +3551,7 @@ components:
                     description: >-
                       A discriminator to determine the type of Custom Field this
                       response belongs to.
-                    example: checkbox
-                    enum:
-                      - checkbox
+                    const: checkbox
                   value:
                     type: array
                     description: >-
@@ -3582,8 +3578,6 @@ components:
                   - field_type
                   - value
                 additionalProperties: false
-            discriminator:
-              propertyName: field_type
         communication:
           type: object
           description: >-
@@ -4921,7 +4915,9 @@ components:
                     pattern: ^(?!\d{4}-\d{2}-\d{2}$).+$
                     example: support@churchsuite.com
                   - type: integer
-                    description: The id of a site.
+                    description: >-
+                      The value of a site ID, number, currency (in its smallest
+                      monetary unit) or percentage field.
                     example: 1
                   - type: object
                     description: The first and last name response values of a name field.
@@ -6346,9 +6342,7 @@ components:
                 just_me:
                   type: boolean
                   description: The resource should only be visible to the current user
-                  example: false
-                  enum:
-                    - false
+                  const: false
                 user_group_ids:
                   type: array
                   description: List of user group IDs the resource is visible to.
@@ -6367,9 +6361,7 @@ components:
                 just_me:
                   type: boolean
                   description: The resource should only be visible to the current user
-                  example: true
-                  enum:
-                    - true
+                  const: true
                 user_group_ids:
                   type: array
                   description: List of user group IDs the resource is visible to.

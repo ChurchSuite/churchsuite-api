@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.3
+  version: 2.112.7
   title: Network Module
   description: >-
     The Network module is designed for networks/denominations to manage the
@@ -23,7 +23,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/619-getting-started-with-the-network-module
-  - name: Custom Fields NE
+  - name: Network Custom Fields
     summary: Custom Fields
     parent: Network Module
     description: >-
@@ -34,7 +34,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/621-adding-custom-fields-for-organisations
-  - name: Key Dates NE
+  - name: Network Key Dates
     summary: Key Dates
     parent: Network Module
     description: >-
@@ -45,7 +45,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/31-stay-on-top-of-your-church-member-key-dates
-  - name: Labels NE
+  - name: Network Labels
     summary: Labels
     parent: Network Module
     description: >-
@@ -56,7 +56,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/612-managing-organisations-with-labels
-  - name: Members NE
+  - name: Network Members
     summary: Members
     parent: Network Module
     description: Link key contacts to organisations in your network.
@@ -75,7 +75,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/611-adding-organisations
-  - name: Roles NE
+  - name: Network Roles
     summary: Roles
     parent: Network Module
     description: Roles are a useful way of distinguishing organisation members.
@@ -126,7 +126,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Custom Fields NE
+        - Network Custom Fields
   /network/custom_fields:
     get:
       summary: List custom fields
@@ -167,7 +167,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Custom Fields NE
+        - Network Custom Fields
   /network/key_date_resources/{id}:
     parameters:
       - name: id
@@ -202,7 +202,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates NE
+        - Network Key Dates
     put:
       summary: Update a key date resource
       description: Update a single key date resource identified by ID.
@@ -242,7 +242,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates NE
+        - Network Key Dates
   /network/key_date_resources:
     get:
       summary: List key date resources
@@ -333,7 +333,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates NE
+        - Network Key Dates
     post:
       summary: Create a key date resource
       description: Create a key date resource adding an organisation to a key date
@@ -382,7 +382,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates NE
+        - Network Key Dates
   /network/key_dates/{id}:
     parameters:
       - name: id
@@ -424,7 +424,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates NE
+        - Network Key Dates
     delete:
       summary: Delete a key date
       description: Delete a single key date identified by ID.
@@ -446,7 +446,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates NE
+        - Network Key Dates
     put:
       summary: Update a key date
       description: Update a single key date identified by ID.
@@ -486,7 +486,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates NE
+        - Network Key Dates
   /network/key_dates:
     get:
       summary: List key dates
@@ -562,7 +562,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates NE
+        - Network Key Dates
     post:
       summary: Create a key date
       description: Create a key date with the provided settings.
@@ -617,7 +617,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates NE
+        - Network Key Dates
   /network/labels/{id}:
     parameters:
       - name: id
@@ -659,7 +659,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels NE
+        - Network Labels
     delete:
       summary: Delete a label
       description: >-
@@ -684,7 +684,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels NE
+        - Network Labels
     put:
       summary: Update a label
       description: Update a single label identified by ID.
@@ -724,7 +724,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels NE
+        - Network Labels
   /network/labels:
     get:
       summary: List labels
@@ -775,7 +775,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels NE
+        - Network Labels
     post:
       summary: Create a label
       description: Create a label with the provided settings.
@@ -815,7 +815,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels NE
+        - Network Labels
   /network/label_resources:
     get:
       summary: List label resources
@@ -878,7 +878,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels NE
+        - Network Labels
   /network/members:
     get:
       summary: List members
@@ -966,7 +966,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Members NE
+        - Network Members
   /network/organisations/{id}:
     parameters:
       - name: id
@@ -1196,7 +1196,7 @@ paths:
     get:
       summary: Get a role
       description: Retrieve a single role identified by ID.
-      operationId: get_role
+      operationId: get_organisation_role
       security:
         - oauth_token:
             - full_access
@@ -1224,7 +1224,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Roles NE
+        - Network Roles
   /network/roles:
     get:
       summary: List roles
@@ -1275,7 +1275,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Roles NE
+        - Network Roles
 components:
   parameters:
     PaginationPage:
@@ -1824,9 +1824,7 @@ components:
                 just_me:
                   type: boolean
                   description: The resource should only be visible to the current user
-                  example: false
-                  enum:
-                    - false
+                  const: false
                 user_group_ids:
                   type: array
                   description: List of user group IDs the resource is visible to.
@@ -1845,9 +1843,7 @@ components:
                 just_me:
                   type: boolean
                   description: The resource should only be visible to the current user
-                  example: true
-                  enum:
-                    - true
+                  const: true
                 user_group_ids:
                   type: array
                   description: List of user group IDs the resource is visible to.

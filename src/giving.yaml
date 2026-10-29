@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.3
+  version: 2.112.7
   title: Giving Module
   description: >-
     This module is designed to help manage the donations you receive and the
@@ -175,7 +175,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Custom Fields GI
+        - Giving Custom Fields
   /giving/custom_fields:
     get:
       operationId: list_giving_custom_fields
@@ -216,7 +216,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Custom Fields GI
+        - Giving Custom Fields
   /giving/declarations:
     get:
       operationId: list_declarations
@@ -566,7 +566,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Flows GI
+        - Giving Flows
   /giving/flows:
     get:
       operationId: list_giving_flows
@@ -627,7 +627,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Flows GI
+        - Giving Flows
   /giving/flow_stages/{id}:
     parameters:
       - name: id
@@ -664,7 +664,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Flows GI
+        - Giving Flows
     get:
       operationId: get_giving_flow_stage
       summary: Get a flow stage
@@ -696,7 +696,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Flows GI
+        - Giving Flows
     put:
       operationId: edit_giving_flow_stage
       summary: Update a flow stage
@@ -734,7 +734,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Flows GI
+        - Giving Flows
   /giving/flow_stages:
     get:
       operationId: list_giving_flow_stages
@@ -786,7 +786,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Flows GI
+        - Giving Flows
     post:
       operationId: create_giving_flow_stage
       summary: Create a flow stage
@@ -837,7 +837,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Flows GI
+        - Giving Flows
   /giving/flow_trackings/{id}:
     parameters:
       - name: id
@@ -882,7 +882,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Flows GI
+        - Giving Flows
     put:
       operationId: edit_giving_flow_tracking
       summary: Update a flow tracking
@@ -924,7 +924,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Flows GI
+        - Giving Flows
     delete:
       operationId: delete_giving_flow_tracking
       summary: Delete a flow tracking
@@ -948,7 +948,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Flows GI
+        - Giving Flows
   /giving/flow_trackings:
     get:
       operationId: list_giving_flow_trackings
@@ -1038,7 +1038,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Flows GI
+        - Giving Flows
     post:
       operationId: create_giving_flow_tracking
       summary: Create a flow tracking
@@ -1095,7 +1095,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Flows GI
+        - Giving Flows
   /giving/funds/{id}:
     parameters:
       - name: id
@@ -1872,7 +1872,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Tags GI
+        - Giving Tags
     get:
       operationId: get_giving_tag
       summary: Get a tag
@@ -1904,7 +1904,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Tags GI
+        - Giving Tags
     put:
       operationId: edit_giving_tag
       summary: Update a tag
@@ -1946,7 +1946,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Tags GI
+        - Giving Tags
   /giving/tags:
     get:
       operationId: list_giving_tag
@@ -2024,7 +2024,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Tags GI
+        - Giving Tags
     post:
       operationId: create_giving_tag
       summary: Create a tag
@@ -2077,7 +2077,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Tags GI
+        - Giving Tags
   /giving/tag_categories/{id}:
     parameters:
       - name: id
@@ -2119,7 +2119,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Tags GI
+        - Giving Tags
   /giving/tag_categories:
     get:
       operationId: list_giving_tag_categories
@@ -2152,7 +2152,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Tags GI
+        - Giving Tags
   /giving/tag_resources:
     delete:
       operationId: delete_giving_tag_resource
@@ -2198,7 +2198,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Tags GI
+        - Giving Tags
     get:
       operationId: list_giving_tag_resources
       summary: List tag resources
@@ -2264,7 +2264,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Tags GI
+        - Giving Tags
     post:
       operationId: create_giving_tag_resource
       summary: Create a tag resource
@@ -2306,7 +2306,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Tags GI
+        - Giving Tags
 components:
   parameters:
     PaginationPage:
@@ -5363,9 +5363,7 @@ components:
                 just_me:
                   description: The resource should only be visible to the current user
                   type: boolean
-                  example: false
-                  enum:
-                    - false
+                  const: false
                 user_group_ids:
                   description: List of user group IDs the resource is visible to.
                   type: array
@@ -5384,9 +5382,7 @@ components:
                 just_me:
                   description: The resource should only be visible to the current user
                   type: boolean
-                  example: true
-                  enum:
-                    - true
+                  const: true
                 user_group_ids:
                   description: List of user group IDs the resource is visible to.
                   type: array
@@ -5725,7 +5721,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/119-reclaiming-gift-aid
-  - name: Custom Fields GI
+  - name: Giving Custom Fields
     summary: Custom Fields
     parent: Giving Module
     description: >-
@@ -5752,7 +5748,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/51-adding-or-importing-donations
-  - name: Flows GI
+  - name: Giving Flows
     summary: Flows
     parent: Giving Module
     description: >-
@@ -5793,7 +5789,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/225-managing-pledges
-  - name: Tags GI
+  - name: Giving Tags
     summary: Tags
     parent: Giving Module
     description: Tags allow you to flexibly categorise or group people together.

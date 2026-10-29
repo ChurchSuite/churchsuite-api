@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.3
+  version: 2.112.7
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -904,7 +904,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Custom Fields AB
+        - Address Book Custom Fields
   /addressbook/custom_fields:
     get:
       operationId: list_addressbook_custom_fields
@@ -945,7 +945,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Custom Fields AB
+        - Address Book Custom Fields
   /addressbook/flows/{id}:
     parameters:
       - name: id
@@ -988,7 +988,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Flows AB
+        - Address Book Flows
   /addressbook/flows:
     get:
       operationId: list_addressbook_flows
@@ -1049,7 +1049,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Flows AB
+        - Address Book Flows
   /addressbook/flow_stages/{id}:
     parameters:
       - name: id
@@ -1086,7 +1086,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Flows AB
+        - Address Book Flows
     get:
       operationId: get_addressbook_flow_stage
       summary: Get a flow stage
@@ -1118,7 +1118,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Flows AB
+        - Address Book Flows
     put:
       operationId: edit_addressbook_flow_stage
       summary: Update a flow stage
@@ -1156,7 +1156,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Flows AB
+        - Address Book Flows
   /addressbook/flow_stages:
     get:
       operationId: list_addressbook_flow_stages
@@ -1208,7 +1208,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Flows AB
+        - Address Book Flows
     post:
       operationId: create_addressbook_flow_stage
       summary: Create a flow stage
@@ -1259,7 +1259,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Flows AB
+        - Address Book Flows
   /addressbook/flow_trackings/{id}:
     parameters:
       - name: id
@@ -1304,7 +1304,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Flows AB
+        - Address Book Flows
     put:
       operationId: edit_addressbook_flow_tracking
       summary: Update a flow tracking
@@ -1346,7 +1346,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Flows AB
+        - Address Book Flows
     delete:
       operationId: delete_addressbook_flow_tracking
       summary: Delete a flow tracking
@@ -1370,7 +1370,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Flows AB
+        - Address Book Flows
   /addressbook/flow_trackings:
     get:
       operationId: list_addressbook_flow_trackings
@@ -1460,7 +1460,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Flows AB
+        - Address Book Flows
     post:
       operationId: create_addressbook_flow_tracking
       summary: Create a flow tracking
@@ -1517,7 +1517,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Flows AB
+        - Address Book Flows
   /addressbook/form_fields/{id}:
     parameters:
       - name: id
@@ -1560,7 +1560,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Form Fields AB
+        - Address Book Form Fields
   /addressbook/form_fields:
     get:
       operationId: list_addressbook_form_fields
@@ -1612,7 +1612,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Form Fields AB
+        - Address Book Form Fields
   /addressbook/form_responses/{id}:
     parameters:
       - name: id
@@ -1655,7 +1655,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Form Responses AB
+        - Address Book Form Responses
   /addressbook/form_responses:
     get:
       operationId: list_addressbook_form_responses
@@ -1743,7 +1743,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Form Responses AB
+        - Address Book Form Responses
   /addressbook/key_date_resources/{id}:
     parameters:
       - name: id
@@ -1778,7 +1778,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
     put:
       operationId: edit_contact_key_date_resource
       summary: Update a key date resource
@@ -1818,7 +1818,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
   /addressbook/key_date_resources:
     get:
       operationId: list_contact_key_date_resources
@@ -1909,7 +1909,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
     post:
       operationId: create_contact_key_date_resource
       summary: Create a key date resource
@@ -1958,7 +1958,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
   /addressbook/key_dates/{id}:
     parameters:
       - name: id
@@ -2001,7 +2001,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
     delete:
       operationId: delete_addressbook_key_date
       summary: Delete a key date
@@ -2023,7 +2023,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
     put:
       operationId: edit_addressbook_key_date
       summary: Update a key date
@@ -2063,7 +2063,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
   /addressbook/key_dates:
     get:
       operationId: list_addressbook_key_dates
@@ -2139,7 +2139,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
     post:
       operationId: create_addressbook_key_date
       summary: Create a key date
@@ -2194,7 +2194,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
   /addressbook/tags/{id}:
     parameters:
       - name: id
@@ -2228,7 +2228,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Tags AB
+        - Address Book Tags
     get:
       operationId: get_addressbook_tag
       summary: Get a tag
@@ -2260,7 +2260,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Tags AB
+        - Address Book Tags
     put:
       operationId: edit_addressbook_tag
       summary: Update a tag
@@ -2302,7 +2302,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Tags AB
+        - Address Book Tags
   /addressbook/tags:
     get:
       operationId: list_addressbook_tag
@@ -2378,7 +2378,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Tags AB
+        - Address Book Tags
     post:
       operationId: create_addressbook_tag
       summary: Create a tag
@@ -2431,7 +2431,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Tags AB
+        - Address Book Tags
   /addressbook/tag_categories/{id}:
     parameters:
       - name: id
@@ -2473,7 +2473,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Tags AB
+        - Address Book Tags
   /addressbook/tag_categories:
     get:
       operationId: list_addressbook_tag_categories
@@ -2506,7 +2506,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Tags AB
+        - Address Book Tags
   /addressbook/tag_resources:
     delete:
       operationId: delete_addressbook_tag_resource
@@ -2552,7 +2552,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Tags AB
+        - Address Book Tags
     get:
       operationId: list_addressbook_tag_resources
       summary: List tag resources
@@ -2618,7 +2618,7 @@ paths:
         - oauth_token:
             - addressbook.read
       tags:
-        - Tags AB
+        - Address Book Tags
     post:
       operationId: create_addressbook_tag_resource
       summary: Create a tag resource
@@ -2660,7 +2660,7 @@ paths:
         - oauth_token:
             - addressbook.write
       tags:
-        - Tags AB
+        - Address Book Tags
   /attendance/gatherings/{id}:
     parameters:
       - name: id
@@ -2861,7 +2861,7 @@ paths:
         - Metricsets
   /attendance/metrics:
     get:
-      operationId: get_attendance_metrics
+      operationId: list_attendance_metrics
       summary: List metrics
       description: Returns a list of metrics, sorted alphabetically by order.
       parameters:
@@ -3864,7 +3864,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Custom Fields BO
+        - Bookings Custom Fields
   /bookings/custom_fields:
     get:
       operationId: list_bookings_custom_fields
@@ -3905,7 +3905,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Custom Fields BO
+        - Bookings Custom Fields
   /bookings/flows/{id}:
     parameters:
       - name: id
@@ -3947,7 +3947,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Flows BO
+        - Bookings Flows
   /bookings/flows:
     get:
       operationId: list_bookings_flows
@@ -4008,7 +4008,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Flows BO
+        - Bookings Flows
   /bookings/flow_stages/{id}:
     parameters:
       - name: id
@@ -4045,7 +4045,7 @@ paths:
         - oauth_token:
             - bookings.write
       tags:
-        - Flows BO
+        - Bookings Flows
     get:
       operationId: get_bookings_flow_stage
       summary: Get a flow stage
@@ -4077,7 +4077,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Flows BO
+        - Bookings Flows
     put:
       operationId: edit_bookings_flow_stage
       summary: Update a flow stage
@@ -4115,7 +4115,7 @@ paths:
         - oauth_token:
             - bookings.write
       tags:
-        - Flows BO
+        - Bookings Flows
   /bookings/flow_stages:
     get:
       operationId: list_bookings_flow_stages
@@ -4167,7 +4167,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Flows BO
+        - Bookings Flows
     post:
       operationId: create_bookings_flow_stage
       summary: Create a flow stage
@@ -4218,7 +4218,7 @@ paths:
         - oauth_token:
             - bookings.write
       tags:
-        - Flows BO
+        - Bookings Flows
   /bookings/flow_trackings/{id}:
     parameters:
       - name: id
@@ -4263,7 +4263,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Flows BO
+        - Bookings Flows
     put:
       operationId: edit_bookings_flow_tracking
       summary: Update a flow tracking
@@ -4305,7 +4305,7 @@ paths:
         - oauth_token:
             - bookings.write
       tags:
-        - Flows BO
+        - Bookings Flows
     delete:
       operationId: delete_bookings_flow_tracking
       summary: Delete a flow tracking
@@ -4329,7 +4329,7 @@ paths:
         - oauth_token:
             - bookings.write
       tags:
-        - Flows BO
+        - Bookings Flows
   /bookings/flow_trackings:
     get:
       operationId: list_bookings_flow_trackings
@@ -4419,7 +4419,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Flows BO
+        - Bookings Flows
     post:
       operationId: create_bookings_flow_tracking
       summary: Create a flow tracking
@@ -4476,7 +4476,7 @@ paths:
         - oauth_token:
             - bookings.write
       tags:
-        - Flows BO
+        - Bookings Flows
   /bookings/prices:
     get:
       operationId: list_prices
@@ -4598,7 +4598,7 @@ paths:
         - Resources
   /bookings/resources:
     get:
-      operationId: list_resources
+      operationId: list_bookings_resources
       summary: List resources
       description: Returns a list of resources, sorted by the order property.
       parameters:
@@ -4698,7 +4698,7 @@ paths:
         - oauth_token:
             - bookings.write
       tags:
-        - Tags BO
+        - Bookings Tags
     get:
       operationId: get_bookings_tag
       summary: Get a tag
@@ -4730,7 +4730,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Tags BO
+        - Bookings Tags
     put:
       operationId: edit_bookings_tag
       summary: Update a tag
@@ -4772,7 +4772,7 @@ paths:
         - oauth_token:
             - bookings.write
       tags:
-        - Tags BO
+        - Bookings Tags
   /bookings/tags:
     get:
       operationId: list_bookings_tag
@@ -4848,7 +4848,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Tags BO
+        - Bookings Tags
     post:
       operationId: create_bookings_tag
       summary: Create a tag
@@ -4901,7 +4901,7 @@ paths:
         - oauth_token:
             - bookings.write
       tags:
-        - Tags BO
+        - Bookings Tags
   /bookings/tag_categories/{id}:
     parameters:
       - name: id
@@ -4943,7 +4943,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Tags BO
+        - Bookings Tags
   /bookings/tag_categories:
     get:
       operationId: list_bookings_tag_categories
@@ -4976,7 +4976,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Tags BO
+        - Bookings Tags
   /bookings/tag_resources:
     delete:
       operationId: delete_bookings_tag_resource
@@ -5022,7 +5022,7 @@ paths:
         - oauth_token:
             - bookings.write
       tags:
-        - Tags BO
+        - Bookings Tags
     get:
       operationId: list_bookings_tag_resources
       summary: List tag resources
@@ -5090,7 +5090,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Tags BO
+        - Bookings Tags
     post:
       operationId: create_bookings_tag_resource
       summary: Create a tag resource
@@ -5132,7 +5132,7 @@ paths:
         - oauth_token:
             - bookings.write
       tags:
-        - Tags BO
+        - Bookings Tags
   /bookings/types/{id}:
     parameters:
       - name: id
@@ -5174,7 +5174,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Types BO
+        - Bookings Types
   /bookings/types:
     get:
       operationId: list_types
@@ -5235,7 +5235,7 @@ paths:
         - oauth_token:
             - bookings.read
       tags:
-        - Types BO
+        - Bookings Types
   /calendar/categories/{id}:
     parameters:
       - name: id
@@ -5551,74 +5551,93 @@ paths:
         content:
           application/json:
             schema:
-              description: Edit an Event in the Calendar module.
-              additionalProperties: false
-              allOf:
-                - type: object
+              description: >-
+                Edit an Event in the Calendar module. Provide either `all_sites`
+                or `site_ids`.
+              type: object
+              properties:
+                sequence_id:
+                  description: >-
+                    If the Event is part of a sequence, this field should
+                    contain the sequence ID from an existing Event in the
+                    sequence.
+                  type:
+                    - integer
+                    - 'null'
+                  example: 213
+                  minimum: 1
+                name:
+                  description: The Event's name.
+                  type: string
+                  example: Gibson's Wedding
+                  maxLength: 50
+                  minLength: 1
+                starts_at:
+                  description: Date and time the Event starts.
+                  type: string
+                  format: date-time
+                  example: '2018-01-01T10:00:00Z'
+                ends_at:
+                  description: Date and time the Event ends.
+                  type: string
+                  format: date-time
+                  example: '2018-01-01T11:00:00Z'
+                status:
+                  description: The current status of the Event.
+                  type: string
+                  example: confirmed
+                  enum:
+                    - confirmed
+                    - cancelled
+                    - pending
+                description:
+                  description: The description of the Event.
+                  type: string
+                  example: The reception of John Gibson and Anita Davis.
+                  minLength: 0
+                category_id:
+                  description: The Event's category ID.
+                  type: integer
+                  example: 25
+              oneOf:
+                - title: Event belonging to all Sites
+                  type: object
                   properties:
-                    sequence_id:
-                      description: >-
-                        If the Event is part of a sequence, this field should
-                        contain the sequence ID from an existing Event in the
-                        sequence.
-                      type:
-                        - integer
-                        - 'null'
-                      example: 213
-                      minimum: 1
-                    name:
-                      description: The Event's name.
-                      type: string
-                      example: Gibson's Wedding
-                      maxLength: 50
-                      minLength: 1
-                    starts_at:
-                      description: Date and time the Event starts.
-                      type: string
-                      format: date-time
-                      example: '2018-01-01T10:00:00Z'
-                    ends_at:
-                      description: Date and time the Event ends.
-                      type: string
-                      format: date-time
-                      example: '2018-01-01T11:00:00Z'
-                    status:
-                      description: The current status of the Event.
-                      type: string
-                      example: confirmed
-                      enum:
-                        - confirmed
-                        - cancelled
-                        - pending
-                    description:
-                      description: The description of the Event.
-                      type: string
-                      example: The reception of John Gibson and Anita Davis.
-                      minLength: 0
-                    category_id:
-                      description: The Event's category ID.
-                      type: integer
-                      example: 25
-                - oneOf:
-                    - type: object
-                      properties:
-                        all_sites:
-                          description: Whether the Event belongs to All Sites.
-                          type: boolean
-                          example: true
-                          enum:
-                            - true
-                    - type: object
-                      properties:
-                        site_ids:
-                          description: List of all site IDs the Event belongs to.
-                          type: array
-                          items:
-                            type: integer
-                          example:
-                            - 2
-                            - 7
-                            - 16
+                    all_sites:
+                      description: Whether the Event belongs to All Sites.
+                      type: boolean
+                      example: true
+                      const: true
+                  required:
+                    - all_sites
+                - title: Event belonging to selected Sites
+                  type: object
+                  properties:
+                    all_sites:
+                      description: Whether the Event belongs to All Sites.
+                      type: boolean
+                      example: false
+                      const: false
+                    site_ids:
+                      description: List of all site IDs the Event belongs to.
+                      type: array
+                      items:
+                        type: integer
+                      example:
+                        - 2
+                        - 7
+                        - 16
+                  required:
+                    - site_ids
+              required:
+                - sequence_id
+                - name
+                - starts_at
+                - ends_at
+                - status
+                - description
+                - category_id
+              unevaluatedProperties: false
       responses:
         '200':
           description: OK Success
@@ -5783,84 +5802,91 @@ paths:
         content:
           application/json:
             schema:
-              description: Create an Event in the Calendar module.
-              additionalProperties: false
-              allOf:
-                - type: object
+              description: >-
+                Create an Event in the Calendar module. Provide either
+                `all_sites` or `site_ids`.
+              type: object
+              properties:
+                sequence_id:
+                  description: >-
+                    If the Event is part of a sequence, this field should
+                    contain the sequence ID from an existing Event in the
+                    sequence.
+                  type:
+                    - integer
+                    - 'null'
+                  example: 213
+                  minimum: 1
+                name:
+                  description: The Event's name.
+                  type: string
+                  example: Gibson's Wedding
+                  maxLength: 50
+                  minLength: 1
+                starts_at:
+                  description: Date and time the Event starts.
+                  type: string
+                  format: date-time
+                  example: '2018-01-01T10:00:00Z'
+                ends_at:
+                  description: Date and time the Event ends.
+                  type: string
+                  format: date-time
+                  example: '2018-01-01T11:00:00Z'
+                status:
+                  description: The current status of the Event.
+                  type: string
+                  example: confirmed
+                  enum:
+                    - confirmed
+                    - cancelled
+                    - pending
+                description:
+                  description: The description of the Event.
+                  type: string
+                  example: The reception of John Gibson and Anita Davis.
+                  minLength: 1
+                category_id:
+                  description: The Event's category ID.
+                  type: integer
+                  example: 25
+              oneOf:
+                - title: Event belonging to all Sites
+                  type: object
                   properties:
-                    sequence_id:
-                      description: >-
-                        If the Event is part of a sequence, this field should
-                        contain the sequence ID from an existing Event in the
-                        sequence.
-                      type:
-                        - integer
-                        - 'null'
-                      example: 213
-                      minimum: 1
-                    name:
-                      description: The Event's name.
-                      type: string
-                      example: Gibson's Wedding
-                      maxLength: 50
-                      minLength: 1
-                    starts_at:
-                      description: Date and time the Event starts.
-                      type: string
-                      format: date-time
-                      example: '2018-01-01T10:00:00Z'
-                    ends_at:
-                      description: Date and time the Event ends.
-                      type: string
-                      format: date-time
-                      example: '2018-01-01T11:00:00Z'
-                    status:
-                      description: The current status of the Event.
-                      type: string
-                      example: confirmed
-                      enum:
-                        - confirmed
-                        - cancelled
-                        - pending
-                    description:
-                      description: The description of the Event.
-                      type: string
-                      example: The reception of John Gibson and Anita Davis.
-                      minLength: 1
-                    category_id:
-                      description: The Event's category ID.
-                      type: integer
-                      example: 25
+                    all_sites:
+                      description: Whether the Event belongs to All Sites.
+                      type: boolean
+                      example: true
+                      const: true
                   required:
-                    - name
-                    - starts_at
-                    - ends_at
-                    - status
-                    - category_id
-                - oneOf:
-                    - type: object
-                      properties:
-                        all_sites:
-                          description: Whether the Event belongs to All Sites.
-                          type: boolean
-                          example: true
-                          enum:
-                            - true
-                      required:
-                        - all_sites
-                    - type: object
-                      properties:
-                        site_ids:
-                          description: List of all site IDs the Event belongs to.
-                          type: array
-                          items:
-                            type: integer
-                          example:
-                            - 2
-                            - 7
-                            - 16
-                      required:
-                        - site_ids
+                    - all_sites
+                - title: Event belonging to selected Sites
+                  type: object
+                  properties:
+                    all_sites:
+                      description: Whether the Event belongs to All Sites.
+                      type: boolean
+                      example: false
+                      const: false
+                    site_ids:
+                      description: List of all site IDs the Event belongs to.
+                      type: array
+                      items:
+                        type: integer
+                      example:
+                        - 2
+                        - 7
+                        - 16
+                  required:
+                    - site_ids
+              required:
+                - name
+                - starts_at
+                - ends_at
+                - status
+                - category_id
+              unevaluatedProperties: false
       responses:
         '201':
           description: OK Success
@@ -6179,7 +6205,7 @@ paths:
         - oauth_token:
             - calendar.read
       tags:
-        - Labels CA
+        - Event Labels
     delete:
       operationId: delete_calendar_label
       summary: Delete a label
@@ -6204,7 +6230,7 @@ paths:
         - oauth_token:
             - calendar.write
       tags:
-        - Labels CA
+        - Event Labels
     put:
       operationId: edit_calendar_label
       summary: Update a label
@@ -6244,7 +6270,7 @@ paths:
         - oauth_token:
             - calendar.write
       tags:
-        - Labels CA
+        - Event Labels
   /calendar/labels:
     get:
       operationId: list_calendar_labels
@@ -6295,7 +6321,7 @@ paths:
         - oauth_token:
             - calendar.read
       tags:
-        - Labels CA
+        - Event Labels
     post:
       operationId: create_calendar_label
       summary: Create a label
@@ -6335,7 +6361,7 @@ paths:
         - oauth_token:
             - calendar.write
       tags:
-        - Labels CA
+        - Event Labels
   /calendar/label_resources:
     get:
       operationId: list_calendar_label_resources
@@ -6398,7 +6424,7 @@ paths:
         - oauth_token:
             - calendar.read
       tags:
-        - Labels CA
+        - Event Labels
   /calendar/signups/{id}:
     parameters:
       - name: id
@@ -7078,7 +7104,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Custom Fields CH
+        - Children Custom Fields
   /children/custom_fields:
     get:
       operationId: list_children_custom_fields
@@ -7119,7 +7145,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Custom Fields CH
+        - Children Custom Fields
   /children/flows/{id}:
     parameters:
       - name: id
@@ -7161,7 +7187,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Flows CH
+        - Children Flows
   /children/flows:
     get:
       operationId: list_children_flows
@@ -7222,7 +7248,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Flows CH
+        - Children Flows
   /children/flow_stages/{id}:
     parameters:
       - name: id
@@ -7259,7 +7285,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Flows CH
+        - Children Flows
     get:
       operationId: get_children_flow_stage
       summary: Get a flow stage
@@ -7291,7 +7317,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Flows CH
+        - Children Flows
     put:
       operationId: edit_children_flow_stage
       summary: Update a flow stage
@@ -7329,7 +7355,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Flows CH
+        - Children Flows
   /children/flow_stages:
     get:
       operationId: list_children_flow_stages
@@ -7381,7 +7407,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Flows CH
+        - Children Flows
     post:
       operationId: create_children_flow_stage
       summary: Create a flow stage
@@ -7432,7 +7458,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Flows CH
+        - Children Flows
   /children/flow_trackings/{id}:
     parameters:
       - name: id
@@ -7477,7 +7503,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Flows CH
+        - Children Flows
     put:
       operationId: edit_children_flow_tracking
       summary: Update a flow tracking
@@ -7519,7 +7545,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Flows CH
+        - Children Flows
     delete:
       operationId: delete_children_flow_tracking
       summary: Delete a flow tracking
@@ -7543,7 +7569,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Flows CH
+        - Children Flows
   /children/flow_trackings:
     get:
       operationId: list_children_flow_trackings
@@ -7633,7 +7659,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Flows CH
+        - Children Flows
     post:
       operationId: create_children_flow_tracking
       summary: Create a flow tracking
@@ -7690,7 +7716,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Flows CH
+        - Children Flows
   /children/form_fields/{id}:
     parameters:
       - name: id
@@ -7733,7 +7759,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Form Fields CH
+        - Children Form Fields
   /children/form_fields:
     get:
       operationId: list_children_form_fields
@@ -7785,7 +7811,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Form Fields CH
+        - Children Form Fields
   /children/form_responses/{id}:
     parameters:
       - name: id
@@ -7828,7 +7854,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Form Responses CH
+        - Children Form Responses
   /children/form_responses:
     get:
       operationId: list_children_form_responses
@@ -7916,7 +7942,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Form Responses CH
+        - Children Form Responses
   /children/group_setups/{id}:
     parameters:
       - name: id
@@ -8084,7 +8110,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Groups CH
+        - Children Groups
   /children/groups/{id}:
     parameters:
       - name: id
@@ -8096,7 +8122,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_group
+      operationId: get_children_group
       summary: Get a group
       description: Retrieve a single group identified by ID.
       responses:
@@ -8126,7 +8152,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Groups CH
+        - Children Groups
   /children/groups:
     parameters:
       - $ref: '#/components/parameters/PaginationPage'
@@ -8163,7 +8189,7 @@ paths:
           example: roots
           minLength: 1
     get:
-      operationId: list_groups
+      operationId: list_children_groups
       summary: List groups
       description: Returns a list of groups, sorted alphabetically by name.
       responses:
@@ -8198,7 +8224,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Groups CH
+        - Children Groups
   /children/key_dates/{id}:
     parameters:
       - name: id
@@ -8240,7 +8266,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Key Dates CH
+        - Children Key Dates
     delete:
       operationId: delete_children_key_date
       summary: Delete a key date
@@ -8262,7 +8288,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Key Dates CH
+        - Children Key Dates
     put:
       operationId: edit_children_key_date
       summary: Update a key date
@@ -8302,7 +8328,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Key Dates CH
+        - Children Key Dates
   /children/key_dates:
     get:
       operationId: list_children_key_dates
@@ -8378,7 +8404,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Key Dates CH
+        - Children Key Dates
     post:
       operationId: create_children_key_date
       summary: Create a key date
@@ -8433,7 +8459,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Key Dates CH
+        - Children Key Dates
   /children/key_date_resources/{id}:
     parameters:
       - name: id
@@ -8468,7 +8494,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Key Dates CH
+        - Children Key Dates
     put:
       operationId: edit_child_key_date_resource
       summary: Update a key date resource
@@ -8508,7 +8534,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Key Dates CH
+        - Children Key Dates
   /children/key_date_resources:
     get:
       operationId: list_child_key_date_resources
@@ -8599,7 +8625,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Key Dates CH
+        - Children Key Dates
     post:
       operationId: create_child_key_date_resource
       summary: Create a key date resource
@@ -8648,7 +8674,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Key Dates CH
+        - Children Key Dates
   /children/parent_carer_relationships:
     get:
       operationId: list_parent_carer_relationships
@@ -8734,7 +8760,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Tags CH
+        - Children Tags
     get:
       operationId: get_children_tag
       summary: Get a tag
@@ -8766,7 +8792,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Tags CH
+        - Children Tags
     put:
       operationId: edit_children_tag
       summary: Update a tag
@@ -8808,7 +8834,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Tags CH
+        - Children Tags
   /children/tags:
     get:
       operationId: list_children_tag
@@ -8886,7 +8912,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Tags CH
+        - Children Tags
     post:
       operationId: create_children_tag
       summary: Create a tag
@@ -8939,7 +8965,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Tags CH
+        - Children Tags
   /children/tag_categories/{id}:
     parameters:
       - name: id
@@ -8981,7 +9007,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Tags CH
+        - Children Tags
   /children/tag_categories:
     get:
       operationId: list_children_tag_categories
@@ -9014,7 +9040,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Tags CH
+        - Children Tags
   /children/tag_resources:
     delete:
       operationId: delete_children_tag_resource
@@ -9060,7 +9086,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Tags CH
+        - Children Tags
     get:
       operationId: list_children_tag_resources
       summary: List tag resources
@@ -9126,7 +9152,7 @@ paths:
         - oauth_token:
             - children.read
       tags:
-        - Tags CH
+        - Children Tags
     post:
       operationId: create_children_tag_resource
       summary: Create a tag resource
@@ -9168,7 +9194,7 @@ paths:
         - oauth_token:
             - children.write
       tags:
-        - Tags CH
+        - Children Tags
   /giving/batches:
     get:
       operationId: list_giving_batches
@@ -9330,7 +9356,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Custom Fields GI
+        - Giving Custom Fields
   /giving/custom_fields:
     get:
       operationId: list_giving_custom_fields
@@ -9371,7 +9397,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Custom Fields GI
+        - Giving Custom Fields
   /giving/declarations:
     get:
       operationId: list_declarations
@@ -9721,7 +9747,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Flows GI
+        - Giving Flows
   /giving/flows:
     get:
       operationId: list_giving_flows
@@ -9782,7 +9808,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Flows GI
+        - Giving Flows
   /giving/flow_stages/{id}:
     parameters:
       - name: id
@@ -9819,7 +9845,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Flows GI
+        - Giving Flows
     get:
       operationId: get_giving_flow_stage
       summary: Get a flow stage
@@ -9851,7 +9877,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Flows GI
+        - Giving Flows
     put:
       operationId: edit_giving_flow_stage
       summary: Update a flow stage
@@ -9889,7 +9915,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Flows GI
+        - Giving Flows
   /giving/flow_stages:
     get:
       operationId: list_giving_flow_stages
@@ -9941,7 +9967,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Flows GI
+        - Giving Flows
     post:
       operationId: create_giving_flow_stage
       summary: Create a flow stage
@@ -9992,7 +10018,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Flows GI
+        - Giving Flows
   /giving/flow_trackings/{id}:
     parameters:
       - name: id
@@ -10037,7 +10063,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Flows GI
+        - Giving Flows
     put:
       operationId: edit_giving_flow_tracking
       summary: Update a flow tracking
@@ -10079,7 +10105,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Flows GI
+        - Giving Flows
     delete:
       operationId: delete_giving_flow_tracking
       summary: Delete a flow tracking
@@ -10103,7 +10129,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Flows GI
+        - Giving Flows
   /giving/flow_trackings:
     get:
       operationId: list_giving_flow_trackings
@@ -10193,7 +10219,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Flows GI
+        - Giving Flows
     post:
       operationId: create_giving_flow_tracking
       summary: Create a flow tracking
@@ -10250,7 +10276,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Flows GI
+        - Giving Flows
   /giving/funds/{id}:
     parameters:
       - name: id
@@ -11027,7 +11053,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Tags GI
+        - Giving Tags
     get:
       operationId: get_giving_tag
       summary: Get a tag
@@ -11059,7 +11085,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Tags GI
+        - Giving Tags
     put:
       operationId: edit_giving_tag
       summary: Update a tag
@@ -11101,7 +11127,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Tags GI
+        - Giving Tags
   /giving/tags:
     get:
       operationId: list_giving_tag
@@ -11179,7 +11205,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Tags GI
+        - Giving Tags
     post:
       operationId: create_giving_tag
       summary: Create a tag
@@ -11232,7 +11258,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Tags GI
+        - Giving Tags
   /giving/tag_categories/{id}:
     parameters:
       - name: id
@@ -11274,7 +11300,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Tags GI
+        - Giving Tags
   /giving/tag_categories:
     get:
       operationId: list_giving_tag_categories
@@ -11307,7 +11333,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Tags GI
+        - Giving Tags
   /giving/tag_resources:
     delete:
       operationId: delete_giving_tag_resource
@@ -11353,7 +11379,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Tags GI
+        - Giving Tags
     get:
       operationId: list_giving_tag_resources
       summary: List tag resources
@@ -11419,7 +11445,7 @@ paths:
         - oauth_token:
             - giving.read
       tags:
-        - Tags GI
+        - Giving Tags
     post:
       operationId: create_giving_tag_resource
       summary: Create a tag resource
@@ -11461,7 +11487,7 @@ paths:
         - oauth_token:
             - giving.write
       tags:
-        - Tags GI
+        - Giving Tags
   /network/custom_fields/{id}:
     parameters:
       - name: id
@@ -11503,7 +11529,7 @@ paths:
         - oauth_token:
             - network.read
       tags:
-        - Custom Fields NE
+        - Network Custom Fields
   /network/custom_fields:
     get:
       operationId: list_network_custom_fields
@@ -11544,7 +11570,7 @@ paths:
         - oauth_token:
             - network.read
       tags:
-        - Custom Fields NE
+        - Network Custom Fields
   /network/key_date_resources/{id}:
     parameters:
       - name: id
@@ -11579,7 +11605,7 @@ paths:
         - oauth_token:
             - network.write
       tags:
-        - Key Dates NE
+        - Network Key Dates
     put:
       operationId: edit_organisation_key_date_resource
       summary: Update a key date resource
@@ -11619,7 +11645,7 @@ paths:
         - oauth_token:
             - network.write
       tags:
-        - Key Dates NE
+        - Network Key Dates
   /network/key_date_resources:
     get:
       operationId: list_organisation_key_date_resources
@@ -11710,7 +11736,7 @@ paths:
         - oauth_token:
             - network.read
       tags:
-        - Key Dates NE
+        - Network Key Dates
     post:
       operationId: create_organisation_key_date_resource
       summary: Create a key date resource
@@ -11759,7 +11785,7 @@ paths:
         - oauth_token:
             - network.write
       tags:
-        - Key Dates NE
+        - Network Key Dates
   /network/key_dates/{id}:
     parameters:
       - name: id
@@ -11801,7 +11827,7 @@ paths:
         - oauth_token:
             - network.read
       tags:
-        - Key Dates NE
+        - Network Key Dates
     delete:
       operationId: delete_network_key_date
       summary: Delete a key date
@@ -11823,7 +11849,7 @@ paths:
         - oauth_token:
             - network.write
       tags:
-        - Key Dates NE
+        - Network Key Dates
     put:
       operationId: edit_network_key_date
       summary: Update a key date
@@ -11863,7 +11889,7 @@ paths:
         - oauth_token:
             - network.write
       tags:
-        - Key Dates NE
+        - Network Key Dates
   /network/key_dates:
     get:
       operationId: list_network_key_dates
@@ -11939,7 +11965,7 @@ paths:
         - oauth_token:
             - network.read
       tags:
-        - Key Dates NE
+        - Network Key Dates
     post:
       operationId: create_network_key_date
       summary: Create a key date
@@ -11994,7 +12020,7 @@ paths:
         - oauth_token:
             - network.write
       tags:
-        - Key Dates NE
+        - Network Key Dates
   /network/labels/{id}:
     parameters:
       - name: id
@@ -12036,7 +12062,7 @@ paths:
         - oauth_token:
             - network.read
       tags:
-        - Labels NE
+        - Network Labels
     delete:
       operationId: delete_network_label
       summary: Delete a label
@@ -12061,7 +12087,7 @@ paths:
         - oauth_token:
             - network.write
       tags:
-        - Labels NE
+        - Network Labels
     put:
       operationId: edit_network_label
       summary: Update a label
@@ -12101,7 +12127,7 @@ paths:
         - oauth_token:
             - network.write
       tags:
-        - Labels NE
+        - Network Labels
   /network/labels:
     get:
       operationId: list_network_labels
@@ -12152,7 +12178,7 @@ paths:
         - oauth_token:
             - network.read
       tags:
-        - Labels NE
+        - Network Labels
     post:
       operationId: create_network_label
       summary: Create a label
@@ -12192,7 +12218,7 @@ paths:
         - oauth_token:
             - network.write
       tags:
-        - Labels NE
+        - Network Labels
   /network/label_resources:
     get:
       operationId: list_network_label_resources
@@ -12255,7 +12281,7 @@ paths:
         - oauth_token:
             - network.read
       tags:
-        - Labels NE
+        - Network Labels
   /network/members:
     get:
       operationId: list_network_members
@@ -12343,7 +12369,7 @@ paths:
         - oauth_token:
             - network.read
       tags:
-        - Members NE
+        - Network Members
   /network/organisations/{id}:
     parameters:
       - name: id
@@ -12571,7 +12597,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_role
+      operationId: get_organisation_role
       summary: Get a role
       description: Retrieve a single role identified by ID.
       responses:
@@ -12601,7 +12627,7 @@ paths:
         - oauth_token:
             - network.read
       tags:
-        - Roles NE
+        - Network Roles
   /network/roles:
     get:
       operationId: list_roles
@@ -12652,7 +12678,7 @@ paths:
         - oauth_token:
             - network.read
       tags:
-        - Roles NE
+        - Network Roles
   /planning/library_items/{id}:
     parameters:
       - name: id
@@ -13617,7 +13643,7 @@ paths:
         - oauth_token:
             - planning.read
       tags:
-        - Types PL
+        - Plan Types
   /planning/types:
     get:
       operationId: list_planning_types
@@ -13668,7 +13694,7 @@ paths:
         - oauth_token:
             - planning.read
       tags:
-        - Types PL
+        - Plan Types
   /rotas/ministries/{id}:
     parameters:
       - name: id
@@ -14243,7 +14269,7 @@ paths:
         - oauth_token:
             - rotas.read
       tags:
-        - Roles RO
+        - Rota Roles
   /smallgroups/attendances:
     get:
       operationId: list_attendance_dates
@@ -14553,7 +14579,7 @@ paths:
         - oauth_token:
             - smallgroups.read
       tags:
-        - Custom Fields SG
+        - Small Group Custom Fields
   /smallgroups/custom_fields:
     get:
       operationId: list_smallgroups_custom_fields
@@ -14594,7 +14620,7 @@ paths:
         - oauth_token:
             - smallgroups.read
       tags:
-        - Custom Fields SG
+        - Small Group Custom Fields
   /smallgroups/groups/{id}:
     parameters:
       - name: id
@@ -14606,7 +14632,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_group1
+      operationId: get_small_group
       summary: Get a group
       description: Retrieve a single group identified by ID.
       responses:
@@ -14636,7 +14662,7 @@ paths:
         - oauth_token:
             - smallgroups.read
       tags:
-        - Groups SG
+        - Small Groups
   /smallgroups/groups/{id}/notes:
     parameters:
       - name: id
@@ -14683,7 +14709,7 @@ paths:
         - oauth_token:
             - smallgroups.read
       tags:
-        - Groups SG
+        - Small Groups
     post:
       operationId: create_group_note
       summary: Create a group note
@@ -14723,10 +14749,10 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - Groups SG
+        - Small Groups
   /smallgroups/groups:
     get:
-      operationId: list_groups1
+      operationId: list_small_groups
       summary: List groups
       description: Returns a list of groups, sorted alphabetically by name.
       parameters:
@@ -14853,7 +14879,7 @@ paths:
         - oauth_token:
             - smallgroups.read
       tags:
-        - Groups SG
+        - Small Groups
   /smallgroups/labels/{id}:
     parameters:
       - name: id
@@ -14895,7 +14921,7 @@ paths:
         - oauth_token:
             - smallgroups.read
       tags:
-        - Labels SG
+        - Small Group Labels
     delete:
       operationId: delete_smallgroups_label
       summary: Delete a label
@@ -14920,7 +14946,7 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - Labels SG
+        - Small Group Labels
     put:
       operationId: edit_smallgroups_label
       summary: Update a label
@@ -14960,7 +14986,7 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - Labels SG
+        - Small Group Labels
   /smallgroups/labels:
     get:
       operationId: list_smallgroups_labels
@@ -15011,7 +15037,7 @@ paths:
         - oauth_token:
             - smallgroups.read
       tags:
-        - Labels SG
+        - Small Group Labels
     post:
       operationId: create_smallgroups_label
       summary: Create a label
@@ -15051,7 +15077,7 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - Labels SG
+        - Small Group Labels
   /smallgroups/label_resources:
     get:
       operationId: list_smallgroups_label_resources
@@ -15114,7 +15140,7 @@ paths:
         - oauth_token:
             - smallgroups.read
       tags:
-        - Labels SG
+        - Small Group Labels
   /smallgroups/members/{id}:
     parameters:
       - name: id
@@ -15156,7 +15182,7 @@ paths:
         - oauth_token:
             - smallgroups.read
       tags:
-        - Members SG
+        - Small Group Members
     delete:
       operationId: delete_small_groups_member
       summary: Delete a member
@@ -15178,7 +15204,7 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - Members SG
+        - Small Group Members
     put:
       operationId: edit_small_groups_member
       summary: Update a member
@@ -15218,7 +15244,7 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - Members SG
+        - Small Group Members
   /smallgroups/members:
     get:
       operationId: list_small_groups_members
@@ -15334,7 +15360,7 @@ paths:
         - oauth_token:
             - smallgroups.read
       tags:
-        - Members SG
+        - Small Group Members
     post:
       operationId: create_small_groups_members
       summary: Create members
@@ -15376,7 +15402,7 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - Members SG
+        - Small Group Members
   /smallgroups/roles/{id}:
     parameters:
       - name: id
@@ -15388,7 +15414,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_role1
+      operationId: get_group_role
       summary: Get a role
       description: Retrieve a single role identified by ID.
       responses:
@@ -15418,7 +15444,7 @@ paths:
         - oauth_token:
             - smallgroups.read
       tags:
-        - Roles SG
+        - Small Group Roles
     delete:
       operationId: delete_small_groups_role
       summary: Delete a role
@@ -15444,7 +15470,7 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - Roles SG
+        - Small Group Roles
     put:
       operationId: edit_small_groups_role
       summary: Update a role
@@ -15486,7 +15512,7 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - Roles SG
+        - Small Group Roles
   /smallgroups/roles:
     get:
       operationId: list_roles1
@@ -15527,7 +15553,7 @@ paths:
         - oauth_token:
             - smallgroups.read
       tags:
-        - Roles SG
+        - Small Group Roles
     post:
       operationId: create_small_groups_role
       summary: Create a role
@@ -15569,7 +15595,7 @@ paths:
         - oauth_token:
             - smallgroups.write
       tags:
-        - Roles SG
+        - Small Group Roles
 components:
   parameters:
     PaginationPage:
@@ -17184,9 +17210,7 @@ components:
                       A discriminator to determine the type of Custom Field this
                       response belongs to.
                     type: string
-                    example: email
-                    enum:
-                      - email
+                    const: email
                   value:
                     description: The raw value of an email.
                     type: string
@@ -17253,9 +17277,7 @@ components:
                       A discriminator to determine the type of Custom Field this
                       response belongs to.
                     type: string
-                    example: checkbox
-                    enum:
-                      - checkbox
+                    const: checkbox
                   value:
                     description: >-
                       A list of UUIDs of the selected responses for a checkbox
@@ -17282,8 +17304,6 @@ components:
                   - field_type
                   - value
                 additionalProperties: false
-            discriminator:
-              propertyName: field_type
         communication:
           description: >-
             The person's communication preferences. If no data is provided, the
@@ -18608,7 +18628,9 @@ components:
                     pattern: ^(?!\d{4}-\d{2}-\d{2}$).+$
                     example: support@churchsuite.com
                   - type: integer
-                    description: The id of a site.
+                    description: >-
+                      The value of a site ID, number, currency (in its smallest
+                      monetary unit) or percentage field.
                     example: 1
                   - type: object
                     description: The first and last name response values of a name field.
@@ -19523,9 +19545,7 @@ components:
                 just_me:
                   description: The resource should only be visible to the current user
                   type: boolean
-                  example: false
-                  enum:
-                    - false
+                  const: false
                 user_group_ids:
                   description: List of user group IDs the resource is visible to.
                   type: array
@@ -19544,9 +19564,7 @@ components:
                 just_me:
                   description: The resource should only be visible to the current user
                   type: boolean
-                  example: true
-                  enum:
-                    - true
+                  const: true
                 user_group_ids:
                   description: List of user group IDs the resource is visible to.
                   type: array
@@ -22793,9 +22811,7 @@ components:
                       A discriminator to determine the type of Question this
                       response belongs to.
                     type: string
-                    example: checkboxes
-                    enum:
-                      - checkboxes
+                    const: checkboxes
                   value:
                     description: Selected options for a checkboxes response type.
                     type: array
@@ -22820,9 +22836,7 @@ components:
                       A discriminator to determine the type of Question this
                       response belongs to.
                     type: string
-                    example: date
-                    enum:
-                      - date
+                    const: date
                   value:
                     description: Value of date response type.
                     type: string
@@ -22846,9 +22860,7 @@ components:
                       A discriminator to determine the type of Question this
                       response belongs to.
                     type: string
-                    example: email
-                    enum:
-                      - email
+                    const: email
                   value:
                     description: Value of email response type.
                     type: string
@@ -22900,9 +22912,7 @@ components:
                       A discriminator to determine the type of Question this
                       response belongs to.
                     type: string
-                    example: phone
-                    enum:
-                      - phone
+                    const: phone
                   value:
                     description: Value of a phone response type.
                     type: string
@@ -22942,8 +22952,6 @@ components:
                   - question_type
                   - value
                 additionalProperties: false
-            discriminator:
-              propertyName: question_type
         send_confirmation:
           description: Whether to send a confirmation email to the Sign-Up.
           type: boolean
@@ -23952,9 +23960,7 @@ components:
                       A discriminator to determine the type of Custom Field this
                       response belongs to.
                     type: string
-                    example: email
-                    enum:
-                      - email
+                    const: email
                   value:
                     description: The raw value of an email.
                     type: string
@@ -24021,9 +24027,7 @@ components:
                       A discriminator to determine the type of Custom Field this
                       response belongs to.
                     type: string
-                    example: checkbox
-                    enum:
-                      - checkbox
+                    const: checkbox
                   value:
                     description: >-
                       A list of UUIDs of the selected responses for a checkbox
@@ -24050,8 +24054,6 @@ components:
                   - field_type
                   - value
                 additionalProperties: false
-            discriminator:
-              propertyName: field_type
         communication:
           description: >-
             The person's communication preferences. If no data is provided, the
@@ -27193,9 +27195,7 @@ components:
                 just_me:
                   description: The resource should only be visible to the current user
                   type: boolean
-                  example: false
-                  enum:
-                    - false
+                  const: false
                 user_group_ids:
                   description: List of user group IDs the resource is visible to.
                   type: array
@@ -27214,9 +27214,7 @@ components:
                 just_me:
                   description: The resource should only be visible to the current user
                   type: boolean
-                  example: true
-                  enum:
-                    - true
+                  const: true
                 user_group_ids:
                   description: List of user group IDs the resource is visible to.
                   type: array
@@ -31071,7 +31069,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/29-adding-a-new-contact-to-your-address-book
-  - name: Custom Fields AB
+  - name: Address Book Custom Fields
     summary: Custom Fields
     parent: Address Book Module
     description: >-
@@ -31082,7 +31080,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/39-creating-custom-fields
-  - name: Flows AB
+  - name: Address Book Flows
     summary: Flows
     parent: Address Book Module
     description: >-
@@ -31095,7 +31093,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/154-flows
-  - name: Form Fields AB
+  - name: Address Book Form Fields
     summary: Form Fields
     parent: Address Book Module
     description: Form Fields are the building blocks used to construct Forms
@@ -31104,7 +31102,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/589-forms
-  - name: Form Responses AB
+  - name: Address Book Form Responses
     summary: Form Responses
     parent: Address Book Module
     description: Form Responses are the responses of completed online forms.
@@ -31113,7 +31111,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/600-managing-form-responses
-  - name: Key Dates AB
+  - name: Address Book Key Dates
     summary: Key Dates
     parent: Address Book Module
     description: >-
@@ -31126,7 +31124,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/31-stay-on-top-of-your-church-member-key-dates
-  - name: Tags AB
+  - name: Address Book Tags
     summary: Tags
     parent: Address Book Module
     description: Tags allow you to flexibly categorise or group people together.
@@ -31218,7 +31216,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/412-managing-booking-customers
-  - name: Custom Fields BO
+  - name: Bookings Custom Fields
     summary: Fields
     parent: Bookings Module
     description: >-
@@ -31229,7 +31227,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/39-creating-custom-fields
-  - name: Flows BO
+  - name: Bookings Flows
     summary: Flows
     parent: Bookings Module
     description: >-
@@ -31262,7 +31260,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/122-creating-booking-types-and-resources
-  - name: Tags BO
+  - name: Bookings Tags
     summary: Tags
     parent: Bookings Module
     description: Tags allow you to flexibly categorise or group people together.
@@ -31271,7 +31269,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/33-communicate-with-groups-of-contacts-in-a-fixed-tag
-  - name: Types BO
+  - name: Bookings Types
     summary: Types
     parent: Bookings Module
     description: >-
@@ -31315,7 +31313,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/460-event-invitations
-  - name: Labels CA
+  - name: Event Labels
     summary: Labels
     parent: Calendar Module
     description: Labels are a way of further categorising your events.
@@ -31365,7 +31363,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/575-adding-a-new-child
-  - name: Custom Fields CH
+  - name: Children Custom Fields
     summary: Custom Fields
     parent: Children Module
     description: >-
@@ -31376,7 +31374,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/39-creating-custom-fields
-  - name: Flows CH
+  - name: Children Flows
     summary: Flows
     parent: Children Module
     description: >-
@@ -31389,7 +31387,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/154-flows
-  - name: Form Fields CH
+  - name: Children Form Fields
     summary: Form Fields
     parent: Children Module
     description: Form Fields are the building blocks used to construct Forms
@@ -31398,7 +31396,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/589-forms
-  - name: Form Responses CH
+  - name: Children Form Responses
     summary: Form Responses
     parent: Children Module
     description: Form Responses are the responses of completed online forms.
@@ -31415,7 +31413,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/87-gatherings-groups-and-sessions-for-children
-  - name: Groups CH
+  - name: Children Groups
     summary: Groups
     parent: Children Module
     description: A group is a collection of children matching the group's age rules.
@@ -31424,7 +31422,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/87-gatherings-groups-and-sessions-for-children
-  - name: Key Dates CH
+  - name: Children Key Dates
     summary: Key Dates
     parent: Children Module
     description: >-
@@ -31445,7 +31443,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://https://support.churchsuite.com/article/81-how-to-link-a-child-to-their-parent
-  - name: Tags CH
+  - name: Children Tags
     summary: Tags
     parent: Children Module
     description: Tags allow you to flexibly categorise or group people together.
@@ -31473,7 +31471,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/119-reclaiming-gift-aid
-  - name: Custom Fields GI
+  - name: Giving Custom Fields
     summary: Custom Fields
     parent: Giving Module
     description: >-
@@ -31500,7 +31498,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/51-adding-or-importing-donations
-  - name: Flows GI
+  - name: Giving Flows
     summary: Flows
     parent: Giving Module
     description: >-
@@ -31541,7 +31539,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/225-managing-pledges
-  - name: Tags GI
+  - name: Giving Tags
     summary: Tags
     parent: Giving Module
     description: Tags allow you to flexibly categorise or group people together.
@@ -31560,7 +31558,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/619-getting-started-with-the-network-module
-  - name: Custom Fields NE
+  - name: Network Custom Fields
     summary: Custom Fields
     parent: Network Module
     description: >-
@@ -31571,7 +31569,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/621-adding-custom-fields-for-organisations
-  - name: Key Dates NE
+  - name: Network Key Dates
     summary: Key Dates
     parent: Network Module
     description: >-
@@ -31582,7 +31580,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/31-stay-on-top-of-your-church-member-key-dates
-  - name: Labels NE
+  - name: Network Labels
     summary: Labels
     parent: Network Module
     description: >-
@@ -31593,7 +31591,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/612-managing-organisations-with-labels
-  - name: Members NE
+  - name: Network Members
     summary: Members
     parent: Network Module
     description: Link key contacts to organisations in your network.
@@ -31612,7 +31610,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/611-adding-organisations
-  - name: Roles NE
+  - name: Network Roles
     summary: Roles
     parent: Network Module
     description: Roles are a useful way of distinguishing organisation members.
@@ -31691,7 +31689,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/518-working-with-templates
-  - name: Types PL
+  - name: Plan Types
     summary: Types
     parent: Planning Module
     description: >-
@@ -31723,7 +31721,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/666-how-to-add-a-ministry
-  - name: Roles RO
+  - name: Rota Roles
     summary: Roles
     parent: Rotas Module
     description: >-
@@ -31767,7 +31765,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/211-managing-small-group-oversight-with-clusters
-  - name: Custom Fields SG
+  - name: Small Group Custom Fields
     summary: Custom Fields
     parent: Small Groups Module
     description: >-
@@ -31778,7 +31776,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/546-custom-fields-for-small-groups
-  - name: Groups SG
+  - name: Small Groups
     summary: Groups
     parent: Small Groups Module
     description: >-
@@ -31789,7 +31787,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/63-adding-a-new-small-group
-  - name: Labels SG
+  - name: Small Group Labels
     summary: Labels
     parent: Small Groups Module
     description: Labels are a way of further categorising your groups.
@@ -31798,7 +31796,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/616-small-group-labels
-  - name: Members SG
+  - name: Small Group Members
     summary: Members
     parent: Small Groups Module
     description: Members are contacts or children that attend a group.
@@ -31807,7 +31805,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/53-adding-people-to-small-groups
-  - name: Roles SG
+  - name: Small Group Roles
     summary: Roles
     parent: Small Groups Module
     description: >-

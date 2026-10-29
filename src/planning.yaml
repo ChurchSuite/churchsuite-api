@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.3
+  version: 2.112.7
   title: Planning Module
   description: >-
     The Planning module enables organisations/churches to produce plans for
@@ -85,7 +85,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/518-working-with-templates
-  - name: Types PL
+  - name: Plan Types
     summary: Types
     parent: Planning Module
     description: >-
@@ -1061,7 +1061,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Types PL
+        - Plan Types
   /planning/types:
     get:
       summary: List types
@@ -1112,7 +1112,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Types PL
+        - Plan Types
 components:
   parameters:
     PaginationPage:

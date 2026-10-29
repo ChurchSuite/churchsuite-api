@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.3
+  version: 2.112.7
   title: Attendance Module
   description: >-
     The Attendance module is the core repository for maintaining historic
@@ -267,7 +267,7 @@ paths:
     get:
       summary: List metrics
       description: Returns a list of metrics, sorted alphabetically by order.
-      operationId: get_attendance_metrics
+      operationId: list_attendance_metrics
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.3
+  version: 2.112.7
   title: Address Book Module
   description: >-
     The Address Book module manages all adult contacts associated with your
@@ -35,7 +35,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/29-adding-a-new-contact-to-your-address-book
-  - name: Custom Fields AB
+  - name: Address Book Custom Fields
     summary: Custom Fields
     parent: Address Book Module
     description: >-
@@ -46,7 +46,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/39-creating-custom-fields
-  - name: Flows AB
+  - name: Address Book Flows
     summary: Flows
     parent: Address Book Module
     description: >-
@@ -59,7 +59,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/154-flows
-  - name: Form Fields AB
+  - name: Address Book Form Fields
     summary: Form Fields
     parent: Address Book Module
     description: Form Fields are the building blocks used to construct Forms
@@ -68,7 +68,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/589-forms
-  - name: Form Responses AB
+  - name: Address Book Form Responses
     summary: Form Responses
     parent: Address Book Module
     description: Form Responses are the responses of completed online forms.
@@ -77,7 +77,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/600-managing-form-responses
-  - name: Key Dates AB
+  - name: Address Book Key Dates
     summary: Key Dates
     parent: Address Book Module
     description: >-
@@ -90,7 +90,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/31-stay-on-top-of-your-church-member-key-dates
-  - name: Tags AB
+  - name: Address Book Tags
     summary: Tags
     parent: Address Book Module
     description: Tags allow you to flexibly categorise or group people together.
@@ -539,7 +539,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Custom Fields AB
+        - Address Book Custom Fields
   /addressbook/custom_fields:
     get:
       summary: List custom fields
@@ -580,7 +580,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Custom Fields AB
+        - Address Book Custom Fields
   /addressbook/flows/{id}:
     parameters:
       - name: id
@@ -623,7 +623,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows AB
+        - Address Book Flows
   /addressbook/flows:
     get:
       summary: List flows
@@ -684,7 +684,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows AB
+        - Address Book Flows
   /addressbook/flow_stages/{id}:
     parameters:
       - name: id
@@ -721,7 +721,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows AB
+        - Address Book Flows
     get:
       summary: Get a flow stage
       description: Retrieve a single stage identified by ID.
@@ -753,7 +753,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows AB
+        - Address Book Flows
     put:
       summary: Update a flow stage
       description: Update a single stage identified by ID.
@@ -791,7 +791,7 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       tags:
-        - Flows AB
+        - Address Book Flows
   /addressbook/flow_stages:
     get:
       summary: List flow stages
@@ -843,7 +843,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows AB
+        - Address Book Flows
     post:
       summary: Create a flow stage
       description: Create a stage for a flow.
@@ -894,7 +894,7 @@ paths:
         '404':
           $ref: '#/components/responses/404'
       tags:
-        - Flows AB
+        - Address Book Flows
   /addressbook/flow_trackings/{id}:
     parameters:
       - name: id
@@ -939,7 +939,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows AB
+        - Address Book Flows
     put:
       summary: Update a flow tracking
       description: >-
@@ -981,7 +981,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows AB
+        - Address Book Flows
     delete:
       summary: Delete a flow tracking
       description: >-
@@ -1005,7 +1005,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows AB
+        - Address Book Flows
   /addressbook/flow_trackings:
     get:
       summary: List flow trackings
@@ -1095,7 +1095,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows AB
+        - Address Book Flows
     post:
       summary: Create a flow tracking
       description: >-
@@ -1152,7 +1152,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Flows AB
+        - Address Book Flows
   /addressbook/form_fields/{id}:
     parameters:
       - name: id
@@ -1195,7 +1195,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Form Fields AB
+        - Address Book Form Fields
   /addressbook/form_fields:
     get:
       summary: List form fields
@@ -1247,7 +1247,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Form Fields AB
+        - Address Book Form Fields
   /addressbook/form_responses/{id}:
     parameters:
       - name: id
@@ -1290,7 +1290,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Form Responses AB
+        - Address Book Form Responses
   /addressbook/form_responses:
     get:
       summary: List form responses
@@ -1378,7 +1378,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Form Responses AB
+        - Address Book Form Responses
   /addressbook/key_date_resources/{id}:
     parameters:
       - name: id
@@ -1413,7 +1413,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
     put:
       summary: Update a key date resource
       description: Update a single key date resource identified by ID.
@@ -1453,7 +1453,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
   /addressbook/key_date_resources:
     get:
       summary: List key date resources
@@ -1544,7 +1544,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
     post:
       summary: Create a key date resource
       description: Create a key date resource adding a contact to a key date
@@ -1593,7 +1593,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
   /addressbook/key_dates/{id}:
     parameters:
       - name: id
@@ -1636,7 +1636,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
     delete:
       summary: Delete a key date
       description: Delete a single key date identified by ID.
@@ -1658,7 +1658,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
     put:
       summary: Update a key date
       description: Update a single key date identified by ID.
@@ -1698,7 +1698,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
   /addressbook/key_dates:
     get:
       summary: List key dates
@@ -1774,7 +1774,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
     post:
       summary: Create a key date
       description: Create a key date with the provided settings.
@@ -1829,7 +1829,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Key Dates AB
+        - Address Book Key Dates
   /addressbook/tags/{id}:
     parameters:
       - name: id
@@ -1863,7 +1863,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags AB
+        - Address Book Tags
     get:
       summary: Get a tag
       description: Retrieve a single tag identified by ID.
@@ -1895,7 +1895,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags AB
+        - Address Book Tags
     put:
       summary: Update a tag
       description: Update a tag
@@ -1937,7 +1937,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags AB
+        - Address Book Tags
   /addressbook/tags:
     get:
       summary: List tags
@@ -2013,7 +2013,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags AB
+        - Address Book Tags
     post:
       summary: Create a tag
       description: Create a tag
@@ -2066,7 +2066,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags AB
+        - Address Book Tags
   /addressbook/tag_categories/{id}:
     parameters:
       - name: id
@@ -2108,7 +2108,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags AB
+        - Address Book Tags
   /addressbook/tag_categories:
     get:
       summary: List tag categories
@@ -2141,7 +2141,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags AB
+        - Address Book Tags
   /addressbook/tag_resources:
     delete:
       summary: Delete a tag resource
@@ -2187,7 +2187,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags AB
+        - Address Book Tags
     get:
       summary: List tag resources
       description: >-
@@ -2253,7 +2253,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags AB
+        - Address Book Tags
     post:
       summary: Create a tag resource
       description: Create a tag resource linking a contact to a tag
@@ -2295,7 +2295,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Tags AB
+        - Address Book Tags
 components:
   parameters:
     PaginationPage:
@@ -3177,9 +3177,7 @@ components:
                     description: >-
                       A discriminator to determine the type of Custom Field this
                       response belongs to.
-                    example: email
-                    enum:
-                      - email
+                    const: email
                   value:
                     type: string
                     description: The raw value of an email.
@@ -3246,9 +3244,7 @@ components:
                     description: >-
                       A discriminator to determine the type of Custom Field this
                       response belongs to.
-                    example: checkbox
-                    enum:
-                      - checkbox
+                    const: checkbox
                   value:
                     type: array
                     description: >-
@@ -3275,8 +3271,6 @@ components:
                   - field_type
                   - value
                 additionalProperties: false
-            discriminator:
-              propertyName: field_type
         communication:
           type: object
           description: >-
@@ -4601,7 +4595,9 @@ components:
                     pattern: ^(?!\d{4}-\d{2}-\d{2}$).+$
                     example: support@churchsuite.com
                   - type: integer
-                    description: The id of a site.
+                    description: >-
+                      The value of a site ID, number, currency (in its smallest
+                      monetary unit) or percentage field.
                     example: 1
                   - type: object
                     description: The first and last name response values of a name field.
@@ -5555,9 +5551,7 @@ components:
                 just_me:
                   type: boolean
                   description: The resource should only be visible to the current user
-                  example: false
-                  enum:
-                    - false
+                  const: false
                 user_group_ids:
                   type: array
                   description: List of user group IDs the resource is visible to.
@@ -5576,9 +5570,7 @@ components:
                 just_me:
                   type: boolean
                   description: The resource should only be visible to the current user
-                  example: true
-                  enum:
-                    - true
+                  const: true
                 user_group_ids:
                   type: array
                   description: List of user group IDs the resource is visible to.

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.3
+  version: 2.112.7
   title: Calendar Module
   description: Manage events, sign-ups and staff leave across your account.
   termsOfService: https://churchsuite.com/terms-of-service/
@@ -43,7 +43,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/460-event-invitations
-  - name: Labels CA
+  - name: Event Labels
     summary: Labels
     parent: Calendar Module
     description: Labels are a way of further categorising your events.
@@ -389,74 +389,93 @@ paths:
         content:
           application/json:
             schema:
-              description: Edit an Event in the Calendar module.
-              allOf:
-                - type: object
+              description: >-
+                Edit an Event in the Calendar module. Provide either `all_sites`
+                or `site_ids`.
+              type: object
+              properties:
+                sequence_id:
+                  type:
+                    - integer
+                    - 'null'
+                  minimum: 1
+                  description: >-
+                    If the Event is part of a sequence, this field should
+                    contain the sequence ID from an existing Event in the
+                    sequence.
+                  example: 213
+                name:
+                  type: string
+                  description: The Event's name.
+                  example: Gibson's Wedding
+                  maxLength: 50
+                  minLength: 1
+                starts_at:
+                  type: string
+                  description: Date and time the Event starts.
+                  format: date-time
+                  example: '2018-01-01T10:00:00Z'
+                ends_at:
+                  type: string
+                  description: Date and time the Event ends.
+                  format: date-time
+                  example: '2018-01-01T11:00:00Z'
+                status:
+                  type: string
+                  description: The current status of the Event.
+                  example: confirmed
+                  enum:
+                    - confirmed
+                    - cancelled
+                    - pending
+                description:
+                  type: string
+                  description: The description of the Event.
+                  example: The reception of John Gibson and Anita Davis.
+                  minLength: 0
+                category_id:
+                  type: integer
+                  description: The Event's category ID.
+                  example: 25
+              required:
+                - sequence_id
+                - name
+                - starts_at
+                - ends_at
+                - status
+                - description
+                - category_id
+              oneOf:
+                - title: Event belonging to all Sites
+                  type: object
                   properties:
-                    sequence_id:
-                      type:
-                        - integer
-                        - 'null'
-                      minimum: 1
-                      description: >-
-                        If the Event is part of a sequence, this field should
-                        contain the sequence ID from an existing Event in the
-                        sequence.
-                      example: 213
-                    name:
-                      type: string
-                      description: The Event's name.
-                      example: Gibson's Wedding
-                      maxLength: 50
-                      minLength: 1
-                    starts_at:
-                      type: string
-                      description: Date and time the Event starts.
-                      format: date-time
-                      example: '2018-01-01T10:00:00Z'
-                    ends_at:
-                      type: string
-                      description: Date and time the Event ends.
-                      format: date-time
-                      example: '2018-01-01T11:00:00Z'
-                    status:
-                      type: string
-                      description: The current status of the Event.
-                      example: confirmed
-                      enum:
-                        - confirmed
-                        - cancelled
-                        - pending
-                    description:
-                      type: string
-                      description: The description of the Event.
-                      example: The reception of John Gibson and Anita Davis.
-                      minLength: 0
-                    category_id:
-                      type: integer
-                      description: The Event's category ID.
-                      example: 25
-                - oneOf:
-                    - type: object
-                      properties:
-                        all_sites:
-                          type: boolean
-                          description: Whether the Event belongs to All Sites.
-                          enum:
-                            - true
-                          example: true
-                    - type: object
-                      properties:
-                        site_ids:
-                          type: array
-                          description: List of all site IDs the Event belongs to.
-                          example:
-                            - 2
-                            - 7
-                            - 16
-                          items:
-                            type: integer
-              additionalProperties: false
+                    all_sites:
+                      type: boolean
+                      description: Whether the Event belongs to All Sites.
+                      const: true
+                      example: true
+                  required:
+                    - all_sites
+                - title: Event belonging to selected Sites
+                  type: object
+                  properties:
+                    all_sites:
+                      type: boolean
+                      description: Whether the Event belongs to All Sites.
+                      const: false
+                      example: false
+                    site_ids:
+                      type: array
+                      description: List of all site IDs the Event belongs to.
+                      example:
+                        - 2
+                        - 7
+                        - 16
+                      items:
+                        type: integer
+                  required:
+                    - site_ids
+              unevaluatedProperties: false
       security:
         - oauth_token:
             - full_access
@@ -621,84 +640,91 @@ paths:
         content:
           application/json:
             schema:
-              description: Create an Event in the Calendar module.
-              allOf:
-                - type: object
+              description: >-
+                Create an Event in the Calendar module. Provide either
+                `all_sites` or `site_ids`.
+              type: object
+              properties:
+                sequence_id:
+                  type:
+                    - integer
+                    - 'null'
+                  minimum: 1
+                  description: >-
+                    If the Event is part of a sequence, this field should
+                    contain the sequence ID from an existing Event in the
+                    sequence.
+                  example: 213
+                name:
+                  type: string
+                  description: The Event's name.
+                  example: Gibson's Wedding
+                  maxLength: 50
+                  minLength: 1
+                starts_at:
+                  type: string
+                  description: Date and time the Event starts.
+                  format: date-time
+                  example: '2018-01-01T10:00:00Z'
+                ends_at:
+                  type: string
+                  description: Date and time the Event ends.
+                  format: date-time
+                  example: '2018-01-01T11:00:00Z'
+                status:
+                  type: string
+                  description: The current status of the Event.
+                  example: confirmed
+                  enum:
+                    - confirmed
+                    - cancelled
+                    - pending
+                description:
+                  type: string
+                  description: The description of the Event.
+                  example: The reception of John Gibson and Anita Davis.
+                  minLength: 1
+                category_id:
+                  type: integer
+                  description: The Event's category ID.
+                  example: 25
+              required:
+                - name
+                - starts_at
+                - ends_at
+                - status
+                - category_id
+              oneOf:
+                - title: Event belonging to all Sites
+                  type: object
                   properties:
-                    sequence_id:
-                      type:
-                        - integer
-                        - 'null'
-                      minimum: 1
-                      description: >-
-                        If the Event is part of a sequence, this field should
-                        contain the sequence ID from an existing Event in the
-                        sequence.
-                      example: 213
-                    name:
-                      type: string
-                      description: The Event's name.
-                      example: Gibson's Wedding
-                      maxLength: 50
-                      minLength: 1
-                    starts_at:
-                      type: string
-                      description: Date and time the Event starts.
-                      format: date-time
-                      example: '2018-01-01T10:00:00Z'
-                    ends_at:
-                      type: string
-                      description: Date and time the Event ends.
-                      format: date-time
-                      example: '2018-01-01T11:00:00Z'
-                    status:
-                      type: string
-                      description: The current status of the Event.
-                      example: confirmed
-                      enum:
-                        - confirmed
-                        - cancelled
-                        - pending
-                    description:
-                      type: string
-                      description: The description of the Event.
-                      example: The reception of John Gibson and Anita Davis.
-                      minLength: 1
-                    category_id:
-                      type: integer
-                      description: The Event's category ID.
-                      example: 25
+                    all_sites:
+                      type: boolean
+                      description: Whether the Event belongs to All Sites.
+                      const: true
+                      example: true
                   required:
-                    - name
-                    - starts_at
-                    - ends_at
-                    - status
-                    - category_id
-                - oneOf:
-                    - type: object
-                      properties:
-                        all_sites:
-                          type: boolean
-                          description: Whether the Event belongs to All Sites.
-                          enum:
-                            - true
-                          example: true
-                      required:
-                        - all_sites
-                    - type: object
-                      properties:
-                        site_ids:
-                          type: array
-                          description: List of all site IDs the Event belongs to.
-                          example:
-                            - 2
-                            - 7
-                            - 16
-                          items:
-                            type: integer
-                      required:
-                        - site_ids
-              additionalProperties: false
+                    - all_sites
+                - title: Event belonging to selected Sites
+                  type: object
+                  properties:
+                    all_sites:
+                      type: boolean
+                      description: Whether the Event belongs to All Sites.
+                      const: false
+                      example: false
+                    site_ids:
+                      type: array
+                      description: List of all site IDs the Event belongs to.
+                      example:
+                        - 2
+                        - 7
+                        - 16
+                      items:
+                        type: integer
+                  required:
+                    - site_ids
+              unevaluatedProperties: false
       security:
         - oauth_token:
             - full_access
@@ -1017,7 +1043,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels CA
+        - Event Labels
     delete:
       summary: Delete a label
       description: >-
@@ -1042,7 +1068,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels CA
+        - Event Labels
     put:
       summary: Update a label
       description: Update a single label identified by ID.
@@ -1082,7 +1108,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels CA
+        - Event Labels
   /calendar/labels:
     get:
       summary: List labels
@@ -1133,7 +1159,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels CA
+        - Event Labels
     post:
       summary: Create a label
       description: Create a label with the provided settings.
@@ -1173,7 +1199,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels CA
+        - Event Labels
   /calendar/label_resources:
     get:
       summary: List label resources
@@ -1236,7 +1262,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Labels CA
+        - Event Labels
   /calendar/signups/{id}:
     parameters:
       - name: id
@@ -3137,9 +3163,7 @@ components:
                     description: >-
                       A discriminator to determine the type of Question this
                       response belongs to.
-                    example: checkboxes
-                    enum:
-                      - checkboxes
+                    const: checkboxes
                   value:
                     type: array
                     description: Selected options for a checkboxes response type.
@@ -3164,9 +3188,7 @@ components:
                     description: >-
                       A discriminator to determine the type of Question this
                       response belongs to.
-                    example: date
-                    enum:
-                      - date
+                    const: date
                   value:
                     type: string
                     format: date
@@ -3190,9 +3212,7 @@ components:
                     description: >-
                       A discriminator to determine the type of Question this
                       response belongs to.
-                    example: email
-                    enum:
-                      - email
+                    const: email
                   value:
                     type: string
                     format: email
@@ -3244,9 +3264,7 @@ components:
                     description: >-
                       A discriminator to determine the type of Question this
                       response belongs to.
-                    example: phone
-                    enum:
-                      - phone
+                    const: phone
                   value:
                     type: string
                     description: Value of a phone response type.
@@ -3286,8 +3304,6 @@ components:
                   - question_type
                   - value
                 additionalProperties: false
-            discriminator:
-              propertyName: question_type
         send_confirmation:
           type: boolean
           description: Whether to send a confirmation email to the Sign-Up.

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.3
+  version: 2.112.7
   title: Rotas Module
   description: >-
     The Rotas module enables churches and other organisations to manage all
@@ -34,7 +34,7 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/666-how-to-add-a-ministry
-  - name: Roles RO
+  - name: Rota Roles
     summary: Roles
     parent: Rotas Module
     description: >-
@@ -623,7 +623,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
       tags:
-        - Roles RO
+        - Rota Roles
 components:
   parameters:
     PaginationPage:

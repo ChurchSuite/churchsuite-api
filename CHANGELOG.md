@@ -5,6 +5,25 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.112.7] - 2026-10-29
+
+### Fixed
+
+- Corrected Calendar Event create and edit schemas to document that one of the `site_ids` or `all_sites` properties is required, with no functional API changes.
+
+## [2.112.6] - 2026-10-22
+
+### Fixed
+
+- Updated some operation IDs and tag names within the spec to deduplicate, with no functional API changes.
+
+## [2.112.4] - 2026-10-15
+
+### Fixed
+
+- Corrected Calendar Event create and edit schemas to reject unknown properties without conflicting with composed schemas.
+- Fixed Event edit spec to correctly document that all properties are required.
+
 ## [2.112.3] - 2026-10-13
 
 ### Fixed
