@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.8
+  version: 2.113.0
   title: Children Module
   description: >-
     This module is for managing all the children and young people associated
@@ -4909,17 +4909,25 @@ components:
               value:
                 oneOf:
                   - type: string
+                    title: >-
+                      Text, Textarea, Email, Phone, Date, Select, Radio and
+                      Signature Fields
                     description: >-
                       The raw value of a text, textarea, email, phone, date,
                       select, radio or signature url.
                     pattern: ^(?!\d{4}-\d{2}-\d{2}$).+$
                     example: support@churchsuite.com
-                  - type: integer
+                  - type: number
+                    title: Site ID, Currency, Number and Percentage Fields
                     description: >-
-                      The value of a site ID, number, currency (in its smallest
-                      monetary unit) or percentage field.
-                    example: 1
+                      The integer value of a site ID, or currency field (in its
+                      smallest monetary unit). For number or percentage fields,
+                      whole numbers and decimals are accepted.
+                    examples:
+                      - 1
+                      - 1.5
                   - type: object
+                    title: Name Field
                     description: The first and last name response values of a name field.
                     properties:
                       first_name:
@@ -4935,6 +4943,7 @@ components:
                       - last_name
                     additionalProperties: false
                   - type: object
+                    title: Details Field
                     description: The details fields response values.
                     properties:
                       first_name:
@@ -4965,6 +4974,7 @@ components:
                       - telephone
                     additionalProperties: false
                   - type: object
+                    title: Address Field
                     description: The values of an address field.
                     properties:
                       line_1:
@@ -5019,6 +5029,7 @@ components:
                       - postcode
                     additionalProperties: false
                   - type: array
+                    title: Checkbox Field
                     description: >-
                       An array of objects which contains the UUIDs of the
                       selected responses for a checkbox field. If no checkboxes
@@ -5042,6 +5053,7 @@ components:
                         - id
                       additionalProperties: false
                   - type: array
+                    title: Communications Field
                     description: An array of selected responses for a communications field.
                     example:
                       - post
@@ -5057,6 +5069,7 @@ components:
                         - phone
                         - post
                   - type: array
+                    title: Privacy Field
                     description: An array of selected responses for a privacy field.
                     example:
                       - address
@@ -5072,9 +5085,11 @@ components:
                       - string
                       - 'null'
                     format: date
+                    title: Date Field
                     description: The value for a date field.
                     example: '2022-11-17'
                   - type: array
+                    title: Photo/Video Consent Field
                     description: >-
                       An array of selected responses for a photo/video consent
                       field.

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.112.8
+  version: 2.113.0
   title: Account Data
   description: >-
     Access account-level configuration data about account. The data available
@@ -463,6 +463,148 @@ paths:
             - full_access
         - oauth_token:
             - usergroups.read
+      tags:
+        - Users
+  /account/user_group_members/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the record to retrieve.
+        required: true
+        schema:
+          type: integer
+          format: int32
+          example: 45
+          minimum: 1
+    delete:
+      operationId: delete_user_group_member
+      summary: Delete a user group member
+      description: >-
+        Delete a single user group member identified by an ID, removing a user
+        from a user group.
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - usergroups.write
+      tags:
+        - Users
+  /account/user_group_members:
+    get:
+      operationId: list_user_group_members
+      summary: List user group members
+      description: >-
+        Returns a list of user group members, optionally filtered by user group
+        or user ID. A user group member is a user who us part of a user group.
+      parameters:
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+        - name: user_group_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - name: user_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserGroupMember'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                additionalProperties: false
+                required:
+                  - data
+                  - pagination
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - usergroups.read
+      tags:
+        - Users
+    post:
+      operationId: create_user_group_member
+      summary: Create a user group member
+      description: Create a user group member adding a user to a user group
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserGroupMemberAdd'
+      responses:
+        '201':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserGroupMember'
+                additionalProperties: false
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - usergroups.write
       tags:
         - Users
 components:
@@ -1396,6 +1538,48 @@ components:
         - created_by
         - modified_at
         - modified_by
+    UserGroupMember:
+      description: A User Group Member represents a User who is part of a User Group.
+      type: object
+      properties:
+        id:
+          description: The User Group Member's ID
+          type: integer
+          example: 15
+          minimum: 1
+        user_id:
+          description: The User's ID.
+          type: integer
+          example: 12
+          minimum: 1
+        user_group_id:
+          description: The User Group's ID.
+          type: integer
+          example: 5
+          minimum: 1
+      additionalProperties: false
+      required:
+        - id
+        - user_id
+        - user_group_id
+    UserGroupMemberAdd:
+      description: Create a User Group Member, linking a User to a User Group
+      type: object
+      properties:
+        user_id:
+          description: The User's ID.
+          type: integer
+          example: 12
+          minimum: 1
+        user_group_id:
+          description: The User Group's ID.
+          type: integer
+          example: 5
+          minimum: 1
+      additionalProperties: false
+      required:
+        - user_id
+        - user_group_id
   responses:
     '400':
       description: Invalid request.
@@ -1507,6 +1691,40 @@ components:
             additionalProperties: false
             required:
               - error
+    '409':
+      description: Conflict.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                additionalProperties: false
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 409
+                  errors:
+                    type: object
+                    example:
+                      name: >-
+                        A category with this name already exists. Please choose
+                        a different name.
+                    additionalProperties:
+                      type: string
+                  message:
+                    type: string
+                    example: >-
+                      A conflict exists that prevents your request from being
+                      completed.
+                required:
+                  - status
+                  - message
+            additionalProperties: false
+            required:
+              - error
     '429':
       description: Too Many Requests - the rate limit has been exceeded.
       headers:
@@ -1554,6 +1772,7 @@ components:
             profile.read: Read access to the full account profile
             user: Read access to the current user profile
             usergroups.read: Read access to all user groups in the account
+            usergroups.write: Write access to all user groups in the account
             users.read: Read access to all users in the account
         authorizationCode:
           authorizationUrl: https://login.churchsuite.com/oauth2/authorize
@@ -1567,6 +1786,7 @@ components:
             profile.read: Read access to the full account profile
             user: Read access to the current user profile
             usergroups.read: Read access to all user groups in the account
+            usergroups.write: Write access to all user groups in the account
             users.read: Read access to all users in the account
 tags:
   - name: Account

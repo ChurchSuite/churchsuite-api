@@ -5,6 +5,21 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.113.0] - 2026-11-02
+
+### Added
+
+- Added a new GET `account/user_group_members` endpoint to list User Group Members in the account.
+- Added a new POST `account/user_group_members` endpoint to add a single User to a User Group in the account.
+- Added a new DELETE `account/user_group_members/{id}` endpoint to remove a single User from a User Group in the account.
+
+## [2.112.9] - 2026-11-02
+
+### Fixed
+
+- Replaces the type `integer` option for a `number` type in the `response_data` on the FormResponse schema to cover number and percentage fields.
+- Added titles to the options of `response_data` to add clarity for users.
+
 ## [2.112.8] - 2026-10-29
 
 ### Fixed
