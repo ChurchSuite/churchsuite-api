@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.113.0
+  version: 2.114.0
   title: Children Module
   description: >-
     This module is for managing all the children and young people associated
@@ -322,6 +322,17 @@ paths:
       description: Returns a list of children.
       operationId: list_children
       parameters:
+        - in: query
+          name: child_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
         - $ref: '#/components/parameters/SiteIds'

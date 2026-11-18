@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.113.0
+  version: 2.114.0
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -389,6 +389,17 @@ paths:
       summary: List users
       description: Returns a list of users, sorted alphabetically by username.
       parameters:
+        - name: user_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
       responses:
@@ -805,6 +816,17 @@ paths:
       summary: List contacts
       description: Returns a list of contacts.
       parameters:
+        - name: contact_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
         - $ref: '#/components/parameters/SiteIds'
@@ -2851,6 +2873,17 @@ paths:
       summary: List gatherings
       description: Returns a list of gatherings, sorted alphabetically by name.
       parameters:
+        - name: gathering_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
         - $ref: '#/components/parameters/SiteIds'
@@ -5864,6 +5897,17 @@ paths:
       summary: List events
       description: Returns a list of events.
       parameters:
+        - name: event_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
         - $ref: '#/components/parameters/SiteIds'
@@ -7097,6 +7141,17 @@ paths:
       summary: List children
       description: Returns a list of children.
       parameters:
+        - name: child_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
         - $ref: '#/components/parameters/SiteIds'
@@ -10908,6 +10963,17 @@ paths:
       summary: List givers
       description: Returns a list of givers.
       parameters:
+        - name: giver_ids[]
+          in: query
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
         - $ref: '#/components/parameters/SiteIds'

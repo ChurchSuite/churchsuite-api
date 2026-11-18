@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.113.0
+  version: 2.114.0
   title: Address Book Module
   description: >-
     The Address Book module manages all adult contacts associated with your
@@ -298,6 +298,17 @@ paths:
       description: Returns a list of contacts.
       operationId: list_contacts
       parameters:
+        - in: query
+          name: contact_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
         - $ref: '#/components/parameters/SiteIds'

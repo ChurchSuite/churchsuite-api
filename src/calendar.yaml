@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.113.0
+  version: 2.114.0
   title: Calendar Module
   description: Manage events, sign-ups and staff leave across your account.
   termsOfService: https://churchsuite.com/terms-of-service/
@@ -560,6 +560,17 @@ paths:
       description: Returns a list of events.
       operationId: list_events
       parameters:
+        - in: query
+          name: event_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
         - $ref: '#/components/parameters/SiteIds'

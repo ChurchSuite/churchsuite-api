@@ -5,6 +5,17 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.114.0] - 2026-11-18
+
+### Added
+
+- Added a `user_ids[]` filter to the GET `account/users` endpoint.
+- Added a `contact_ids[]` filter to the GET `addressbook/contacts` endpoint.
+- Added a `gathering_ids[]` filter to the GET `attendance/gatherings` endpoint.
+- Added an `event_ids[]` filter to the GET `calendar/events` endpoint.
+- Added a `child_ids[]` filter to the GET `children/children` endpoint.
+- Added a `giver_ids[]` filter to the GET `giving/givers` endpoint.
+
 ## [2.113.0] - 2026-11-02
 
 ### Added
