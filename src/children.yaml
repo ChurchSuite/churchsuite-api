@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.0
+  version: 2.114.2
   title: Children Module
   description: >-
     This module is for managing all the children and young people associated
@@ -138,6 +138,13 @@ paths:
     get:
       summary: Get a child
       description: Retrieve a single child identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the child with this ID. A child record stores details about
+          a young person in the Children module. For Children group memberships,
+          use `list_children_group_members`. For tag links, use
+          `list_child_tag_resources`. For recorded key dates, use
+          `list_child_key_date_resources`.
       operationId: get_child
       security:
         - oauth_token:
@@ -170,6 +177,8 @@ paths:
     delete:
       summary: Delete a child
       description: Delete a single child identified by ID.
+      x-mcp:
+        description: Use to delete the child with this ID.
       operationId: delete_child
       security:
         - oauth_token:
@@ -192,6 +201,12 @@ paths:
     put:
       summary: Update a child
       description: Update a single child identified by ID.
+      x-mcp:
+        description: >-
+          Use to update the child with this ID using the request fields. For
+          Children group memberships, use `list_children_group_members`. For tag
+          links, use `list_child_tag_resources`. For recorded key dates, use
+          `list_child_key_date_resources`.
       operationId: edit_child
       requestBody:
         required: true
@@ -243,6 +258,11 @@ paths:
     get:
       summary: List child notes
       description: Returns a list of child notes, sorted by pinned, created_at.
+      x-mcp:
+        description: >-
+          Use to list notes for the child with this ID. Each note records a
+          comment, observation, or update about the child. For the child record,
+          use `get_child`.
       operationId: list_child_notes
       security:
         - oauth_token:
@@ -279,6 +299,10 @@ paths:
     post:
       summary: Create a child note
       description: Create a Note against a Child in the Children module.
+      x-mcp:
+        description: >-
+          Use to add a note to the child with this ID using the request fields.
+          For the child record, use `get_child`.
       operationId: create_child_note
       requestBody:
         required: true
@@ -320,6 +344,14 @@ paths:
     get:
       summary: List children
       description: Returns a list of children.
+      x-mcp:
+        description: >-
+          Use `site_ids[]`, `status`, `group_ids[]`, `q`, `tag_ids[]`,
+          `name_visible`, `address_visible`, `mobile_visible`, or
+          `email_visible` to select children. For Children group memberships,
+          use `list_children_group_members`. For tag links, use
+          `list_child_tag_resources`. For recorded key dates, use
+          `list_child_key_date_resources`.
       operationId: list_children
       parameters:
         - in: query
@@ -473,6 +505,12 @@ paths:
     post:
       summary: Create a child
       description: Create a child with the provided settings.
+      x-mcp:
+        description: >-
+          Use to create a child with the request fields. For Children group
+          memberships, use `list_children_group_members`. For tag links, use
+          `list_child_tag_resources`. For recorded key dates, use
+          `list_child_key_date_resources`.
       operationId: create_child
       requestBody:
         required: true
@@ -521,7 +559,7 @@ paths:
                 resource:
                   id: $response.body#/data/id
             CreateChildTagResource:
-              operationId: create_children_tag_resource
+              operationId: create_child_tag_resource
               requestBody:
                 person:
                   id: $response.body#/data/id
@@ -548,6 +586,11 @@ paths:
     get:
       summary: Get a custom field
       description: Retrieve a single custom field identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the Children custom field with this ID. Custom fields
+          define extra data that can be stored for a child. For stored custom
+          field values, use `get_child` or `list_children`.
       operationId: get_children_custom_field
       security:
         - oauth_token:
@@ -581,6 +624,11 @@ paths:
     get:
       summary: List custom fields
       description: Returns a list of custom fields
+      x-mcp:
+        description: >-
+          Use to list Children custom fields. Custom fields define extra data
+          that can be stored for a child. For stored custom field values, use
+          `get_child` or `list_children`.
       operationId: list_children_custom_fields
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -631,6 +679,11 @@ paths:
     get:
       summary: Get a flow
       description: Retrieve a single flow identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the Children flow with this ID. A flow organises repeat
+          tasks for children into stages and preset actions. For child progress
+          through the flow, use `list_children_flow_trackings`.
       operationId: get_children_flow
       security:
         - oauth_token:
@@ -664,6 +717,11 @@ paths:
     get:
       summary: List flows
       description: Returns a list of flows, sorted alphabetically by name.
+      x-mcp:
+        description: >-
+          Use `status` or `q` to select Children flows. A flow organises repeat
+          tasks for children into stages and preset actions. For child progress
+          through the flow, use `list_children_flow_trackings`.
       operationId: list_children_flows
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -737,6 +795,10 @@ paths:
       description: >-
         Delete a single stage identified by ID. When a stage is deleted, all
         actions and flow trackings linked to the stage will be deleted.
+      x-mcp:
+        description: >-
+          Use to delete the flow stage with this ID. Deleting a stage also
+          deletes its linked actions and flow trackings.
       operationId: delete_children_flow_stage
       security:
         - oauth_token:
@@ -761,6 +823,11 @@ paths:
     get:
       summary: Get a flow stage
       description: Retrieve a single stage identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the flow stage with this ID. A stage defines preset actions
+          to process as each child becomes due. For child progress through the
+          flow, use `list_children_flow_trackings`.
       operationId: get_children_flow_stage
       security:
         - oauth_token:
@@ -793,6 +860,11 @@ paths:
     put:
       summary: Update a flow stage
       description: Update a single stage identified by ID.
+      x-mcp:
+        description: >-
+          Use to update the flow stage with this ID using the request fields. A
+          stage defines preset actions to process as each child becomes due. For
+          child progress through the flow, use `list_children_flow_trackings`.
       operationId: edit_children_flow_stage
       requestBody:
         required: true
@@ -832,6 +904,11 @@ paths:
     get:
       summary: List flow stages
       description: Returns a list of stages.
+      x-mcp:
+        description: >-
+          Use `flow_ids[]` to select flow stages. A stage defines preset actions
+          to process as each child becomes due. For child progress through the
+          flow, use `list_children_flow_trackings`.
       operationId: list_children_flow_stages
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -883,6 +960,11 @@ paths:
     post:
       summary: Create a flow stage
       description: Create a stage for a flow.
+      x-mcp:
+        description: >-
+          Use to create a stage for a flow using the request fields. A stage
+          defines preset actions to process as each child becomes due. For child
+          progress through the flow, use `list_children_flow_trackings`.
       operationId: create_children_flow_stage
       requestBody:
         required: true
@@ -947,6 +1029,11 @@ paths:
       description: >-
         Retrieve a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the flow tracking with this ID. A flow tracking records one
+          child's progress through a flow's stages. For the child record, use
+          `get_child`.
       operationId: get_children_flow_tracking
       security:
         - oauth_token:
@@ -981,6 +1068,11 @@ paths:
       description: >-
         Update a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
+      x-mcp:
+        description: >-
+          Use to update the flow tracking with this ID using the request fields.
+          A flow tracking records one child's progress through a flow's stages.
+          For the child record, use `get_child`.
       operationId: edit_children_flow_tracking
       requestBody:
         required: true
@@ -1023,6 +1115,10 @@ paths:
       description: >-
         Delete a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
+      x-mcp:
+        description: >-
+          Use to delete the flow tracking with this ID. A flow tracking records
+          one child's progress through a flow's stages.
       operationId: delete_children_flow_tracking
       security:
         - oauth_token:
@@ -1048,6 +1144,12 @@ paths:
       description: >-
         Returns a list of flow trackings linked to people's progress through a
         flow.
+      x-mcp:
+        description: >-
+          Use `due_before`, `due_after`, `flow_ids[]`, `child_ids[]`, or
+          `stage_ids[]` to select flow trackings. Each tracking records one
+          child's progress through a flow's stages. For the child record, use
+          `get_child`.
       operationId: list_children_flow_trackings
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -1137,6 +1239,11 @@ paths:
       description: >-
         Create a flow tracking, linked to a person's progress through a flow,
         with the provided settings.
+      x-mcp:
+        description: >-
+          Use to create a flow tracking with the request fields. A flow tracking
+          records one child's progress through a flow's stages. For the child
+          record, use `get_child`.
       operationId: create_children_flow_tracking
       requestBody:
         required: true
@@ -1203,6 +1310,12 @@ paths:
     get:
       summary: Get a form field
       description: Retrieve a single form field identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the form field with this ID. A form field defines one item
+          on a form used to collect information linked to children. For
+          submitted answers, use `list_children_form_responses` with
+          `form_ids[]`.
       operationId: get_children_form_field
       security:
         - oauth_token:
@@ -1236,6 +1349,12 @@ paths:
     get:
       summary: List form fields
       description: Returns a list of form fields
+      x-mcp:
+        description: >-
+          Use `form_ids[]` to select form fields. Each form field defines one
+          item on a form used to collect information linked to children. For
+          submitted answers, use `list_children_form_responses` with
+          `form_ids[]`.
       operationId: list_children_form_fields
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -1298,6 +1417,10 @@ paths:
     get:
       summary: Get a form response
       description: Retrieve a single form response identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the form response with this ID. A form response records
+          information submitted through a form.
       operationId: get_children_form_response
       security:
         - oauth_token:
@@ -1331,6 +1454,11 @@ paths:
     get:
       summary: List form responses
       description: Returns a list of form responses, sorted alphabetically by name.
+      x-mcp:
+        description: >-
+          Use `form_ids[]`, `statuses[]`, `q`, `linked_response`, or
+          `invite_response` to select form responses. Each response records
+          information submitted through a form.
       operationId: list_children_form_responses
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -1428,7 +1556,13 @@ paths:
     get:
       summary: Get a group setup
       description: Retrieve a single group setup identified by ID.
-      operationId: get_group_setup
+      x-mcp:
+        description: >-
+          Use to get the group setup with this ID. A group setup defines
+          age-based groups and a maximum age. For group memberships, use
+          `list_children_group_members` with `group_setup_ids[]` or
+          `group_ids[]`.
+      operationId: get_children_group_setup
       security:
         - oauth_token:
             - full_access
@@ -1461,7 +1595,13 @@ paths:
     get:
       summary: List group setups
       description: Returns a list of group setups, sorted alphabetically by name.
-      operationId: list_group_setups
+      x-mcp:
+        description: >-
+          Use `site_ids[]` or `status` to select group setups. A group setup
+          defines age-based groups and a maximum age. For group memberships, use
+          `list_children_group_members` with `group_setup_ids[]` or
+          `group_ids[]`.
+      operationId: list_children_group_setups
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -1513,7 +1653,12 @@ paths:
     get:
       summary: List group members
       description: Returns a list of group members, sorted alphabetically by name.
-      operationId: list_group_members
+      x-mcp:
+        description: >-
+          Use `child_ids[]`, `group_setup_ids[]`, or `group_ids[]` to select
+          group members. A group membership links a child to a Children group.
+          For child records, use `get_child` or `list_children`.
+      operationId: list_children_group_members
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -1596,6 +1741,12 @@ paths:
     get:
       summary: Get a group
       description: Retrieve a single group identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the group with this ID. A group belongs to a group setup
+          and defines age rules for children. For group memberships, use
+          `list_children_group_members` with `group_setup_ids[]` or
+          `group_ids[]`.
       operationId: get_children_group
       security:
         - oauth_token:
@@ -1663,6 +1814,12 @@ paths:
     get:
       summary: List groups
       description: Returns a list of groups, sorted alphabetically by name.
+      x-mcp:
+        description: >-
+          Use `group_setup_ids[]`, `status`, or `q` to select groups. A group
+          belongs to a group setup and defines age rules for children. For group
+          memberships, use `list_children_group_members` with
+          `group_setup_ids[]` or `group_ids[]`.
       operationId: list_children_groups
       security:
         - oauth_token:
@@ -1710,6 +1867,11 @@ paths:
     get:
       summary: Get a key date
       description: Retrieve a single key date identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the key date with this ID. A key date defines a milestone
+          that can be recorded for a child. For recorded child milestones, use
+          `list_child_key_date_resources` with `key_date_ids[]`.
       operationId: get_children_key_date
       security:
         - oauth_token:
@@ -1742,6 +1904,8 @@ paths:
     delete:
       summary: Delete a key date
       description: Delete a single key date identified by ID.
+      x-mcp:
+        description: Use to delete the key date with this ID.
       operationId: delete_children_key_date
       security:
         - oauth_token:
@@ -1764,6 +1928,10 @@ paths:
     put:
       summary: Update a key date
       description: Update a single key date identified by ID.
+      x-mcp:
+        description: >-
+          Use to update the key date with this ID using the request fields. To
+          update a recorded child milestone, use `edit_child_key_date_resource`.
       operationId: edit_children_key_date
       requestBody:
         required: true
@@ -1805,6 +1973,11 @@ paths:
     get:
       summary: List key dates
       description: Returns a list of key dates.
+      x-mcp:
+        description: >-
+          Use `q` to select key dates by name. A key date defines a milestone
+          that can be recorded for a child. For recorded child milestones, use
+          `list_child_key_date_resources` with `key_date_ids[]`.
       operationId: list_children_key_dates
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -1880,6 +2053,11 @@ paths:
     post:
       summary: Create a key date
       description: Create a key date with the provided settings.
+      x-mcp:
+        description: >-
+          Use to create a key date with the request fields. A key date defines a
+          milestone that can be recorded for a child. To record a milestone for
+          a child, use `create_child_key_date_resource`.
       operationId: create_children_key_date
       requestBody:
         required: true
@@ -1948,6 +2126,10 @@ paths:
       description: >-
         Delete a single key date resource identified by an ID, removing a child
         from a key date.
+      x-mcp:
+        description: >-
+          Use to delete the key date resource with this ID. A key date resource
+          links a milestone date with a child.
       operationId: delete_child_key_date_resource
       security:
         - oauth_token:
@@ -1970,6 +2152,11 @@ paths:
     put:
       summary: Update a key date resource
       description: Update a single key date resource identified by ID.
+      x-mcp:
+        description: >-
+          Use to update the key date resource with this ID using the request
+          fields. A key date resource links a milestone date with a child. For
+          child records, use `get_child` or `list_children`.
       operationId: edit_child_key_date_resource
       requestBody:
         required: true
@@ -2014,6 +2201,11 @@ paths:
         Returns a list of key date resources, optionally filtered by key date or
         child ID. A key date resource records an instance of a key date for a
         child on a given date.
+      x-mcp:
+        description: >-
+          Use `key_date_ids[]` or `child_ids[]` to select key date resources.
+          Each resource links a milestone date with a child. For child records,
+          use `get_child` or `list_children`.
       operationId: list_child_key_date_resources
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -2101,6 +2293,10 @@ paths:
     post:
       summary: Create a key date resource
       description: Create a key date resource adding a child to a key date
+      x-mcp:
+        description: >-
+          Use to record a key date for a child with the request fields. For
+          child records, use `get_child` or `list_children`.
       operationId: create_child_key_date_resource
       requestBody:
         required: true
@@ -2151,6 +2347,12 @@ paths:
     get:
       summary: List parent/carer relationships
       description: Returns a list of parent/carer relationships.
+      x-mcp:
+        description: >-
+          Use `child_ids[]` to select parent/carer relationships. A relationship
+          links a child to a parent or carer and records the relationship type
+          and primary status. For a parent or carer linked to an Address Book
+          contact, use `get_contact` with their contact ID.
       operationId: list_parent_carer_relationships
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -2212,6 +2414,8 @@ paths:
     delete:
       summary: Delete a tag
       description: Delete a single tag identified by an ID.
+      x-mcp:
+        description: Use to delete the tag with this ID. Tags group or categorise children.
       operationId: delete_children_tag
       security:
         - oauth_token:
@@ -2236,6 +2440,11 @@ paths:
     get:
       summary: Get a tag
       description: Retrieve a single tag identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the tag with this ID. Tags group or categorise children.
+          For linked children, use `list_children` with `tag_ids[]`. For
+          membership links, use `list_child_tag_resources`.
       operationId: get_children_tag
       security:
         - oauth_token:
@@ -2268,6 +2477,12 @@ paths:
     put:
       summary: Update a tag
       description: Update a tag
+      x-mcp:
+        description: >-
+          Use to update the tag with this ID using the request fields. Tags
+          group or categorise children. To link a child to this tag, use
+          `create_child_tag_resource`. To remove a link, use
+          `delete_child_tag_resource`.
       operationId: edit_children_tag
       requestBody:
         required: true
@@ -2311,7 +2526,12 @@ paths:
     get:
       summary: List tags
       description: Returns a list of tags, sorted alphabetically by name.
-      operationId: list_children_tag
+      x-mcp:
+        description: >-
+          Use `q` to select tags by name. Tags group or categorise children. For
+          linked children, use `list_children` with `tag_ids[]`. For membership
+          links, use `list_child_tag_resources`.
+      operationId: list_children_tags
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -2388,6 +2608,11 @@ paths:
     post:
       summary: Create a tag
       description: Create a tag
+      x-mcp:
+        description: >-
+          Use to create a tag with the request fields. Tags group or categorise
+          children. To link a child to this tag, use
+          `create_child_tag_resource`.
       operationId: create_children_tag
       requestBody:
         required: true
@@ -2423,7 +2648,7 @@ paths:
               parameters:
                 id: $response.body#/data/id
             CreateChildrenTagResource:
-              operationId: create_children_tag_resource
+              operationId: create_child_tag_resource
               requestBody:
                 tag_id: $response.body#/data/id
         '400':
@@ -2451,6 +2676,10 @@ paths:
     get:
       summary: Get a tag category
       description: Retrieve a single tag category identified by ID
+      x-mcp:
+        description: >-
+          Use to get the tag category with this ID. A tag category groups
+          related tags.
       operationId: get_children_tag_category
       security:
         - oauth_token:
@@ -2484,6 +2713,8 @@ paths:
     get:
       summary: List tag categories
       description: Returns a list of tag categories, sorted alphabetically by name.
+      x-mcp:
+        description: Use to list tag categories. A tag category groups related tags.
       operationId: list_children_tag_categories
       security:
         - oauth_token:
@@ -2519,7 +2750,11 @@ paths:
       description: >-
         Delete a single tag resource identified by a child ID and tag ID,
         unlinking a child from a tag.
-      operationId: delete_children_tag_resource
+      x-mcp:
+        description: >-
+          Use to remove the link between the child and tag identified by these
+          IDs. This removes only the link; the child and tag are kept.
+      operationId: delete_child_tag_resource
       parameters:
         - in: query
           name: child_id
@@ -2564,7 +2799,12 @@ paths:
       description: >-
         Returns a list of tag resources. A tag resource is the relational model
         linking a child to a tag.
-      operationId: list_children_tag_resources
+      x-mcp:
+        description: >-
+          Use `child_ids[]` or `tag_ids[]` to select child-to-tag links. Each
+          tag resource records one link. For child records, use `get_child` or
+          `list_children`. For tag definitions, use `list_children_tags`.
+      operationId: list_child_tag_resources
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -2628,7 +2868,12 @@ paths:
     post:
       summary: Create a tag resource
       description: Create a tag resource linking a child to a tag
-      operationId: create_children_tag_resource
+      x-mcp:
+        description: >-
+          Use to link a child to a tag with the request fields. For child
+          records, use `get_child` or `list_children`. For tag definitions, use
+          `list_children_tags`.
+      operationId: create_child_tag_resource
       requestBody:
         required: true
         content:
@@ -3650,6 +3895,22 @@ components:
           example: hayfever
           maxLength: 100
           minLength: 1
+        photo_video_consent:
+          type: object
+          description: Photo/video consent for the Child.
+          properties:
+            internal:
+              type: boolean
+              description: Consent given for internal presentation.
+              example: true
+            external:
+              type: boolean
+              description: Consent given for external presentation.
+              example: false
+          required:
+            - internal
+            - external
+          additionalProperties: false
         medical:
           type: string
           description: Full medical information about the Child.
@@ -3925,6 +4186,8 @@ components:
           example: hayfever
           maxLength: 100
           minLength: 0
+        photo_video_consent:
+          $ref: '#/components/schemas/ChildAdd/properties/photo_video_consent'
         medical:
           type: string
           description: Full medical information about the Child.

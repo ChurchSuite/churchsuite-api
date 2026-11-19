@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.0
+  version: 2.114.2
   title: Giving Module
   description: >-
     This module is designed to help manage the donations you receive and the
@@ -219,7 +219,7 @@ paths:
         - Giving Custom Fields
   /giving/declarations:
     get:
-      operationId: list_declarations
+      operationId: list_giving_declarations
       summary: List declarations
       description: Returns a list of declarations.
       parameters:
@@ -488,7 +488,7 @@ paths:
       tags:
         - Donations
     post:
-      operationId: create_giving_donation
+      operationId: create_donation
       summary: Create a Donation
       description: Create a Donation.
       requestBody:
@@ -1960,7 +1960,7 @@ paths:
         - Giving Tags
   /giving/tags:
     get:
-      operationId: list_giving_tag
+      operationId: list_giving_tags
       summary: List tags
       description: Returns a list of tags, sorted alphabetically by name.
       parameters:
@@ -2069,7 +2069,7 @@ paths:
               parameters:
                 id: $response.body#/data/id
             CreateGivingTagResource:
-              operationId: create_giving_tag_resource
+              operationId: create_giver_tag_resource
               requestBody:
                 tag_id: $response.body#/data/id
         '400':
@@ -2166,7 +2166,7 @@ paths:
         - Giving Tags
   /giving/tag_resources:
     delete:
-      operationId: delete_giving_tag_resource
+      operationId: delete_giver_tag_resource
       summary: Delete a tag resource
       description: >-
         Delete a single tag resource identified by a giver ID and tag ID,
@@ -2211,7 +2211,7 @@ paths:
       tags:
         - Giving Tags
     get:
-      operationId: list_giving_tag_resources
+      operationId: list_giver_tag_resources
       summary: List tag resources
       description: >-
         Returns a list of tag resources. A tag resource is the relational model
@@ -2277,7 +2277,7 @@ paths:
       tags:
         - Giving Tags
     post:
-      operationId: create_giving_tag_resource
+      operationId: create_giver_tag_resource
       summary: Create a tag resource
       description: Create a tag resource linking a giver to a tag
       requestBody:

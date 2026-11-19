@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.0
+  version: 2.114.2
   title: Attendance Module
   description: >-
     The Attendance module is the core repository for maintaining historic
@@ -78,6 +78,11 @@ paths:
     get:
       summary: Get a gathering
       description: Retrieve a single gathering identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the gathering with this ID. A gathering represents an
+          occasion where people meet in person or online. For attendance
+          records, use `list_attendance_records` with `gathering_ids[]`.
       operationId: get_attendance_gathering
       security:
         - oauth_token:
@@ -111,6 +116,12 @@ paths:
     get:
       summary: List gatherings
       description: Returns a list of gatherings, sorted alphabetically by name.
+      x-mcp:
+        description: >-
+          Use `site_ids[]`, `status`, or `q` to select gatherings. A gathering
+          represents an occasion where people meet in person or online. For
+          attendance records, use `list_attendance_records` with
+          `gathering_ids[]`.
       operationId: list_attendance_gatherings
       parameters:
         - in: query
@@ -193,6 +204,12 @@ paths:
     get:
       summary: Get a metricset
       description: Retrieve a single metricset identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the metric set with this ID. A metric set groups metrics
+          used to record attendance data for a gathering. For recorded metric
+          values, use `list_attendance_record_metrics` with `metric_ids[]` or
+          `record_ids[]`.
       operationId: get_attendance_metricset
       security:
         - oauth_token:
@@ -225,7 +242,15 @@ paths:
   /attendance/metricsets:
     get:
       summary: List metricsets
-      description: Returns a list of metricsets, sorted alphabetically by order.
+      description: >-
+        Returns a list of metricsets, sorted by their order property in
+        alphabetical order.
+      x-mcp:
+        description: >-
+          Use `gathering_ids[]` to select metric sets. A metric set groups
+          metrics used to record attendance data for a gathering. For recorded
+          metric values, use `list_attendance_record_metrics` with
+          `metric_ids[]` or `record_ids[]`.
       operationId: list_attendance_metricsets
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -277,7 +302,15 @@ paths:
   /attendance/metrics:
     get:
       summary: List metrics
-      description: Returns a list of metrics, sorted alphabetically by order.
+      description: >-
+        Returns a list of metrics, sorted by their order property in
+        alphabetical order.
+      x-mcp:
+        description: >-
+          Use `metricset_ids[]` to select metrics. A metric defines a number or
+          currency value that can be recorded for a gathering. For recorded
+          metric values, use `list_attendance_record_metrics` with
+          `metric_ids[]` or `record_ids[]`.
       operationId: list_attendance_metrics
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -339,6 +372,13 @@ paths:
     get:
       summary: Get a record
       description: Retrieve a single record identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the attendance record with this ID. A record stores
+          attendance for a specific day. For attendees, use
+          `list_attendance_record_contacts` with `record_ids[]`. For recorded
+          metric values, use `list_attendance_record_metrics` with
+          `record_ids[]`.
       operationId: get_attendance_record
       security:
         - oauth_token:
@@ -372,6 +412,13 @@ paths:
     get:
       summary: List records
       description: Returns a list of records, sorted by date.
+      x-mcp:
+        description: >-
+          Use `days[]`, `gathering_ids[]`, `is_before`, or `is_after` to select
+          attendance records. Each record stores attendance for a specific day.
+          For attendees, use `list_attendance_record_contacts` with
+          `record_ids[]`. For recorded metric values, use
+          `list_attendance_record_metrics` with `record_ids[]`.
       operationId: list_attendance_records
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -455,8 +502,15 @@ paths:
   /attendance/record_contacts:
     get:
       summary: List record contacts
-      description: Returns a list of contacts who were recorded as attending a gathering.
-      operationId: list_record_contacts
+      description: >-
+        Returns a list of attendance record links containing contact IDs and
+        names for contacts recorded as attending a gathering.
+      x-mcp:
+        description: >-
+          Use `contact_ids[]` or `record_ids[]` to select attendance contacts.
+          An attendance contact links an Address Book contact to an attendance
+          record. For the full contact record, use `get_contact`.
+      operationId: list_attendance_record_contacts
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -521,7 +575,14 @@ paths:
       description: >-
         Returns a list of record metrics, i.e. number/currency values that have
         been recorded for an attendance record.
-      operationId: list_record_metric
+      x-mcp:
+        description: >-
+          Use `metric_ids[]` or `record_ids[]` to select recorded metric values.
+          A recorded metric is a number or currency value associated with an
+          attendance record. For metric definitions, use
+          `list_attendance_metrics`. For the full attendance record, use
+          `get_attendance_record`.
+      operationId: list_attendance_record_metrics
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'

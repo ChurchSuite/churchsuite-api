@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.0
+  version: 2.114.2
   title: ChurchSuite API - v2
   description: >-
     Access data from your ChurchSuite account over RESTful endpoints, returning
@@ -1007,7 +1007,7 @@ paths:
                 resource:
                   id: $response.body#/data/id
             CreateContactTagResource:
-              operationId: create_addressbook_tag_resource
+              operationId: create_contact_tag_resource
               requestBody:
                 person:
                   id: $response.body#/data/id
@@ -1122,7 +1122,7 @@ paths:
           example: 45
           minimum: 1
     get:
-      operationId: get_contact_flow
+      operationId: get_addressbook_flow
       summary: Get a flow
       description: Retrieve a single flow identified by ID.
       responses:
@@ -1333,7 +1333,10 @@ paths:
           in: query
           description: >-
             Filter records to those matching values in the provided array. This
-            filter uses the logical OR operator.
+            filter uses the logical OR operator.  In the addressbook flows are a
+            "contact-processing" tool. They are split into stages, in each stage
+            there are defined set of preset Actions to be processed as each
+            person becomes due.
           schema:
             type: array
             items:
@@ -2469,7 +2472,7 @@ paths:
         - Address Book Tags
   /addressbook/tags:
     get:
-      operationId: list_addressbook_tag
+      operationId: list_addressbook_tags
       summary: List tags
       description: Returns a list of tags, sorted alphabetically by name.
       parameters:
@@ -2576,7 +2579,7 @@ paths:
               parameters:
                 id: $response.body#/data/id
             CreateAddressBookTagResource:
-              operationId: create_addressbook_tag_resource
+              operationId: create_contact_tag_resource
               requestBody:
                 tag_id: $response.body#/data/id
         '400':
@@ -2673,7 +2676,7 @@ paths:
         - Address Book Tags
   /addressbook/tag_resources:
     delete:
-      operationId: delete_addressbook_tag_resource
+      operationId: delete_contact_tag_resource
       summary: Delete a tag resource
       description: >-
         Delete a single tag resource identified by a contact ID and tag ID,
@@ -2718,7 +2721,7 @@ paths:
       tags:
         - Address Book Tags
     get:
-      operationId: list_addressbook_tag_resources
+      operationId: list_contact_tag_resources
       summary: List tag resources
       description: >-
         Returns a list of tag resources. A tag resource is the relational model
@@ -2784,7 +2787,7 @@ paths:
       tags:
         - Address Book Tags
     post:
-      operationId: create_addressbook_tag_resource
+      operationId: create_contact_tag_resource
       summary: Create a tag resource
       description: Create a tag resource linking a contact to a tag
       requestBody:
@@ -2986,7 +2989,9 @@ paths:
     get:
       operationId: list_attendance_metricsets
       summary: List metricsets
-      description: Returns a list of metricsets, sorted alphabetically by order.
+      description: >-
+        Returns a list of metricsets, sorted by their order property in
+        alphabetical order.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -3038,7 +3043,9 @@ paths:
     get:
       operationId: list_attendance_metrics
       summary: List metrics
-      description: Returns a list of metrics, sorted alphabetically by order.
+      description: >-
+        Returns a list of metrics, sorted by their order property in
+        alphabetical order.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -3214,9 +3221,11 @@ paths:
         - Records
   /attendance/record_contacts:
     get:
-      operationId: list_record_contacts
+      operationId: list_attendance_record_contacts
       summary: List record contacts
-      description: Returns a list of contacts who were recorded as attending a gathering.
+      description: >-
+        Returns a list of attendance record links containing contact IDs and
+        names for contacts recorded as attending a gathering.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -3277,7 +3286,7 @@ paths:
         - Records
   /attendance/record_metrics:
     get:
-      operationId: list_record_metric
+      operationId: list_attendance_record_metrics
       summary: List record metrics
       description: >-
         Returns a list of record metrics, i.e. number/currency values that have
@@ -3699,7 +3708,7 @@ paths:
         - Bookings
   /bookings/charges:
     get:
-      operationId: list_charges
+      operationId: list_booking_charges
       summary: List charges
       description: >-
         Returns a list of charges, sorted by due date. Requires either a
@@ -4009,7 +4018,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_bookings_custom_field
+      operationId: get_booking_custom_field
       summary: Get a custom field
       description: Retrieve a single custom field identified by ID.
       responses:
@@ -4042,7 +4051,7 @@ paths:
         - Bookings Custom Fields
   /bookings/custom_fields:
     get:
-      operationId: list_bookings_custom_fields
+      operationId: list_booking_custom_fields
       summary: List custom fields
       description: Returns a list of custom fields
       parameters:
@@ -4092,7 +4101,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_bookings_flow
+      operationId: get_booking_flow
       summary: Get a flow
       description: Retrieve a single flow identified by ID.
       responses:
@@ -4125,7 +4134,7 @@ paths:
         - Bookings Flows
   /bookings/flows:
     get:
-      operationId: list_bookings_flows
+      operationId: list_booking_flows
       summary: List flows
       description: Returns a list of flows, sorted alphabetically by name.
       parameters:
@@ -4196,7 +4205,7 @@ paths:
           example: 45
           minimum: 1
     delete:
-      operationId: delete_bookings_flow_stage
+      operationId: delete_booking_flow_stage
       summary: Delete a flow stage
       description: >-
         Delete a single stage identified by ID. When a stage is deleted, all
@@ -4222,7 +4231,7 @@ paths:
       tags:
         - Bookings Flows
     get:
-      operationId: get_bookings_flow_stage
+      operationId: get_booking_flow_stage
       summary: Get a flow stage
       description: Retrieve a single stage identified by ID.
       responses:
@@ -4254,7 +4263,7 @@ paths:
       tags:
         - Bookings Flows
     put:
-      operationId: edit_bookings_flow_stage
+      operationId: edit_booking_flow_stage
       summary: Update a flow stage
       description: Update a single stage identified by ID.
       requestBody:
@@ -4293,7 +4302,7 @@ paths:
         - Bookings Flows
   /bookings/flow_stages:
     get:
-      operationId: list_bookings_flow_stages
+      operationId: list_booking_flow_stages
       summary: List flow stages
       description: Returns a list of stages.
       parameters:
@@ -4344,7 +4353,7 @@ paths:
       tags:
         - Bookings Flows
     post:
-      operationId: create_bookings_flow_stage
+      operationId: create_booking_flow_stage
       summary: Create a flow stage
       description: Create a stage for a flow.
       requestBody:
@@ -4368,15 +4377,15 @@ paths:
                   - data
           links:
             EditFlowStageByID:
-              operationId: edit_bookings_flow_stage
+              operationId: edit_booking_flow_stage
               parameters:
                 id: $response.body#/data/id
             GetFlowStageByID:
-              operationId: get_bookings_flow_stage
+              operationId: get_booking_flow_stage
               parameters:
                 id: $response.body#/data/id
             DeleteFlowStageByID:
-              operationId: delete_bookings_flow_stage
+              operationId: delete_booking_flow_stage
               parameters:
                 id: $response.body#/data/id
         '400':
@@ -4406,7 +4415,7 @@ paths:
           example: 45
           minimum: 1
     get:
-      operationId: get_bookings_flow_tracking
+      operationId: get_booking_flow_tracking
       summary: Get a flow tracking
       description: >-
         Retrieve a single flow tracking, linked to a person's progress through a
@@ -4440,7 +4449,7 @@ paths:
       tags:
         - Bookings Flows
     put:
-      operationId: edit_bookings_flow_tracking
+      operationId: edit_booking_flow_tracking
       summary: Update a flow tracking
       description: >-
         Update a single flow tracking, linked to a person's progress through a
@@ -4482,7 +4491,7 @@ paths:
       tags:
         - Bookings Flows
     delete:
-      operationId: delete_bookings_flow_tracking
+      operationId: delete_booking_flow_tracking
       summary: Delete a flow tracking
       description: >-
         Delete a single flow tracking, linked to a person's progress through a
@@ -4507,7 +4516,7 @@ paths:
         - Bookings Flows
   /bookings/flow_trackings:
     get:
-      operationId: list_bookings_flow_trackings
+      operationId: list_booking_flow_trackings
       summary: List flow trackings
       description: >-
         Returns a list of flow trackings linked to people's progress through a
@@ -4596,7 +4605,7 @@ paths:
       tags:
         - Bookings Flows
     post:
-      operationId: create_bookings_flow_tracking
+      operationId: create_booking_flow_tracking
       summary: Create a flow tracking
       description: >-
         Create a flow tracking, linked to a person's progress through a flow,
@@ -4622,15 +4631,15 @@ paths:
                   - data
           links:
             EditFlowTrackingByID:
-              operationId: edit_bookings_flow_tracking
+              operationId: edit_booking_flow_tracking
               parameters:
                 id: $response.body#/data/id
             GetFlowTrackingByID:
-              operationId: get_bookings_flow_tracking
+              operationId: get_booking_flow_tracking
               parameters:
                 id: $response.body#/data/id
             DeleteFlowTrackingByID:
-              operationId: delete_bookings_flow_tracking
+              operationId: delete_booking_flow_tracking
               parameters:
                 id: $response.body#/data/id
         '400':
@@ -4654,9 +4663,9 @@ paths:
         - Bookings Flows
   /bookings/prices:
     get:
-      operationId: list_prices
+      operationId: list_booking_prices
       summary: List prices
-      description: Returns a list of flows, sorted by start_at date.
+      description: Returns a list of prices, sorted by their starts_at date.
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -4740,7 +4749,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_resource
+      operationId: get_booking_resource
       summary: Get a resource
       description: Retrieve a single resource identified by ID.
       responses:
@@ -4773,7 +4782,7 @@ paths:
         - Resources
   /bookings/resources:
     get:
-      operationId: list_bookings_resources
+      operationId: list_booking_resources
       summary: List resources
       description: Returns a list of resources, sorted by the order property.
       parameters:
@@ -4851,7 +4860,7 @@ paths:
           format: int32
           minimum: 1
     delete:
-      operationId: delete_bookings_tag
+      operationId: delete_booking_tag
       summary: Delete a tag
       description: Delete a single tag identified by an ID.
       responses:
@@ -4875,7 +4884,7 @@ paths:
       tags:
         - Bookings Tags
     get:
-      operationId: get_bookings_tag
+      operationId: get_booking_tag
       summary: Get a tag
       description: Retrieve a single tag identified by ID.
       responses:
@@ -4907,7 +4916,7 @@ paths:
       tags:
         - Bookings Tags
     put:
-      operationId: edit_bookings_tag
+      operationId: edit_booking_tag
       summary: Update a tag
       description: Update a tag
       requestBody:
@@ -4950,7 +4959,7 @@ paths:
         - Bookings Tags
   /bookings/tags:
     get:
-      operationId: list_bookings_tag
+      operationId: list_booking_tags
       summary: List tags
       description: Returns a list of tags, sorted alphabetically by name.
       parameters:
@@ -5025,7 +5034,7 @@ paths:
       tags:
         - Bookings Tags
     post:
-      operationId: create_bookings_tag
+      operationId: create_booking_tag
       summary: Create a tag
       description: Create a tag
       requestBody:
@@ -5049,15 +5058,15 @@ paths:
                   - data
           links:
             EditBookingsTagByID:
-              operationId: edit_bookings_tag
+              operationId: edit_booking_tag
               parameters:
                 id: $response.body#/data/id
             DeleteBookingsTagByID:
-              operationId: delete_bookings_tag
+              operationId: delete_booking_tag
               parameters:
                 id: $response.body#/data/id
             CreateBookingsTagResource:
-              operationId: create_bookings_tag_resource
+              operationId: create_customer_tag_resource
               requestBody:
                 tag_id: $response.body#/data/id
         '400':
@@ -5088,7 +5097,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_bookings_tag_category
+      operationId: get_booking_tag_category
       summary: Get a tag category
       description: Retrieve a single tag category identified by ID
       responses:
@@ -5121,7 +5130,7 @@ paths:
         - Bookings Tags
   /bookings/tag_categories:
     get:
-      operationId: list_bookings_tag_categories
+      operationId: list_booking_tag_categories
       summary: List tag categories
       description: Returns a list of tag categories, sorted alphabetically by name.
       responses:
@@ -5154,7 +5163,7 @@ paths:
         - Bookings Tags
   /bookings/tag_resources:
     delete:
-      operationId: delete_bookings_tag_resource
+      operationId: delete_customer_tag_resource
       summary: Delete a tag resource
       description: >-
         Delete a single tag resource identified by a customer ID and tag ID,
@@ -5199,7 +5208,7 @@ paths:
       tags:
         - Bookings Tags
     get:
-      operationId: list_bookings_tag_resources
+      operationId: list_customer_tag_resources
       summary: List tag resources
       description: >-
         Returns a list of tag resources. A tag resource is the relational model
@@ -5267,7 +5276,7 @@ paths:
       tags:
         - Bookings Tags
     post:
-      operationId: create_bookings_tag_resource
+      operationId: create_customer_tag_resource
       summary: Create a tag resource
       description: Create a tag resource linking a customer to a tag
       requestBody:
@@ -5319,7 +5328,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_type
+      operationId: get_booking_type
       summary: Get a type
       description: Retrieve a single type identified by ID.
       responses:
@@ -5352,7 +5361,7 @@ paths:
         - Bookings Types
   /bookings/types:
     get:
-      operationId: list_types
+      operationId: list_booking_types
       summary: List types
       description: Returns a list of types, sorted alphabetically by name.
       parameters:
@@ -5422,7 +5431,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_category
+      operationId: get_calendar_category
       summary: Get a category
       description: Retrieve a single category identified by ID.
       responses:
@@ -5454,7 +5463,7 @@ paths:
       tags:
         - Categories
     delete:
-      operationId: delete_category
+      operationId: delete_calendar_category
       summary: Delete a category
       description: >-
         Delete a single category identified by ID. When a category is deleted,
@@ -5494,7 +5503,7 @@ paths:
       tags:
         - Categories
     put:
-      operationId: edit_category
+      operationId: edit_calendar_category
       summary: Update a category
       description: Update a single category identified by ID.
       requestBody:
@@ -5537,7 +5546,7 @@ paths:
         - Categories
   /calendar/categories:
     get:
-      operationId: list_categories
+      operationId: list_calendar_categories
       summary: List categories
       description: Returns a list of categories, sorted alphabetically by name.
       parameters:
@@ -5597,7 +5606,7 @@ paths:
       tags:
         - Categories
     post:
-      operationId: create_category
+      operationId: create_calendar_category
       summary: Create a category
       description: Create a category with the provided settings.
       requestBody:
@@ -5621,15 +5630,15 @@ paths:
                   - data
           links:
             EditCategoryByID:
-              operationId: edit_category
+              operationId: edit_calendar_category
               parameters:
                 id: $response.body#/data/id
             GetCategoryByID:
-              operationId: get_category
+              operationId: get_calendar_category
               parameters:
                 id: $response.body#/data/id
             DeleteCategoryByID:
-              operationId: delete_category
+              operationId: delete_calendar_category
               parameters:
                 id: $response.body#/data/id
         '400':
@@ -6312,7 +6321,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_invite
+      operationId: get_event_invite
       summary: Get an invite
       description: Retrieve a single invite identified by ID.
       responses:
@@ -6345,7 +6354,7 @@ paths:
         - Invites
   /calendar/invites:
     get:
-      operationId: list_invites
+      operationId: list_event_invites
       summary: List invites
       description: Returns a list of invites for an event, sorted by modified_at.
       parameters:
@@ -6716,7 +6725,7 @@ paths:
           format: int32
           minimum: 1
     delete:
-      operationId: delete_calendar_signup
+      operationId: delete_event_signup
       summary: Delete a sign-up
       description: Delete a single sign-up identified by an ID.
       responses:
@@ -6740,7 +6749,7 @@ paths:
       tags:
         - Sign-Ups
     put:
-      operationId: edit_calendar_signup
+      operationId: edit_event_signup
       summary: Update a sign-up
       description: Update a single sign-up identified by ID.
       requestBody:
@@ -6785,7 +6794,7 @@ paths:
         - Sign-Ups
   /calendar/signups:
     get:
-      operationId: list_signups
+      operationId: list_event_signups
       summary: List sign-ups
       description: Returns a list of sign-ups, sorted by ID.
       parameters:
@@ -6844,7 +6853,7 @@ paths:
       tags:
         - Sign-Ups
     post:
-      operationId: create_calendar_signup
+      operationId: create_event_signup
       summary: Create a sign-up
       description: Create a sign-up with the provided settings.
       requestBody:
@@ -6870,11 +6879,11 @@ paths:
                   - data
           links:
             EditCategoryByID:
-              operationId: edit_calendar_signup
+              operationId: edit_event_signup
               parameters:
                 id: $response.body#/data/id
             DeleteCategoryByID:
-              operationId: delete_calendar_signup
+              operationId: delete_event_signup
               parameters:
                 id: $response.body#/data/id
         '400':
@@ -6898,7 +6907,7 @@ paths:
         - Sign-Ups
   /calendar/tickets:
     get:
-      operationId: list_tickets
+      operationId: list_event_tickets
       summary: List tickets
       description: Returns a list of tickets, sorted by ID.
       parameters:
@@ -7335,7 +7344,7 @@ paths:
                 resource:
                   id: $response.body#/data/id
             CreateChildTagResource:
-              operationId: create_children_tag_resource
+              operationId: create_child_tag_resource
               requestBody:
                 person:
                   id: $response.body#/data/id
@@ -8245,7 +8254,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_group_setup
+      operationId: get_children_group_setup
       summary: Get a group setup
       description: Retrieve a single group setup identified by ID.
       responses:
@@ -8278,7 +8287,7 @@ paths:
         - Group Setups
   /children/group_setups:
     get:
-      operationId: list_group_setups
+      operationId: list_children_group_setups
       summary: List group setups
       description: Returns a list of group setups, sorted alphabetically by name.
       parameters:
@@ -8330,7 +8339,7 @@ paths:
         - Group Setups
   /children/group_members:
     get:
-      operationId: list_group_members
+      operationId: list_children_group_members
       summary: List group members
       description: Returns a list of group members, sorted alphabetically by name.
       parameters:
@@ -9128,7 +9137,7 @@ paths:
         - Children Tags
   /children/tags:
     get:
-      operationId: list_children_tag
+      operationId: list_children_tags
       summary: List tags
       description: Returns a list of tags, sorted alphabetically by name.
       parameters:
@@ -9237,7 +9246,7 @@ paths:
               parameters:
                 id: $response.body#/data/id
             CreateChildrenTagResource:
-              operationId: create_children_tag_resource
+              operationId: create_child_tag_resource
               requestBody:
                 tag_id: $response.body#/data/id
         '400':
@@ -9334,7 +9343,7 @@ paths:
         - Children Tags
   /children/tag_resources:
     delete:
-      operationId: delete_children_tag_resource
+      operationId: delete_child_tag_resource
       summary: Delete a tag resource
       description: >-
         Delete a single tag resource identified by a child ID and tag ID,
@@ -9379,7 +9388,7 @@ paths:
       tags:
         - Children Tags
     get:
-      operationId: list_children_tag_resources
+      operationId: list_child_tag_resources
       summary: List tag resources
       description: >-
         Returns a list of tag resources. A tag resource is the relational model
@@ -9445,7 +9454,7 @@ paths:
       tags:
         - Children Tags
     post:
-      operationId: create_children_tag_resource
+      operationId: create_child_tag_resource
       summary: Create a tag resource
       description: Create a tag resource linking a child to a tag
       requestBody:
@@ -9691,7 +9700,7 @@ paths:
         - Giving Custom Fields
   /giving/declarations:
     get:
-      operationId: list_declarations
+      operationId: list_giving_declarations
       summary: List declarations
       description: Returns a list of declarations.
       parameters:
@@ -9960,7 +9969,7 @@ paths:
       tags:
         - Donations
     post:
-      operationId: create_giving_donation
+      operationId: create_donation
       summary: Create a Donation
       description: Create a Donation.
       requestBody:
@@ -11432,7 +11441,7 @@ paths:
         - Giving Tags
   /giving/tags:
     get:
-      operationId: list_giving_tag
+      operationId: list_giving_tags
       summary: List tags
       description: Returns a list of tags, sorted alphabetically by name.
       parameters:
@@ -11541,7 +11550,7 @@ paths:
               parameters:
                 id: $response.body#/data/id
             CreateGivingTagResource:
-              operationId: create_giving_tag_resource
+              operationId: create_giver_tag_resource
               requestBody:
                 tag_id: $response.body#/data/id
         '400':
@@ -11638,7 +11647,7 @@ paths:
         - Giving Tags
   /giving/tag_resources:
     delete:
-      operationId: delete_giving_tag_resource
+      operationId: delete_giver_tag_resource
       summary: Delete a tag resource
       description: >-
         Delete a single tag resource identified by a giver ID and tag ID,
@@ -11683,7 +11692,7 @@ paths:
       tags:
         - Giving Tags
     get:
-      operationId: list_giving_tag_resources
+      operationId: list_giver_tag_resources
       summary: List tag resources
       description: >-
         Returns a list of tag resources. A tag resource is the relational model
@@ -11749,7 +11758,7 @@ paths:
       tags:
         - Giving Tags
     post:
-      operationId: create_giving_tag_resource
+      operationId: create_giver_tag_resource
       summary: Create a tag resource
       description: Create a tag resource linking a giver to a tag
       requestBody:
@@ -12586,7 +12595,7 @@ paths:
         - Network Labels
   /network/members:
     get:
-      operationId: list_network_members
+      operationId: list_organisation_members
       summary: List members
       description: List organisation members.
       parameters:
@@ -12899,7 +12908,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_organisation_role
+      operationId: get_network_role
       summary: Get a role
       description: Retrieve a single role identified by ID.
       responses:
@@ -12932,7 +12941,7 @@ paths:
         - Network Roles
   /network/roles:
     get:
-      operationId: list_roles
+      operationId: list_network_roles
       summary: List roles
       description: Returns a list of roles, sorted by their order property.
       parameters:
@@ -13579,7 +13588,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_planning_song_arrangement
+      operationId: get_song_arrangement
       summary: Retrieve a Song Arrangement
       description: Retrieve a single song arrangement identified by ID.
       responses:
@@ -13612,7 +13621,7 @@ paths:
         - SongArrangements
   /planning/song_arrangements:
     get:
-      operationId: list_planning_song_arrangements
+      operationId: list_song_arrangements
       summary: List song arrangements
       description: Returns a list of song arrangements, sorted alphabetically by name.
       parameters:
@@ -13696,7 +13705,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_planning_template
+      operationId: get_plan_template
       summary: Get a template
       description: Retrieve a single template identified by ID.
       responses:
@@ -13729,7 +13738,7 @@ paths:
         - Templates
   /planning/templates:
     get:
-      operationId: list_planning_templates
+      operationId: list_plan_templates
       summary: List templates
       description: Returns a list of templates, sorted alphabetically by name.
       parameters:
@@ -13799,7 +13808,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_planning_template_item
+      operationId: get_plan_template_item
       summary: Get a template item
       description: Retrieve a single template item identified by ID.
       responses:
@@ -13832,7 +13841,7 @@ paths:
         - TemplateItems
   /planning/template_items:
     get:
-      operationId: list_planning_template_items
+      operationId: list_plan_template_items
       summary: List template items
       description: Returns a list of template items, sorted by date.
       parameters:
@@ -14358,7 +14367,7 @@ paths:
         - Unavailability
   /rotas/unavailability:
     get:
-      operationId: list_unavailability
+      operationId: list_rota_unavailability
       summary: List unavailability
       description: Returns a list of unavailability.
       parameters:
@@ -14470,7 +14479,7 @@ paths:
       tags:
         - Unavailability
     post:
-      operationId: create_rotas_unavailability
+      operationId: create_rota_unavailability
       summary: Create unavailability
       description: Create unavailability, with the provided settings.
       requestBody:
@@ -14511,7 +14520,7 @@ paths:
         - Unavailability
   /rotas/roles:
     get:
-      operationId: list_rotas_roles
+      operationId: list_rota_roles
       summary: List roles
       description: Returns a list of roles, sorted by date created.
       parameters:
@@ -14574,7 +14583,7 @@ paths:
         - Rota Roles
   /smallgroups/attendances:
     get:
-      operationId: list_attendance_dates
+      operationId: list_smallgroup_attendance_records
       summary: List attendance
       description: Returns a list of attendance.
       parameters:
@@ -14649,7 +14658,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_cluster
+      operationId: get_smallgroup_cluster
       summary: Get a cluster
       description: Retrieve a single cluster identified by ID.
       responses:
@@ -14681,7 +14690,7 @@ paths:
       tags:
         - Clusters
     delete:
-      operationId: delete_cluster
+      operationId: delete_smallgroup_cluster
       summary: Delete a cluster
       description: >-
         Delete a single cluster identified by ID. Groups that are linked to this
@@ -14706,7 +14715,7 @@ paths:
       tags:
         - Clusters
     put:
-      operationId: edit_cluster
+      operationId: edit_smallgroup_cluster
       summary: Update a cluster
       description: Update a single cluster identified by ID.
       requestBody:
@@ -14749,7 +14758,7 @@ paths:
         - Clusters
   /smallgroups/clusters:
     get:
-      operationId: list_clusters
+      operationId: list_smallgroup_clusters
       summary: List clusters
       description: Returns a list of clusters, sorted alphabetically by name.
       parameters:
@@ -14799,7 +14808,7 @@ paths:
       tags:
         - Clusters
     post:
-      operationId: create_cluster
+      operationId: create_smallgroup_cluster
       summary: Create a cluster
       description: Create a cluster with the provided settings.
       requestBody:
@@ -14851,7 +14860,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_smallgroups_custom_field
+      operationId: get_smallgroup_custom_field
       summary: Get a custom field
       description: Retrieve a single custom field identified by ID.
       responses:
@@ -14884,7 +14893,7 @@ paths:
         - Small Group Custom Fields
   /smallgroups/custom_fields:
     get:
-      operationId: list_smallgroups_custom_fields
+      operationId: list_smallgroup_custom_fields
       summary: List custom fields
       description: Returns a list of custom fields
       parameters:
@@ -14934,7 +14943,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_small_group
+      operationId: get_smallgroup
       summary: Get a group
       description: Retrieve a single group identified by ID.
       responses:
@@ -14977,7 +14986,7 @@ paths:
           example: 112
           minimum: 1
     get:
-      operationId: list_group_notes
+      operationId: list_smallgroup_notes
       summary: List group notes
       description: Returns a list of group notes, sorted by pinned, created_at.
       responses:
@@ -15013,7 +15022,7 @@ paths:
       tags:
         - Small Groups
     post:
-      operationId: create_group_note
+      operationId: create_smallgroup_note
       summary: Create a group note
       description: Create a Note against a Group in the Small Groups module.
       requestBody:
@@ -15054,7 +15063,7 @@ paths:
         - Small Groups
   /smallgroups/groups:
     get:
-      operationId: list_small_groups
+      operationId: list_smallgroups
       summary: List groups
       description: Returns a list of groups, sorted alphabetically by name.
       parameters:
@@ -15193,7 +15202,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_smallgroups_label
+      operationId: get_smallgroup_label
       summary: Get a label
       description: Retrieve a single label identified by ID.
       responses:
@@ -15225,7 +15234,7 @@ paths:
       tags:
         - Small Group Labels
     delete:
-      operationId: delete_smallgroups_label
+      operationId: delete_smallgroup_label
       summary: Delete a label
       description: >-
         Delete a single label identified by ID. Label responses will be deleted
@@ -15250,7 +15259,7 @@ paths:
       tags:
         - Small Group Labels
     put:
-      operationId: edit_smallgroups_label
+      operationId: edit_smallgroup_label
       summary: Update a label
       description: Update a single label identified by ID.
       requestBody:
@@ -15291,7 +15300,7 @@ paths:
         - Small Group Labels
   /smallgroups/labels:
     get:
-      operationId: list_smallgroups_labels
+      operationId: list_smallgroup_labels
       summary: List labels
       description: Returns a list of labels, sorted by their order property.
       parameters:
@@ -15341,7 +15350,7 @@ paths:
       tags:
         - Small Group Labels
     post:
-      operationId: create_smallgroups_label
+      operationId: create_smallgroup_label
       summary: Create a label
       description: Create a label with the provided settings.
       requestBody:
@@ -15382,7 +15391,7 @@ paths:
         - Small Group Labels
   /smallgroups/label_resources:
     get:
-      operationId: list_smallgroups_label_resources
+      operationId: list_smallgroup_label_resources
       summary: List label resources
       description: Returns a list of label resources
       parameters:
@@ -15454,7 +15463,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_small_groups_member
+      operationId: get_smallgroup_member
       summary: Get a member
       description: Retrieve a single member identified by ID.
       responses:
@@ -15486,7 +15495,7 @@ paths:
       tags:
         - Small Group Members
     delete:
-      operationId: delete_small_groups_member
+      operationId: delete_smallgroup_member
       summary: Delete a member
       description: Delete a single member identified by ID.
       responses:
@@ -15508,7 +15517,7 @@ paths:
       tags:
         - Small Group Members
     put:
-      operationId: edit_small_groups_member
+      operationId: edit_smallgroup_member
       summary: Update a member
       description: Update a single member identified by ID.
       requestBody:
@@ -15549,7 +15558,7 @@ paths:
         - Small Group Members
   /smallgroups/members:
     get:
-      operationId: list_small_groups_members
+      operationId: list_smallgroup_members
       summary: List members
       description: Returns a list of members, sorted alphabetically by name.
       parameters:
@@ -15664,7 +15673,7 @@ paths:
       tags:
         - Small Group Members
     post:
-      operationId: create_small_groups_members
+      operationId: create_smallgroup_member
       summary: Create members
       description: Create a member with the provided settings.
       requestBody:
@@ -15716,7 +15725,7 @@ paths:
           format: int32
           minimum: 1
     get:
-      operationId: get_group_role
+      operationId: get_smallgroup_role
       summary: Get a role
       description: Retrieve a single role identified by ID.
       responses:
@@ -15748,7 +15757,7 @@ paths:
       tags:
         - Small Group Roles
     delete:
-      operationId: delete_small_groups_role
+      operationId: delete_smallgroup_role
       summary: Delete a role
       description: >-
         Delete a single role identified by ID. Deleting a role is irreversible
@@ -15774,7 +15783,7 @@ paths:
       tags:
         - Small Group Roles
     put:
-      operationId: edit_small_groups_role
+      operationId: edit_smallgroup_role
       summary: Update a role
       description: Update a single role identified by ID.
       requestBody:
@@ -15817,7 +15826,7 @@ paths:
         - Small Group Roles
   /smallgroups/roles:
     get:
-      operationId: list_roles1
+      operationId: list_smallgroup_roles
       summary: List roles
       description: Returns a list of roles, sorted by their order property.
       parameters:
@@ -15857,7 +15866,7 @@ paths:
       tags:
         - Small Group Roles
     post:
-      operationId: create_small_groups_role
+      operationId: create_smallgroup_role
       summary: Create a role
       description: Create a role with the provided settings.
       requestBody:
@@ -24474,6 +24483,22 @@ components:
           example: hayfever
           maxLength: 100
           minLength: 1
+        photo_video_consent:
+          description: Photo/video consent for the Child.
+          type: object
+          additionalProperties: false
+          properties:
+            internal:
+              description: Consent given for internal presentation.
+              type: boolean
+              example: true
+            external:
+              description: Consent given for external presentation.
+              type: boolean
+              example: false
+          required:
+            - internal
+            - external
         medical:
           description: Full medical information about the Child.
           type: string
@@ -24748,6 +24773,8 @@ components:
           example: hayfever
           maxLength: 100
           minLength: 0
+        photo_video_consent:
+          $ref: '#/components/schemas/ChildAdd/properties/photo_video_consent'
         medical:
           description: Full medical information about the Child.
           type: string

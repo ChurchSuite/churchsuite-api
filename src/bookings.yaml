@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.0
+  version: 2.114.2
   title: Bookings Module
   description: >-
     The Bookings module enables you to manage the booking of resources,
@@ -116,6 +116,13 @@ paths:
     get:
       summary: List booked resources
       description: Returns a list of booked resources, sorted by start date.
+      x-mcp:
+        description: >-
+          Use `booking_ids[]`, `resource_ids[]`, `starts_before` or
+          `starts_after` to select booked resources. A booked resource is a
+          resource assigned to a booking during a specific time slot, such as a
+          room or a person. Results are sorted by start date. For the catalogue
+          of bookable resources, use `list_booking_resources`.
       operationId: list_booked_resources
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -202,6 +209,11 @@ paths:
     get:
       summary: Get a booking
       description: Retrieve a single booking identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the booking with the specified ID. A booking reserves
+          a room or resource and can link to a calendar event. It does not show
+          whether its resources are available at other times.
       operationId: get_booking
       security:
         - oauth_token:
@@ -245,6 +257,10 @@ paths:
     get:
       summary: List booking notes
       description: Returns a list of booking notes, sorted by pinned, created_at.
+      x-mcp:
+        description: >-
+          Use to list notes for the booking with the specified ID. Results are
+          sorted by pinned status and creation time.
       operationId: list_booking_notes
       security:
         - oauth_token:
@@ -281,6 +297,10 @@ paths:
     post:
       summary: Create a booking note
       description: Create a Note against a Booking in the Bookings module.
+      x-mcp:
+        description: >-
+          Use to add a note to the booking with the specified ID. For the
+          booking record, use `get_booking`.
       operationId: create_booking_note
       requestBody:
         required: true
@@ -322,6 +342,11 @@ paths:
     get:
       summary: List bookings
       description: Returns a list of bookings.
+      x-mcp:
+        description: >-
+          Use the filters to select room and resource bookings by site, status,
+          date, customer, booking ID, sequence, type or search text. It does not
+          return availability for unbooked time slots.
       operationId: list_bookings
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -475,7 +500,14 @@ paths:
       description: >-
         Returns a list of charges, sorted by due date. Requires either a
         booking_id or customer_id parameter to be provided.
-      operationId: list_charges
+      x-mcp:
+        description: >-
+          Use to see all costs raised against a specific booking. Use
+          `booking_id` or `customer_id` to select charges. You must provide at
+          least one of these parameters. Use `paid` to filter by paid status.
+          Charges are sorted by due date. It does not show payments that are not
+          recorded as charges.
+      operationId: list_booking_charges
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -545,6 +577,12 @@ paths:
     get:
       summary: Get a customer
       description: Retrieve a single customer identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the booking customer with the specified ID. A booking
+          customer is a point of contact and may link to an address book
+          contact. For a customer linked to an Address Book contact, use
+          `get_contact` with the customer's `contact_id`.
       operationId: get_customer
       security:
         - oauth_token:
@@ -588,6 +626,10 @@ paths:
     get:
       summary: List customer notes
       description: Returns a list of customer notes, sorted by pinned, created_at.
+      x-mcp:
+        description: >-
+          Use to list notes for the customer with the specified ID. Results are
+          sorted by pinned status and creation time.
       operationId: list_customer_notes
       security:
         - oauth_token:
@@ -624,6 +666,10 @@ paths:
     post:
       summary: Create a customer note
       description: Create a Note against a Customer in the Bookings module.
+      x-mcp:
+        description: >-
+          Use to add a note to the customer with the specified ID. For the
+          customer record, use `get_customer`.
       operationId: create_customer_note
       requestBody:
         required: true
@@ -665,6 +711,12 @@ paths:
     get:
       summary: List customers
       description: Returns a list of customers, sorted alphabetically by name.
+      x-mcp:
+        description: >-
+          Use the filters to select customers by site, status, customer ID,
+          search text or tag ID. Sorted by name. A booking customer may link to
+          an address book contact. For a customer linked to an Address Book
+          contact, use `get_contact` with the customer's `contact_id`.
       operationId: list_customers
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -783,7 +835,12 @@ paths:
     get:
       summary: Get a custom field
       description: Retrieve a single custom field identified by ID.
-      operationId: get_bookings_custom_field
+      x-mcp:
+        description: >-
+          Use to retrieve the custom field with the specified ID. A custom field
+          defines additional information for booking customers. For stored
+          custom field values, use `get_customer` or `list_customers`.
+      operationId: get_booking_custom_field
       security:
         - oauth_token:
             - full_access
@@ -816,7 +873,12 @@ paths:
     get:
       summary: List custom fields
       description: Returns a list of custom fields
-      operationId: list_bookings_custom_fields
+      x-mcp:
+        description: >-
+          Use to list custom fields for booking customers. Custom fields define
+          additional data for booking customers. For stored custom field values,
+          use `get_customer` or `list_customers`.
+      operationId: list_booking_custom_fields
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -864,9 +926,14 @@ paths:
           format: int32
           minimum: 1
     get:
-      summary: Get a flow
       description: Retrieve a single flow identified by ID.
-      operationId: get_bookings_flow
+      x-mcp:
+        description: >-
+          Use to retrieve the booking flow with the specified ID. A flow defines
+          stages and actions for processing customers. For customer progress
+          through the flow, use `list_booking_flow_trackings`.
+      summary: Get a flow
+      operationId: get_booking_flow
       security:
         - oauth_token:
             - full_access
@@ -899,7 +966,13 @@ paths:
     get:
       summary: List flows
       description: Returns a list of flows, sorted alphabetically by name.
-      operationId: list_bookings_flows
+      x-mcp:
+        description: >-
+          Use `status` or `q` to select booking flows by status or name. Sorted
+          by name. A flow defines stages and actions for processing customers.
+          For customer progress through the flow, use
+          `list_booking_flow_trackings`.
+      operationId: list_booking_flows
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -972,7 +1045,12 @@ paths:
       description: >-
         Delete a single stage identified by ID. When a stage is deleted, all
         actions and flow trackings linked to the stage will be deleted.
-      operationId: delete_bookings_flow_stage
+      x-mcp:
+        description: >-
+          Use to delete the flow stage with the specified ID. This also deletes
+          actions and flow trackings linked to that stage. It does not delete
+          the flow or its customers.
+      operationId: delete_booking_flow_stage
       security:
         - oauth_token:
             - full_access
@@ -996,7 +1074,12 @@ paths:
     get:
       summary: Get a flow stage
       description: Retrieve a single stage identified by ID.
-      operationId: get_bookings_flow_stage
+      x-mcp:
+        description: >-
+          Use to retrieve the flow stage with the specified ID. A stage defines
+          preset actions within a flow. For customer progress through the flow,
+          use `list_booking_flow_trackings`.
+      operationId: get_booking_flow_stage
       security:
         - oauth_token:
             - full_access
@@ -1028,7 +1111,12 @@ paths:
     put:
       summary: Update a flow stage
       description: Update a single stage identified by ID.
-      operationId: edit_bookings_flow_stage
+      x-mcp:
+        description: >-
+          Use to update the flow stage with the specified ID. The request
+          changes the stage settings and preset actions. To update a customer's
+          progress through the flow, use `edit_booking_flow_tracking`.
+      operationId: edit_booking_flow_stage
       requestBody:
         required: true
         content:
@@ -1067,7 +1155,12 @@ paths:
     get:
       summary: List flow stages
       description: Returns a list of stages.
-      operationId: list_bookings_flow_stages
+      x-mcp:
+        description: >-
+          Use `flow_ids[]` to select stages for specific flows. Stages define
+          preset actions within a flow. For customer progress through the flow,
+          use `list_booking_flow_trackings`.
+      operationId: list_booking_flow_stages
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -1118,7 +1211,11 @@ paths:
     post:
       summary: Create a flow stage
       description: Create a stage for a flow.
-      operationId: create_bookings_flow_stage
+      x-mcp:
+        description: >-
+          Use to create a stage with preset actions in a booking flow. To add a
+          customer to the flow, use `create_booking_flow_tracking`.
+      operationId: create_booking_flow_stage
       requestBody:
         required: true
         content:
@@ -1145,15 +1242,15 @@ paths:
                 additionalProperties: false
           links:
             EditFlowStageByID:
-              operationId: edit_bookings_flow_stage
+              operationId: edit_booking_flow_stage
               parameters:
                 id: $response.body#/data/id
             GetFlowStageByID:
-              operationId: get_bookings_flow_stage
+              operationId: get_booking_flow_stage
               parameters:
                 id: $response.body#/data/id
             DeleteFlowStageByID:
-              operationId: delete_bookings_flow_stage
+              operationId: delete_booking_flow_stage
               parameters:
                 id: $response.body#/data/id
         '400':
@@ -1182,7 +1279,12 @@ paths:
       description: >-
         Retrieve a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
-      operationId: get_bookings_flow_tracking
+      x-mcp:
+        description: >-
+          Use to retrieve the flow tracking with the specified ID. It records a
+          customer's progress through a booking flow. For flow setup, use
+          `get_booking_flow` and `list_booking_flow_stages`.
+      operationId: get_booking_flow_tracking
       security:
         - oauth_token:
             - full_access
@@ -1216,7 +1318,12 @@ paths:
       description: >-
         Update a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
-      operationId: edit_bookings_flow_tracking
+      x-mcp:
+        description: >-
+          Use to update the flow tracking with the specified ID. It records one
+          customer's progress through a booking flow. For stage settings and
+          preset actions, use `edit_booking_flow_stage`.
+      operationId: edit_booking_flow_tracking
       security:
         - oauth_token:
             - full_access
@@ -1258,7 +1365,12 @@ paths:
       description: >-
         Delete a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
-      operationId: delete_bookings_flow_tracking
+      x-mcp:
+        description: >-
+          Use to delete the flow tracking with the specified ID. This removes
+          one customer's progress record for a booking flow. It does not delete
+          the customer or the flow.
+      operationId: delete_booking_flow_tracking
       security:
         - oauth_token:
             - full_access
@@ -1283,7 +1395,13 @@ paths:
       description: >-
         Returns a list of flow trackings linked to people's progress through a
         flow.
-      operationId: list_bookings_flow_trackings
+      x-mcp:
+        description: >-
+          Use `due_before`, `due_after`, `flow_ids[]`, `customer_ids[]` or
+          `stage_ids[]` to select flow trackings. A flow tracking records a
+          customer's progress through a booking flow. For flow setup, use
+          `get_booking_flow` and `list_booking_flow_stages`.
+      operationId: list_booking_flow_trackings
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -1372,7 +1490,9 @@ paths:
       description: >-
         Create a flow tracking, linked to a person's progress through a flow,
         with the provided settings.
-      operationId: create_bookings_flow_tracking
+      x-mcp:
+        description: Use to create a flow tracking for a customer in a booking flow.
+      operationId: create_booking_flow_tracking
       requestBody:
         required: true
         content:
@@ -1399,15 +1519,15 @@ paths:
                 additionalProperties: false
           links:
             EditFlowTrackingByID:
-              operationId: edit_bookings_flow_tracking
+              operationId: edit_booking_flow_tracking
               parameters:
                 id: $response.body#/data/id
             GetFlowTrackingByID:
-              operationId: get_bookings_flow_tracking
+              operationId: get_booking_flow_tracking
               parameters:
                 id: $response.body#/data/id
             DeleteFlowTrackingByID:
-              operationId: delete_bookings_flow_tracking
+              operationId: delete_booking_flow_tracking
               parameters:
                 id: $response.body#/data/id
         '400':
@@ -1427,8 +1547,14 @@ paths:
   /bookings/prices:
     get:
       summary: List prices
-      description: Returns a list of flows, sorted by start_at date.
-      operationId: list_prices
+      description: Returns a list of prices, sorted by their starts_at date.
+      x-mcp:
+        description: >-
+          Use `resource_ids[]`, `type_id`, `q` or `status` to select prices.
+          Prices suggest charges for a resource or booking type and are sorted
+          by start date. For charges raised against a booking, use
+          `list_booking_charges` with `booking_id`.
+      operationId: list_booking_prices
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -1514,7 +1640,12 @@ paths:
     get:
       summary: Get a resource
       description: Retrieve a single resource identified by ID.
-      operationId: get_resource
+      x-mcp:
+        description: >-
+          Use to retrieve the resource with the specified ID. A resource is a
+          bookable object that can be assigned to a booking. For booked time
+          slots, use `list_booked_resources` with `resource_ids[]`.
+      operationId: get_booking_resource
       security:
         - oauth_token:
             - full_access
@@ -1547,7 +1678,12 @@ paths:
     get:
       summary: List resources
       description: Returns a list of resources, sorted by the order property.
-      operationId: list_bookings_resources
+      x-mcp:
+        description: >-
+          Use `site_ids[]`, `category`, `q` or `status` to select resources.
+          Resources are bookable objects listed in configured order. For booked
+          time slots, use `list_booked_resources` with `resource_ids[]`.
+      operationId: list_booking_resources
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -1625,7 +1761,11 @@ paths:
     delete:
       summary: Delete a tag
       description: Delete a single tag identified by an ID.
-      operationId: delete_bookings_tag
+      x-mcp:
+        description: >-
+          Use to delete the tag with the specified ID. The tag groups booking
+          customers. Deleting it does not delete the customers.
+      operationId: delete_booking_tag
       security:
         - oauth_token:
             - full_access
@@ -1649,7 +1789,12 @@ paths:
     get:
       summary: Get a tag
       description: Retrieve a single tag identified by ID.
-      operationId: get_bookings_tag
+      x-mcp:
+        description: >-
+          Use to retrieve the tag with the specified ID. Booking tags group
+          customers. For linked customers, use `list_customers` with
+          `tag_ids[]`. For membership links, use `list_customer_tag_resources`.
+      operationId: get_booking_tag
       security:
         - oauth_token:
             - full_access
@@ -1681,7 +1826,13 @@ paths:
     put:
       summary: Update a tag
       description: Update a tag
-      operationId: edit_bookings_tag
+      x-mcp:
+        description: >-
+          Use to update the tag with the specified ID. Booking tags group
+          customers. This operation changes the tag details. To link a customer
+          to this tag, use `create_customer_tag_resource`. To remove a link, use
+          `delete_customer_tag_resource`.
+      operationId: edit_booking_tag
       requestBody:
         required: true
         content:
@@ -1724,7 +1875,12 @@ paths:
     get:
       summary: List tags
       description: Returns a list of tags, sorted alphabetically by name.
-      operationId: list_bookings_tag
+      x-mcp:
+        description: >-
+          Use `q` to select tags by name. Sorted by name. For linked customers,
+          use `list_customers` with `tag_ids[]`. For membership links, use
+          `list_customer_tag_resources`.
+      operationId: list_booking_tags
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -1799,7 +1955,11 @@ paths:
     post:
       summary: Create a tag
       description: Create a tag
-      operationId: create_bookings_tag
+      x-mcp:
+        description: >-
+          Use to create a booking tag for grouping customers. To link a customer
+          to this tag, use `create_customer_tag_resource`.
+      operationId: create_booking_tag
       requestBody:
         required: true
         content:
@@ -1826,15 +1986,15 @@ paths:
                 additionalProperties: false
           links:
             EditBookingsTagByID:
-              operationId: edit_bookings_tag
+              operationId: edit_booking_tag
               parameters:
                 id: $response.body#/data/id
             DeleteBookingsTagByID:
-              operationId: delete_bookings_tag
+              operationId: delete_booking_tag
               parameters:
                 id: $response.body#/data/id
             CreateBookingsTagResource:
-              operationId: create_bookings_tag_resource
+              operationId: create_customer_tag_resource
               requestBody:
                 tag_id: $response.body#/data/id
         '400':
@@ -1862,7 +2022,11 @@ paths:
     get:
       summary: Get a tag category
       description: Retrieve a single tag category identified by ID
-      operationId: get_bookings_tag_category
+      x-mcp:
+        description: >-
+          Use to retrieve the tag category with the specified ID. A category
+          groups related tags.
+      operationId: get_booking_tag_category
       security:
         - oauth_token:
             - full_access
@@ -1895,7 +2059,11 @@ paths:
     get:
       summary: List tag categories
       description: Returns a list of tag categories, sorted alphabetically by name.
-      operationId: list_bookings_tag_categories
+      x-mcp:
+        description: >-
+          Use to list booking tag categories, sorted by name. Categories group
+          related tags.
+      operationId: list_booking_tag_categories
       security:
         - oauth_token:
             - full_access
@@ -1930,7 +2098,12 @@ paths:
       description: >-
         Delete a single tag resource identified by a customer ID and tag ID,
         unlinking a customer from a tag.
-      operationId: delete_bookings_tag_resource
+      x-mcp:
+        description: >-
+          Use `customer_id` and `tag_id` to remove the link between that
+          customer and tag. This deletes the link only. It does not delete the
+          customer or tag.
+      operationId: delete_customer_tag_resource
       parameters:
         - in: query
           name: customer_id
@@ -1975,7 +2148,12 @@ paths:
       description: >-
         Returns a list of tag resources. A tag resource is the relational model
         linking a customer to a tag.
-      operationId: list_bookings_tag_resources
+      x-mcp:
+        description: >-
+          Use `customer_ids[]` or `tag_ids[]` to select customer to tag links.
+          For customer records, use `get_customer` or `list_customers`. For tag
+          definitions, use `list_booking_tags`.
+      operationId: list_customer_tag_resources
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -2041,7 +2219,9 @@ paths:
     post:
       summary: Create a tag resource
       description: Create a tag resource linking a customer to a tag
-      operationId: create_bookings_tag_resource
+      x-mcp:
+        description: Use to link a booking customer to a tag.
+      operationId: create_customer_tag_resource
       requestBody:
         required: true
         content:
@@ -2093,7 +2273,12 @@ paths:
     get:
       summary: Get a type
       description: Retrieve a single type identified by ID.
-      operationId: get_type
+      x-mcp:
+        description: >-
+          Use to retrieve the booking type with the specified ID. Booking types
+          classify bookings. For bookings of a type, use `list_bookings` with
+          `type_ids[]`.
+      operationId: get_booking_type
       security:
         - oauth_token:
             - full_access
@@ -2126,7 +2311,12 @@ paths:
     get:
       summary: List types
       description: Returns a list of types, sorted alphabetically by name.
-      operationId: list_types
+      x-mcp:
+        description: >-
+          Use `status` or `q` to select booking types by status or name. Sorted
+          by name. For bookings of a type, use `list_bookings` with
+          `type_ids[]`.
+      operationId: list_booking_types
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'

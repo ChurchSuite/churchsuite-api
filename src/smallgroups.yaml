@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.0
+  version: 2.114.2
   title: Small Groups Module
   description: >-
     This module enables you to manage all data relating to small groups. Access
@@ -100,7 +100,13 @@ paths:
     get:
       summary: List attendance
       description: Returns a list of attendance.
-      operationId: list_attendance_dates
+      x-mcp:
+        description: >-
+          Use `group_ids[]`, `before`, or `after` to select small group
+          attendance records. Each record gives a meeting date and attendance
+          details, or null details if the group did not meet. For member
+          records, use `list_smallgroup_members` with `group_ids[]`.
+      operationId: list_smallgroup_attendance_records
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -175,7 +181,12 @@ paths:
     get:
       summary: Get a cluster
       description: Retrieve a single cluster identified by ID.
-      operationId: get_cluster
+      x-mcp:
+        description: >-
+          Use to get the cluster with this ID. A cluster groups small groups for
+          oversight, such as by location. For groups in a cluster, use
+          `list_smallgroups` with `cluster_ids[]`.
+      operationId: get_smallgroup_cluster
       security:
         - oauth_token:
             - full_access
@@ -210,7 +221,11 @@ paths:
         Delete a single cluster identified by ID. Groups that are linked to this
         cluster will be unlinked. Smart Tags that reference this cluster will be
         affected.
-      operationId: delete_cluster
+      x-mcp:
+        description: >-
+          Use to delete the cluster with this ID. Linked groups become unlinked,
+          and Smart Tags that reference the cluster are affected.
+      operationId: delete_smallgroup_cluster
       security:
         - oauth_token:
             - full_access
@@ -232,7 +247,12 @@ paths:
     put:
       summary: Update a cluster
       description: Update a single cluster identified by ID.
-      operationId: edit_cluster
+      x-mcp:
+        description: >-
+          Use to update the cluster with this ID using the request fields. A
+          cluster groups small groups for oversight. For groups in a cluster,
+          use `list_smallgroups` with `cluster_ids[]`.
+      operationId: edit_smallgroup_cluster
       requestBody:
         required: true
         content:
@@ -275,7 +295,12 @@ paths:
     get:
       summary: List clusters
       description: Returns a list of clusters, sorted alphabetically by name.
-      operationId: list_clusters
+      x-mcp:
+        description: >-
+          Use `q` to select clusters by name. A cluster groups small groups for
+          oversight. For groups in a cluster, use `list_smallgroups` with
+          `cluster_ids[]`.
+      operationId: list_smallgroup_clusters
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -325,7 +350,11 @@ paths:
     post:
       summary: Create a cluster
       description: Create a cluster with the provided settings.
-      operationId: create_cluster
+      x-mcp:
+        description: >-
+          Use to create a cluster with the request fields. A cluster groups
+          small groups for oversight.
+      operationId: create_smallgroup_cluster
       requestBody:
         required: true
         content:
@@ -377,7 +406,12 @@ paths:
     get:
       summary: Get a custom field
       description: Retrieve a single custom field identified by ID.
-      operationId: get_smallgroups_custom_field
+      x-mcp:
+        description: >-
+          Use to get the Small Groups custom field with this ID. Custom fields
+          define extra data that can be stored for a group. For stored custom
+          field values, use `get_smallgroup` or `list_smallgroups`.
+      operationId: get_smallgroup_custom_field
       security:
         - oauth_token:
             - full_access
@@ -410,7 +444,12 @@ paths:
     get:
       summary: List custom fields
       description: Returns a list of custom fields
-      operationId: list_smallgroups_custom_fields
+      x-mcp:
+        description: >-
+          Use to list Small Groups custom fields. Custom fields define extra
+          data that can be stored for a group. For stored custom field values,
+          use `get_smallgroup` or `list_smallgroups`.
+      operationId: list_smallgroup_custom_fields
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -460,7 +499,13 @@ paths:
     get:
       summary: Get a group
       description: Retrieve a single group identified by ID.
-      operationId: get_small_group
+      x-mcp:
+        description: >-
+          Use to get the small group with this ID. The group record includes its
+          meeting details and settings. For members, use
+          `list_smallgroup_members` with `group_ids[]`. For label links, use
+          `list_smallgroup_label_resources` with `group_ids[]`.
+      operationId: get_smallgroup
       security:
         - oauth_token:
             - full_access
@@ -503,7 +548,12 @@ paths:
     get:
       summary: List group notes
       description: Returns a list of group notes, sorted by pinned, created_at.
-      operationId: list_group_notes
+      x-mcp:
+        description: >-
+          Use to list notes for the group with this ID. Each note records an
+          observation, comment, or update about the group. For the group record,
+          use `get_smallgroup`.
+      operationId: list_smallgroup_notes
       security:
         - oauth_token:
             - full_access
@@ -539,7 +589,11 @@ paths:
     post:
       summary: Create a group note
       description: Create a Note against a Group in the Small Groups module.
-      operationId: create_group_note
+      x-mcp:
+        description: >-
+          Use to add a note to the group with this ID using the request fields.
+          For the group record, use `get_smallgroup`.
+      operationId: create_smallgroup_note
       requestBody:
         required: true
         content:
@@ -580,7 +634,13 @@ paths:
     get:
       summary: List groups
       description: Returns a list of groups, sorted alphabetically by name.
-      operationId: list_small_groups
+      x-mcp:
+        description: >-
+          Use `site_ids[]`, `cluster_ids[]`, `frequency`, `days[]`, `q`, or
+          `view` to select small groups. For members, use
+          `list_smallgroup_members` with `group_ids[]`. For label links, use
+          `list_smallgroup_label_resources` with `group_ids[]`.
+      operationId: list_smallgroups
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -719,7 +779,12 @@ paths:
     get:
       summary: Get a label
       description: Retrieve a single label identified by ID.
-      operationId: get_smallgroups_label
+      x-mcp:
+        description: >-
+          Use to get the Small Groups label with this ID. Labels further
+          categorise groups. For links between labels and groups, use
+          `list_smallgroup_label_resources` with `label_ids[]`.
+      operationId: get_smallgroup_label
       security:
         - oauth_token:
             - full_access
@@ -754,7 +819,12 @@ paths:
         Delete a single label identified by ID. Label responses will be deleted
         from all groups. Module settings that reference this label will be
         affected. Embedded lists or maps of groups may be affected.
-      operationId: delete_smallgroups_label
+      x-mcp:
+        description: >-
+          Use to delete the Small Groups label with this ID. This deletes its
+          responses from all groups and affects module settings that reference
+          it. Embedded group lists or maps may also change.
+      operationId: delete_smallgroup_label
       security:
         - oauth_token:
             - full_access
@@ -776,7 +846,12 @@ paths:
     put:
       summary: Update a label
       description: Update a single label identified by ID.
-      operationId: edit_smallgroups_label
+      x-mcp:
+        description: >-
+          Use to update the Small Groups label with this ID using the request
+          fields. Labels further categorise groups. For links between labels and
+          groups, use `list_smallgroup_label_resources` with `label_ids[]`.
+      operationId: edit_smallgroup_label
       requestBody:
         required: true
         content:
@@ -817,7 +892,12 @@ paths:
     get:
       summary: List labels
       description: Returns a list of labels, sorted by their order property.
-      operationId: list_smallgroups_labels
+      x-mcp:
+        description: >-
+          Use `q` to select Small Groups labels by name. Labels further
+          categorise groups. For links between labels and groups, use
+          `list_smallgroup_label_resources` with `label_ids[]`.
+      operationId: list_smallgroup_labels
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -867,7 +947,12 @@ paths:
     post:
       summary: Create a label
       description: Create a label with the provided settings.
-      operationId: create_smallgroups_label
+      x-mcp:
+        description: >-
+          Use to create a Small Groups label with the request fields. Labels
+          further categorise groups. Creating a label does not link it to
+          groups.
+      operationId: create_smallgroup_label
       requestBody:
         required: true
         content:
@@ -908,7 +993,13 @@ paths:
     get:
       summary: List label resources
       description: Returns a list of label resources
-      operationId: list_smallgroups_label_resources
+      x-mcp:
+        description: >-
+          Use `label_ids[]` or `group_ids[]` to select label resources. Each
+          resource links a label to a group and records its selected options.
+          For group records, use `get_smallgroup` or `list_smallgroups`. For
+          label definitions, use `list_smallgroup_labels`.
+      operationId: list_smallgroup_label_resources
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -980,7 +1071,13 @@ paths:
     get:
       summary: Get a member
       description: Retrieve a single member identified by ID.
-      operationId: get_small_groups_member
+      x-mcp:
+        description: >-
+          Use to get the group member with this ID. A member links a contact or
+          child to a group and records status and roles. For the person record,
+          use `get_contact` or `get_child`, according to the membership's linked
+          person type. For the group record, use `get_smallgroup`.
+      operationId: get_smallgroup_member
       security:
         - oauth_token:
             - full_access
@@ -1012,7 +1109,11 @@ paths:
     delete:
       summary: Delete a member
       description: Delete a single member identified by ID.
-      operationId: delete_small_groups_member
+      x-mcp:
+        description: >-
+          Use to delete the group member with this ID. This removes only the
+          membership; the linked contact, child and group are kept.
+      operationId: delete_smallgroup_member
       security:
         - oauth_token:
             - full_access
@@ -1034,7 +1135,13 @@ paths:
     put:
       summary: Update a member
       description: Update a single member identified by ID.
-      operationId: edit_small_groups_member
+      x-mcp:
+        description: >-
+          Use to update the group member with this ID using the request fields.
+          For the person record, use `get_contact` or `get_child`, according to
+          the membership's linked person type. For the group record, use
+          `get_smallgroup`.
+      operationId: edit_smallgroup_member
       requestBody:
         required: true
         content:
@@ -1075,7 +1182,14 @@ paths:
     get:
       summary: List members
       description: Returns a list of members, sorted alphabetically by name.
-      operationId: list_small_groups_members
+      x-mcp:
+        description: >-
+          Use `child_ids[]`, `contact_ids[]`, `role_id`, `group_ids[]`, or
+          `status` to select group members. A membership links a contact or
+          child to a group and records status and roles. For person records, use
+          `get_contact` or `get_child`, according to each membership's linked
+          person type.
+      operationId: list_smallgroup_members
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -1190,7 +1304,13 @@ paths:
     post:
       summary: Create members
       description: Create a member with the provided settings.
-      operationId: create_small_groups_members
+      x-mcp:
+        description: >-
+          Use to add a contact or child to a group with the request fields. For
+          the person record, use `get_contact` or `get_child`, according to the
+          membership's linked person type. For the group record, use
+          `get_smallgroup`.
+      operationId: create_smallgroup_member
       requestBody:
         required: true
         content:
@@ -1242,7 +1362,12 @@ paths:
     get:
       summary: Get a role
       description: Retrieve a single role identified by ID.
-      operationId: get_group_role
+      x-mcp:
+        description: >-
+          Use to get the group role with this ID. A role names a member's
+          responsibility, such as leader. For members assigned to a role, use
+          `list_smallgroup_members` with `role_id`.
+      operationId: get_smallgroup_role
       security:
         - oauth_token:
             - full_access
@@ -1278,7 +1403,12 @@ paths:
         and will un-assign the role from every role holder for all past, active
         and future groups. Any Smart Tags that reference this role will be
         affected.
-      operationId: delete_small_groups_role
+      x-mcp:
+        description: >-
+          Use to delete the group role with this ID. This permanently unassigns
+          it from members in past, active, and future groups. Smart Tags that
+          reference the role are affected.
+      operationId: delete_smallgroup_role
       security:
         - oauth_token:
             - full_access
@@ -1300,7 +1430,12 @@ paths:
     put:
       summary: Update a role
       description: Update a single role identified by ID.
-      operationId: edit_small_groups_role
+      x-mcp:
+        description: >-
+          Use to update the group role with this ID using the request fields. A
+          role names a member's responsibility. For members assigned to a role,
+          use `list_smallgroup_members` with `role_id`.
+      operationId: edit_smallgroup_role
       requestBody:
         required: true
         content:
@@ -1343,7 +1478,12 @@ paths:
     get:
       summary: List roles
       description: Returns a list of roles, sorted by their order property.
-      operationId: list_roles
+      x-mcp:
+        description: >-
+          Use to list group roles. A role names a member's responsibility. For
+          members assigned to a role, use `list_smallgroup_members` with
+          `role_id`.
+      operationId: list_smallgroup_roles
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -1383,7 +1523,12 @@ paths:
     post:
       summary: Create a role
       description: Create a role with the provided settings.
-      operationId: create_small_groups_role
+      x-mcp:
+        description: >-
+          Use to create a group role with the request fields. A role names a
+          member's responsibility. To assign a role to a member, use
+          `edit_smallgroup_member`.
+      operationId: create_smallgroup_role
       requestBody:
         required: true
         content:

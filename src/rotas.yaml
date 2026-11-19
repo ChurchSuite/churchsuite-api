@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.0
+  version: 2.114.2
   title: Rotas Module
   description: >-
     The Rotas module enables churches and other organisations to manage all
@@ -63,6 +63,12 @@ paths:
     get:
       summary: Get a ministry
       description: Retrieve a single ministry identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the ministry with the specified ID. A ministry is a
+          serving area, such as Welcome or Worship. It groups teams and roles.
+          This result does not list rota assignments. For ministry members, use
+          `list_ministry_members` with `ministry_ids[]`.
       operationId: get_ministry
       security:
         - oauth_token:
@@ -96,6 +102,11 @@ paths:
     get:
       summary: List ministries
       description: Returns a list of ministries, sorted by date created.
+      x-mcp:
+        description: >-
+          Use `site_ids[]`, `statuses[]`, `q` or `ids[]` to select ministries.
+          Sorted by creation date. A ministry is a serving area that groups
+          teams and roles.
       operationId: list_ministries
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -174,6 +185,12 @@ paths:
     get:
       summary: List ministry members
       description: Returns a list of team members.
+      x-mcp:
+        description: >-
+          Use `ministry_ids[]`, `role_ids[]` or `team_ids[]` to select ministry
+          members. A ministry member is a contact or child assigned to a
+          ministry, with team and role details. It does not return rota
+          assignments.
       operationId: list_ministry_members
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -283,6 +300,11 @@ paths:
     get:
       summary: Get a ministry team
       description: Retrieve a single ministry team identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the ministry team with the specified ID. A team groups
+          ministry members within a ministry. This result does not list rota
+          assignments for its members.
       operationId: get_ministry_team
       security:
         - oauth_token:
@@ -316,6 +338,11 @@ paths:
     get:
       summary: List ministry teams
       description: Returns a list of ministry teams, sorted by date created.
+      x-mcp:
+        description: >-
+          Use `ministry_ids[]` or `team_ids[]` to select ministry teams. Sorted
+          by creation date. For team members, use `list_ministry_members` with
+          `team_ids[]`.
       operationId: list_ministry_teams
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -389,6 +416,11 @@ paths:
     delete:
       summary: Delete an unavailability
       description: Delete a single unavailability, identified by ID.
+      x-mcp:
+        description: >-
+          Use to delete the unavailability record with the specified ID. This
+          removes that record of when a person cannot serve. It does not delete
+          the person.
       operationId: delete_rota_unavailability
       security:
         - oauth_token:
@@ -412,7 +444,13 @@ paths:
     get:
       summary: List unavailability
       description: Returns a list of unavailability.
-      operationId: list_unavailability
+      x-mcp:
+        description: >-
+          Use `contact_ids[]`, `child_ids[]`, `ministry_ids[]`, `starts_before`
+          or `starts_after` to select unavailability records. Unavailability
+          records specify periods when people cannot serve. It does not show
+          rota assignments.
+      operationId: list_rota_unavailability
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -524,7 +562,11 @@ paths:
     post:
       summary: Create unavailability
       description: Create unavailability, with the provided settings.
-      operationId: create_rotas_unavailability
+      x-mcp:
+        description: >-
+          Use to record when a person cannot serve. The request sets the
+          unavailable period and can include a description.
+      operationId: create_rota_unavailability
       requestBody:
         required: true
         content:
@@ -565,7 +607,12 @@ paths:
     get:
       summary: List roles
       description: Returns a list of roles, sorted by date created.
-      operationId: list_rotas_roles
+      x-mcp:
+        description: >-
+          Use `member_ids[]` or `ministry_ids[]` to select roles by ministry
+          member or ministry. Sorted by creation date. It does not return rota
+          assignments.
+      operationId: list_rota_roles
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.0
+  version: 2.114.2
   title: Calendar Module
   description: Manage events, sign-ups and staff leave across your account.
   termsOfService: https://churchsuite.com/terms-of-service/
@@ -87,7 +87,12 @@ paths:
     get:
       summary: Get a category
       description: Retrieve a single category identified by ID.
-      operationId: get_category
+      x-mcp:
+        description: >-
+          Use to get the calendar category with this ID. A category groups
+          related events. For events in a category, use `list_events` with
+          `category_ids[]`.
+      operationId: get_calendar_category
       security:
         - oauth_token:
             - full_access
@@ -121,7 +126,11 @@ paths:
       description: >-
         Delete a single category identified by ID. When a category is deleted,
         all events linked must be transferred to another category.
-      operationId: delete_category
+      x-mcp:
+        description: >-
+          Use to delete the calendar category with this ID. Linked events must
+          move to another category before deletion.
+      operationId: delete_calendar_category
       parameters:
         - in: query
           name: replacement_id
@@ -159,7 +168,12 @@ paths:
     put:
       summary: Update a category
       description: Update a single category identified by ID.
-      operationId: edit_category
+      x-mcp:
+        description: >-
+          Use to update the calendar category with this ID using the request
+          fields. For events in a category, use `list_events` with
+          `category_ids[]`.
+      operationId: edit_calendar_category
       requestBody:
         required: true
         content:
@@ -202,7 +216,12 @@ paths:
     get:
       summary: List categories
       description: Returns a list of categories, sorted alphabetically by name.
-      operationId: list_categories
+      x-mcp:
+        description: >-
+          Use `status` or `q` to select calendar categories. A category groups
+          related events. For events in a category, use `list_events` with
+          `category_ids[]`.
+      operationId: list_calendar_categories
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -262,7 +281,12 @@ paths:
     post:
       summary: Create a category
       description: Create a category with the provided settings.
-      operationId: create_category
+      x-mcp:
+        description: >-
+          Use to create a calendar category with the request fields. A category
+          groups related events. For events in a category, use `list_events`
+          with `category_ids[]`.
+      operationId: create_calendar_category
       requestBody:
         required: true
         content:
@@ -289,15 +313,15 @@ paths:
                 additionalProperties: false
           links:
             EditCategoryByID:
-              operationId: edit_category
+              operationId: edit_calendar_category
               parameters:
                 id: $response.body#/data/id
             GetCategoryByID:
-              operationId: get_category
+              operationId: get_calendar_category
               parameters:
                 id: $response.body#/data/id
             DeleteCategoryByID:
-              operationId: delete_category
+              operationId: delete_calendar_category
               parameters:
                 id: $response.body#/data/id
         '400':
@@ -325,6 +349,11 @@ paths:
     get:
       summary: Get an event
       description: Retrieve a single event identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the event with this ID. An event is a calendar entry for
+          your organisation. For event sign-ups, use `list_event_signups` with
+          `event_id`. For tickets, use `list_event_tickets` with `event_id`.
       operationId: get_event
       security:
         - oauth_token:
@@ -359,6 +388,8 @@ paths:
     delete:
       summary: Delete an event
       description: Delete a single event identified by ID.
+      x-mcp:
+        description: Use to delete the event with this ID.
       operationId: delete_event
       security:
         - oauth_token:
@@ -383,6 +414,11 @@ paths:
     put:
       summary: Update an event
       description: Update a single event identified by ID.
+      x-mcp:
+        description: >-
+          Use to update the event with this ID using the request fields. For
+          event sign-ups, use `list_event_signups` with `event_id`. For tickets,
+          use `list_event_tickets` with `event_id`.
       operationId: edit_event
       requestBody:
         required: true
@@ -558,6 +594,13 @@ paths:
     get:
       summary: List events
       description: Returns a list of events.
+      x-mcp:
+        description: >-
+          Use `site_ids[]`, `category_ids[]`, `q`, `sequence_id`,
+          `starts_after`, `starts_before`, or `status` to select events. Each
+          result describes a calendar event. For event sign-ups, use
+          `list_event_signups` with `event_id`. For tickets, use
+          `list_event_tickets` with `event_id`.
       operationId: list_events
       parameters:
         - in: query
@@ -693,6 +736,11 @@ paths:
     post:
       summary: Create an event
       description: Create an event with the provided settings.
+      x-mcp:
+        description: >-
+          Use to create a calendar event with the request fields. For event
+          sign-ups, use `list_event_signups` with `event_id`. For tickets, use
+          `list_event_tickets` with `event_id`.
       operationId: create_event
       requestBody:
         required: true
@@ -891,6 +939,11 @@ paths:
     get:
       summary: List event notes
       description: Returns a list of event notes, sorted by pinned, created_at.
+      x-mcp:
+        description: >-
+          Use to list notes for the event with this ID. Each note records an
+          observation, comment, or update about the event. For the event record,
+          use `get_event`.
       operationId: list_event_notes
       security:
         - oauth_token:
@@ -927,6 +980,10 @@ paths:
     post:
       summary: Create an event note
       description: Create a Note against an Event in the Calendar module.
+      x-mcp:
+        description: >-
+          Use to add a note to the event with this ID using the request fields.
+          For the event record, use `get_event`.
       operationId: create_event_note
       requestBody:
         required: true
@@ -977,7 +1034,12 @@ paths:
     get:
       summary: Get an invite
       description: Retrieve a single invite identified by ID.
-      operationId: get_invite
+      x-mcp:
+        description: >-
+          Use to get the invite with this ID. An invite records an invitation to
+          an event for a contact or child and its status. For sign-up records,
+          use `list_event_signups` with `event_id`.
+      operationId: get_event_invite
       security:
         - oauth_token:
             - full_access
@@ -1010,7 +1072,13 @@ paths:
     get:
       summary: List invites
       description: Returns a list of invites for an event, sorted by modified_at.
-      operationId: list_invites
+      x-mcp:
+        description: >-
+          Use `child_ids[]`, `contact_ids[]`, `event_ids[]`, `statuses[]`, or
+          `q` to select invites. Each invite records an invitation to an event
+          for a contact or child and its status. For sign-up records, use
+          `list_event_signups` with `event_id`.
+      operationId: list_event_invites
       parameters:
         - in: query
           name: child_ids[]
@@ -1120,6 +1188,11 @@ paths:
     get:
       summary: Get a label
       description: Retrieve a single label identified by ID.
+      x-mcp:
+        description: >-
+          Use to get the calendar label with this ID. Labels further categorise
+          events. For links between labels and events, use
+          `list_calendar_label_resources` with `label_ids[]`.
       operationId: get_calendar_label
       security:
         - oauth_token:
@@ -1155,6 +1228,11 @@ paths:
         Delete a single label identified by ID. Label responses will be deleted
         from all events. Module settings that reference this label will be
         affected. Embedded lists of events may be affected.
+      x-mcp:
+        description: >-
+          Use to delete the calendar label with this ID. This deletes its
+          responses from all events and affects module settings that reference
+          it. Embedded event lists may also change.
       operationId: delete_calendar_label
       security:
         - oauth_token:
@@ -1177,6 +1255,11 @@ paths:
     put:
       summary: Update a label
       description: Update a single label identified by ID.
+      x-mcp:
+        description: >-
+          Use to update the calendar label with this ID using the request
+          fields. Labels further categorise events. For links between labels and
+          events, use `list_calendar_label_resources` with `label_ids[]`.
       operationId: edit_calendar_label
       requestBody:
         required: true
@@ -1218,6 +1301,11 @@ paths:
     get:
       summary: List labels
       description: Returns a list of labels, sorted by their order property.
+      x-mcp:
+        description: >-
+          Use `q` to select calendar labels by name. Labels further categorise
+          events. For links between labels and events, use
+          `list_calendar_label_resources` with `label_ids[]`.
       operationId: list_calendar_labels
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -1268,6 +1356,10 @@ paths:
     post:
       summary: Create a label
       description: Create a label with the provided settings.
+      x-mcp:
+        description: >-
+          Use to create a calendar label with the request fields. Labels further
+          categorise events. Creating a label does not link it to events.
       operationId: create_calendar_label
       requestBody:
         required: true
@@ -1309,6 +1401,12 @@ paths:
     get:
       summary: List label resources
       description: Returns a list of label resources
+      x-mcp:
+        description: >-
+          Use `label_ids[]` or `event_ids[]` to select label resources. Each
+          resource links a label to an event and records its selected options.
+          For event records, use `get_event` or `list_events`. For label
+          definitions, use `list_calendar_labels`.
       operationId: list_calendar_label_resources
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -1381,7 +1479,11 @@ paths:
     delete:
       summary: Delete a sign-up
       description: Delete a single sign-up identified by an ID.
-      operationId: delete_calendar_signup
+      x-mcp:
+        description: >-
+          Use to delete the sign-up with this ID. A sign-up records a person's
+          request to attend an event.
+      operationId: delete_event_signup
       security:
         - oauth_token:
             - full_access
@@ -1405,7 +1507,13 @@ paths:
     put:
       summary: Update a sign-up
       description: Update a single sign-up identified by ID.
-      operationId: edit_calendar_signup
+      x-mcp:
+        description: >-
+          Use to update the sign-up with this ID using the request fields. A
+          sign-up records a person's request to attend an event. For the event
+          record, use `get_event`. If the sign-up is linked to a contact or
+          child, use `get_contact` or `get_child` for that person's record.
+      operationId: edit_event_signup
       requestBody:
         required: true
         content:
@@ -1450,7 +1558,13 @@ paths:
     get:
       summary: List sign-ups
       description: Returns a list of sign-ups, sorted by ID.
-      operationId: list_signups
+      x-mcp:
+        description: >-
+          Use `event_id` or `status` to select sign-ups. Each sign-up records a
+          person's request to attend an event. For the event record, use
+          `get_event`. If the sign-up is linked to a contact or child, use
+          `get_contact` or `get_child` for that person's record.
+      operationId: list_event_signups
       parameters:
         - in: query
           name: event_id
@@ -1509,7 +1623,13 @@ paths:
     post:
       summary: Create a sign-up
       description: Create a sign-up with the provided settings.
-      operationId: create_calendar_signup
+      x-mcp:
+        description: >-
+          Use to create an event sign-up with the request fields. A sign-up
+          records a person's request to attend an event. For the event record,
+          use `get_event`. If the sign-up is linked to a contact or child, use
+          `get_contact` or `get_child` for that person's record.
+      operationId: create_event_signup
       requestBody:
         required: true
         content:
@@ -1538,11 +1658,11 @@ paths:
                 additionalProperties: false
           links:
             EditCategoryByID:
-              operationId: edit_calendar_signup
+              operationId: edit_event_signup
               parameters:
                 id: $response.body#/data/id
             DeleteCategoryByID:
-              operationId: delete_calendar_signup
+              operationId: delete_event_signup
               parameters:
                 id: $response.body#/data/id
         '400':
@@ -1563,7 +1683,12 @@ paths:
     get:
       summary: List tickets
       description: Returns a list of tickets, sorted by ID.
-      operationId: list_tickets
+      x-mcp:
+        description: >-
+          Use `event_id` to select tickets for an event. A ticket defines an
+          option for an event sign-up and may have a cost or capacity. For
+          sign-up records, use `list_event_signups` with `event_id`.
+      operationId: list_event_tickets
       parameters:
         - in: query
           name: event_id

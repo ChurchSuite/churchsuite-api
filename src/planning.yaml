@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.0
+  version: 2.114.2
   title: Planning Module
   description: >-
     The Planning module enables organisations/churches to produce plans for
@@ -110,6 +110,10 @@ paths:
     get:
       summary: Get a Library Item
       description: Retrieve a single library item identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the library item with the specified ID. A library item
+          is a saved item that can be added to a plan.
       operationId: get_planning_library_item
       security:
         - oauth_token:
@@ -143,6 +147,10 @@ paths:
     get:
       summary: List library items
       description: Returns a list of library items, sorted alphabetically by name.
+      x-mcp:
+        description: >-
+          Use `q`, `status` or `type_ids[]` to select library items by name,
+          status or type. Sorted by name.
       operationId: list_planning_library_items
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -224,6 +232,11 @@ paths:
     get:
       summary: Get a plan
       description: Retrieve a single plan identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the plan with the specified ID. A plan is a running
+          order for an occasion and can link to a service, event or booking. For
+          plan notes, use `list_plan_notes`.
       operationId: get_plan
       security:
         - oauth_token:
@@ -267,6 +280,10 @@ paths:
     get:
       summary: List plan notes
       description: Returns a list of plan notes, sorted by pinned, created_at.
+      x-mcp:
+        description: >-
+          Use to list notes for the plan with the specified ID. Results are
+          sorted by pinned status and creation time.
       operationId: list_plan_notes
       security:
         - oauth_token:
@@ -303,6 +320,10 @@ paths:
     post:
       summary: Create a plan note
       description: Create a Note against a Plan in the Planning module.
+      x-mcp:
+        description: >-
+          Use to add a note to the plan with the specified ID. For the plan
+          record, use `get_plan`.
       operationId: create_plan_note
       requestBody:
         required: true
@@ -344,6 +365,11 @@ paths:
     get:
       summary: List plans
       description: Returns a list of plans.
+      x-mcp:
+        description: >-
+          Use `site_ids[]`, `q`, `starts_after`, `starts_before` or `status` to
+          select plans. A plan is a running order for an occasion and can link
+          to a service, event or booking.
       operationId: list_plans
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -458,6 +484,11 @@ paths:
     get:
       summary: Get a plan item
       description: Retrieve a single plan item identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the plan item with the specified ID. A plan item can
+          be a song arrangement or a library item. It can also have a type and
+          links to people. For the full plan, use `get_plan`.
       operationId: get_plan_item
       security:
         - oauth_token:
@@ -491,6 +522,11 @@ paths:
     get:
       summary: List plan items
       description: Returns a list of plan items.
+      x-mcp:
+        description: >-
+          Use the required `plan_ids[]` filter to select plan items. Each item
+          can be a song arrangement or a library item, and can have a type and
+          links to people.
       operationId: list_plan_items
       parameters:
         - in: query
@@ -582,6 +618,11 @@ paths:
     get:
       summary: Retrieve a song
       description: Retrieve a single song, identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the song with the specified ID. Song records describe
+          CCLI, copyright and administration information. For arrangements, use
+          `list_song_arrangements` with `song_ids[]`.
       operationId: get_song
       security:
         - oauth_token:
@@ -615,6 +656,11 @@ paths:
     get:
       summary: List songs
       description: Returns a list of Songs, sorted alphabetically.
+      x-mcp:
+        description: >-
+          Use `last_used_after`, `q` or `statuses[]` to select songs by last
+          use, text or status. For arrangements, use `list_song_arrangements`
+          with `song_ids[]`.
       operationId: list_songs
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -697,7 +743,13 @@ paths:
     get:
       summary: Retrieve a Song Arrangement
       description: Retrieve a single song arrangement identified by ID.
-      operationId: get_planning_song_arrangement
+      x-mcp:
+        description: >-
+          Use to retrieve the song arrangement with the specified ID. An
+          arrangement specifies how a song is performed, including its key,
+          tempo, meter, scale and chart. It may include a link to a Spotify
+          track.
+      operationId: get_song_arrangement
       security:
         - oauth_token:
             - full_access
@@ -730,7 +782,12 @@ paths:
     get:
       summary: List song arrangements
       description: Returns a list of song arrangements, sorted alphabetically by name.
-      operationId: list_planning_song_arrangements
+      x-mcp:
+        description: >-
+          Use `q`, `song_ids[]` or `song_statuses[]` to select arrangements by
+          text, song or song status. An arrangement may include a link to a
+          Spotify track.
+      operationId: list_song_arrangements
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -814,7 +871,13 @@ paths:
     get:
       summary: Get a template
       description: Retrieve a single template identified by ID.
-      operationId: get_planning_template
+      x-mcp:
+        description: >-
+          Use to retrieve the template with the specified ID. A template
+          provides a starting point for plans that use the same or similar
+          running order. For template items, use `list_plan_template_items` with
+          `template_ids[]`.
+      operationId: get_plan_template
       security:
         - oauth_token:
             - full_access
@@ -847,7 +910,12 @@ paths:
     get:
       summary: List templates
       description: Returns a list of templates, sorted alphabetically by name.
-      operationId: list_planning_templates
+      x-mcp:
+        description: >-
+          Use `q` or `status` to select templates by name or status. Sorted by
+          name. For template items, use `list_plan_template_items` with
+          `template_ids[]`.
+      operationId: list_plan_templates
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -917,7 +985,12 @@ paths:
     get:
       summary: Get a template item
       description: Retrieve a single template item identified by ID.
-      operationId: get_planning_template_item
+      x-mcp:
+        description: >-
+          Use to retrieve the template item with the specified ID. A template
+          item is a song arrangement or library item in a template. For the full
+          template, use `get_plan_template`.
+      operationId: get_plan_template_item
       security:
         - oauth_token:
             - full_access
@@ -950,7 +1023,12 @@ paths:
     get:
       summary: List template items
       description: Returns a list of template items, sorted by date.
-      operationId: list_planning_template_items
+      x-mcp:
+        description: >-
+          Use `arrangement_ids[]`, `library_item_ids[]` or `template_ids[]` to
+          select template items. Each item is a song arrangement or library item
+          in a template.
+      operationId: list_plan_template_items
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -1033,6 +1111,12 @@ paths:
     get:
       summary: Get a type
       description: Retrieve a single type identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the plan type with the specified ID. A type
+          categorises library items and plan items. It can set a colour and
+          default duration. For library items of a type, use
+          `list_planning_library_items` with `type_ids[]`.
       operationId: get_planning_type
       security:
         - oauth_token:
@@ -1066,6 +1150,11 @@ paths:
     get:
       summary: List types
       description: Returns a list of types, sorted alphabetically by name.
+      x-mcp:
+        description: >-
+          Use `q` to select plan types by name. Sorted by name. Types categorise
+          library items and plan items. For library items of a type, use
+          `list_planning_library_items` with `type_ids[]`.
       operationId: list_planning_types
       parameters:
         - $ref: '#/components/parameters/PaginationPage'

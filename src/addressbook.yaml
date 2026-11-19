@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.0
+  version: 2.114.2
   title: Address Book Module
   description: >-
     The Address Book module manages all adult contacts associated with your
@@ -114,6 +114,14 @@ paths:
     get:
       summary: Get a contact
       description: Retrieve a single contact identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the contact with the specified ID. A contact is an
+          adult record in the Address Book. For child records, use
+          `list_children`. For parent/carer links, use
+          `list_parent_carer_relationships` with `child_ids[]`. For group
+          memberships, use `list_smallgroup_members` with `contact_ids[]`. For
+          ministry memberships, use `list_ministry_members`.
       operationId: get_contact
       security:
         - oauth_token:
@@ -146,6 +154,14 @@ paths:
     delete:
       summary: Delete a contact
       description: Delete a single contact identified by ID.
+      x-mcp:
+        description: >-
+          Use to delete the contact with the specified ID. This removes the
+          contact record. It unlinks contacts from their user, partner,
+          children, giver, customer, form responses. Removes them from flows,
+          tags, key dates, events, groups, ministries, rotas, and plans.
+          Attendance data for this contact will be deleted and this contact will
+          be no longer be an overseer for events, ministries, and bookings.
       operationId: delete_contact
       security:
         - oauth_token:
@@ -168,6 +184,10 @@ paths:
     put:
       summary: Update a contact
       description: Update a single contact identified by ID.
+      x-mcp:
+        description: >-
+          Use to update the contact with the specified ID. It does not update
+          linked children, group memberships or rota memberships.
       operationId: edit_contact
       requestBody:
         required: true
@@ -219,6 +239,10 @@ paths:
     get:
       summary: List contact notes
       description: Returns a list of contact notes, sorted by pinned, created_at.
+      x-mcp:
+        description: >-
+          Use to list notes for the contact with the specified ID. Results are
+          sorted by pinned status and creation time.
       operationId: list_contact_notes
       security:
         - oauth_token:
@@ -255,6 +279,10 @@ paths:
     post:
       summary: Create a contact note
       description: Create a Note against a Contact in the Address Book module.
+      x-mcp:
+        description: >-
+          Use to add a note to the contact with the specified ID. For the
+          contact record, use `get_contact`.
       operationId: create_contact_note
       requestBody:
         required: true
@@ -296,6 +324,13 @@ paths:
     get:
       summary: List contacts
       description: Returns a list of contacts.
+      x-mcp:
+        description: >-
+          Use `site_ids[]`, `status`, `q`, `tag_ids[]` or the visibility filters
+          to select contacts. Contacts are adult Address Book records. For child
+          records, use `list_children`. For group memberships, use
+          `list_smallgroup_members`. For ministry memberships, use
+          `list_ministry_members`.
       operationId: list_contacts
       parameters:
         - in: query
@@ -446,6 +481,11 @@ paths:
     post:
       summary: Create a contact
       description: Create a contact with the provided settings.
+      x-mcp:
+        description: >-
+          Use to create an Address Book contact from the supplied settings. It
+          does not create linked children, group memberships or rota
+          memberships.
       operationId: create_contact
       requestBody:
         required: true
@@ -494,7 +534,7 @@ paths:
                 resource:
                   id: $response.body#/data/id
             CreateContactTagResource:
-              operationId: create_addressbook_tag_resource
+              operationId: create_contact_tag_resource
               requestBody:
                 person:
                   id: $response.body#/data/id
@@ -522,6 +562,11 @@ paths:
     get:
       summary: Get a custom field
       description: Retrieve a single custom field identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the custom field with the specified ID. A custom field
+          defines additional data for contact records. For stored custom field
+          values, use `get_contact` or `list_contacts`.
       operationId: get_addressbook_custom_field
       security:
         - oauth_token:
@@ -555,6 +600,11 @@ paths:
     get:
       summary: List custom fields
       description: Returns a list of custom fields
+      x-mcp:
+        description: >-
+          Use to list Address Book custom fields. Custom fields define
+          additional data for contact records. For stored custom field values,
+          use `get_contact` or `list_contacts`.
       operationId: list_addressbook_custom_fields
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -606,7 +656,12 @@ paths:
     get:
       summary: Get a flow
       description: Retrieve a single flow identified by ID.
-      operationId: get_contact_flow
+      x-mcp:
+        description: >-
+          Use to retrieve the Address Book flow with the specified ID. A flow
+          defines stages and actions for processing contacts. For contact
+          progress through the flow, use `list_addressbook_flow_trackings`.
+      operationId: get_addressbook_flow
       security:
         - oauth_token:
             - full_access
@@ -639,6 +694,11 @@ paths:
     get:
       summary: List flows
       description: Returns a list of flows, sorted alphabetically by name.
+      x-mcp:
+        description: >-
+          Use `status` or `q` to select flows by status or name. Sorted by name.
+          For contact progress through the flow, use
+          `list_addressbook_flow_trackings`.
       operationId: list_addressbook_flows
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -712,6 +772,11 @@ paths:
       description: >-
         Delete a single stage identified by ID. When a stage is deleted, all
         actions and flow trackings linked to the stage will be deleted.
+      x-mcp:
+        description: >-
+          Use to delete the flow stage with the specified ID. This also deletes
+          actions and flow trackings linked to the stage. It does not delete the
+          flow or its contacts.
       operationId: delete_addressbook_flow_stage
       security:
         - oauth_token:
@@ -736,6 +801,11 @@ paths:
     get:
       summary: Get a flow stage
       description: Retrieve a single stage identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the flow stage with the specified ID. A stage defines
+          preset actions within a flow. For contact progress through the flow,
+          use `list_addressbook_flow_trackings`.
       operationId: get_addressbook_flow_stage
       security:
         - oauth_token:
@@ -768,6 +838,11 @@ paths:
     put:
       summary: Update a flow stage
       description: Update a single stage identified by ID.
+      x-mcp:
+        description: >-
+          Use to update the flow stage settings and preset actions with the
+          specified ID. To update a contact's progress through the flow, use
+          `edit_addressbook_flow_tracking`.
       operationId: edit_addressbook_flow_stage
       security:
         - oauth_token:
@@ -807,6 +882,11 @@ paths:
     get:
       summary: List flow stages
       description: Returns a list of stages.
+      x-mcp:
+        description: >-
+          Use `flow_ids[]` to select stages for specific flows. Stages define
+          preset actions within a flow. For contact progress through the flow,
+          use `list_addressbook_flow_trackings`.
       operationId: list_addressbook_flow_stages
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -815,7 +895,10 @@ paths:
           name: flow_ids[]
           description: >-
             Filter records to those matching values in the provided array. This
-            filter uses the logical OR operator.
+            filter uses the logical OR operator.  In the addressbook flows are a
+            "contact-processing" tool. They are split into stages, in each stage
+            there are defined set of preset Actions to be processed as each
+            person becomes due.
           schema:
             type: array
             items:
@@ -858,6 +941,10 @@ paths:
     post:
       summary: Create a flow stage
       description: Create a stage for a flow.
+      x-mcp:
+        description: >-
+          Use to create a stage with preset actions in an Address Book flow. To
+          add a contact to the flow, use `create_addressbook_flow_tracking`.
       operationId: create_addressbook_flow_stage
       requestBody:
         required: true
@@ -922,6 +1009,11 @@ paths:
       description: >-
         Retrieve a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the flow tracking with the specified ID. It records
+          one contact's progress through an Address Book flow. For flow setup,
+          use `get_addressbook_flow` and `list_addressbook_flow_stages`.
       operationId: get_addressbook_flow_tracking
       security:
         - oauth_token:
@@ -956,6 +1048,11 @@ paths:
       description: >-
         Update a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
+      x-mcp:
+        description: >-
+          Use to update the flow tracking with the specified ID. It records one
+          contact's progress through an Address Book flow. For stage settings
+          and preset actions, use `edit_addressbook_flow_stage`.
       operationId: edit_addressbook_flow_tracking
       requestBody:
         required: true
@@ -998,6 +1095,11 @@ paths:
       description: >-
         Delete a single flow tracking, linked to a person's progress through a
         flow, identified by ID.
+      x-mcp:
+        description: >-
+          Use to delete the flow tracking with the specified ID. This removes
+          one contact's progress record for a flow. It does not delete the
+          contact or the flow.
       operationId: delete_addressbook_flow_tracking
       security:
         - oauth_token:
@@ -1023,6 +1125,12 @@ paths:
       description: >-
         Returns a list of flow trackings linked to people's progress through a
         flow.
+      x-mcp:
+        description: >-
+          Use `due_before`, `due_after`, `flow_ids[]`, `contact_ids[]` or
+          `stage_ids[]` to select flow trackings. A flow tracking records a
+          contact's progress through an Address Book flow. For flow setup, use
+          `get_addressbook_flow` and `list_addressbook_flow_stages`.
       operationId: list_addressbook_flow_trackings
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -1112,6 +1220,8 @@ paths:
       description: >-
         Create a flow tracking, linked to a person's progress through a flow,
         with the provided settings.
+      x-mcp:
+        description: Use to create a flow tracking for a contact in an Address Book flow.
       operationId: create_addressbook_flow_tracking
       requestBody:
         required: true
@@ -1178,6 +1288,11 @@ paths:
     get:
       summary: Get a form field
       description: Retrieve a single form field identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the form field with the specified ID. A form field
+          defines a question or input in an Address Book form. For submitted
+          answers, use `list_addressbook_form_responses` with `form_ids[]`.
       operationId: get_addressbook_form_field
       security:
         - oauth_token:
@@ -1211,6 +1326,11 @@ paths:
     get:
       summary: List form fields
       description: Returns a list of form fields
+      x-mcp:
+        description: >-
+          Use `form_ids[]` to select fields for specific forms. Form fields
+          define the structure of a form. For submitted answers, use
+          `list_addressbook_form_responses` with `form_ids[]`.
       operationId: list_addressbook_form_fields
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -1273,6 +1393,11 @@ paths:
     get:
       summary: Get a form response
       description: Retrieve a single form response identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the form response with the specified ID. A response
+          contains submitted information from a form. For form field
+          definitions, use `list_addressbook_form_fields` with `form_ids[]`.
       operationId: get_addressbook_form_response
       security:
         - oauth_token:
@@ -1306,6 +1431,11 @@ paths:
     get:
       summary: List form responses
       description: Returns a list of form responses, sorted alphabetically by name.
+      x-mcp:
+        description: >-
+          Use `form_ids[]`, `statuses[]`, `q`, `has_linked_resource` or
+          `invite_response` to select form responses. For form field
+          definitions, use `list_addressbook_form_fields` with `form_ids[]`.
       operationId: list_addressbook_form_responses
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -1406,6 +1536,11 @@ paths:
       description: >-
         Delete a single key date resource identified by an ID, removing a
         contact from a key date.
+      x-mcp:
+        description: >-
+          Use to delete the key date link with the specified ID. This removes
+          one contact's association with a key date. It does not delete the
+          contact or the key date definition.
       operationId: delete_contact_key_date_resource
       security:
         - oauth_token:
@@ -1428,6 +1563,10 @@ paths:
     put:
       summary: Update a key date resource
       description: Update a single key date resource identified by ID.
+      x-mcp:
+        description: >-
+          Use to update the key date link with the specified ID. To update the
+          key date definition, use `edit_addressbook_key_date`.
       operationId: edit_contact_key_date_resource
       requestBody:
         required: true
@@ -1472,6 +1611,10 @@ paths:
         Returns a list of key date resources, optionally filtered by key date or
         contact ID. A key date resource records an instance of a key date for a
         contact on a given date.
+      x-mcp:
+        description: >-
+          Use `key_date_ids[]` or `contact_ids[]` to select contact key date
+          links. For key date definitions, use `list_addressbook_key_dates`.
       operationId: list_contact_key_date_resources
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -1559,6 +1702,10 @@ paths:
     post:
       summary: Create a key date resource
       description: Create a key date resource adding a contact to a key date
+      x-mcp:
+        description: >-
+          Use to record a key date for a contact. To create a key date
+          definition, use `create_addressbook_key_date`.
       operationId: create_contact_key_date_resource
       requestBody:
         required: true
@@ -1619,6 +1766,12 @@ paths:
     get:
       summary: Get a key date
       description: Retrieve a single key date identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the key date definition with the specified ID. An
+          addressbook key date defines a milestone that can be recorded for
+          contacts. For recorded contact milestones, use
+          `list_contact_key_date_resources` with `key_date_ids[]`.
       operationId: get_addressbook_key_date
       security:
         - oauth_token:
@@ -1651,6 +1804,11 @@ paths:
     delete:
       summary: Delete a key date
       description: Delete a single key date identified by ID.
+      x-mcp:
+        description: >-
+          Use to delete the key date definition with the specified ID. This
+          removes the definition and linked keydate resources. It does not
+          delete linked contact records.
       operationId: delete_addressbook_key_date
       security:
         - oauth_token:
@@ -1673,6 +1831,10 @@ paths:
     put:
       summary: Update a key date
       description: Update a single key date identified by ID.
+      x-mcp:
+        description: >-
+          Use to update the key date definition with the specified ID. To update
+          a recorded contact milestone, use `edit_contact_key_date_resource`.
       operationId: edit_addressbook_key_date
       requestBody:
         required: true
@@ -1714,6 +1876,11 @@ paths:
     get:
       summary: List key dates
       description: Returns a list of key dates.
+      x-mcp:
+        description: >-
+          Use `q` to select key date definitions by name. For recorded contact
+          milestones, use `list_contact_key_date_resources` with
+          `key_date_ids[]`.
       operationId: list_addressbook_key_dates
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
@@ -1789,6 +1956,10 @@ paths:
     post:
       summary: Create a key date
       description: Create a key date with the provided settings.
+      x-mcp:
+        description: >-
+          Use to create a key date definition. To record a milestone for a
+          contact, use `create_contact_key_date_resource`.
       operationId: create_addressbook_key_date
       requestBody:
         required: true
@@ -1854,6 +2025,10 @@ paths:
     delete:
       summary: Delete a tag
       description: Delete a single tag identified by an ID.
+      x-mcp:
+        description: >-
+          Use to delete the tag with the specified ID. Address Book tags group
+          contacts. Deleting a tag does not delete the contacts.
       operationId: delete_addressbook_tag
       security:
         - oauth_token:
@@ -1878,6 +2053,11 @@ paths:
     get:
       summary: Get a tag
       description: Retrieve a single tag identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the tag with the specified ID. Address Book tags group
+          contacts. For linked contacts, use `list_contacts` with `tag_ids[]`.
+          For membership links, use `list_contact_tag_resources`.
       operationId: get_addressbook_tag
       security:
         - oauth_token:
@@ -1910,6 +2090,12 @@ paths:
     put:
       summary: Update a tag
       description: Update a tag
+      x-mcp:
+        description: >-
+          Use to update the tag with the specified ID. This operation changes
+          the tag details. To link a contact to this tag, use
+          `create_contact_tag_resource`. To remove a link, use
+          `delete_contact_tag_resource`.
       operationId: edit_addressbook_tag
       requestBody:
         required: true
@@ -1953,7 +2139,12 @@ paths:
     get:
       summary: List tags
       description: Returns a list of tags, sorted alphabetically by name.
-      operationId: list_addressbook_tag
+      x-mcp:
+        description: >-
+          Use `q` to select tags by name. Sorted by name. For linked contacts,
+          use `list_contacts` with `tag_ids[]`. For membership links, use
+          `list_contact_tag_resources`.
+      operationId: list_addressbook_tags
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -2028,6 +2219,10 @@ paths:
     post:
       summary: Create a tag
       description: Create a tag
+      x-mcp:
+        description: >-
+          Use to create an Address Book tag for grouping contacts. To link a
+          contact to this tag, use `create_contact_tag_resource`.
       operationId: create_addressbook_tag
       requestBody:
         required: true
@@ -2063,7 +2258,7 @@ paths:
               parameters:
                 id: $response.body#/data/id
             CreateAddressBookTagResource:
-              operationId: create_addressbook_tag_resource
+              operationId: create_contact_tag_resource
               requestBody:
                 tag_id: $response.body#/data/id
         '400':
@@ -2091,6 +2286,10 @@ paths:
     get:
       summary: Get a tag category
       description: Retrieve a single tag category identified by ID
+      x-mcp:
+        description: >-
+          Use to retrieve the tag category with the specified ID. A category
+          groups related tags.
       operationId: get_addressbook_tag_category
       security:
         - oauth_token:
@@ -2124,6 +2323,10 @@ paths:
     get:
       summary: List tag categories
       description: Returns a list of tag categories, sorted alphabetically by name.
+      x-mcp:
+        description: >-
+          Use to list Address Book tag categories, sorted by name. Categories
+          group related tags.
       operationId: list_addressbook_tag_categories
       security:
         - oauth_token:
@@ -2159,7 +2362,12 @@ paths:
       description: >-
         Delete a single tag resource identified by a contact ID and tag ID,
         unlinking a contact from a tag.
-      operationId: delete_addressbook_tag_resource
+      x-mcp:
+        description: >-
+          Use `contact_id` and `tag_id` to remove the link between that contact
+          and tag. This deletes the link only. It does not delete the contact or
+          tag.
+      operationId: delete_contact_tag_resource
       parameters:
         - in: query
           name: contact_id
@@ -2204,7 +2412,12 @@ paths:
       description: >-
         Returns a list of tag resources. A tag resource is the relational model
         linking a contact to a tag.
-      operationId: list_addressbook_tag_resources
+      x-mcp:
+        description: >-
+          Use `contact_ids[]` or `tag_ids[]` to select contact and tag links.
+          For contact records, use `get_contact` or `list_contacts`. For tag
+          definitions, use `list_addressbook_tags`.
+      operationId: list_contact_tag_resources
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
@@ -2268,7 +2481,9 @@ paths:
     post:
       summary: Create a tag resource
       description: Create a tag resource linking a contact to a tag
-      operationId: create_addressbook_tag_resource
+      x-mcp:
+        description: Use to link a contact to an Address Book tag.
+      operationId: create_contact_tag_resource
       requestBody:
         required: true
         content:

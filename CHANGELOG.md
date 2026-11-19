@@ -5,6 +5,18 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.114.2] - 2026-11-19
+
+### Added
+
+- Added `photo_video_consent` field to Child PUT/POST
+
+## [2.114.1] - 2026-11-19
+
+### Fixed
+
+- Edited endpoint descriptions for `GET /bookings/prices`, `GET /attendance/metricsets`, `GET /attendance/metrics`, `GET /attendance/record_contacts` to increase clarity and fix typos.
+
 ## [2.114.0] - 2026-11-18
 
 ### Added
