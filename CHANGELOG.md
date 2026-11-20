@@ -5,6 +5,19 @@ All notable changes to this project should be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.115.2] - 2026-11-20
+
+### Added
+
+- Added `rotas/rotas` and `rotas/rotas/{id}` GET endpoints for returning Rotas in the Rotas module.
+- Added `rotas/dates` and `rotas/dates/{id}` GET endpoints for returning Rota Dates in the Rotas module.
+- Added `rotas/servings` and `rotas/servings/{id}` GET endpoints for returning Rota Servings in the Rotas module.
+- Added an `unavailability_ids[]` filter to the GET `rotas/unavailability` endpoint.
+
+### Fixed
+
+- Documented missing 403 response on `/bookings/prices` GET
+
 ## [2.114.2] - 2026-11-19
 
 ### Added

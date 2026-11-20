@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.2
+  version: 2.115.2
   title: Bookings Module
   description: >-
     The Bookings module enables you to manage the booking of resources,
@@ -1623,6 +1623,8 @@ paths:
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
         '429':
           $ref: '#/components/responses/429'
       tags:

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.2
+  version: 2.115.2
   title: Account Data
   description: >-
     Access account-level configuration data about account. The data available
@@ -331,6 +331,8 @@ paths:
                   - data
         '401':
           $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
         '429':
           $ref: '#/components/responses/429'
       security:

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  version: 2.114.2
+  version: 2.115.2
   title: Rotas Module
   description: >-
     The Rotas module enables churches and other organisations to manage all
@@ -34,6 +34,16 @@ tags:
         Explore our large database of online support articles for step-by-step
         help.
       url: https://support.churchsuite.com/article/666-how-to-add-a-ministry
+  - name: Rotas
+    parent: Rotas Module
+    description: >-
+      Rotas are used to manage dates and serving data for a given ministry
+      within a given time period.
+    externalDocs:
+      description: >-
+        Explore our large database of online support articles for step-by-step
+        help.
+      url: https://support.churchsuite.com/article/52-how-to-create-a-rota
   - name: Rota Roles
     summary: Roles
     parent: Rotas Module
@@ -402,6 +412,607 @@ paths:
           $ref: '#/components/responses/429'
       tags:
         - Teams
+  /rotas/roles:
+    get:
+      summary: List roles
+      description: Returns a list of roles, sorted by date created.
+      x-mcp:
+        description: >-
+          Use `member_ids[]` or `ministry_ids[]` to select roles by ministry
+          member or ministry. Sorted by creation date. It does not return rota
+          assignments.
+      operationId: list_rota_roles
+      parameters:
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+        - in: query
+          name: member_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: ministry_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - rotas.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Role'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                required:
+                  - data
+                  - pagination
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Rota Roles
+  /rotas/rotas/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the record to retrieve.
+        required: true
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          example: 78
+    get:
+      summary: Get a rota
+      description: Retrieve a single rota identified by ID.
+      x-mcp:
+        description: Use a rota ID to retrieve its ministry, date range, times, and status.
+      operationId: get_rota
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - rotas.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Rota'
+                required:
+                  - data
+                additionalProperties: false
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Rotas
+  /rotas/rotas:
+    get:
+      summary: List rotas
+      description: Returns a list of rotas.
+      x-mcp:
+        description: >-
+          Use `rota_ids[]`, `ministry_ids[]`, `views[]`, `active_before`, or
+          `active_after` to select rotas. The default view is active. For a
+          single known rota, use `get_rota`.
+      operationId: list_rotas_rotas
+      parameters:
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+        - in: query
+          name: rota_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: ministry_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: views[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            default:
+              - active
+            items:
+              type: string
+              example: active
+              enum:
+                - active
+                - future
+                - past
+        - in: query
+          name: active_before
+          description: Only include records that are active before this date.
+          schema:
+            type: string
+            format: date
+            example: '2024-02-24'
+        - in: query
+          name: active_after
+          description: Only include records that are active after this date.
+          schema:
+            type: string
+            format: date
+            example: '2024-01-24'
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: date:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Date, earliest to latest
+              date:desc: Date latest to earliest
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Name, A to Z
+              name:desc: Name, Z to A
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - rotas.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Rota'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                required:
+                  - data
+                  - pagination
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Rotas
+  /rotas/dates/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the record to retrieve.
+        required: true
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          example: 78
+    get:
+      summary: Get a rota date
+      description: Retrieve a single rota date identified by ID.
+      x-mcp:
+        description: >-
+          Use a rota date ID to retrieve its serving time, notes, and parent
+          rota ID. To find dates for a rota, use `list_rotas_rota_dates` with
+          `rota_ids[]`.
+      operationId: get_rota_date
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - rotas.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/RotaDate'
+                required:
+                  - data
+                additionalProperties: false
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Rotas
+  /rotas/dates:
+    get:
+      summary: List rota dates
+      description: Returns a list of rota dates.
+      x-mcp:
+        description: >-
+          Use `rota_ids[]`, `ministry_ids[]`, `serving_before`, or
+          `serving_after` to find serving dates. Each date belongs to a rota;
+          use `get_rota` for its ministry, date range, and status.
+      operationId: list_rotas_rota_dates
+      parameters:
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+        - in: query
+          name: rota_date_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: rota_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: ministry_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: serving_before
+          description: >-
+            Only include records serving before the specified date. The
+            specified date is excluded from the search.
+          schema:
+            type: string
+            format: date
+            example: '2024-02-24'
+        - in: query
+          name: serving_after
+          description: >-
+            Only include records serving after the specified date. The specified
+            date is excluded from the search.
+          schema:
+            type: string
+            format: date
+            example: '2024-01-24'
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: date:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Date, earliest to latest
+              date:desc: Date latest to earliest
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - rotas.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RotaDate'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                required:
+                  - data
+                  - pagination
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Rotas
+  /rotas/servings/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the record to retrieve.
+        required: true
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          example: 78
+    get:
+      summary: Get a rota serving
+      description: Retrieve a single rota serving identified by ID.
+      x-mcp:
+        description: >-
+          Use to retrieve the rota serving with the specified ID. A serving
+          links a person to a rota date and records their response status and
+          clashes. For multiple servings, use `list_rota_servings`.
+      operationId: get_rota_serving
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - rotas.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/RotaServing'
+                required:
+                  - data
+                additionalProperties: false
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Rotas
+  /rotas/servings:
+    get:
+      summary: List rotas servings
+      description: Returns a list of rota servings.
+      x-mcp:
+        description: >-
+          Use `serving_ids[]`, `rota_ids[]`, `date_ids[]`, `ministry_ids[]`,
+          `contact_ids[]`, or `child_ids[]` to select rota servings. Each
+          serving links a person to a rota date and records their response
+          status and clashes. Status can be null when accept/decline is off. For
+          rota dates, use `list_rotas_rota_dates`.
+      operationId: list_rota_servings
+      parameters:
+        - $ref: '#/components/parameters/PaginationPage'
+        - $ref: '#/components/parameters/PaginationPerPage'
+        - in: query
+          name: serving_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: rota_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: date_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: ministry_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: contact_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: child_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
+        - in: query
+          name: order_by
+          description: Order records by the specified field and sort direction.
+          schema:
+            type: string
+            example: id:asc
+            default: id:asc
+            enum:
+              - created_at:asc
+              - created_at:desc
+              - date:asc
+              - date:desc
+              - id:asc
+              - id:desc
+              - modified_at:asc
+              - modified_at:desc
+              - name:asc
+              - name:desc
+            x-enum-descriptions:
+              created_at:asc: Date created, oldest first
+              created_at:desc: Date created, newest first
+              date:asc: Date, earliest to latest
+              date:desc: Date latest to earliest
+              id:asc: ID, lowest first
+              id:desc: ID, highest first
+              modified_at:asc: Date modified, oldest first
+              modified_at:desc: Date modified, newest first
+              name:asc: Last name (A to Z) then first name (A to Z)
+              name:desc: Last name (Z to A) then first name (A to Z)
+      security:
+        - oauth_token:
+            - full_access
+        - oauth_token:
+            - rotas.read
+      responses:
+        '200':
+          description: OK Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RotaServing'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                required:
+                  - data
+                  - pagination
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+        - Rotas
   /rotas/unavailability/{id}:
     parameters:
       - name: id
@@ -446,14 +1057,25 @@ paths:
       description: Returns a list of unavailability.
       x-mcp:
         description: >-
-          Use `contact_ids[]`, `child_ids[]`, `ministry_ids[]`, `starts_before`
-          or `starts_after` to select unavailability records. Unavailability
-          records specify periods when people cannot serve. It does not show
-          rota assignments.
+          Use `unavailability_ids[]`, `contact_ids[]`, `child_ids[]`,
+          `ministry_ids[]`, `starts_before` or `starts_after` to select
+          unavailability records. Unavailability records specify periods when
+          people cannot serve. It does not show rota assignments.
       operationId: list_rota_unavailability
       parameters:
         - $ref: '#/components/parameters/PaginationPage'
         - $ref: '#/components/parameters/PaginationPerPage'
+        - in: query
+          name: unavailability_ids[]
+          description: >-
+            Filter records to those matching values in the provided array. This
+            filter uses the logical OR operator.
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              minimum: 1
         - in: query
           name: contact_ids[]
           description: >-
@@ -489,14 +1111,18 @@ paths:
               minimum: 1
         - in: query
           name: starts_before
-          description: Only include records that start before this date.
+          description: >-
+            Only include records active before the specified date. The specified
+            date is excluded from the search.
           schema:
             type: string
             format: date
             example: '2026-09-01'
         - in: query
           name: starts_after
-          description: Only include records that start after this date.
+          description: >-
+            Only include records active after the specified date. The specified
+            date is excluded from the search.
           schema:
             type: string
             format: date
@@ -603,74 +1229,6 @@ paths:
           $ref: '#/components/responses/429'
       tags:
         - Unavailability
-  /rotas/roles:
-    get:
-      summary: List roles
-      description: Returns a list of roles, sorted by date created.
-      x-mcp:
-        description: >-
-          Use `member_ids[]` or `ministry_ids[]` to select roles by ministry
-          member or ministry. Sorted by creation date. It does not return rota
-          assignments.
-      operationId: list_rota_roles
-      parameters:
-        - $ref: '#/components/parameters/PaginationPage'
-        - $ref: '#/components/parameters/PaginationPerPage'
-        - in: query
-          name: member_ids[]
-          description: >-
-            Filter records to those matching values in the provided array. This
-            filter uses the logical OR operator.
-          schema:
-            type: array
-            items:
-              type: integer
-              format: int32
-              minimum: 1
-        - in: query
-          name: ministry_ids[]
-          description: >-
-            Filter records to those matching values in the provided array. This
-            filter uses the logical OR operator.
-          schema:
-            type: array
-            items:
-              type: integer
-              format: int32
-              minimum: 1
-      security:
-        - oauth_token:
-            - full_access
-        - oauth_token:
-            - rotas.read
-      responses:
-        '200':
-          description: OK Success
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Role'
-                  pagination:
-                    $ref: '#/components/schemas/Pagination'
-                required:
-                  - data
-                  - pagination
-                additionalProperties: false
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '429':
-          $ref: '#/components/responses/429'
-      tags:
-        - Rota Roles
 components:
   parameters:
     PaginationPage:
@@ -1187,6 +1745,287 @@ components:
       required:
         - id
         - name
+        - created_at
+        - created_by
+        - modified_at
+        - modified_by
+      additionalProperties: false
+    Rota:
+      type: object
+      description: A single Rota from the Rotas module.
+      properties:
+        id:
+          type: integer
+          format: int32
+          minimum: 1
+          description: The Rota's ID.
+          example: 12
+        name:
+          type: string
+          description: The name of the Rota.
+          example: Worship Rota
+        ministry_id:
+          type: integer
+          format: int32
+          minimum: 1
+          description: The Ministry ID the Rota is linked to.
+          example: 51
+        starts_at:
+          type: string
+          description: The date the Rota starts.
+          format: date
+          example: '2026-04-01'
+        ends_at:
+          type: string
+          description: The date the Rota ends.
+          format: date
+          example: '2026-08-31'
+        time_start:
+          type: string
+          description: The time the Rota starts.
+          example: '10:00:00'
+        time_end:
+          type: string
+          description: The time the Rota ends.
+          example: '12:30:00'
+        accept_decline_enabled:
+          type: boolean
+          description: Whether accept/decline is enabled for serving dates.
+          example: false
+        status:
+          type: string
+          minimum: 1
+          description: The status of the Rota.
+          example: published
+          enum:
+            - draft
+            - published
+        created_at:
+          type:
+            - string
+            - 'null'
+          description: Date and time the Rota was created.
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        created_by:
+          type:
+            - string
+            - 'null'
+          description: The user who created the Rota.
+          example: kusi
+        modified_at:
+          type:
+            - string
+            - 'null'
+          description: Date and time the Rota was last modified.
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        modified_by:
+          type:
+            - string
+            - 'null'
+          description: The user who last modified the Rota.
+          example: lydia
+      required:
+        - id
+        - name
+        - ministry_id
+        - starts_at
+        - ends_at
+        - time_start
+        - time_end
+        - accept_decline_enabled
+        - status
+        - created_at
+        - created_by
+        - modified_at
+        - modified_by
+      additionalProperties: false
+    RotaDate:
+      type: object
+      description: A single Rota Date from the Rotas module.
+      properties:
+        id:
+          type: integer
+          format: int32
+          minimum: 1
+          description: The Rota Date's ID.
+          example: 12
+        rota_id:
+          type: integer
+          format: int32
+          minimum: 1
+          description: The Rota ID the Rota Date is linked to.
+          example: 12
+        serving_at:
+          type: string
+          format: date-time
+          description: The time the Rota Date serving starts.
+          example: '2023-10-10T10:30:00Z'
+        notes:
+          type: string
+          description: The Rota Date's Notes.
+          example: Projector 3 is broken.
+        service_notes:
+          type: string
+          description: Service notes linked to the Rota Date.
+          example: No need for chairs in the overflow this week.
+        created_at:
+          type:
+            - string
+            - 'null'
+          description: Date and time the Rota Date was created.
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        created_by:
+          type:
+            - string
+            - 'null'
+          description: The user who created the Rota Date.
+          example: kusi
+        modified_at:
+          type:
+            - string
+            - 'null'
+          description: Date and time the Rota Date was last modified.
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        modified_by:
+          type:
+            - string
+            - 'null'
+          description: The user who last modified the Rota Date.
+          example: lydia
+      required:
+        - id
+        - rota_id
+        - serving_at
+        - notes
+        - service_notes
+        - created_at
+        - created_by
+        - modified_at
+        - modified_by
+      additionalProperties: false
+    RotaServing:
+      type: object
+      description: A single Rota Serving from the Rotas module.
+      properties:
+        id:
+          type: integer
+          minimum: 1
+          description: The Rota Serving's ID.
+          example: 12
+        person:
+          type: object
+          description: The Person linked to the Rota Serving.
+          properties:
+            type:
+              type: string
+              description: >-
+                The Person's type, indicating whether they are a Contact, or
+                Child.
+              example: addressbook_contact
+              enum:
+                - addressbook_contact
+                - children_child
+            id:
+              type: integer
+              minimum: 1
+              description: The Person's ID.
+              example: 12
+            first_name:
+              type: string
+              description: The Person's First Name.
+              example: John
+            last_name:
+              type: string
+              description: The Person's Last Name.
+              example: Smith
+          required:
+            - type
+            - id
+            - first_name
+            - last_name
+          additionalProperties: false
+        date_id:
+          type: integer
+          minimum: 1
+          description: The Rota Date ID the Rota Serving is linked to.
+          example: 12
+        rota_id:
+          type: integer
+          minimum: 1
+          description: The Rota ID the Rota Serving is linked to.
+          example: 12
+        status:
+          type:
+            - string
+            - 'null'
+          description: >-
+            The Rota Serving's status, or null if accept/decline is off for the
+            Rota.
+          example: accepted
+          enum:
+            - accepted
+            - declined
+            - pending
+            - null
+        clashes:
+          type: array
+          description: A list of clashes for Rota Serving.
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The type of clash.
+                example: unavailability
+                enum:
+                  - serving
+                  - unavailability
+              id:
+                type: integer
+                minimum: 1
+                description: The ID of the Serving or Unavailability.
+                example: 12
+            required:
+              - type
+              - id
+            additionalProperties: false
+        created_at:
+          type:
+            - string
+            - 'null'
+          description: Date and time the Rota Serving was created.
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        created_by:
+          type:
+            - string
+            - 'null'
+          description: The user who created the Rota Serving.
+          example: kusi
+        modified_at:
+          type:
+            - string
+            - 'null'
+          description: Date and time the Rota Serving was last modified.
+          format: date-time
+          example: '2023-09-19T14:52:40Z'
+        modified_by:
+          type:
+            - string
+            - 'null'
+          description: The user who last modified the Rota Serving.
+          example: lydia
+      required:
+        - id
+        - person
+        - date_id
+        - rota_id
+        - status
+        - clashes
         - created_at
         - created_by
         - modified_at
